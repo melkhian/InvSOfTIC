@@ -41,7 +41,7 @@ $fieldOptions2 = [
 
         <?= $form
             ->field($model, 'reCaptcha')
-            ->widget(\himiklab\yii2\recaptcha\ReCaptcha::className(),['siteKey' => '6Ld4ZoUUAAAAAIyev3t2hjW-UTGAmuU24nYr10Vx']) ?>
+            ->widget(\himiklab\yii2\recaptcha\ReCaptcha::className(),['siteKey' => '6LeFaIUUAAAAAECJuHYgZkEe3PUBRRoBOHHgSiy_']) ?>
 
 
         <div class="row">
