@@ -39,6 +39,11 @@ $fieldOptions2 = [
             ->label(false)
             ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
 
+        <?= $form
+            ->field($model, 'reCaptcha')
+            ->widget(\himiklab\yii2\recaptcha\ReCaptcha::className(),['siteKey' => '6Ld4ZoUUAAAAAIyev3t2hjW-UTGAmuU24nYr10Vx']) ?>
+
+
         <div class="row">
             <div class="col-xs-8">
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
@@ -50,20 +55,11 @@ $fieldOptions2 = [
             <!-- /.col -->
         </div>
 
-
         <?php ActiveForm::end(); ?>
 
-        <div class="social-auth-links text-center">
-            <p>- OR -</p>
-            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in
-                using Facebook</a>
-            <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign
-                in using Google+</a>
-        </div>
         <!-- /.social-auth-links -->
 
         <a href="#">I forgot my password</a><br>
-        <a href="register.html" class="text-center">Register a new membership</a>
 
     </div>
     <!-- /.login-box-body -->
