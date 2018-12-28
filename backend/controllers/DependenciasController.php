@@ -67,7 +67,7 @@ class DependenciasController extends Controller
         $model = new Dependencias();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->DEPID]);
+            return $this->redirect(['view', 'id' => $model->DepId]);
         }
 
         return $this->render('create', [
@@ -87,7 +87,7 @@ class DependenciasController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->DEPID]);
+            return $this->redirect(['view', 'id' => $model->DepId]);
         }
 
         return $this->render('update', [

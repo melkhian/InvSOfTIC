@@ -67,7 +67,7 @@ class ComandosController extends Controller
         $model = new Comandos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->COMAID]);
+            return $this->redirect(['view', 'id' => $model->ComId]);
         }
 
         return $this->render('create', [
@@ -87,7 +87,7 @@ class ComandosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->COMAID]);
+            return $this->redirect(['view', 'id' => $model->ComId]);
         }
 
         return $this->render('update', [

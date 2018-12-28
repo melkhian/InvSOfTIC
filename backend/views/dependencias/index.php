@@ -26,14 +26,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'DEPID',
-            'DEPNOMBENT',
-            'DEPENCARGADO',
-            'DEPCARGO',
-            'DEPTELEFONO',
-            //'DEPDIRECCION',
-            //'DEPTIPO',
-            //'DEPMAIL',
+            'DepId',
+            'DepNomb',
+            'DepEnca',
+            'TiposId_fk1',
+            'DepTele',
+            //'DepDire',
+            //'TiposId_fk2',
+            //'DepCorr',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

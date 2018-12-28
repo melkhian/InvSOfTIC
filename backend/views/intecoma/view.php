@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Intecoma */
 
-$this->title = $model->INTECOMID;
+$this->title = $model->IcomId;
 $this->params['breadcrumbs'][] = ['label' => 'Intecomas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->INTECOMID], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->INTECOMID], [
+        <?= Html::a('Update', ['update', 'id' => $model->IcomId], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->IcomId], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -28,11 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            
-            'INTECOMID',
-            'INTEID',
-            'COMAID',
-            'INTECOMADESC',
+            'IcomId',
+            'IntiId_fk',
+            'ComId_fk',
+            'IcomFunc',
+            'IcomDesc',
         ],
     ]) ?>
 

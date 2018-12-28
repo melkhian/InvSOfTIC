@@ -18,8 +18,8 @@ class InterfacesSearch extends Interfaces
     public function rules()
     {
         return [
-            [['INTEID'], 'integer'],
-            [['INTENOM', 'INTEDESC'], 'safe'],
+            [['IntId'], 'integer'],
+            [['IntNomb', 'IntDesc'], 'safe'],
         ];
     }
 
@@ -59,11 +59,11 @@ class InterfacesSearch extends Interfaces
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'INTEID' => $this->INTEID,
+            'IntId' => $this->IntId,
         ]);
 
-        $query->andFilterWhere(['like', 'INTENOM', $this->INTENOM])
-            ->andFilterWhere(['like', 'INTEDESC', $this->INTEDESC]);
+        $query->andFilterWhere(['like', 'IntNomb', $this->IntNomb])
+            ->andFilterWhere(['like', 'IntDesc', $this->IntDesc]);
 
         return $dataProvider;
     }

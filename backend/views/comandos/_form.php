@@ -12,9 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'COMANOM')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ComNomb')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'COMADESC')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ComDesc')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

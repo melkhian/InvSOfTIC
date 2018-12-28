@@ -67,7 +67,7 @@ class TiposController extends Controller
         $model = new Tipos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->TIPOSID]);
+            return $this->redirect(['view', 'id' => $model->TiposId]);
         }
 
         return $this->render('create', [
@@ -87,7 +87,7 @@ class TiposController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->TIPOSID]);
+            return $this->redirect(['view', 'id' => $model->TiposId]);
         }
 
         return $this->render('update', [

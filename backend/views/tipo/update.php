@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Update Tipo: {nameAttribute}';
 $this->params['breadcrumbs'][] = ['label' => 'Tipos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->TIPOID, 'url' => ['view', 'id' => $model->TIPOID]];
+$this->params['breadcrumbs'][] = ['label' => $model->TipoId, 'url' => ['view', 'id' => $model->TipoId]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="tipo-update">

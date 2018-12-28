@@ -67,7 +67,7 @@ class InterfacesController extends Controller
         $model = new Interfaces();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->INTEID]);
+            return $this->redirect(['view', 'id' => $model->IntId]);
         }
 
         return $this->render('create', [
@@ -87,7 +87,7 @@ class InterfacesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->INTEID]);
+            return $this->redirect(['view', 'id' => $model->IntId]);
         }
 
         return $this->render('update', [

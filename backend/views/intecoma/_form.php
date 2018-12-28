@@ -2,9 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
-use backend\models\Interfaces;
-use backend\models\Comandos;
+
 /* @var $this yii\web\View */
 /* @var $model backend\models\Intecoma */
 /* @var $form yii\widgets\ActiveForm */
@@ -14,22 +12,13 @@ use backend\models\Comandos;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <!-- <?= $form->field($model, 'INTEID')->textInput() ?> -->
+    <?= $form->field($model, 'IntiId_fk')->textInput() ?>
 
-    <?= $form->field($model, 'INTEID')->dropDownList(
-            ArrayHelper::map( Interfaces::find()->asArray()->all(),'INTEID','INTENOM'),
-            ['prompt'=>'-->Select Interfaz']
-            );?>
+    <?= $form->field($model, 'ComId_fk')->textInput() ?>
 
+    <?= $form->field($model, 'IcomFunc')->textInput(['maxlength' => true]) ?>
 
-    <!-- <?= $form->field($model, 'COMAID')->textInput() ?> -->
-
-    <?= $form->field($model, 'COMAID')->dropDownList(
-            ArrayHelper::map( Comandos::find()->asArray()->all(),'COMAID','COMANOM'),
-            ['prompt'=>'-->Select Comando']
-            );?>
-
-    <?= $form->field($model, 'INTECOMADESC')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'IcomDesc')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

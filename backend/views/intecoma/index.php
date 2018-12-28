@@ -26,10 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'INTECOMID',            
-            'INTEID',
-            'COMAID',
-            'INTECOMADESC',
+            'IcomId',
+            'IntiId_fk',
+            'ComId_fk',
+            'IcomFunc',
+            'IcomDesc',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

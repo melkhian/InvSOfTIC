@@ -42,7 +42,7 @@
                         'items' => [
                             ['label' => 'Roles', 'icon' => 'file-code-o', 'url' => ['roles/index'],],
                             ['label' => 'Interfaces', 'icon' => 'bank', 'url' => ['interfaces/index']],
-                            ['label' => 'Rolinte', 'icon' => 'bank', 'url' => ['rolinte/index']],
+                            ['label' => 'Rolinte', 'icon' => 'bank', 'url' => ['rolintecoma/index']],
                             ['label' => 'Intecoma', 'icon' => 'bank', 'url' => ['intecoma/index']],
                             ['label' => 'Comandos', 'icon' => 'cog', 'url' => ['comandos/index'],],
                             ['label' => 'Tipo', 'icon' => 'cog', 'url' => ['tipo/index'],],

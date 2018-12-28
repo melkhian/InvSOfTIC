@@ -18,11 +18,11 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'COMAID') ?>
+    <?= $form->field($model, 'ComId') ?>
 
-    <?= $form->field($model, 'COMANOM') ?>
+    <?= $form->field($model, 'ComNomb') ?>
 
-    <?= $form->field($model, 'COMADESC') ?>
+    <?= $form->field($model, 'ComDesc') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

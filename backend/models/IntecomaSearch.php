@@ -18,8 +18,8 @@ class IntecomaSearch extends Intecoma
     public function rules()
     {
         return [
-            [['INTECOMID', 'INTEID', 'COMAID'], 'integer'],
-            [['INTECOMADESC'], 'safe'],
+            [['IcomId', 'IntiId_fk', 'ComId_fk'], 'integer'],
+            [['IcomFunc', 'IcomDesc'], 'safe'],
         ];
     }
 
@@ -59,12 +59,13 @@ class IntecomaSearch extends Intecoma
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'INTECOMID' => $this->INTECOMID,
-            'INTEID' => $this->INTEID,
-            'COMAID' => $this->COMAID,
+            'IcomId' => $this->IcomId,
+            'IntiId_fk' => $this->IntiId_fk,
+            'ComId_fk' => $this->ComId_fk,
         ]);
 
-        $query->andFilterWhere(['like', 'INTECOMADESC', $this->INTECOMADESC]);
+        $query->andFilterWhere(['like', 'IcomFunc', $this->IcomFunc])
+            ->andFilterWhere(['like', 'IcomDesc', $this->IcomDesc]);
 
         return $dataProvider;
     }

@@ -18,13 +18,15 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'INTECOMID') ?>
+    <?= $form->field($model, 'IcomId') ?>
 
-    <?= $form->field($model, 'INTEID') ?>
+    <?= $form->field($model, 'IntiId_fk') ?>
 
-    <?= $form->field($model, 'COMAID') ?>
+    <?= $form->field($model, 'ComId_fk') ?>
 
-    <?= $form->field($model, 'INTECOMADESC') ?>
+    <?= $form->field($model, 'IcomFunc') ?>
+
+    <?= $form->field($model, 'IcomDesc') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

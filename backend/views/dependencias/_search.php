@@ -18,21 +18,21 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'DEPID') ?>
+    <?= $form->field($model, 'DepId') ?>
 
-    <?= $form->field($model, 'DEPNOMBENT') ?>
+    <?= $form->field($model, 'DepNomb') ?>
 
-    <?= $form->field($model, 'DEPENCARGADO') ?>
+    <?= $form->field($model, 'DepEnca') ?>
 
-    <?= $form->field($model, 'DEPCARGO') ?>
+    <?= $form->field($model, 'TiposId_fk1') ?>
 
-    <?= $form->field($model, 'DEPTELEFONO') ?>
+    <?= $form->field($model, 'DepTele') ?>
 
-    <?php // echo $form->field($model, 'DEPDIRECCION') ?>
+    <?php // echo $form->field($model, 'DepDire') ?>
 
-    <?php // echo $form->field($model, 'DEPTIPO') ?>
+    <?php // echo $form->field($model, 'TiposId_fk2') ?>
 
-    <?php // echo $form->field($model, 'DEPMAIL') ?>
+    <?php // echo $form->field($model, 'DepCorr') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

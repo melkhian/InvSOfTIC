@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Update Interfaces: {nameAttribute}';
 $this->params['breadcrumbs'][] = ['label' => 'Interfaces', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->INTEID, 'url' => ['view', 'id' => $model->INTEID]];
+$this->params['breadcrumbs'][] = ['label' => $model->IntId, 'url' => ['view', 'id' => $model->IntId]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="interfaces-update">

@@ -26,9 +26,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'COMAID',
-            'COMANOM',
-            'COMADESC',
+            'ComId',
+            'ComNomb',
+            'ComDesc',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

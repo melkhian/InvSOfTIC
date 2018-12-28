@@ -18,13 +18,13 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'TIPOSID') ?>
+    <?= $form->field($model, 'TiposId') ?>
 
-    <?= $form->field($model, 'TIPOID') ?>
+    <?= $form->field($model, 'TipoId_fk') ?>
 
-    <?= $form->field($model, 'TIPOSDESC') ?>
+    <?= $form->field($model, 'TiposDesc') ?>
 
-    <?= $form->field($model, 'TIPOSVALOR') ?>
+    <?= $form->field($model, 'TiposValo') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

@@ -67,7 +67,7 @@ class IntecomaController extends Controller
         $model = new Intecoma();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->INTECOMID]);
+            return $this->redirect(['view', 'id' => $model->IcomId]);
         }
 
         return $this->render('create', [
@@ -87,7 +87,7 @@ class IntecomaController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->INTECOMID]);
+            return $this->redirect(['view', 'id' => $model->IcomId]);
         }
 
         return $this->render('update', [

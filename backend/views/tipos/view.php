@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Tipos */
 
-$this->title = $model->TIPOSID;
+$this->title = $model->TiposId;
 $this->params['breadcrumbs'][] = ['label' => 'Tipos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->TIPOSID], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->TIPOSID], [
+        <?= Html::a('Update', ['update', 'id' => $model->TiposId], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->TiposId], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -28,10 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'TIPOSID',
-            'TIPOID',
-            'TIPOSDESC',
-            'TIPOSVALOR',
+            'TiposId',
+            'TipoId_fk',
+            'TiposDesc',
+            'TiposValo',
         ],
     ]) ?>
 

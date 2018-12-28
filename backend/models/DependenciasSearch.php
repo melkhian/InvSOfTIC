@@ -18,8 +18,8 @@ class DependenciasSearch extends Dependencias
     public function rules()
     {
         return [
-            [['DEPID', 'DEPTIPO'], 'integer'],
-            [['DEPNOMBENT', 'DEPENCARGADO', 'DEPCARGO', 'DEPTELEFONO', 'DEPDIRECCION', 'DEPMAIL'], 'safe'],
+            [['DepId', 'TiposId_fk1', 'TiposId_fk2'], 'integer'],
+            [['DepNomb', 'DepEnca', 'DepTele', 'DepDire', 'DepCorr'], 'safe'],
         ];
     }
 
@@ -59,16 +59,16 @@ class DependenciasSearch extends Dependencias
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'DEPID' => $this->DEPID,
-            'DEPTIPO' => $this->DEPTIPO,
+            'DepId' => $this->DepId,
+            'TiposId_fk1' => $this->TiposId_fk1,
+            'TiposId_fk2' => $this->TiposId_fk2,
         ]);
 
-        $query->andFilterWhere(['like', 'DEPNOMBENT', $this->DEPNOMBENT])
-            ->andFilterWhere(['like', 'DEPENCARGADO', $this->DEPENCARGADO])
-            ->andFilterWhere(['like', 'DEPCARGO', $this->DEPCARGO])
-            ->andFilterWhere(['like', 'DEPTELEFONO', $this->DEPTELEFONO])
-            ->andFilterWhere(['like', 'DEPDIRECCION', $this->DEPDIRECCION])
-            ->andFilterWhere(['like', 'DEPMAIL', $this->DEPMAIL]);
+        $query->andFilterWhere(['like', 'DepNomb', $this->DepNomb])
+            ->andFilterWhere(['like', 'DepEnca', $this->DepEnca])
+            ->andFilterWhere(['like', 'DepTele', $this->DepTele])
+            ->andFilterWhere(['like', 'DepDire', $this->DepDire])
+            ->andFilterWhere(['like', 'DepCorr', $this->DepCorr]);
 
         return $dataProvider;
     }

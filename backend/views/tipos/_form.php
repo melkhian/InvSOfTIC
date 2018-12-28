@@ -2,8 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
-use backend\models\Tipo;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Tipos */
@@ -14,16 +12,13 @@ use backend\models\Tipo;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <!-- <?= $form->field($model, 'TIPOID')->textInput() ?> -->
+    <?= $form->field($model, 'TiposId')->textInput() ?>
 
-    <?= $form->field($model, 'TIPOID')->dropDownList(
-            ArrayHelper::map( Tipo::find()->asArray()->all(),'TIPOID','TIPODESC'),
-            ['prompt'=>'-->Select Tipo']
-            );?>
+    <?= $form->field($model, 'TipoId_fk')->textInput() ?>
 
-    <?= $form->field($model, 'TIPOSDESC')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'TiposDesc')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TIPOSVALOR')->textInput() ?>
+    <?= $form->field($model, 'TiposValo')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

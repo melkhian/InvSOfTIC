@@ -18,8 +18,8 @@ class ComandosSearch extends Comandos
     public function rules()
     {
         return [
-            [['COMAID'], 'integer'],
-            [['COMANOM', 'COMADESC'], 'safe'],
+            [['ComId'], 'integer'],
+            [['ComNomb', 'ComDesc'], 'safe'],
         ];
     }
 
@@ -59,11 +59,11 @@ class ComandosSearch extends Comandos
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'COMAID' => $this->COMAID,
+            'ComId' => $this->ComId,
         ]);
 
-        $query->andFilterWhere(['like', 'COMANOM', $this->COMANOM])
-            ->andFilterWhere(['like', 'COMADESC', $this->COMADESC]);
+        $query->andFilterWhere(['like', 'ComNomb', $this->ComNomb])
+            ->andFilterWhere(['like', 'ComDesc', $this->ComDesc]);
 
         return $dataProvider;
     }

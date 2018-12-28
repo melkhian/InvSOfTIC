@@ -18,9 +18,9 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'TIPOID') ?>
+    <?= $form->field($model, 'TipoId') ?>
 
-    <?= $form->field($model, 'TIPODESC') ?>
+    <?= $form->field($model, 'TipoDesc') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

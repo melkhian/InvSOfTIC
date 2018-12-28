@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Update Intecoma: {nameAttribute}';
 $this->params['breadcrumbs'][] = ['label' => 'Intecomas', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->INTECOMID, 'url' => ['view', 'id' => $model->INTECOMID]];
+$this->params['breadcrumbs'][] = ['label' => $model->IcomId, 'url' => ['view', 'id' => $model->IcomId]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="intecoma-update">

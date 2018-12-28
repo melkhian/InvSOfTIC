@@ -18,11 +18,11 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'INTEID') ?>
+    <?= $form->field($model, 'IntId') ?>
 
-    <?= $form->field($model, 'INTENOM') ?>
+    <?= $form->field($model, 'IntNomb') ?>
 
-    <?= $form->field($model, 'INTEDESC') ?>
+    <?= $form->field($model, 'IntDesc') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

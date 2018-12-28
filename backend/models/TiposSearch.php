@@ -18,8 +18,8 @@ class TiposSearch extends Tipos
     public function rules()
     {
         return [
-            [['TIPOSID', 'TIPOID', 'TIPOSVALOR'], 'integer'],
-            [['TIPOSDESC'], 'safe'],
+            [['TiposId', 'TipoId_fk', 'TiposValo'], 'integer'],
+            [['TiposDesc'], 'safe'],
         ];
     }
 
@@ -59,12 +59,12 @@ class TiposSearch extends Tipos
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'TIPOSID' => $this->TIPOSID,
-            'TIPOID' => $this->TIPOID,
-            'TIPOSVALOR' => $this->TIPOSVALOR,
+            'TiposId' => $this->TiposId,
+            'TipoId_fk' => $this->TipoId_fk,
+            'TiposValo' => $this->TiposValo,
         ]);
 
-        $query->andFilterWhere(['like', 'TIPOSDESC', $this->TIPOSDESC]);
+        $query->andFilterWhere(['like', 'TiposDesc', $this->TiposDesc]);
 
         return $dataProvider;
     }
