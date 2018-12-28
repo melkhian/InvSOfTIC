@@ -31,7 +31,7 @@
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     ['label' => 'Menu INVSOFTIC', 'options' => ['class' => 'header']],
-                    ['label' => 'Usuarios', 'icon' => 'user', 'url' => ['usuarios/index']],
+                    ['label' => 'Usuarios', 'icon' => 'user', 'url' => ['user/index']],
                     ['label' => 'Dependencias', 'icon' => 'bank', 'url' => ['dependencias/index']],
                     /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],*/
