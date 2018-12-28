@@ -18,8 +18,8 @@ class RolesSearch extends Roles
     public function rules()
     {
         return [
-            [['ROLID'], 'integer'],
-            [['ROLNOM', 'ROLDESC'], 'safe'],
+            [['RolId'], 'integer'],
+            [['RolNomb', 'RolDesc'], 'safe'],
         ];
     }
 
@@ -59,11 +59,11 @@ class RolesSearch extends Roles
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'ROLID' => $this->ROLID,
+            'RolId' => $this->RolId,
         ]);
 
-        $query->andFilterWhere(['like', 'ROLNOM', $this->ROLNOM])
-            ->andFilterWhere(['like', 'ROLDESC', $this->ROLDESC]);
+        $query->andFilterWhere(['like', 'RolNomb', $this->RolNomb])
+            ->andFilterWhere(['like', 'RolDesc', $this->RolDesc]);
 
         return $dataProvider;
     }

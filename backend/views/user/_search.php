@@ -20,41 +20,41 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'username') ?>
+    <?= $form->field($model, 'usuiden') ?>
 
-    <?= $form->field($model, 'auth_key') ?>
+    <?= $form->field($model, 'usuprimnomb') ?>
 
-    <?= $form->field($model, 'password_hash') ?>
+    <?= $form->field($model, 'ususegunomb') ?>
 
-    <?= $form->field($model, 'password_reset_token') ?>
-
-    <?php // echo $form->field($model, 'email') ?>
-
-    <?php // echo $form->field($model, 'status') ?>
-
-    <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
-
-    <?php // echo $form->field($model, 'usuiden') ?>
-
-    <?php // echo $form->field($model, 'usuprimnomb') ?>
-
-    <?php // echo $form->field($model, 'ususegunomb') ?>
-
-    <?php // echo $form->field($model, 'usuprimapel') ?>
+    <?= $form->field($model, 'usuprimapel') ?>
 
     <?php // echo $form->field($model, 'ususeguapel') ?>
 
     <?php // echo $form->field($model, 'usutelepers') ?>
 
+    <?php // echo $form->field($model, 'username') ?>
+
     <?php // echo $form->field($model, 'usuteleofic') ?>
+
+    <?php // echo $form->field($model, 'email') ?>
 
     <?php // echo $form->field($model, 'depid_fk') ?>
 
     <?php // echo $form->field($model, 'tiposid_fk1') ?>
 
     <?php // echo $form->field($model, 'tiposid_fk2') ?>
+
+    <?php // echo $form->field($model, 'status') ?>
+
+    <?php // echo $form->field($model, 'auth_key') ?>
+
+    <?php // echo $form->field($model, 'password_hash') ?>
+
+    <?php // echo $form->field($model, 'password_reset_token') ?>
+
+    <?php // echo $form->field($model, 'created_at') ?>
+
+    <?php // echo $form->field($model, 'updated_at') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

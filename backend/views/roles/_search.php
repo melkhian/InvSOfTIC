@@ -18,11 +18,11 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'ROLID') ?>
+    <?= $form->field($model, 'RolId') ?>
 
-    <?= $form->field($model, 'ROLNOM') ?>
+    <?= $form->field($model, 'RolNomb') ?>
 
-    <?= $form->field($model, 'ROLDESC') ?>
+    <?= $form->field($model, 'RolDesc') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

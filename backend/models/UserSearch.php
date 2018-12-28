@@ -18,8 +18,8 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['id', 'status', 'created_at', 'updated_at', 'depid_fk', 'tiposid_fk1', 'tiposid_fk2'], 'integer'],
-            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'usuiden', 'usuprimnomb', 'ususegunomb', 'usuprimapel', 'ususeguapel', 'usutelepers', 'usuteleofic'], 'safe'],
+            [['id', 'depid_fk', 'tiposid_fk1', 'tiposid_fk2', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['usuiden', 'usuprimnomb', 'ususegunomb', 'usuprimapel', 'ususeguapel', 'usutelepers', 'username', 'usuteleofic', 'email', 'auth_key', 'password_hash', 'password_reset_token'], 'safe'],
         ];
     }
 
@@ -60,26 +60,26 @@ class UserSearch extends User
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'status' => $this->status,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
             'depid_fk' => $this->depid_fk,
             'tiposid_fk1' => $this->tiposid_fk1,
             'tiposid_fk2' => $this->tiposid_fk2,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
-            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
-            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'usuiden', $this->usuiden])
+        $query->andFilterWhere(['like', 'usuiden', $this->usuiden])
             ->andFilterWhere(['like', 'usuprimnomb', $this->usuprimnomb])
             ->andFilterWhere(['like', 'ususegunomb', $this->ususegunomb])
             ->andFilterWhere(['like', 'usuprimapel', $this->usuprimapel])
             ->andFilterWhere(['like', 'ususeguapel', $this->ususeguapel])
             ->andFilterWhere(['like', 'usutelepers', $this->usutelepers])
-            ->andFilterWhere(['like', 'usuteleofic', $this->usuteleofic]);
+            ->andFilterWhere(['like', 'username', $this->username])
+            ->andFilterWhere(['like', 'usuteleofic', $this->usuteleofic])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
+            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
+            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token]);
 
         return $dataProvider;
     }

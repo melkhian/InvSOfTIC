@@ -12,9 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'ROLNOM')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'RolNomb')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'ROLDESC')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'RolDesc')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

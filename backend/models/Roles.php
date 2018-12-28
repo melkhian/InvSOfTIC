@@ -7,12 +7,12 @@ use Yii;
 /**
  * This is the model class for table "roles".
  *
- * @property string $ROLID Id
- * @property string $ROLNOM Nombre
- * @property string $ROLDESC Descripción
+ * @property int $RolId
+ * @property string $RolNomb Nombre
+ * @property string $RolDesc Descripción
  *
- * @property Rolinte[] $rolintes
- * @property Usuarol[] $usuarols
+ * @property Rolintecoma[] $rolintecomas
+ * @property Rolusua[] $rolusuas
  */
 class Roles extends \yii\db\ActiveRecord
 {
@@ -30,9 +30,8 @@ class Roles extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ROLNOM'], 'required'],
-            [['ROLNOM'], 'string', 'max' => 60],
-            [['ROLDESC'], 'string', 'max' => 1000],
+            [['RolNomb', 'RolDesc'], 'required'],
+            [['RolNomb', 'RolDesc'], 'string', 'max' => 50],
         ];
     }
 
@@ -42,25 +41,25 @@ class Roles extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ROLID' => 'Id',
-            'ROLNOM' => 'Nombre',
-            'ROLDESC' => 'Descripción',
+            'RolId' => 'Rol ID',
+            'RolNomb' => 'Nombre',
+            'RolDesc' => 'Descripción',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRolintes()
+    public function getRolintecomas()
     {
-        return $this->hasMany(Rolinte::className(), ['ROLID' => 'ROLID']);
+        return $this->hasMany(Rolintecoma::className(), ['RolId_fk' => 'RolId']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUsuarols()
+    public function getRolusuas()
     {
-        return $this->hasMany(Usuarol::className(), ['ROLID' => 'ROLID']);
+        return $this->hasMany(Rolusua::className(), ['RolId_fk' => 'RolId']);
     }
 }

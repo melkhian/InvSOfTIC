@@ -7,10 +7,10 @@ use Yii;
 /**
  * This is the model class for table "tipo".
  *
- * @property int $TIPOID
- * @property string $TIPODESC
+ * @property int $TipoId
+ * @property string $TipoDesc Descripción
  *
- * @property Tipos[] $tipos
+ * @property Tipos $tipos
  */
 class Tipo extends \yii\db\ActiveRecord
 {
@@ -28,8 +28,8 @@ class Tipo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['TIPODESC'], 'required'],
-            [['TIPODESC'], 'string', 'max' => 100],
+            [['TipoDesc'], 'required'],
+            [['TipoDesc'], 'string', 'max' => 50],
         ];
     }
 
@@ -39,8 +39,8 @@ class Tipo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'TIPOID' => 'Tipoid',
-            'TIPODESC' => 'Tipodesc',
+            'TipoId' => 'Tipo ID',
+            'TipoDesc' => 'Descripción',
         ];
     }
 
@@ -49,6 +49,6 @@ class Tipo extends \yii\db\ActiveRecord
      */
     public function getTipos()
     {
-        return $this->hasMany(Tipos::className(), ['TIPOID' => 'TIPOID']);
+        return $this->hasOne(Tipos::className(), ['TiposId' => 'TipoId']);
     }
 }

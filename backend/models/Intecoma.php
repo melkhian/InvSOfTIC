@@ -7,14 +7,15 @@ use Yii;
 /**
  * This is the model class for table "intecoma".
  *
- * @property int $INTECOMID Id
- * @property int $INTEID Interfaz Id
- * @property int $COMAID Comando Id
- * @property string $INTECOMADESC
+ * @property int $IcomId
+ * @property int $IntiId_fk Interfaz
+ * @property int $ComId_fk Comando
+ * @property string $IcomFunc Funcionalidad
+ * @property string $IcomDesc Descripción
  *
- * @property Interfaces $iNTE
- * @property Comandos $cOMA
- * @property Rolinte[] $rolintes
+ * @property Interfaces $intiIdFk
+ * @property Comandos $comIdFk
+ * @property Rolintecoma[] $rolintecomas
  */
 class Intecoma extends \yii\db\ActiveRecord
 {
@@ -32,11 +33,12 @@ class Intecoma extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['INTEID', 'COMAID'], 'required'],
-            [['INTEID', 'COMAID'], 'integer'],
-            [['INTECOMADESC'], 'string', 'max' => 1000],
-            [['INTEID'], 'exist', 'skipOnError' => true, 'targetClass' => Interfaces::className(), 'targetAttribute' => ['INTEID' => 'INTEID']],
-            [['COMAID'], 'exist', 'skipOnError' => true, 'targetClass' => Comandos::className(), 'targetAttribute' => ['COMAID' => 'COMAID']],
+            [['IntiId_fk', 'ComId_fk', 'IcomFunc'], 'required'],
+            [['IntiId_fk', 'ComId_fk'], 'integer'],
+            [['IcomFunc'], 'string', 'max' => 50],
+            [['IcomDesc'], 'string', 'max' => 100],
+            [['IntiId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Interfaces::className(), 'targetAttribute' => ['IntiId_fk' => 'IntId']],
+            [['ComId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Comandos::className(), 'targetAttribute' => ['ComId_fk' => 'ComId']],
         ];
     }
 
@@ -46,34 +48,35 @@ class Intecoma extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'INTECOMID' => 'Id',
-            'INTEID' => 'Interfaz Id',
-            'COMAID' => 'Comando Id',
-            'INTECOMADESC' => 'Intecomadesc',
+            'IcomId' => 'Icom ID',
+            'IntiId_fk' => 'Interfaz',
+            'ComId_fk' => 'Comando',
+            'IcomFunc' => 'Funcionalidad',
+            'IcomDesc' => 'Descripción',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getINTE()
+    public function getIntiIdFk()
     {
-        return $this->hasOne(Interfaces::className(), ['INTEID' => 'INTEID']);
+        return $this->hasOne(Interfaces::className(), ['IntId' => 'IntiId_fk']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCOMA()
+    public function getComIdFk()
     {
-        return $this->hasOne(Comandos::className(), ['COMAID' => 'COMAID']);
+        return $this->hasOne(Comandos::className(), ['ComId' => 'ComId_fk']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRolintes()
+    public function getRolintecomas()
     {
-        return $this->hasMany(Rolinte::className(), ['INTECOMID' => 'INTECOMID']);
+        return $this->hasMany(Rolintecoma::className(), ['IComid_fk' => 'IcomId']);
     }
 }

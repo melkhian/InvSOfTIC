@@ -7,9 +7,9 @@ use Yii;
 /**
  * This is the model class for table "comandos".
  *
- * @property int $COMAID
- * @property string $COMANOM
- * @property string $COMADESC
+ * @property int $ComId
+ * @property string $ComNomb Nombre
+ * @property string $ComDesc Descripción
  *
  * @property Intecoma[] $intecomas
  */
@@ -29,9 +29,9 @@ class Comandos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['COMANOM'], 'required'],
-            [['COMANOM'], 'string', 'max' => 60],
-            [['COMADESC'], 'string', 'max' => 1000],
+            [['ComNomb', 'ComDesc'], 'required'],
+            [['ComNomb'], 'string', 'max' => 50],
+            [['ComDesc'], 'string', 'max' => 100],
         ];
     }
 
@@ -41,9 +41,9 @@ class Comandos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'COMAID' => 'Comaid',
-            'COMANOM' => 'Comanom',
-            'COMADESC' => 'Comadesc',
+            'ComId' => 'Com ID',
+            'ComNomb' => 'Nombre',
+            'ComDesc' => 'Descripción',
         ];
     }
 
@@ -52,6 +52,6 @@ class Comandos extends \yii\db\ActiveRecord
      */
     public function getIntecomas()
     {
-        return $this->hasMany(Intecoma::className(), ['COMAID' => 'COMAID']);
+        return $this->hasMany(Intecoma::className(), ['ComId_fk' => 'ComId']);
     }
 }
