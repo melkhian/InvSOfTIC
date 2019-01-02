@@ -10,7 +10,7 @@ use Yii;
  * @property int $RUsuId Id
  * @property int $RolId_fk Rol
  * @property int $UsuId_fk Usuario
- * @property int $RUsuCadu Fecha de Caducidad
+ * @property string $RUsuCadu Fecha de Caducidad
  *
  * @property Roles $rolIdFk
  * @property User $usuIdFk
@@ -32,7 +32,8 @@ class Rolusua extends \yii\db\ActiveRecord
     {
         return [
             [['RolId_fk', 'UsuId_fk', 'RUsuCadu'], 'required'],
-            [['RolId_fk', 'UsuId_fk', 'RUsuCadu'], 'integer'],
+            [['RolId_fk', 'UsuId_fk'], 'integer'],
+            [['RUsuCadu'], 'safe'],
             [['RolId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Roles::className(), 'targetAttribute' => ['RolId_fk' => 'RolId']],
             [['UsuId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['UsuId_fk' => 'id']],
         ];

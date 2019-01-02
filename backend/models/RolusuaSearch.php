@@ -18,7 +18,8 @@ class RolusuaSearch extends Rolusua
     public function rules()
     {
         return [
-            [['RUsuId', 'RolId_fk', 'UsuId_fk', 'RUsuCadu'], 'integer'],
+            [['RUsuId', 'RolId_fk', 'UsuId_fk'], 'integer'],
+            [['RUsuCadu'], 'safe'],
         ];
     }
 
