@@ -7,16 +7,18 @@ use Yii;
 /**
  * This is the model class for table "dependencias".
  *
- * @property int $DEPID
- * @property string $DEPNOMBENT
- * @property string $DEPENCARGADO
- * @property string $DEPCARGO
- * @property string $DEPTELEFONO
- * @property string $DEPDIRECCION
- * @property int $DEPTIPO
- * @property string $DEPMAIL
+ * @property int $DepId Id
+ * @property string $DepNomb Nombre
+ * @property string $DepEnca Encargado de Dependencia
+ * @property int $TiposId_fk1 Cargo del Encargado
+ * @property string $DepTele Teléfono de Dependencia
+ * @property string $DepDire Dirección de Dependencia
+ * @property int $TiposId_fk2 Tipo de Dependencia
+ * @property string $DepCorr Correo del Encargado
  *
- * @property Appdepend[] $appdepends
+ * @property Appdependencias[] $appdependencias
+ * @property Tipos $tiposIdFk1
+ * @property Tipos $tiposIdFk2
  */
 class Dependencias extends \yii\db\ActiveRecord
 {
@@ -34,11 +36,12 @@ class Dependencias extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['DEPNOMBENT', 'DEPENCARGADO', 'DEPCARGO', 'DEPTELEFONO', 'DEPDIRECCION', 'DEPTIPO', 'DEPMAIL'], 'required'],
-            [['DEPTIPO'], 'integer'],
-            [['DEPNOMBENT', 'DEPENCARGADO', 'DEPMAIL'], 'string', 'max' => 50],
-            [['DEPCARGO', 'DEPDIRECCION'], 'string', 'max' => 30],
-            [['DEPTELEFONO'], 'string', 'max' => 20],
+            [['DepNomb', 'DepEnca', 'TiposId_fk1', 'DepTele', 'DepDire', 'TiposId_fk2', 'DepCorr'], 'required'],
+            [['TiposId_fk1', 'TiposId_fk2'], 'integer'],
+            [['DepNomb', 'DepEnca', 'DepDire', 'DepCorr'], 'string', 'max' => 50],
+            [['DepTele'], 'string', 'max' => 20],
+            [['TiposId_fk1'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['TiposId_fk1' => 'TiposId']],
+            [['TiposId_fk2'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['TiposId_fk2' => 'TiposId']],
         ];
     }
 
@@ -48,22 +51,38 @@ class Dependencias extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'DEPID' => 'Depid',
-            'DEPNOMBENT' => 'Depnombent',
-            'DEPENCARGADO' => 'Depencargado',
-            'DEPCARGO' => 'Depcargo',
-            'DEPTELEFONO' => 'Deptelefono',
-            'DEPDIRECCION' => 'Depdireccion',
-            'DEPTIPO' => 'Deptipo',
-            'DEPMAIL' => 'Depmail',
+            'DepId' => 'Id',
+            'DepNomb' => 'Nombre',
+            'DepEnca' => 'Encargado de Dependencia',
+            'TiposId_fk1' => 'Cargo del Encargado',
+            'DepTele' => 'Teléfono de Dependencia',
+            'DepDire' => 'Dirección de Dependencia',
+            'TiposId_fk2' => 'Tipo de Dependencia',
+            'DepCorr' => 'Correo del Encargado',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAppdepends()
+    public function getAppdependencias()
     {
-        return $this->hasMany(Appdepend::className(), ['DEPID' => 'DEPID']);
+        return $this->hasMany(Appdependencias::className(), ['DepId_fk' => 'DepId']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTiposIdFk1()
+    {
+        return $this->hasOne(Tipos::className(), ['TiposId' => 'TiposId_fk1']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTiposIdFk2()
+    {
+        return $this->hasOne(Tipos::className(), ['TiposId' => 'TiposId_fk2']);
     }
 }

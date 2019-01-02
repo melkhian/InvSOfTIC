@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use backend\models\Tipo;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Tipos */
@@ -12,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'TipoId_fk')->textInput() ?>
+    <?= $form->field($model, 'TipoId_fk')->dropDownList(ArrayHelper::map(Tipo::find()->all(),'TipoId','TipoDesc'), ['prompt'=> 'Seleccione el Tipo'])?>
 
     <?= $form->field($model, 'TiposDesc')->textInput(['maxlength' => true]) ?>
 
