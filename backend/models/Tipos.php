@@ -47,7 +47,7 @@ class Tipos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['TipoId_fk', 'TiposDesc', 'TiposValo'], 'required'],
+            [['TipoId_fk', 'TiposDesc'], 'required'],
             [['TipoId_fk', 'TiposValo'], 'integer'],
             [['TiposDesc'], 'string', 'max' => 100],
             [['TipoId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Tipo::className(), 'targetAttribute' => ['TipoId_fk' => 'TipoId']],
