@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\Tipo */
 
 $this->title = $model->TipoId;
-$this->params['breadcrumbs'][] = ['label' => 'Tipos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tipo', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tipo-view">
