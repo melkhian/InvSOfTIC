@@ -4,20 +4,20 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\VersDocRequerimientosSearch */
+/* @var $searchModel backend\models\VersdocrequerimientosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Vers Doc Requerimientos';
+$this->title = 'Versdocrequerimientos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="vers-doc-requerimientos-index">
+<div class="versdocrequerimientos-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Vers Doc Requerimientos', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Versdocrequerimientos', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

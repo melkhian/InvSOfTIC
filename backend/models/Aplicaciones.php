@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "aplicaciones".
  *
- * @property int $AppId
+ * @property int $AppId Id
  * @property string $AppNomb Nombre
  * @property string $AppDesc Descripción
  * @property string $AppVers Versión de Aplicación
@@ -75,7 +75,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'AppId' => 'App ID',
+            'AppId' => 'Id',
             'AppNomb' => 'Nombre',
             'AppDesc' => 'Descripción',
             'AppVers' => 'Versión de Aplicación',

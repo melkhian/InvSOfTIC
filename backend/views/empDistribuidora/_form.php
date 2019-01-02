@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\EmpDistribuidora */
+/* @var $model backend\models\Empdistribuidora */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="emp-distribuidora-form">
+<div class="empdistribuidora-form">
 
     <?php $form = ActiveForm::begin(); ?>
 

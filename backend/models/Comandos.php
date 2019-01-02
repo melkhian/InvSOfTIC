@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "comandos".
  *
- * @property int $ComId
+ * @property int $ComId Id
  * @property string $ComNomb Nombre
  * @property string $ComDesc Descripción
  *
@@ -41,7 +41,7 @@ class Comandos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ComId' => 'Com ID',
+            'ComId' => 'Id',
             'ComNomb' => 'Nombre',
             'ComDesc' => 'Descripción',
         ];

@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "estrequerimientos".
  *
- * @property int $EReqId
+ * @property int $EReqId Id
  * @property int $ReqId_fk Requerimiento
  * @property int $TiposId_fk Estado
  * @property string $EReqEsta Observación del estado
@@ -48,7 +48,7 @@ class Estrequerimientos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'EReqId' => 'Ereq ID',
+            'EReqId' => 'Id',
             'ReqId_fk' => 'Requerimiento',
             'TiposId_fk' => 'Estado',
             'EReqEsta' => 'Observación del estado',

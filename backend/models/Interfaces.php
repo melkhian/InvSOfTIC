@@ -7,9 +7,9 @@ use Yii;
 /**
  * This is the model class for table "interfaces".
  *
- * @property int $INTEID
- * @property string $INTENOM
- * @property string $INTEDESC
+ * @property int $IntId Id
+ * @property string $IntNomb Nombre
+ * @property string $IntDesc Descripción
  *
  * @property Intecoma[] $intecomas
  */
@@ -29,9 +29,9 @@ class Interfaces extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['INTENOM'], 'required'],
-            [['INTENOM'], 'string', 'max' => 60],
-            [['INTEDESC'], 'string', 'max' => 1000],
+            [['IntNomb', 'IntDesc'], 'required'],
+            [['IntNomb'], 'string', 'max' => 50],
+            [['IntDesc'], 'string', 'max' => 100],
         ];
     }
 
@@ -41,9 +41,9 @@ class Interfaces extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'INTEID' => 'Inteid',
-            'INTENOM' => 'Intenom',
-            'INTEDESC' => 'Intedesc',
+            'IntId' => 'Id',
+            'IntNomb' => 'Nombre',
+            'IntDesc' => 'Descripción',
         ];
     }
 
@@ -52,6 +52,6 @@ class Interfaces extends \yii\db\ActiveRecord
      */
     public function getIntecomas()
     {
-        return $this->hasMany(Intecoma::className(), ['INTEID' => 'INTEID']);
+        return $this->hasMany(Intecoma::className(), ['IntiId_fk' => 'IntId']);
     }
 }

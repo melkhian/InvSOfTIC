@@ -51,7 +51,7 @@
                         ],
                     ],
 
-                    ['label' => 'EmpDistribuidoras', 'icon' => 'bank', 'url' => ['empDistribuidora/index']],
+                    ['label' => 'EmpDistribuidoras', 'icon' => 'bank', 'url' => ['empdistribuidora/index']],
                     ['label' => 'EmpSoporte', 'icon' => 'bank', 'url' => ['empsoporte/index']],
                     ['label' => 'Proyectos', 'icon' => 'bank', 'url' => ['proyectos/index']],
                     ['label' => 'Cambio Alcance', 'icon' => 'bank', 'url' => ['cambioalcance/index']],

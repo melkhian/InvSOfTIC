@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "roles".
  *
- * @property int $RolId
+ * @property int $RolId Id
  * @property string $RolNomb Nombre
  * @property string $RolDesc Descripción
  *
@@ -41,7 +41,7 @@ class Roles extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'RolId' => 'Rol ID',
+            'RolId' => 'Id',
             'RolNomb' => 'Nombre',
             'RolDesc' => 'Descripción',
         ];

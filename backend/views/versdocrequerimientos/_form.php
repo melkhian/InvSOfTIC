@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\VersDocRequerimientos */
+/* @var $model backend\models\Versdocrequerimientos */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="vers-doc-requerimientos-form">
+<div class="versdocrequerimientos-form">
 
     <?php $form = ActiveForm::begin(); ?>
 

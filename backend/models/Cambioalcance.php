@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "cambioalcance".
  *
- * @property int $CAlcId
+ * @property int $CAlcId Id
  * @property int $ProId_fk Proyecto
  * @property string $CAlcDesc Descripción
  * @property string $CAlcFechApro Fecha de Aprobación
@@ -47,7 +47,7 @@ class Cambioalcance extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'CAlcId' => 'Calc ID',
+            'CAlcId' => 'Id',
             'ProId_fk' => 'Proyecto',
             'CAlcDesc' => 'Descripción',
             'CAlcFechApro' => 'Fecha de Aprobación',

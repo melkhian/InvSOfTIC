@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "rolintecoma".
  *
- * @property int $RIComId
+ * @property int $RIComId Id
  * @property int $RolId_fk Rol
  * @property int $IComid_fk Funcionalidad
  *
@@ -43,7 +43,7 @@ class Rolintecoma extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'RIComId' => 'Ricom ID',
+            'RIComId' => 'Id',
             'RolId_fk' => 'Rol',
             'IComid_fk' => 'Funcionalidad',
         ];

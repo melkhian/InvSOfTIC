@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "empdistribuidora".
  *
- * @property int $EDisId
+ * @property int $EDisId Id
  * @property string $EDisNit NIT
  * @property string $EDisNomb Nombre
  * @property string $EDisDire Dirección
@@ -50,7 +50,7 @@ class Empdistribuidora extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'EDisId' => 'Edis ID',
+            'EDisId' => 'Id',
             'EDisNit' => 'NIT',
             'EDisNomb' => 'Nombre',
             'EDisDire' => 'Dirección',

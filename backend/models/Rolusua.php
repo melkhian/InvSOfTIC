@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "rolusua".
  *
- * @property int $RUsuId
+ * @property int $RUsuId Id
  * @property int $RolId_fk Rol
  * @property int $UsuId_fk Usuario
  * @property int $RUsuCadu Fecha de Caducidad
@@ -44,7 +44,7 @@ class Rolusua extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'RUsuId' => 'Rusu ID',
+            'RUsuId' => 'Id',
             'RolId_fk' => 'Rol',
             'UsuId_fk' => 'Usuario',
             'RUsuCadu' => 'Fecha de Caducidad',

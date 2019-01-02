@@ -5,12 +5,12 @@ namespace backend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\VersDocRequerimientos;
+use backend\models\Versdocrequerimientos;
 
 /**
- * VersDocRequerimientosSearch represents the model behind the search form of `backend\models\VersDocRequerimientos`.
+ * VersdocrequerimientosSearch represents the model behind the search form of `backend\models\Versdocrequerimientos`.
  */
-class VersDocRequerimientosSearch extends VersDocRequerimientos
+class VersdocrequerimientosSearch extends Versdocrequerimientos
 {
     /**
      * @inheritdoc
@@ -41,7 +41,7 @@ class VersDocRequerimientosSearch extends VersDocRequerimientos
      */
     public function search($params)
     {
-        $query = VersDocRequerimientos::find();
+        $query = Versdocrequerimientos::find();
 
         // add conditions that should always apply here
 

@@ -12,8 +12,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'TiposId')->textInput() ?>
-
     <?= $form->field($model, 'TipoId_fk')->textInput() ?>
 
     <?= $form->field($model, 'TiposDesc')->textInput(['maxlength' => true]) ?>

@@ -47,7 +47,7 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['usuiden', 'usuprimnomb', 'usuprimapel', 'usutelepers', 'username', 'usuteleofic', 'email', 'depid_fk', 'tiposid_fk1', 'tiposid_fk2', 'auth_key', 'password_hash', 'created_at', 'updated_at'], 'required'],
+            [['usuiden', 'usuprimnomb', 'usuprimapel', 'usutelepers', 'username', 'usuteleofic', 'email', 'depid_fk', 'tiposid_fk1', 'tiposid_fk2', 'status', 'auth_key', 'password_hash', 'created_at', 'updated_at'], 'required'],
             [['depid_fk', 'tiposid_fk1', 'tiposid_fk2', 'status', 'created_at', 'updated_at'], 'integer'],
             [['usuiden', 'usutelepers', 'usuteleofic'], 'string', 'max' => 20],
             [['usuprimnomb', 'ususegunomb', 'usuprimapel', 'ususeguapel'], 'string', 'max' => 30],

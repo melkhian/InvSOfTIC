@@ -5,12 +5,12 @@ namespace backend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\EmpDistribuidora;
+use backend\models\Empdistribuidora;
 
 /**
- * EmpDistribuidoraSearch represents the model behind the search form of `backend\models\EmpDistribuidora`.
+ * EmpdistribuidoraSearch represents the model behind the search form of `backend\models\Empdistribuidora`.
  */
-class EmpDistribuidoraSearch extends EmpDistribuidora
+class EmpdistribuidoraSearch extends Empdistribuidora
 {
     /**
      * @inheritdoc
@@ -41,7 +41,7 @@ class EmpDistribuidoraSearch extends EmpDistribuidora
      */
     public function search($params)
     {
-        $query = EmpDistribuidora::find();
+        $query = Empdistribuidora::find();
 
         // add conditions that should always apply here
 

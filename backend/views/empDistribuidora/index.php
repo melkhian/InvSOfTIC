@@ -4,20 +4,20 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\EmpDistribuidoraSearch */
+/* @var $searchModel backend\models\EmpdistribuidoraSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Emp Distribuidoras';
+$this->title = 'Empdistribuidoras';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="emp-distribuidora-index">
+<div class="empdistribuidora-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Emp Distribuidora', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Empdistribuidora', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

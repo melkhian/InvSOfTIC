@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\EmpDistribuidora;
-use backend\models\EmpDistribuidoraSearch;
+use backend\models\Empdistribuidora;
+use backend\models\EmpdistribuidoraSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * EmpDistribuidoraController implements the CRUD actions for EmpDistribuidora model.
+ * EmpdistribuidoraController implements the CRUD actions for Empdistribuidora model.
  */
-class EmpDistribuidoraController extends Controller
+class EmpdistribuidoraController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class EmpDistribuidoraController extends Controller
     }
 
     /**
-     * Lists all EmpDistribuidora models.
+     * Lists all Empdistribuidora models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new EmpDistribuidoraSearch();
+        $searchModel = new EmpdistribuidoraSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class EmpDistribuidoraController extends Controller
     }
 
     /**
-     * Displays a single EmpDistribuidora model.
+     * Displays a single Empdistribuidora model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class EmpDistribuidoraController extends Controller
     }
 
     /**
-     * Creates a new EmpDistribuidora model.
+     * Creates a new Empdistribuidora model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new EmpDistribuidora();
+        $model = new Empdistribuidora();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->EDisId]);
@@ -76,7 +76,7 @@ class EmpDistribuidoraController extends Controller
     }
 
     /**
-     * Updates an existing EmpDistribuidora model.
+     * Updates an existing Empdistribuidora model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class EmpDistribuidoraController extends Controller
     }
 
     /**
-     * Deletes an existing EmpDistribuidora model.
+     * Deletes an existing Empdistribuidora model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class EmpDistribuidoraController extends Controller
     }
 
     /**
-     * Finds the EmpDistribuidora model based on its primary key value.
+     * Finds the Empdistribuidora model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return EmpDistribuidora the loaded model
+     * @return Empdistribuidora the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = EmpDistribuidora::findOne($id)) !== null) {
+        if (($model = Empdistribuidora::findOne($id)) !== null) {
             return $model;
         }
 

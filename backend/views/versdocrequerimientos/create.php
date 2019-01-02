@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\VersDocRequerimientos */
+/* @var $model backend\models\Versdocrequerimientos */
 
-$this->title = 'Create Vers Doc Requerimientos';
-$this->params['breadcrumbs'][] = ['label' => 'Vers Doc Requerimientos', 'url' => ['index']];
+$this->title = 'Create Versdocrequerimientos';
+$this->params['breadcrumbs'][] = ['label' => 'Versdocrequerimientos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="vers-doc-requerimientos-create">
+<div class="versdocrequerimientos-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

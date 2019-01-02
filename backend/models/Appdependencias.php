@@ -7,10 +7,10 @@ use Yii;
 /**
  * This is the model class for table "appdependencias".
  *
- * @property int $ADepId
+ * @property int $ADepId Id
  * @property int $DepId_fk Dependencia
  * @property int $AppId_fk Aplicación
- * @property string $ADepCantUsua Cantidad de Usuarios
+ * @property int $ADepCantUsua Cantidad de Usuarios
  * @property string $ADepFechSist Fecha del Sistema
  *
  * @property Dependencias $depIdFk
@@ -33,9 +33,8 @@ class Appdependencias extends \yii\db\ActiveRecord
     {
         return [
             [['DepId_fk', 'AppId_fk', 'ADepCantUsua', 'ADepFechSist'], 'required'],
-            [['DepId_fk', 'AppId_fk'], 'integer'],
+            [['DepId_fk', 'AppId_fk', 'ADepCantUsua'], 'integer'],
             [['ADepFechSist'], 'safe'],
-            [['ADepCantUsua'], 'string', 'max' => 10],
             [['DepId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Dependencias::className(), 'targetAttribute' => ['DepId_fk' => 'DepId']],
             [['AppId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Aplicaciones::className(), 'targetAttribute' => ['AppId_fk' => 'AppId']],
         ];
@@ -47,7 +46,7 @@ class Appdependencias extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ADepId' => 'Adep ID',
+            'ADepId' => 'Id',
             'DepId_fk' => 'Dependencia',
             'AppId_fk' => 'Aplicación',
             'ADepCantUsua' => 'Cantidad de Usuarios',

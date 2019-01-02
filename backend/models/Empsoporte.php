@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "empsoporte".
  *
- * @property int $ESopId
+ * @property int $ESopId Id
  * @property string $ESopNit NIT
  * @property string $ESopNomb Nombre
  * @property string $ESopDire Dirección
@@ -46,7 +46,7 @@ class Empsoporte extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ESopId' => 'Esop ID',
+            'ESopId' => 'Id',
             'ESopNit' => 'NIT',
             'ESopNomb' => 'Nombre',
             'ESopDire' => 'Dirección',

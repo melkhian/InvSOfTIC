@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "requerimientos".
  *
- * @property int $ReqId
+ * @property int $ReqId Id
  * @property int $ProId_fk Proyecto
  * @property string $ReqDesc Descripción
  * @property int $TiposId_fk1 Tipo de Requerimiento
@@ -18,7 +18,7 @@ use Yii;
  * @property string $ReqFechSist Fecha del sistema 
  * @property int $TiposId_fk4 Prioridad
  *
- * @property Estrequerimiento[] $estrequerimientos
+ * @property Estrequerimientos[] $estrequerimientos
  * @property Proyectos $proIdFk
  * @property Tipos $tiposIdFk1
  * @property Tipos $tiposidFk2
@@ -62,7 +62,7 @@ class Requerimientos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ReqId' => 'Req ID',
+            'ReqId' => 'Id',
             'ProId_fk' => 'Proyecto',
             'ReqDesc' => 'Descripción',
             'TiposId_fk1' => 'Tipo de Requerimiento',
@@ -80,7 +80,7 @@ class Requerimientos extends \yii\db\ActiveRecord
      */
     public function getEstrequerimientos()
     {
-        return $this->hasMany(Estrequerimiento::className(), ['ReqId_fk' => 'ReqId']);
+        return $this->hasMany(Estrequerimientos::className(), ['ReqId_fk' => 'ReqId']);
     }
 
     /**

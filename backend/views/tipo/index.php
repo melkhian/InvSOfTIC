@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\TipoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tipo';
+$this->title = 'Tipos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tipo-index">

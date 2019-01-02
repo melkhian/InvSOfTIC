@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "tipos".
  *
- * @property int $TiposId
+ * @property int $TiposId Id
  * @property int $TipoId_fk Tipo
  * @property string $TiposDesc Descripción
  * @property int $TiposValo Valor
@@ -22,14 +22,14 @@ use Yii;
  * @property Dependencias[] $dependencias
  * @property Dependencias[] $dependencias0
  * @property Empdistribuidora[] $empdistribuidoras
- * @property Estrequerimiento[] $estrequerimientos
+ * @property Estrequerimientos[] $estrequerimientos
  * @property Proyectos[] $proyectos
  * @property Proyectos[] $proyectos0
  * @property Requerimientos[] $requerimientos
  * @property Requerimientos[] $requerimientos0
  * @property Requerimientos[] $requerimientos1
  * @property Requerimientos[] $requerimientos2
- * @property Tipo $tipos
+ * @property Tipo $tipoIdFk
  */
 class Tipos extends \yii\db\ActiveRecord
 {
@@ -50,7 +50,7 @@ class Tipos extends \yii\db\ActiveRecord
             [['TipoId_fk', 'TiposDesc', 'TiposValo'], 'required'],
             [['TipoId_fk', 'TiposValo'], 'integer'],
             [['TiposDesc'], 'string', 'max' => 100],
-            [['TiposId'], 'exist', 'skipOnError' => true, 'targetClass' => Tipo::className(), 'targetAttribute' => ['TiposId' => 'TipoId']],
+            [['TipoId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Tipo::className(), 'targetAttribute' => ['TipoId_fk' => 'TipoId']],
         ];
     }
 
@@ -60,7 +60,7 @@ class Tipos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'TiposId' => 'Tipos ID',
+            'TiposId' => 'Id',
             'TipoId_fk' => 'Tipo',
             'TiposDesc' => 'Descripción',
             'TiposValo' => 'Valor',
@@ -152,7 +152,7 @@ class Tipos extends \yii\db\ActiveRecord
      */
     public function getEstrequerimientos()
     {
-        return $this->hasMany(Estrequerimiento::className(), ['TiposId_fk' => 'TiposId']);
+        return $this->hasMany(Estrequerimientos::className(), ['TiposId_fk' => 'TiposId']);
     }
 
     /**
@@ -206,8 +206,8 @@ class Tipos extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTipos()
+    public function getTipoIdFk()
     {
-        return $this->hasOne(Tipo::className(), ['TipoId' => 'TiposId']);
+        return $this->hasOne(Tipo::className(), ['TipoId' => 'TipoId_fk']);
     }
 }

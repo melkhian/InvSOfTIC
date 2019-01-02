@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\VersDocRequerimientos;
-use backend\models\VersDocRequerimientosSearch;
+use backend\models\Versdocrequerimientos;
+use backend\models\VersdocrequerimientosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * VersDocRequerimientosController implements the CRUD actions for VersDocRequerimientos model.
+ * VersdocrequerimientosController implements the CRUD actions for Versdocrequerimientos model.
  */
-class VersDocRequerimientosController extends Controller
+class VersdocrequerimientosController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class VersDocRequerimientosController extends Controller
     }
 
     /**
-     * Lists all VersDocRequerimientos models.
+     * Lists all Versdocrequerimientos models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new VersDocRequerimientosSearch();
+        $searchModel = new VersdocrequerimientosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class VersDocRequerimientosController extends Controller
     }
 
     /**
-     * Displays a single VersDocRequerimientos model.
+     * Displays a single Versdocrequerimientos model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class VersDocRequerimientosController extends Controller
     }
 
     /**
-     * Creates a new VersDocRequerimientos model.
+     * Creates a new Versdocrequerimientos model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new VersDocRequerimientos();
+        $model = new Versdocrequerimientos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->VDReqId]);
@@ -76,7 +76,7 @@ class VersDocRequerimientosController extends Controller
     }
 
     /**
-     * Updates an existing VersDocRequerimientos model.
+     * Updates an existing Versdocrequerimientos model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class VersDocRequerimientosController extends Controller
     }
 
     /**
-     * Deletes an existing VersDocRequerimientos model.
+     * Deletes an existing Versdocrequerimientos model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class VersDocRequerimientosController extends Controller
     }
 
     /**
-     * Finds the VersDocRequerimientos model based on its primary key value.
+     * Finds the Versdocrequerimientos model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return VersDocRequerimientos the loaded model
+     * @return Versdocrequerimientos the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = VersDocRequerimientos::findOne($id)) !== null) {
+        if (($model = Versdocrequerimientos::findOne($id)) !== null) {
             return $model;
         }
 
