@@ -46,7 +46,7 @@ class Appdependencias extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ADepId' => 'Id',
+            'ADepId' => 'ID',
             'DepId_fk' => 'Dependencia',
             'AppId_fk' => 'Aplicación',
             'ADepCantUsua' => 'Cantidad de Usuarios',
