@@ -2,10 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use kartik\date\DatePicker;
 use backend\models\Roles;
 use backend\models\User;
 use yii\helpers\ArrayHelper;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Rolusua */
@@ -26,7 +26,8 @@ use yii\helpers\ArrayHelper;
           	'options' => ['placeholder' => 'Seleccione la fecha de Caducidad'],
           	'pluginOptions' => [
           	'format' => 'yyyy-mm-dd',
-          	'todayHighlight' => true]]); ?>
+          	'todayHighlight' => true]]);
+     ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

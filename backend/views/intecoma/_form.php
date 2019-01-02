@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use backend\models\Interfaces;
+use backend\models\Comandos;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Intecoma */
@@ -12,9 +15,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'IntiId_fk')->textInput() ?>
+    <?= $form->field($model, 'IntiId_fk')->dropDownList(ArrayHelper::map(Interfaces::find()->all(),'IntId','IntNomb'), ['prompt'=> 'Seleccione la Interfaz'])?>
 
-    <?= $form->field($model, 'ComId_fk')->textInput() ?>
+    <?= $form->field($model, 'ComId_fk')->dropDownList(ArrayHelper::map(Comandos::find()->all(),'ComId','ComNomb'), ['prompt'=> 'Seleccione el Comando'])?>
 
     <?= $form->field($model, 'IcomFunc')->textInput(['maxlength' => true]) ?>
 

@@ -125,7 +125,7 @@
                         'url' => '#',
                         'items' => [
                             ['label' => 'Roles', 'icon' => 'file-code-o', 'url' => ['roles/index'],],
-                            ['label' => 'Rolinte', 'icon' => 'bank', 'url' => ['rolintecoma/index']],
+                            ['label' => 'Rolintecoma', 'icon' => 'bank', 'url' => ['rolintecoma/index']],
                             ['label' => 'Rolusua', 'icon' => 'bank', 'url' => ['rolusua/index']],
 
 
