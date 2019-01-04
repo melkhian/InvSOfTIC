@@ -31,7 +31,7 @@ class Appmodulos extends \yii\db\ActiveRecord
         return [
             [['AppId_fk', 'AModDesc'], 'required'],
             [['AppId_fk'], 'integer'],
-            [['AModDesc'], 'string', 'max' => 100],
+            [['AModDesc'], 'string', 'max' => 500],
             [['AppId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Aplicaciones::className(), 'targetAttribute' => ['AppId_fk' => 'AppId']],
         ];
     }

@@ -31,7 +31,7 @@ class Comandos extends \yii\db\ActiveRecord
         return [
             [['ComNomb', 'ComDesc'], 'required'],
             [['ComNomb'], 'string', 'max' => 50],
-            [['ComDesc'], 'string', 'max' => 100],
+            [['ComDesc'], 'string', 'max' => 500],
         ];
     }
 

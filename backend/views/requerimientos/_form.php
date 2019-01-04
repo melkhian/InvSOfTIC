@@ -38,8 +38,15 @@ use kartik\date\DatePicker;
             'todayHighlight' => true]]);
      ?>
 
-    <?= $form->field($model, 'ReqFechSist')->textInput() ?>
-
+     <?= $form->field($model, 'ReqFechSist')->widget( DatePicker::className(),
+             ['name' => 'check_issue_date',
+             'value' => date('d-M-Y', strtotime('+2 days')),
+             'options' => ['placeholder' => 'Seleccione la fecha de Toma de Requerimiento'],
+             'pluginOptions' => [
+             'format' => 'yyyy-mm-dd',
+             'todayHighlight' => true]]);
+      ?>
+      
     <?= $form->field($model, 'TiposId_fk4')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 16')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione la Prioridad del Requerimiento'])?>
 
     <div class="form-group">

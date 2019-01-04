@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use backend\models\Proyectos;
+use yii\helpers\ArrayHelper;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Cambioalcance */
@@ -12,17 +15,45 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'ProId_fk')->textInput() ?>
+    <?= $form->field($model, 'ProId_fk')->dropDownList(ArrayHelper::map(Proyectos::find()->all(),'ProId','ProNomb'), ['prompt'=> 'Seleccione el Proyecto'])?>
 
-    <?= $form->field($model, 'CAlcDesc')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'CAlcDesc')->textarea(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'CAlcFechApro')->textInput() ?>
+    <?= $form->field($model, 'CAlcFechApro')->widget( DatePicker::className(),
+            ['name' => 'check_issue_date',
+            'value' => date('d-M-Y', strtotime('+2 days')),
+            'options' => ['placeholder' => 'Seleccione la fecha de Caducidad'],
+            'pluginOptions' => [
+            'format' => 'yyyy-mm-dd',
+            'todayHighlight' => true]]);
+     ?>
 
-    <?= $form->field($model, 'CAlcFechInic')->textInput() ?>
+    <?= $form->field($model, 'CAlcFechInic')->widget( DatePicker::className(),
+             ['name' => 'check_issue_date',
+             'value' => date('d-M-Y', strtotime('+2 days')),
+             'options' => ['placeholder' => 'Seleccione la fecha de Caducidad'],
+             'pluginOptions' => [
+             'format' => 'yyyy-mm-dd',
+             'todayHighlight' => true]]);
+    ?>
 
-    <?= $form->field($model, 'CAlcFechFina')->textInput() ?>
+    <?= $form->field($model, 'CAlcFechFina')->widget( DatePicker::className(),
+            ['name' => 'check_issue_date',
+            'value' => date('d-M-Y', strtotime('+2 days')),
+            'options' => ['placeholder' => 'Seleccione la fecha de Caducidad'],
+            'pluginOptions' => [
+            'format' => 'yyyy-mm-dd',
+            'todayHighlight' => true]]);
+     ?>
 
-    <?= $form->field($model, 'CAlcFechSist')->textInput() ?>
+     <?= $form->field($model, 'CAlcFechSist')->widget( DatePicker::className(),
+             ['name' => 'check_issue_date',
+             'value' => date('d-M-Y', strtotime('+2 days')),
+             'options' => ['placeholder' => 'Seleccione la fecha de Caducidad'],
+             'pluginOptions' => [
+             'format' => 'yyyy-mm-dd',
+             'todayHighlight' => true]]);
+      ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

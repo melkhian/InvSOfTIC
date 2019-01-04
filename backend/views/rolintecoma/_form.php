@@ -17,8 +17,8 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'RolId_fk')->dropDownList(ArrayHelper::map(Roles::find()->all(),'RolId','RolNomb'), ['prompt'=> 'Seleccione el Rol'])?>
 
-    <?= $form->field($model, 'IComid_fk')->dropDownList(ArrayHelper::map(Intecoma::find()->all(),'IComId','IComFunc'), ['prompt'=> 'Seleccione el Rol'])?>
-    
+    <?= $form->field($model, 'IComid_fk')->dropDownList(ArrayHelper::map(Intecoma::find()->all(),'IcomId','IcomFunc'), ['prompt'=> 'Seleccione el Rol'])?>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

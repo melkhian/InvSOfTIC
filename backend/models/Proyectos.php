@@ -46,7 +46,7 @@ class Proyectos extends \yii\db\ActiveRecord
             [['UsuId_fk', 'Tiposid_fk1', 'TiposId_fk2'], 'integer'],
             [['ProFechApro', 'ProFechInic', 'ProFechFina'], 'safe'],
             [['ProNomb'], 'string', 'max' => 50],
-            [['ProDesc'], 'string', 'max' => 100],
+            [['ProDesc'], 'string', 'max' => 1000],
             [['ProObje', 'ProFinProy'], 'string', 'max' => 1000],
             [['ProDocu'], 'string', 'max' => 500],
             [['Tiposid_fk1'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['Tiposid_fk1' => 'TiposId']],
@@ -61,7 +61,7 @@ class Proyectos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ProId' => 'Pro ID',
+            'ProId' => 'Id',
             'ProNomb' => 'Nombre',
             'ProDesc' => 'Descripción',
             'ProObje' => 'Objetivos',

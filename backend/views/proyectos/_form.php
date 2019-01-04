@@ -18,9 +18,9 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'ProNomb')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'ProDesc')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ProDesc')->textarea(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'ProObje')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ProObje')->textarea(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'UsuId_fk')->dropDownList(ArrayHelper::map(User::find()->all(),'id','email'), ['prompt'=> 'Seleccione el Usuario'])?>
 
@@ -35,7 +35,7 @@ use kartik\date\DatePicker;
             'todayHighlight' => true]]);
      ?>
 
-    <?= $form->field($model, 'ProDocu')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ProDocu')->textarea(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'ProFechInic')->widget( DatePicker::className(),
             ['name' => 'check_issue_date',
@@ -57,14 +57,6 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'TiposId_fk2')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 18')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Estado del Proyecto'])?>
 
-    <?= $form->field($model, 'ProFinProy')->widget( DatePicker::className(),
-            ['name' => 'check_issue_date',
-            'value' => date('d-M-Y', strtotime('+2 days')),
-            'options' => ['placeholder' => 'Seleccione la fecha de Caducidad'],
-            'pluginOptions' => [
-            'format' => 'yyyy-mm-dd',
-            'todayHighlight' => true]]);
-     ?>
     <?= $form->field($model, 'ProFinProy')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">

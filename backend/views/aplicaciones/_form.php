@@ -18,7 +18,7 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'AppNomb')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'AppDesc')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'AppDesc')->textarea(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppVers')->textInput(['maxlength' => true]) ?>
 

@@ -31,7 +31,8 @@ class Roles extends \yii\db\ActiveRecord
     {
         return [
             [['RolNomb', 'RolDesc'], 'required'],
-            [['RolNomb', 'RolDesc'], 'string', 'max' => 50],
+            [['RolNomb'], 'string', 'max' => 50],
+            [['RolDesc'], 'string', 'max' => 100],
         ];
     }
 

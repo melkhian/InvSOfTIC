@@ -29,7 +29,7 @@ class Tipo extends \yii\db\ActiveRecord
     {
         return [
             [['TipoDesc'], 'required'],
-            [['TipoDesc'], 'string', 'max' => 50],
+            [['TipoDesc'], 'string', 'max' => 100],
         ];
     }
 

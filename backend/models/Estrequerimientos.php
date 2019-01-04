@@ -36,7 +36,7 @@ class Estrequerimientos extends \yii\db\ActiveRecord
             [['ReqId_fk', 'TiposId_fk', 'EReqEsta', 'EReqFech', 'EReqFechSist'], 'required'],
             [['ReqId_fk', 'TiposId_fk'], 'integer'],
             [['EReqFech', 'EReqFechSist'], 'safe'],
-            [['EReqEsta'], 'string', 'max' => 100],
+            [['EReqEsta'], 'string', 'max' => 500],
             [['ReqId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Requerimientos::className(), 'targetAttribute' => ['ReqId_fk' => 'ReqId']],
             [['TiposId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['TiposId_fk' => 'TiposId']],
         ];
@@ -72,4 +72,5 @@ class Estrequerimientos extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Tipos::className(), ['TiposId' => 'TiposId_fk']);
     }
+
 }

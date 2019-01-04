@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "intecoma".
  *
- * @property int $IcomId
+ * @property int $IcomId Id
  * @property int $IntiId_fk Interfaz
  * @property int $ComId_fk Comando
  * @property string $IcomFunc Funcionalidad
@@ -48,7 +48,7 @@ class Intecoma extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'IcomId' => 'Icom ID',
+            'IcomId' => 'Id',
             'IntiId_fk' => 'Interfaz',
             'ComId_fk' => 'Comando',
             'IcomFunc' => 'Funcionalidad',

@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'ComNomb')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'ComDesc')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ComDesc')->textarea(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
