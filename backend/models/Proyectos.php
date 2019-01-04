@@ -115,4 +115,13 @@ class Proyectos extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Requerimientos::className(), ['ProId_fk' => 'ProId']);
     }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function UsuId_fk()
+    {
+        $data = User::findOne($this->UsuId_fk);
+
+        return $data['username'];
+    }
 }

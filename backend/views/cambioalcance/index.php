@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use backend\models\Proyectos;
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\CambioalcanceSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -27,7 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'CAlcId',
-            'ProId_fk',
+            ['attribute'=>'ProId_fk',
+             'value'=> function($model){return $model->ProId_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'ProId_fk', ArrayHelper::map(Proyectos::find()->all(),'ProId','ProNomb'),['class'=>'form-control','prompt' => 'Seleccione el Proyecto']),
+            ],
             'CAlcDesc',
             'CAlcFechApro',
             'CAlcFechInic',

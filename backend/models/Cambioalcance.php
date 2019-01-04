@@ -64,4 +64,13 @@ class Cambioalcance extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Proyectos::className(), ['ProId' => 'ProId_fk']);
     }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function ProId_fk()
+    {
+        $data = Proyectos::findOne($this->ProId_fk);
+
+        return $data['ProNomb'];
+    }
 }

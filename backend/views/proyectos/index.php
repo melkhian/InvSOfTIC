@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use backend\models\User;
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\ProyectosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -30,7 +32,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'ProNomb',
             'ProDesc',
             'ProObje',
-            'UsuId_fk',
+            ['attribute'=>'UsuId_fk',
+             'value'=> function($model){return $model->UsuId_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'UsuId_fk', ArrayHelper::map(User::find()->all(),'id','username'),['class'=>'form-control','prompt' => 'Seleccione el Usuario']),
+            ],
             //'Tiposid_fk1',
             //'ProFechApro',
             //'ProDocu',

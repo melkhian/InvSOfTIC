@@ -79,4 +79,22 @@ class Intecoma extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Rolintecoma::className(), ['IComid_fk' => 'IcomId']);
     }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function IntiId_fk()
+    {
+        $data = Interfaces::findOne($this->IntiId_fk);
+
+        return $data['IntNomb'];
+    }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function ComId_fk()
+    {
+        $data = Comandos::findOne($this->ComId_fk);
+
+        return $data['ComNomb'];
+    }
 }

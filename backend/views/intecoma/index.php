@@ -3,6 +3,9 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use backend\models\Interfaces;
+use backend\models\Comandos;
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\IntecomaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -27,8 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'IcomId',
-            'IntiId_fk',
-            'ComId_fk',
+            ['attribute'=>'IntiId_fk',
+             'value'=> function($model){return $model->IntiId_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'IntiId_fk', ArrayHelper::map(Interfaces::find()->all(),'IntId','IntNomb'),['class'=>'form-control','prompt' => 'Seleccione la Interfaz']),
+            ],
+            ['attribute'=>'ComId_fk',
+             'value'=> function($model){return $model->ComId_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'ComId_fk', ArrayHelper::map(Comandos::find()->all(),'ComId','ComNomb'),['class'=>'form-control','prompt' => 'Seleccione el Comando']),
+            ],
             'IcomFunc',
             'IcomDesc',
 

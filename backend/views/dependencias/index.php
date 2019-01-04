@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use backend\models\Tipos;
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\DependenciasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -25,11 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'DepId',
             'DepNomb',
             'DepEnca',
-            'TiposId_fk1',
+            ['attribute'=>'TiposId_fk1',
+             'value'=> function($model){return $model->TiposId_fk1();},
+             'filter' => Html::activeDropDownList($searchModel, 'TiposId_fk1', ArrayHelper::map(Tipos::find()->where('tipoid_fk = 1')->asArray()->all(), 'TiposId', 'TiposDesc'),['class'=>'form-control','prompt' => 'Seleccione el Cargo']),
+            ],
             'DepTele',
             //'DepDire',
             //'TiposId_fk2',

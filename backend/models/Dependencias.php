@@ -85,4 +85,13 @@ class Dependencias extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Tipos::className(), ['TiposId' => 'TiposId_fk2']);
     }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+            public function TiposId_fk1()
+        {
+            $data = Tipos::findOne($this->TiposId_fk1);
+
+            return $data['TiposDesc'];
+        }
 }

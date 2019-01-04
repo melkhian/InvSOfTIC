@@ -3,6 +3,9 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use backend\models\Empdistribuidora;
+use backend\models\Empsoporte;
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AplicacionesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -28,17 +31,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'AppId',
             'AppNomb',
-            'AppDesc',
+            //'AppDesc',
             'AppVers',
-            'TiposId_fk1',
+            //'TiposId_fk1',
             //'AppNumeLice',
             //'TiposId_fk2',
             //'TiposId_fk3',
-            //'EDDesId_fk',
+            ['attribute'=>'EDDesId_fk',
+             'value'=> function($model){return $model->EDDesId_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'EDDesId_fk', ArrayHelper::map(Empdistribuidora::find()->all(),'EDisId','EDisNomb'),['class'=>'form-control','prompt' => 'Seleccione Empresa Distribuidora']),
+            ],
             //'TiposId_fk4',
             //'TiposId_fk5',
             //'AppInteApp',
-            //'ESopId_fk',
+            ['attribute'=>'ESopId_fk',
+             'value'=> function($model){return $model->ESopId_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'ESopId_fk', ArrayHelper::map(Empsoporte::find()->all(),'ESopId','ESopNomb'),['class'=>'form-control','prompt' => 'Seleccione Empresa Soporte']),
+            ],
             //'TiposId_fk6',
             //'TiposId_fk7',
             //'AppVersBD',

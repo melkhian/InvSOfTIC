@@ -64,4 +64,20 @@ class Rolintecoma extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Intecoma::className(), ['IcomId' => 'IComid_fk']);
     }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function RolId_fk()
+    {
+        $data = Roles::findOne($this->RolId_fk);
+
+        return $data['RolNomb'];
+    }
+
+    public function IComid_fk()
+    {
+        $data = Intecoma::findOne($this->IComid_fk);
+
+        return $data['IcomFunc'];
+    }
 }

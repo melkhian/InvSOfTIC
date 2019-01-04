@@ -55,4 +55,13 @@ class Appmodulos extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Aplicaciones::className(), ['AppId' => 'AppId_fk']);
     }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+            public function AppId_fk()
+        {
+            $data = Aplicaciones::findOne($this->AppId_fk);
+
+            return $data['AppNomb'];
+        }
 }

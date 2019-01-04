@@ -3,6 +3,10 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use backend\models\Proyectos;
+use backend\models\User;
+use backend\models\Tipos;
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\RequerimientosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -27,10 +31,19 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'ReqId',
-            'ProId_fk',
+            ['attribute'=>'ProId_fk',
+             'value'=> function($model){return $model->ProId_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'ProId_fk', ArrayHelper::map(Proyectos::find()->all(),'ProId','ProNomb'),['class'=>'form-control','prompt' => 'Seleccione el Proyecto']),
+            ],
             'ReqDesc',
-            'TiposId_fk1',
-            'UsuId_fk',
+            ['attribute'=>'TiposId_fk1',
+             'value'=> function($model){return $model->TiposId_fk1();},
+             'filter' => Html::activeDropDownList($searchModel, 'TiposId_fk1', ArrayHelper::map(Tipos::find()->where('tipoid_fk = 13')->all(),'TiposId','TiposDesc'),['class'=>'form-control','prompt' => 'Seleccione el Tipo']),
+            ],
+            ['attribute'=>'UsuId_fk',
+             'value'=> function($model){return $model->UsuId_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'UsuId_fk', ArrayHelper::map(User::find()->all(),'id','username'),['class'=>'form-control','prompt' => 'Seleccione el Usuario']),
+            ],
             //'Tiposid_fk2',
             //'TiposId_fk3',
             //'ReqFechTomaRequ',

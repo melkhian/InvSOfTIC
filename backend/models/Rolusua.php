@@ -67,4 +67,22 @@ class Rolusua extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'UsuId_fk']);
     }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function RolId_fk()
+    {
+        $data = Roles::findOne($this->RolId_fk);
+
+        return $data['RolNomb'];
+    }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function UsuId_fk()
+    {
+        $data = User::findOne($this->UsuId_fk);
+
+        return $data['username'];
+    }
 }

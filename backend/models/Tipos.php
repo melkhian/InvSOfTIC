@@ -210,4 +210,13 @@ class Tipos extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Tipo::className(), ['TipoId' => 'TipoId_fk']);
     }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function TipoId_fk()
+    {
+        $data = Tipo::findOne($this->TipoId_fk);
+
+        return $data['TipoDesc'];
+    }
 }

@@ -183,4 +183,18 @@ class Aplicaciones extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Appmodulos::className(), ['AppId_fk' => 'AppId']);
     }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function EDDesId_fk()
+    { $data = Empdistribuidora::findOne($this->EDDesId_fk);
+        return $data['EDisNomb'];
+    }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function ESopId_fk()
+    { $data = Empsoporte::findOne($this->ESopId_fk);
+        return $data['ESopNomb'];
+    }
 }

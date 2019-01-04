@@ -15,7 +15,7 @@ use Yii;
  * @property int $Tiposid_fk2 ¿Funcionario Aprueba?
  * @property int $TiposId_fk3 ¿Usuario Aprueba?
  * @property string $ReqFechTomaRequ Fecha toma de Requerimiento
- * @property string $ReqFechSist Fecha del sistema 
+ * @property string $ReqFechSist Fecha del sistema
  * @property int $TiposId_fk4 Prioridad
  *
  * @property Estrequerimientos[] $estrequerimientos
@@ -137,5 +137,32 @@ class Requerimientos extends \yii\db\ActiveRecord
     public function getVersdocrequerimientos()
     {
         return $this->hasMany(Versdocrequerimientos::className(), ['ReqId_fk' => 'ReqId']);
+    }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function ProId_fk()
+    {
+        $data = Proyectos::findOne($this->ProId_fk);
+
+        return $data['ProNomb'];
+    }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function TiposId_fk1()
+    {
+        $data = Tipos::findOne($this->TiposId_fk1);
+
+        return $data['TiposDesc'];
+    }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function UsuId_fk()
+    {
+        $data = User::findOne($this->UsuId_fk);
+
+        return $data['username'];
     }
 }

@@ -69,4 +69,18 @@ class Appdependencias extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Aplicaciones::className(), ['AppId' => 'AppId_fk']);
     }
+
+    public function AppId_fk()
+    {
+    $data = Aplicaciones::findOne($this->AppId_fk);
+
+    return $data['AppNomb'];
+    }
+
+    public function DepId_fk()
+    {
+    $data = Dependencias::findOne($this->DepId_fk);
+
+    return $data['DepNomb'];
+    }
 }
