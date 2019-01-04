@@ -18,17 +18,48 @@
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
-                    ['label' => 'Usuarios', 'icon' => 'user', 'url' => ['user/index']],
+                    ['label' => 'Usuarios', 'icon' => 'group', 'url' => ['user/index']],
+                    ['label' => 'Dependencias', 'icon' => 'bank', 'url' => ['dependencias/index']],
 
                     [
-                        'label' => 'Gestión Aplicaciones',
-                        'icon' => 'share',
+                        'label' => 'Gestión de Aplicaciones',
+                        'icon' => 'code',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Dependencias', 'icon' => 'bank', 'url' => ['dependencias/index']],
-                            ['label' => 'AppModulos', 'icon' => 'bank', 'url' => ['appmodulos/index']],
-                            ['label' => 'AppDependencias', 'icon' => 'bank', 'url' => ['appdependencias/index']],
-                            ['label' => 'Aplicaciones', 'icon' => 'bank', 'url' => ['aplicaciones/index']],
+                            ['label' => 'Aplicaciones', 'icon' => 'window-restore', 'url' => ['aplicaciones/index']],
+                            ['label' => 'Módulos por Aplicativo', 'icon' => 'sliders', 'url' => ['appmodulos/index']],
+                            ['label' => 'Aplicativos por Dependencias', 'icon' => 'tasks', 'url' => ['appdependencias/index']],
+
+
+                            /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
+                            [
+                                'label' => 'Level One',
+                                'icon' => 'circle-o',
+                                'url' => '#',
+                                'items' => [
+                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
+                                    [
+                                        'label' => 'Level Two',
+                                        'icon' => 'circle-o',
+                                        'url' => '#',
+                                        'items' => [
+                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+                                        ],
+                                    ],
+                                ],
+                            ],*/
+                        ],
+                    ],
+                    [
+                        'label' => 'Gestión de Empresas',
+                        'icon' => 'building',
+                        'url' => '#',
+                        'items' => [
+
+                                ['label' => 'Distribuidoras', 'icon' => 'truck', 'url' => ['empdistribuidora/index']],
+                                ['label' => 'Soporte', 'icon' => 'wrench', 'url' => ['empsoporte/index']],
+
 
                             /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
                             [
@@ -51,21 +82,13 @@
                         ],
                     ],
 
-                    ['label' => 'EmpDistribuidoras', 'icon' => 'bank', 'url' => ['empdistribuidora/index']],
-                    ['label' => 'EmpSoporte', 'icon' => 'bank', 'url' => ['empsoporte/index']],
-                    ['label' => 'Proyectos', 'icon' => 'bank', 'url' => ['proyectos/index']],
-                    ['label' => 'Cambio Alcance', 'icon' => 'bank', 'url' => ['cambioalcance/index']],
-
                     [
-                        'label' => 'Parámetros del Sistema',
-                        'icon' => 'share',
+                        'label' => 'Gestión de Proyectos',
+                        'icon' => 'map',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Tipo', 'icon' => 'cog', 'url' => ['tipo/index'],],
-                            ['label' => 'Tipos', 'icon' => 'cog', 'url' => ['tipos/index'],],
-                            ['label' => 'Interfaces', 'icon' => 'bank', 'url' => ['interfaces/index']],
-                            ['label' => 'Comandos', 'icon' => 'cog', 'url' => ['comandos/index'],],
-                            ['label' => 'Intecoma', 'icon' => 'bank', 'url' => ['intecoma/index']],
+                            ['label' => 'Proyectos', 'icon' => 'line-chart', 'url' => ['proyectos/index']],
+                            ['label' => 'Cambio de Alcance', 'icon' => 'exchange', 'url' => ['cambioalcance/index']],
 
 
                             /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
@@ -90,43 +113,38 @@
                     ],
                     [
                         'label' => 'Gestión Requerimientos',
-                        'icon' => 'share',
+                        'icon' => 'tags',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Requerimientos', 'icon' => 'bank', 'url' => ['requerimientos/index']],
-                            ['label' => 'Versión Requerimientos', 'icon' => 'bank', 'url' => ['versdocrequerimientos/index']],
-                            ['label' => 'Estado Requerimientos', 'icon' => 'bank', 'url' => ['estrequerimientos/index']],
-                            /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
-                            [
-                                'label' => 'Level One',
-                                'icon' => 'circle-o',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
-                                    [
-                                        'label' => 'Level Two',
-                                        'icon' => 'circle-o',
-                                        'url' => '#',
-                                        'items' => [
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                        ],
-                                    ],
-                                ],
-                            ],*/
+                            ['label' => 'Requerimientos', 'icon' => 'stack-overflow', 'url' => ['requerimientos/index']],
+                            ['label' => 'Versión Requerimientos', 'icon' => 'file-text-o', 'url' => ['versdocrequerimientos/index']],
+                            ['label' => 'Estado Requerimientos', 'icon' => 'tripadvisor', 'url' => ['estrequerimientos/index']],
+
                         ],
                     ],
 
-                    /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
-                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],*/
                     [
                         'label' => 'Roles y Permisos',
-                        'icon' => 'share',
+                        'icon' => 'address-card',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Roles', 'icon' => 'file-code-o', 'url' => ['roles/index'],],
-                            ['label' => 'Rolintecoma', 'icon' => 'bank', 'url' => ['rolintecoma/index']],
-                            ['label' => 'Rolusua', 'icon' => 'bank', 'url' => ['rolusua/index']],
+                            ['label' => 'Roles', 'icon' => 'user-circle', 'url' => ['roles/index'],],
+                            ['label' => 'Comando por Interfaz', 'icon' => 'window-close', 'url' => ['rolintecoma/index']],
+                            ['label' => 'Rol por Usuario', 'icon' => 'id-badge', 'url' => ['rolusua/index']],
+
+                        ],
+                    ],
+
+                    [
+                        'label' => 'Parámetros del Sistema',
+                        'icon' => 'cogs',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Tipo', 'icon' => 'check-square', 'url' => ['tipo/index'],],
+                            ['label' => 'Tipos', 'icon' => 'minus-square', 'url' => ['tipos/index'],],
+                            ['label' => 'Interfaces', 'icon' => 'window-maximize', 'url' => ['interfaces/index']],
+                            ['label' => 'Comandos', 'icon' => 'compass', 'url' => ['comandos/index'],],
+                            ['label' => 'Interfaz por Comando', 'icon' => 'magic', 'url' => ['intecoma/index']],
 
 
                             /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
