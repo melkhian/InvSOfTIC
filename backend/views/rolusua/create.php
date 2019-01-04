@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Rolusua */
 
-$this->title = 'Create Rolusua';
-$this->params['breadcrumbs'][] = ['label' => 'Rolusuas', 'url' => ['index']];
+$this->title = 'Crear Rol por Usuario';
+$this->params['breadcrumbs'][] = ['label' => 'Rol por Usuario', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="rolusua-create">

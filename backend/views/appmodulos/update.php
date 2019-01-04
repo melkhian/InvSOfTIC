@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Appmodulos */
 
-$this->title = 'Update Appmodulos: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Appmodulos', 'url' => ['index']];
+$this->title = 'Actualizar Módulo por Aplicativo';
+$this->params['breadcrumbs'][] = ['label' => 'Módulos por Aplicativos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->AModId, 'url' => ['view', 'id' => $model->AModId]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="appmodulos-update">
 

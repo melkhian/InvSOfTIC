@@ -10,7 +10,7 @@ use yii\helpers\ArrayHelper;
 /* @var $searchModel backend\models\RolintecomaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Rolintecomas';
+$this->title = 'Rol por Funcionalidad';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="rolintecoma-index">
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Rolintecoma', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Rol por Funcionalidad', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

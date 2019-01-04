@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Aplicaciones */
 
-$this->title = 'Update Aplicaciones: {nameAttribute}';
+$this->title = 'Actualizar Aplicación';
 $this->params['breadcrumbs'][] = ['label' => 'Aplicaciones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->AppId, 'url' => ['view', 'id' => $model->AppId]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="aplicaciones-update">
 

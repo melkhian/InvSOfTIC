@@ -10,7 +10,7 @@ use yii\helpers\ArrayHelper;
 /* @var $searchModel backend\models\RolusuaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Rolusuas';
+$this->title = 'Rol por Usuarios';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="rolusua-index">
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Rolusua', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear un Rol por Usuario', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Versdocrequerimientos */
 
-$this->title = 'Create Versdocrequerimientos';
-$this->params['breadcrumbs'][] = ['label' => 'Versdocrequerimientos', 'url' => ['index']];
+$this->title = 'Create Versión de Requerimiento';
+$this->params['breadcrumbs'][] = ['label' => 'Versión de Requerimiento', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="versdocrequerimientos-create">

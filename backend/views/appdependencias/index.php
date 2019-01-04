@@ -10,7 +10,7 @@ use yii\helpers\ArrayHelper;
 /* @var $searchModel backend\models\AppdependenciasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Appdependencias';
+$this->title = 'Aplicativos por Dependencias';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="appdependencias-index">
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Appdependencias', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Aplicativo por Dependencia', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

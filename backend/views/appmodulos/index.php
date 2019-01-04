@@ -9,7 +9,7 @@ use yii\helpers\ArrayHelper;
 /* @var $searchModel backend\models\AppmodulosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Appmodulos';
+$this->title = 'Módulos por Aplicativos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="appmodulos-index">
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Appmodulos', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Módulo por Aplicativo', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

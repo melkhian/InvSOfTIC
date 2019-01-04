@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Aplicaciones */
 
-$this->title = 'Create Aplicaciones';
+$this->title = 'Crear Aplicación';
 $this->params['breadcrumbs'][] = ['label' => 'Aplicaciones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

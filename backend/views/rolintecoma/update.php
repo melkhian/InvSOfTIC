@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Rolintecoma */
 
-$this->title = 'Update Rolintecoma: {nameAttribute}';
+$this->title = 'Actualizar Rol por Funcionalidad';
 $this->params['breadcrumbs'][] = ['label' => 'Rolintecomas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->RIComId, 'url' => ['view', 'id' => $model->RIComId]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="rolintecoma-update">
 

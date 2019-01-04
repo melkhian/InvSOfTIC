@@ -46,11 +46,11 @@ use kartik\date\DatePicker;
              'format' => 'yyyy-mm-dd',
              'todayHighlight' => true]]);
       ?>
-      
+
     <?= $form->field($model, 'TiposId_fk4')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 16')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione la Prioridad del Requerimiento'])?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\EmpdistribuidoraSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Empdistribuidoras';
+$this->title = 'Empresas Distribuidoras';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="empdistribuidora-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Empdistribuidora', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Empresa Distribuidora', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

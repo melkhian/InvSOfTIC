@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\Appdependencias */
 
 $this->title = $model->ADepId;
-$this->params['breadcrumbs'][] = ['label' => 'Appdependencias', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Aplicativo por Dependencia', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="appdependencias-view">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->ADepId], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Actualizar', ['update', 'id' => $model->ADepId], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->ADepId], [
             'class' => 'btn btn-danger',
             'data' => [

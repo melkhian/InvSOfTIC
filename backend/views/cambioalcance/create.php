@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Cambioalcance */
 
-$this->title = 'Create Cambioalcance';
-$this->params['breadcrumbs'][] = ['label' => 'Cambioalcances', 'url' => ['index']];
+$this->title = 'Crear Cambio de Alcance';
+$this->params['breadcrumbs'][] = ['label' => 'Cambios de Alcances', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cambioalcance-create">

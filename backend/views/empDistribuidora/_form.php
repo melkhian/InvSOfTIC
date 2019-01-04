@@ -29,7 +29,7 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'TiposId_fk')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 12')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Tipo de Empresa'])?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

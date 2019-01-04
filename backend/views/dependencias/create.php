@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Dependencias */
 
-$this->title = 'Create Dependencias';
+$this->title = 'Crear Dependencias';
 $this->params['breadcrumbs'][] = ['label' => 'Dependencias', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

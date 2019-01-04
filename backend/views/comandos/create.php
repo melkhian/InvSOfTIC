@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Comandos */
 
-$this->title = 'Create Comandos';
+$this->title = 'Crear Comando';
 $this->params['breadcrumbs'][] = ['label' => 'Comandos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

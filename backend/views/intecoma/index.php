@@ -10,7 +10,7 @@ use yii\helpers\ArrayHelper;
 /* @var $searchModel backend\models\IntecomaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Intecomas';
+$this->title = 'Interfaz por Comando';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="intecoma-index">
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Intecoma', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Interfaz por Comando', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

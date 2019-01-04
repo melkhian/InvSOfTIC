@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Empdistribuidora */
 
-$this->title = 'Create Empdistribuidora';
-$this->params['breadcrumbs'][] = ['label' => 'Empdistribuidoras', 'url' => ['index']];
+$this->title = 'Crear Empresa Distribuidora';
+$this->params['breadcrumbs'][] = ['label' => 'Empresas Distribuidoras', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="empdistribuidora-create">

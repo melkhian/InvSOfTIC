@@ -9,7 +9,7 @@ use yii\helpers\ArrayHelper;
 /* @var $searchModel backend\models\CambioalcanceSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cambioalcances';
+$this->title = 'Cambios de Alcances';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cambioalcance-index">
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Cambioalcance', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Cambio de Alcance', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

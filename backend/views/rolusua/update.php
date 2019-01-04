@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Rolusua */
 
-$this->title = 'Update Rolusua: {nameAttribute}';
+$this->title = 'Actualizar Rol por Usuario';
 $this->params['breadcrumbs'][] = ['label' => 'Rolusuas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->RUsuId, 'url' => ['view', 'id' => $model->RUsuId]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="rolusua-update">
 

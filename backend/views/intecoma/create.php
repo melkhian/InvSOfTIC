@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Intecoma */
 
-$this->title = 'Create Intecoma';
+$this->title = 'Crear Interfaz por Comando';
 $this->params['breadcrumbs'][] = ['label' => 'Intecomas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

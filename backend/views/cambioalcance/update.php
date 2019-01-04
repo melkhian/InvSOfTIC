@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Cambioalcance */
 
-$this->title = 'Update Cambioalcance: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Cambioalcances', 'url' => ['index']];
+$this->title = 'Actualizar Cambio de Alcance';
+$this->params['breadcrumbs'][] = ['label' => 'Cambio de Alcances', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->CAlcId, 'url' => ['view', 'id' => $model->CAlcId]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="cambioalcance-update">
 

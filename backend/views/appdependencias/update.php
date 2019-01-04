@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Appdependencias */
 
-$this->title = 'Update Appdependencias: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Appdependencias', 'url' => ['index']];
+$this->title = 'Actualizar Aplicativo por Dependencia';
+$this->params['breadcrumbs'][] = ['label' => 'Aplicativo por Dependencia', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->ADepId, 'url' => ['view', 'id' => $model->ADepId]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="appdependencias-update">
 

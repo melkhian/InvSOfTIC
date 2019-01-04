@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\VersdocrequerimientosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Versdocrequerimientos';
+$this->title = 'Versiones de Requerimientos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="versdocrequerimientos-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Versdocrequerimientos', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Versión de Requerimiento', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

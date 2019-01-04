@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Interfaces */
 
-$this->title = 'Create Interfaces';
+$this->title = 'Crear Interfaces';
 $this->params['breadcrumbs'][] = ['label' => 'Interfaces', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

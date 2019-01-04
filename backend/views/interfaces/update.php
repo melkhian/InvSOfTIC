@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Interfaces */
 
-$this->title = 'Update Interfaces: {nameAttribute}';
+$this->title = 'Actualizar Interfaz';
 $this->params['breadcrumbs'][] = ['label' => 'Interfaces', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->IntId, 'url' => ['view', 'id' => $model->IntId]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="interfaces-update">
 
