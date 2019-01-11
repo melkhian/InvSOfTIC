@@ -28,7 +28,7 @@
                         'items' => [
                             ['label' => 'Aplicaciones', 'icon' => 'window-restore', 'url' => ['aplicaciones/index']],
                             ['label' => 'Módulos por Aplicativo', 'icon' => 'sliders', 'url' => ['appmodulos/index']],
-                            ['label' => 'Aplicativos por Dependencias', 'icon' => 'tasks', 'url' => ['appdependencias/index']],
+                            ['label' => 'Aplicativo por Dependencia', 'icon' => 'tasks', 'url' => ['appdependencias/index']],
 
 
                             /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],

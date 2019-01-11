@@ -2,12 +2,14 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use backend\models\Tipos;
+use backend\models\Requerimientos;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Estrequerimientos */
 
 $this->title = $model->EReqId;
-$this->params['breadcrumbs'][] = ['label' => 'Estrequerimientos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Estados de Requerimiento', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="estrequerimientos-view">
@@ -25,12 +27,25 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+    <!-- INICIO
+        Obtengo el nombre de la llave foránea dentro del modelo para luego cambiar su valor a una descripción en la lista desplegable de Tipos
+    -->
+    <?php
+        $ReqId_fk= Requerimientos::findOne($model->ReqId_fk);
+        $TiposId_fk= Tipos::findOne($model->TiposId_fk);
+    ?>
+    <!-- FIN -->
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'EReqId',
-            'ReqId_fk',
-            'TiposId_fk',
+            ['attribute' => 'ReqId_fk',
+             'value'=> $ReqId_fk['ReqDesc'],
+            ],
+            ['attribute' => 'TiposId_fk',
+             'value'=> $TiposId_fk['TiposDesc'],
+            ],
             'EReqEsta',
             'EReqFech',
             'EReqFechSist',

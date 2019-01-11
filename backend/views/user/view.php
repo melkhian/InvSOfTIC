@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use backend\models\Tipos;
+use backend\models\Dependencias;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\User */
@@ -25,6 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+    <!-- INICIO
+        Obtengo el nombre de la llave foránea dentro del modelo para luego cambiar su valor a una descripción en la lista desplegable de Tipos
+    -->
+    <?php
+        $depid_fk= Dependencias::findOne($model->depid_fk);
+        $tiposid_fk1= Tipos::findOne($model->tiposid_fk1);
+        $tiposid_fk2= Tipos::findOne($model->tiposid_fk2);
+        $status= Tipos::findOne($model->status);
+    ?>
+    <!-- FIN -->
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -38,10 +51,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'username',
             'usuteleofic',
             'email:email',
-            'depid_fk',
-            'tiposid_fk1',
-            'tiposid_fk2',
-            'status',
+            /*INICIO
+            Reemplazo de tiposid_fk_1 a tiposdesc para ser mostrado en la consulta, en vez de un número muestre la descripción
+            */
+            ['attribute' => 'depid_fk',
+             'value'=> $depid_fk['DepNomb'],
+            ],
+            /*FIN*/
+            ['attribute' => 'tiposid_fk1',
+             'value'=> $tiposid_fk1['TiposDesc'],
+            ],
+            ['attribute' => 'tiposid_fk2',
+             'value'=> $tiposid_fk2['TiposDesc'],
+            ],
+            ['attribute' => 'status',
+             'value'=> $status['TiposDesc'],
+            ],
             'auth_key',
             'password_hash',
             'password_reset_token',

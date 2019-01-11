@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use backend\models\Tipos;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Dependencias */
@@ -24,6 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+    <!-- INICIO
+        Obtengo el nombre de la llave foránea dentro del modelo para luego cambiar su valor a una descripción en la lista desplegable de Tipos
+    -->
+    <?php
+        $tiposid_fk1= Tipos::findOne($model->TiposId_fk1);
+        $tiposid_fk2= Tipos::findOne($model->TiposId_fk2);
+    ?>
+    <!-- FIN -->
 
     <?= DetailView::widget([
         'model' => $model,
@@ -31,10 +40,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'DepId',
             'DepNomb',
             'DepEnca',
-            'TiposId_fk1',
+            /*INICIO
+            Reemplazo de tiposid_fk_1 a tiposdesc para ser mostrado en la consulta, en vez de un número muestre la descripción
+            */
+            ['attribute' => 'TiposId_fk1',
+             'value'=> $tiposid_fk1['TiposDesc'],
+            ],
+            /*FIN*/
             'DepTele',
             'DepDire',
-            'TiposId_fk2',
+            ['attribute' => 'TiposId_fk2',
+             'value'=> $tiposid_fk2['TiposDesc'],
+            ],
             'DepCorr',
         ],
     ]) ?>

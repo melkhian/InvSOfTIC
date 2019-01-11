@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use backend\models\Tipos;
+use backend\models\User;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Proyectos */
@@ -25,6 +27,16 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+    <!-- INICIO
+        Obtengo el nombre de la llave foránea dentro del modelo para luego cambiar su valor a una descripción en la lista desplegable de Tipos
+    -->
+    <?php
+        $UsuId_fk= User::findOne($model->UsuId_fk);
+        $Tiposid_fk1= Tipos::findOne($model->Tiposid_fk1);
+        $TiposId_fk2= Tipos::findOne($model->TiposId_fk2);
+    ?>
+    <!-- FIN -->
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -32,13 +44,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'ProNomb',
             'ProDesc',
             'ProObje',
-            'UsuId_fk',
-            'Tiposid_fk1',
+            ['attribute' => 'UsuId_fk',
+             'value'=> $UsuId_fk['username'],
+            ],
+            ['attribute' => 'Tiposid_fk1',
+             'value'=> $Tiposid_fk1['TiposDesc'],
+            ],
             'ProFechApro',
             'ProDocu',
             'ProFechInic',
             'ProFechFina',
-            'TiposId_fk2',
+            ['attribute' => 'TiposId_fk2',
+             'value'=> $TiposId_fk2['TiposDesc'],
+            ],
             'ProFinProy',
         ],
     ]) ?>

@@ -33,7 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
              'value'=> function($model){return $model->ReqId_fk();},
              'filter' => Html::activeDropDownList($searchModel, 'ReqId_fk', ArrayHelper::map(Requerimientos::find()->all(),'ReqId','ReqDesc'),['class'=>'form-control','prompt' => 'Seleccione el Requerimiento']),
             ],
-            'ReqId_fk',
             'VDReqDocu',
             'VDReqFechSist',
 

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use backend\models\Proyectos;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Cambioalcance */
@@ -25,11 +26,21 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+    <!-- INICIO
+        Obtengo el nombre de la llave foránea dentro del modelo para luego cambiar su valor a una descripción en la lista desplegable de Tipos
+    -->
+    <?php
+        $ProId_fk= Proyectos::findOne($model->ProId_fk);
+    ?>
+    <!-- FIN -->
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'CAlcId',
-            'ProId_fk',
+            ['attribute' => 'ProId_fk',
+             'value'=> $ProId_fk['ProNomb'],
+            ],
             'CAlcDesc',
             'CAlcFechApro',
             'CAlcFechInic',

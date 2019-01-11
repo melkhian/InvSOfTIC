@@ -2,12 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use backend\models\Requerimientos;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Versdocrequerimientos */
 
 $this->title = $model->VDReqId;
-$this->params['breadcrumbs'][] = ['label' => 'Versdocrequerimientos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Versiones de Requerimientos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="versdocrequerimientos-view">
@@ -25,11 +26,21 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+    <!-- INICIO
+        Obtengo el nombre de la llave foránea dentro del modelo para luego cambiar su valor a una descripción en la lista desplegable de Tipos
+    -->
+    <?php
+        $ReqId_fk= Requerimientos::findOne($model->ReqId_fk);
+    ?>
+    <!-- FIN -->
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'VDReqId',
-            'ReqId_fk',
+            ['attribute' => 'ReqId_fk',
+             'value'=> $ReqId_fk['ReqDesc'],
+            ],
             'VDReqDocu',
             'VDReqFechSist',
         ],
