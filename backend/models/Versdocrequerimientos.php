@@ -44,7 +44,7 @@ class Versdocrequerimientos extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'VDReqId' => 'Vdreq ID',
+            'VDReqId' => 'Id',
             'ReqId_fk' => 'Requerimiento',
             'VDReqDocu' => 'Ruta ubicación de la Versión',
             'VDReqFechSist' => 'Fecha sistema',
@@ -57,5 +57,14 @@ class Versdocrequerimientos extends \yii\db\ActiveRecord
     public function getReqIdFk()
     {
         return $this->hasOne(Requerimientos::className(), ['ReqId' => 'ReqId_fk']);
+    }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function ReqId_fk()
+    {
+        $data = Requerimientos::findOne($this->ReqId_fk);
+
+        return $data['ReqDesc'];
     }
 }

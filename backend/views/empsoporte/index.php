@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\EmpsoporteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Empsoportes';
+$this->title = 'Empresas de Soporte';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="empsoporte-index">

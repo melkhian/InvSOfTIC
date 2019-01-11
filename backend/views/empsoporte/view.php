@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\Empsoporte */
 
 $this->title = $model->ESopId;
-$this->params['breadcrumbs'][] = ['label' => 'Empsoportes', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Empresas de Soporte', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="empsoporte-view">

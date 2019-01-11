@@ -73,4 +73,22 @@ class Estrequerimientos extends \yii\db\ActiveRecord
         return $this->hasOne(Tipos::className(), ['TiposId' => 'TiposId_fk']);
     }
 
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function ReqId_fk()
+    {
+        $data = Requerimientos::findOne($this->ReqId_fk);
+
+        return $data['ReqDesc'];
+    }
+
+    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+    public function TiposId_fk()
+    {
+        $data = Tipos::findOne($this->TiposId_fk);
+
+        return $data['TiposDesc'];
+    }
+
 }

@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\Cambioalcance */
 
 $this->title = $model->CAlcId;
-$this->params['breadcrumbs'][] = ['label' => 'Cambio de Alcances', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Cambios de Alcance', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cambioalcance-view">

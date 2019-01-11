@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use backend\models\Requerimientos;
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\VersdocrequerimientosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -27,6 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'VDReqId',
+            ['attribute'=>'ReqId_fk',
+             'value'=> function($model){return $model->ReqId_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'ReqId_fk', ArrayHelper::map(Requerimientos::find()->all(),'ReqId','ReqDesc'),['class'=>'form-control','prompt' => 'Seleccione el Requerimiento']),
+            ],
             'ReqId_fk',
             'VDReqDocu',
             'VDReqFechSist',

@@ -3,11 +3,14 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use backend\models\Requerimientos;
+use backend\models\Tipos;
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\EstrequerimientosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Estrequerimientos';
+$this->title = 'Estados de Requerimientos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="estrequerimientos-index">
@@ -27,8 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'EReqId',
-            'ReqId_fk',
-            'TiposId_fk',
+            ['attribute'=>'ReqId_fk',
+             'value'=> function($model){return $model->ReqId_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'ReqId_fk', ArrayHelper::map(Requerimientos::find()->all(),'ReqId','ReqDesc'),['class'=>'form-control','prompt' => 'Seleccione el Requerimiento']),
+            ],
+            ['attribute'=>'TiposId_fk',
+             'value'=> function($model){return $model->TiposId_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'TiposId_fk', ArrayHelper::map(Tipos::find()->where('tipoid_fk = 19')->all(),'TiposId','TiposDesc'),['class'=>'form-control','prompt' => 'Seleccione el Estado']),
+            ],
             'EReqEsta',
             'EReqFech',
             //'EReqFechSist',

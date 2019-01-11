@@ -129,7 +129,7 @@
                         'url' => '#',
                         'items' => [
                             ['label' => 'Roles', 'icon' => 'user-circle', 'url' => ['roles/index'],],
-                            ['label' => 'Comando por Interfaz', 'icon' => 'window-close', 'url' => ['rolintecoma/index']],
+                            ['label' => 'Rol por Funcionalidad', 'icon' => 'window-close', 'url' => ['rolintecoma/index']],
                             ['label' => 'Rol por Usuario', 'icon' => 'id-badge', 'url' => ['rolusua/index']],
 
                         ],

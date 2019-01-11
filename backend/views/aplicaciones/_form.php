@@ -22,7 +22,7 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'AppVers')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk1')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 5')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione la Dependencia'])?>
+    <?= $form->field($model, 'TiposId_fk1')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 5')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Tipo de Licencia'])?>
 
     <?= $form->field($model, 'AppNumeLice')->textInput(['maxlength' => true]) ?>
 
