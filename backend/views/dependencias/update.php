@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Dependencias */
 
-$this->title = 'Actualizar Dependencia';
+$this->title = 'Actualizar Dependencia: '. $model->DepNomb;
 $this->params['breadcrumbs'][] = ['label' => 'Dependencias', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->DepId, 'url' => ['view', 'id' => $model->DepId]];
 $this->params['breadcrumbs'][] = 'Actualizar';
