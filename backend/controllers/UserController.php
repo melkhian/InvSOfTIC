@@ -170,25 +170,25 @@ class UserController extends Controller
         return $rows;
     }
 
-    public function findCom($com)
-    {
-      $IdUser = Yii::$app->user->identity->id;
-      // $var = 'Usuarios';
-      $query = (new \yii\db\Query())
-      ->select('comId')
-      ->from('user')
-      ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
-      ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
-      ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
-      ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
-      ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
-      ->innerJoin('comandos','comandos.comid = interfaces.intId')
-      ->where([
-        'id' => $IdUser,
-        'comid_fk' => $com]);
-        $command = $query->createCommand();
-        $rows = $command->queryScalar();
-        return $rows;
-    }
+    // public function findCom($com)
+    // {
+    //   $IdUser = Yii::$app->user->identity->id;
+    //   // $var = 'Usuarios';
+    //   $query = (new \yii\db\Query())
+    //   ->select('comId')
+    //   ->from('user')
+    //   ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
+    //   ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
+    //   ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
+    //   ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
+    //   ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
+    //   ->innerJoin('comandos','comandos.comid = interfaces.intId')
+    //   ->where([
+    //     'id' => $IdUser,
+    //     'comid_fk' => $com]);
+    //     $command = $query->createCommand();
+    //     $rows = $command->queryScalar();
+    //     return $rows;
+    // }
 
 }

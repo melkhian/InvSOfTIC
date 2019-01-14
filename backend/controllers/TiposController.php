@@ -35,6 +35,7 @@ class TiposController extends Controller
      */
     public function actionIndex()
     {
+        if(SiteController::findVar(17)){
         $searchModel = new TiposSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -42,6 +43,10 @@ class TiposController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -52,9 +57,14 @@ class TiposController extends Controller
      */
     public function actionView($id)
     {
+        if(SiteController::findVar(17)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -64,6 +74,7 @@ class TiposController extends Controller
      */
     public function actionCreate()
     {
+        if(SiteController::findVar(17)){
         $model = new Tipos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -73,6 +84,10 @@ class TiposController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -84,6 +99,7 @@ class TiposController extends Controller
      */
     public function actionUpdate($id)
     {
+        if(SiteController::findVar(17)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -93,6 +109,10 @@ class TiposController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -104,9 +124,14 @@ class TiposController extends Controller
      */
     public function actionDelete($id)
     {
+        if(SiteController::findVar(17)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**

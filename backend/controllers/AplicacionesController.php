@@ -8,7 +8,7 @@ use backend\models\AplicacionesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use backend\controllers\SiteController;
 /**
  * AplicacionesController implements the CRUD actions for Aplicaciones model.
  */
@@ -35,7 +35,7 @@ class AplicacionesController extends Controller
      */
     public function actionIndex()
     {
-        if(AplicacionesController::findCom(3)){
+        if(SiteController::findVar(3)){
           $searchModel = new AplicacionesSearch();
           $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -57,7 +57,7 @@ class AplicacionesController extends Controller
      */
     public function actionView($id)
     {
-        if(AplicacionesController::findCom(3)){
+        if(SiteController::findVar(3)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -74,7 +74,7 @@ class AplicacionesController extends Controller
      */
     public function actionCreate()
     {
-        if(AplicacionesController::findCom(3)){
+        if(SiteController::findVar(3)){
         $model = new Aplicaciones();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -99,7 +99,7 @@ class AplicacionesController extends Controller
      */
     public function actionUpdate($id)
     {
-        if(AplicacionesController::findCom(3)){
+        if(SiteController::findVar(3)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -124,7 +124,7 @@ class AplicacionesController extends Controller
      */
     public function actionDelete($id)
     {
-        if(AplicacionesController::findCom(3)){
+        if(SiteController::findVar(3)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -170,25 +170,25 @@ class AplicacionesController extends Controller
         return $rows;
     }
 
-    public function findCom($com)
-    {
-      $IdUser = Yii::$app->user->identity->id;
-      // $var = 'Usuarios';
-      $query = (new \yii\db\Query())
-      ->select('comId')
-      ->from('user')
-      ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
-      ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
-      ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
-      ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
-      ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
-      ->innerJoin('comandos','comandos.comid = interfaces.intId')
-      ->where([
-        'id' => $IdUser,
-        'comid_fk' => $com]);
-        $command = $query->createCommand();
-        $rows = $command->queryScalar();
-        return $rows;
-    }
+    // public function findCom($com)
+    // {
+    //   $IdUser = Yii::$app->user->identity->id;
+    //   // $var = 'Usuarios';
+    //   $query = (new \yii\db\Query())
+    //   ->select('comId')
+    //   ->from('user')
+    //   ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
+    //   ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
+    //   ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
+    //   ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
+    //   ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
+    //   ->innerJoin('comandos','comandos.comid = interfaces.intId')
+    //   ->where([
+    //     'id' => $IdUser,
+    //     'comid_fk' => $com]);
+    //     $command = $query->createCommand();
+    //     $rows = $command->queryScalar();
+    //     return $rows;
+    // }
 
 }

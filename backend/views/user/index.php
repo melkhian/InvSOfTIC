@@ -25,6 +25,16 @@ $this->params['breadcrumbs'][] = $this->title;
         else {
           // code...
         }
+        if (SiteController::findCom(2)) {
+          $view = '{view}';
+        } else {
+          $view = '';
+        }
+        if (SiteController::findCom(3)) {
+          $update = '{update}';
+        } else {
+          $view = '';
+        }
         ?>
     </p>
 
@@ -55,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated_at',
 
             ['class' => 'yii\grid\ActionColumn',
-             'template' => '{view} {update}'],
+             'template' => "$view $update"],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

@@ -1,5 +1,5 @@
 <?php
-
+use backend\controllers\SiteController;
 ?>
 <aside class="main-sidebar">
 

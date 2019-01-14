@@ -35,13 +35,18 @@ class ComandosController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ComandosSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if(SiteController::findVar(19)){
+          $searchModel = new ComandosSearch();
+          $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+          return $this->render('index', [
+              'searchModel' => $searchModel,
+              'dataProvider' => $dataProvider,
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -52,9 +57,14 @@ class ComandosController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+        if(SiteController::findVar(19)){
+          return $this->render('view', [
+              'model' => $this->findModel($id),
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -64,6 +74,7 @@ class ComandosController extends Controller
      */
     public function actionCreate()
     {
+        if(SiteController::findVar(19)){
         $model = new Comandos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -73,6 +84,10 @@ class ComandosController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -84,6 +99,7 @@ class ComandosController extends Controller
      */
     public function actionUpdate($id)
     {
+        if(SiteController::findVar(19)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -93,6 +109,10 @@ class ComandosController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -104,9 +124,14 @@ class ComandosController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if(SiteController::findVar(19)){
+          $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+          return $this->redirect(['index']);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
