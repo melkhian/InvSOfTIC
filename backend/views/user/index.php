@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use backend\controllers\SiteController;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -17,7 +18,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Usuario', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php
+        if (SiteController::findCom(1)) {
+          echo Html::a('Crear Usuario', ['create'], ['class' => 'btn btn-success']);
+        }
+        else {
+          // code...
+        }
+        ?>
     </p>
 
     <?= GridView::widget([
@@ -46,7 +54,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'created_at',
             //'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+             'template' => '{view} {update}'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>
