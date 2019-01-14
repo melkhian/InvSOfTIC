@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Empsoporte */
 
-$this->title = 'Actualizar Empresa de Soporte';
+$this->title = 'Actualizar Empresa de Soporte: ' . $model->ESopNomb;
 $this->params['breadcrumbs'][] = ['label' => 'Empresas de Soporte', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->ESopId, 'url' => ['view', 'id' => $model->ESopId]];
 $this->params['breadcrumbs'][] = 'Actualizar';

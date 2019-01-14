@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Tipo */
 
-$this->title = 'Actualizar Tipo';
+$this->title = 'Actualizar Tipo: '. $model->TipoDesc;
 $this->params['breadcrumbs'][] = ['label' => 'Tipo', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->TipoId, 'url' => ['view', 'id' => $model->TipoId]];
 $this->params['breadcrumbs'][] = 'Actualizar';
