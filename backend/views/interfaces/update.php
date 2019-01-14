@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Interfaces */
 
-$this->title = 'Actualizar Interfaz';
+$this->title = 'Actualizar Interfaz: '. $model->IntNomb;
 $this->params['breadcrumbs'][] = ['label' => 'Interfaces', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->IntId, 'url' => ['view', 'id' => $model->IntId]];
 $this->params['breadcrumbs'][] = 'Actualizar';
