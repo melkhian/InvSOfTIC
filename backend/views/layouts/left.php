@@ -23,7 +23,7 @@
 
         -->
 
-        <?php
+        <!-- <?php
         if ($this->context->findVar(1))
             echo dmstr\widgets\Menu::widget(
                 [
@@ -164,8 +164,8 @@
                                    'items' => [
                                          ['label' => 'Rolusua', 'icon' => 'bank', 'url' => ['rolusua/index']],
                                      ]]);
-        ?>
-        <!-- <?= dmstr\widgets\Menu::widget(
+        ?> -->
+        <?= dmstr\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
@@ -309,7 +309,7 @@
                     ],
                 ],
             ]
-        ) ?> -->
+        ) ?>
 
     </section>
 
