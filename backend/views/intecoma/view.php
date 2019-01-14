@@ -2,12 +2,14 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use backend\models\Interfaces;
+use backend\models\Comandos;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Intecoma */
 
 $this->title = $model->IcomId;
-$this->params['breadcrumbs'][] = ['label' => 'Intecomas', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Interfaz por Comando', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="intecoma-view">
@@ -25,12 +27,25 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+    <!-- INICIO
+        Obtengo el nombre de la llave foránea dentro del modelo para luego cambiar su valor a una descripción en la lista desplegable de Tipos
+    -->
+    <?php
+        $IntiId_fk= Interfaces::findOne($model->IntiId_fk);
+        $ComId_fk= Comandos::findOne($model->ComId_fk);
+    ?>
+    <!-- FIN -->
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'IcomId',
-            'IntiId_fk',
-            'ComId_fk',
+            ['attribute' => 'IntiId_fk',
+             'value'=> $IntiId_fk['IntNomb'],
+            ],
+            ['attribute' => 'ComId_fk',
+             'value'=> $ComId_fk['ComNomb'],
+            ],
             'IcomFunc',
             'IcomDesc',
         ],

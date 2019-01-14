@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use backend\models\Aplicaciones;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Appmodulos */
@@ -25,11 +26,26 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+    <!-- INICIO
+        Obtengo el nombre de la llave foránea dentro del modelo para luego cambiar su valor a una descripción en la lista desplegable de Tipos
+    -->
+    <?php
+        $AppId_fk= Aplicaciones::findOne($model->AppId_fk);
+
+    ?>
+    <!-- FIN -->
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'AModId',
-            'AppId_fk',
+            /*INICIO
+            Reemplazo de tiposid_fk_1 a tiposdesc para ser mostrado en la consulta, en vez de un número muestre la descripción
+            */
+            ['attribute' => 'AppId_fk',
+             'value'=> $AppId_fk['AppNomb'],
+            ],
+            /*FIN*/
             'AModDesc',
         ],
     ]) ?>
