@@ -5,6 +5,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 use backend\models\Empdistribuidora;
 use backend\models\Empsoporte;
+use backend\controllers\AplicacionesController;
 use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AplicacionesSearch */
@@ -20,7 +21,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Aplicación', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php
+        // if (AplicacionesController::findCom(8)) {
+          if ($this->context->findVar(1)){
+          echo Html::a('Crear Aplicación', ['create'], ['class' => 'btn btn-success'])
+        }
+        else {
+          $this->redirect(['site/error']);
+        }
+        ?>
     </p>
 
     <?= GridView::widget([
@@ -53,7 +62,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'AppVersBD',
             //'AppBaseDato',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+             'template' => '{view} {update}'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

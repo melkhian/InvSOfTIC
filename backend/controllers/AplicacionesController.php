@@ -35,13 +35,18 @@ class AplicacionesController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new AplicacionesSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if(AplicacionesController::findCom(3)){
+          $searchModel = new AplicacionesSearch();
+          $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+          return $this->render('index', [
+              'searchModel' => $searchModel,
+              'dataProvider' => $dataProvider,
+          ]);
+        }
+        else {
+          $this->redirect(['site/error']);
+        }
     }
 
     /**
@@ -52,9 +57,14 @@ class AplicacionesController extends Controller
      */
     public function actionView($id)
     {
+        if(AplicacionesController::findCom(3)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -64,6 +74,7 @@ class AplicacionesController extends Controller
      */
     public function actionCreate()
     {
+        if(AplicacionesController::findCom(3)){
         $model = new Aplicaciones();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -73,6 +84,10 @@ class AplicacionesController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+      }
+      else{
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -84,6 +99,7 @@ class AplicacionesController extends Controller
      */
     public function actionUpdate($id)
     {
+        if(AplicacionesController::findCom(3)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -93,6 +109,10 @@ class AplicacionesController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -104,9 +124,14 @@ class AplicacionesController extends Controller
      */
     public function actionDelete($id)
     {
+        if(AplicacionesController::findCom(3)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -140,6 +165,27 @@ class AplicacionesController extends Controller
       ->where([
         'id' => $IdUser,
         'IntId' => $var]);
+        $command = $query->createCommand();
+        $rows = $command->queryScalar();
+        return $rows;
+    }
+
+    public function findCom($com)
+    {
+      $IdUser = Yii::$app->user->identity->id;
+      // $var = 'Usuarios';
+      $query = (new \yii\db\Query())
+      ->select('comId')
+      ->from('user')
+      ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
+      ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
+      ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
+      ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
+      ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
+      ->innerJoin('comandos','comandos.comid = interfaces.intId')
+      ->where([
+        'id' => $IdUser,
+        'comid_fk' => $com]);
         $command = $query->createCommand();
         $rows = $command->queryScalar();
         return $rows;
