@@ -6,7 +6,7 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \common\models\LoginForm */
 
-$this->title = 'Sign In';
+$this->title = 'Inicio de Sesión';
 
 $fieldOptions1 = [
     'options' => ['class' => 'form-group has-feedback'],
@@ -21,11 +21,11 @@ $fieldOptions2 = [
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>Admin</b>LTE</a>
+        <b>INVSOFTIC</b>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Ingrese sus credenciales para iniciar sesión</p>
 
         <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
 
@@ -45,11 +45,9 @@ $fieldOptions2 = [
 
 
         <div class="row">
-            <div class="col-xs-8">
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-            </div>
+
             <!-- /.col -->
-            <div class="col-xs-4">
+            <div class="col-xs-12">
                 <?= Html::submitButton('Ingresar', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
             </div>
             <!-- /.col -->
@@ -58,8 +56,8 @@ $fieldOptions2 = [
         <?php ActiveForm::end(); ?>
 
         <!-- /.social-auth-links -->
-
-        <a href="#">I forgot my password</a><br>
+        <br><br>
+        <a href="#"><b>Olvidé mi contraseña</b></a><br>
 
     </div>
     <!-- /.login-box-body -->
