@@ -3,7 +3,13 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 use backend\controllers\SiteController;
+
+use backend\models\Tipos;
+use backend\models\Dependencias;
+use yii\helpers\ArrayHelper;
+
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -18,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
+
         <?php
         if (SiteController::findCom(1)) {
           echo Html::a('Crear Usuario', ['create'], ['class' => 'btn btn-success']);
@@ -36,6 +43,9 @@ $this->params['breadcrumbs'][] = $this->title;
           $view = '';
         }
         ?>
+
+        <?= Html::a('Crear Usuario', ['registro/registro'], ['class' => 'btn btn-success']) ?>
+
     </p>
 
     <?= GridView::widget([
@@ -51,13 +61,25 @@ $this->params['breadcrumbs'][] = $this->title;
             'usuprimapel',
             //'ususeguapel',
             //'usutelepers',
-            //'username',
+            'username',
             //'usuteleofic',
             //'email:email',
-            //'depid_fk',
-            //'tiposid_fk1',
+            ['attribute'=>'depid_fk',
+             'value'=> function($model){return $model->depid_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'depid_fk', ArrayHelper::map(Dependencias::find()->all(),'DepId','DepNomb'),['class'=>'form-control','prompt' => 'Seleccione el Tipo']),
+            ],
+            // 'depid_fk',
+            ['attribute'=>'tiposid_fk1',
+             'value'=> function($model){return $model->tiposid_fk1();},
+             'filter' => Html::activeDropDownList($searchModel, 'tiposid_fk1', ArrayHelper::map(Tipos::find()->where('tipoid_fk = 1')->all(),'TiposId','TiposDesc'),['class'=>'form-control','prompt' => 'Seleccione el Tipo']),
+            ],
+            // 'tiposid_fk1',
+            ['attribute'=>'status',
+             'value'=> function($model){return $model->status();},
+             'filter' => Html::activeDropDownList($searchModel, 'status', ArrayHelper::map(Tipos::find()->where('tipoid_fk = 3')->all(),'TiposId','TiposDesc'),['class'=>'form-control','prompt' => 'Seleccione el Tipo']),
+            ],
             //'tiposid_fk2',
-            //'status',
+            // 'status',
             //'auth_key',
             //'password_hash',
             //'password_reset_token',

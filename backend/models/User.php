@@ -3,6 +3,10 @@
 namespace backend\models;
 
 use Yii;
+use yii\base\NotSupportedException;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "user".
@@ -44,18 +48,29 @@ class User extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+  public function behaviors()
+  {
+      return [
+          TimestampBehavior::className(),
+      ];
+  }
+
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
-            [['usuiden', 'usuprimnomb', 'usuprimapel', 'usutelepers', 'username', 'usuteleofic', 'email', 'depid_fk', 'tiposid_fk1', 'tiposid_fk2', 'status', 'auth_key', 'password_hash', 'created_at', 'updated_at'], 'required'],
+            [['usuiden', 'usuprimnomb', 'usuprimapel', 'usutelepers', 'username', 'usuteleofic', 'email', 'depid_fk', 'tiposid_fk1', 'tiposid_fk2', 'status'], 'required'],
             [['depid_fk', 'tiposid_fk1', 'tiposid_fk2', 'status', 'created_at', 'updated_at'], 'integer'],
             [['usuiden', 'usutelepers', 'usuteleofic'], 'string', 'max' => 20],
             [['usuprimnomb', 'ususegunomb', 'usuprimapel', 'ususeguapel'], 'string', 'max' => 30],
-            [['username', 'email', 'password_hash', 'password_reset_token'], 'string', 'max' => 255],
-            [['auth_key'], 'string', 'max' => 32],
+            [['username', 'email'], 'string', 'max' => 255],
+
             [['username'], 'unique'],
             [['email'], 'unique'],
-            [['password_reset_token'], 'unique'],
+
         ];
     }
 
@@ -110,4 +125,74 @@ class User extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Rolusua::className(), ['UsuId_fk' => 'id']);
     }
+
+
+    //Para todo lo relacionado con el Password
+
+    /**
+     * Validates password
+     *
+     * @param string $password password to validate
+     * @return bool if password provided is valid for current user
+     */
+    public function validatePassword($password)
+    {
+        return Yii::$app->security->validatePassword($password, $this->password_hash);
+    }
+
+    /**
+     * Generates password hash from password and sets it to the model
+     *
+     * @param string $password
+     */
+    public function setPassword($password)
+    {
+        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
+    }
+
+    /**
+     * Generates "remember me" authentication key
+     */
+    public function generateAuthKey()
+    {
+        $this->auth_key = Yii::$app->security->generateRandomString();
+    }
+
+    /**
+     * Generates new password reset token
+     */
+    public function generatePasswordResetToken()
+    {
+        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
+    }
+
+    /**
+     * Removes password reset token
+     */
+    public function removePasswordResetToken()
+    {
+        $this->password_reset_token = "";
+    }
+
+    public function depid_fk()
+    {
+        $data = Dependencias::findOne($this->depid_fk);
+
+        return $data['DepNomb'];
+    }
+
+    public function tiposid_fk1()
+    {
+        $data = Tipos::findOne($this->tiposid_fk1);
+
+        return $data['TiposDesc'];
+    }
+
+    public function status()
+    {
+        $data = Tipos::findOne($this->status);
+
+        return $data['TiposDesc'];
+    }
+
 }
