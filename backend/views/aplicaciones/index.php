@@ -5,7 +5,11 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 use backend\models\Empdistribuidora;
 use backend\models\Empsoporte;
+
 use backend\controllers\SiteController;
+
+use backend\controllers\AplicacionesController;
+
 use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AplicacionesSearch */
@@ -22,7 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php
+
         if (SiteController::findCom(8)){
+
+        if (AplicacionesController::findCom(8)){
+
           // if ($this->context->findVar(1)){
           echo Html::a('Crear Aplicación', ['create'], ['class' => 'btn btn-success']);
         }
