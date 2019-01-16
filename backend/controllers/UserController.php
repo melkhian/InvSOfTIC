@@ -35,6 +35,7 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
+        if(SiteController::findCom(1)){
         $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -42,6 +43,10 @@ class UserController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -52,9 +57,14 @@ class UserController extends Controller
      */
     public function actionView($id)
     {
+        if(SiteController::findCom(1)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -64,6 +74,7 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
+        if(SiteController::findCom(1)){
         $model = new User();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -73,6 +84,10 @@ class UserController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -84,6 +99,7 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
+        if(SiteController::findCom(1)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -93,6 +109,10 @@ class UserController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+        }
+        else {
+          $this->redirect(['site/error']);
+        }
     }
 
     /**
@@ -104,9 +124,14 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
+        if(SiteController::findCom(1)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+        }
+        else {
+          $this->redirect(['site/error']);
+        }
     }
 
     /**
@@ -144,4 +169,26 @@ class UserController extends Controller
         $rows = $command->queryScalar();
         return $rows;
     }
+
+    // public function findCom($com)
+    // {
+    //   $IdUser = Yii::$app->user->identity->id;
+    //   // $var = 'Usuarios';
+    //   $query = (new \yii\db\Query())
+    //   ->select('comId')
+    //   ->from('user')
+    //   ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
+    //   ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
+    //   ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
+    //   ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
+    //   ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
+    //   ->innerJoin('comandos','comandos.comid = interfaces.intId')
+    //   ->where([
+    //     'id' => $IdUser,
+    //     'comid_fk' => $com]);
+    //     $command = $query->createCommand();
+    //     $rows = $command->queryScalar();
+    //     return $rows;
+    // }
+
 }
