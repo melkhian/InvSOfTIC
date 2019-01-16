@@ -3,6 +3,10 @@
 use backend\controllers\SiteController;
 
 
+use backend\controllers\SiteController;
+
+
+
 
 ?>
 <aside class="main-sidebar">
@@ -51,7 +55,7 @@ use backend\controllers\SiteController;
                   [
                       'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                       'items' => [
-                          ['label' => 'Usuarios', 'icon' => 'users', 'url' => ['user/index']],
+                          ['label' => 'Usuarios', 'icon' => 'user', 'url' => ['user/index']],
                         ]]);
             if ($this->context->findVar(2))
                 echo dmstr\widgets\Menu::widget(
@@ -63,23 +67,35 @@ use backend\controllers\SiteController;
             if ($this->context->findVar(3)){
             $gda[] = ['label' => 'Aplicaciones', 'icon' => 'window-restore', 'url' => ['aplicaciones/index']];
             }
+            else {
+              $gda=null;
+            }
             if ($this->context->findVar(4)){
             $gda[] = ['label' => 'AppModulos', 'icon' => 'sliders', 'url' => ['appmodulos/index']];
                         // ['label' => 'AppModulos', 'icon' => 'sliders', 'url' => ['appmodulos/index']],
             }
+            else {
+              $gda=null;
+            }
             if ($this->context->findVar(5)){
             $gda[] = ['label' => 'AppDependencias', 'icon' => 'tasks', 'url' => ['appdependencias/index']];
             }
-            echo dmstr\widgets\Menu::widget(
-               [
-                   'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
-                   'items' => [
-                       [
-                           'label' => 'Gestión de Aplicaciones',
-                           'icon' => 'code',
-                           'url' => '#',
-                           'items' => $gda,
-                             ]]]);
+            else {
+              $gda=null;
+            }
+            // print_r($gda);
+            if ($gda != null) {
+              echo dmstr\widgets\Menu::widget(
+                 [
+                     'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
+                     'items' => [
+                         [
+                             'label' => 'Gestión de Aplicaciones',
+                             'icon' => 'code',
+                             'url' => '#',
+                             'items' => $gda,
+                               ]]]);
+            }
                // if ($this->context->findVar(4))
                //     echo dmstr\widgets\Menu::widget(
                //         [
@@ -104,20 +120,28 @@ use backend\controllers\SiteController;
                if ($this->context->findVar(6)){
                  $gde[] = ['label' => 'EmpDistribuidoras', 'icon' => 'truck', 'url' => ['empdistribuidora/index']];
                }
+               else {
+                 $gde=null;
+               }
                if ($this->context->findVar(7)){
                  $gde[] = ['label' => 'EmpSoporte', 'icon' => 'wrench', 'url' => ['empsoporte/index']];
                }
+               else {
+                 $gde=null;
+               }
+               if ($gde != null) {
+                 echo dmstr\widgets\Menu::widget(
+                    [
+                        'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
+                        'items' => [
+                            [
+                                'label' => 'Gestión de Empresas',
+                                'icon' => 'building',
+                                'url' => '#',
+                                'items' => $gde,
+                                  ]]]);
+               }
 
-               echo dmstr\widgets\Menu::widget(
-                  [
-                      'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
-                      'items' => [
-                          [
-                              'label' => 'Gestión de Empresas',
-                              'icon' => 'building',
-                              'url' => '#',
-                              'items' => $gde,
-                                ]]]);
                // if ($this->context->findVar(6))
                //     echo dmstr\widgets\Menu::widget(
                //         [
@@ -136,20 +160,28 @@ use backend\controllers\SiteController;
                if ($this->context->findVar(8)){
                  $gdp[] = ['label' => 'Proyectos', 'icon' => 'line-chart', 'url' => ['proyectos/index']];
                }
+               else {
+                 $gdp=null;
+               }
                if ($this->context->findVar(9)){
                  $gdp[] = ['label' => 'Cambio Alcance', 'icon' => 'exchange', 'url' => ['cambioalcance/index']];
                }
+               else {
+                 $gdp=null;
+               }
+               if ($gdp != null) {
+                 echo dmstr\widgets\Menu::widget(
+                    [
+                        'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
+                        'items' => [
+                            [
+                                'label' => 'Gestión de Proyectos',
+                                'icon' => 'map',
+                                'url' => '#',
+                                'items' => $gdp,
+                                  ]]]);
+               }
 
-               echo dmstr\widgets\Menu::widget(
-                  [
-                      'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
-                      'items' => [
-                          [
-                              'label' => 'Gestión de Proyectos',
-                              'icon' => 'map',
-                              'url' => '#',
-                              'items' => $gdp,
-                                ]]]);
                          // if ($this->context->findVar(8))
                          //     echo dmstr\widgets\Menu::widget(
                          //         [
@@ -168,74 +200,109 @@ use backend\controllers\SiteController;
                          if ($this->context->findVar(10)){
                            $gr[] = ['label' => 'Requerimientos', 'icon' => 'stack-overflow', 'url' => ['requerimientos/index']];
                          }
+                         else {
+                           $gr=null;
+                         }
                          if ($this->context->findVar(11)){
                            $gr[] = ['label' => 'Versión Requerimientos', 'icon' => 'bank', 'url' => ['versdocrequerimientos/index']];
+                         }
+                         else {
+                           $gr=null;
                          }
                          if ($this->context->findVar(12)){
                            $gr[] = ['label' => 'Estado Requerimientos', 'icon' => 'bank', 'url' => ['estrequerimientos/index']];
                          }
+                         else {
+                           $gr=null;
+                         }
+                         if ($gr != null) {
+                           echo dmstr\widgets\Menu::widget(
+                              [
+                                  'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
+                                  'items' => [
+                                      [
+                                          'label' => 'Gestión Requerimientos',
+                                          'icon' => 'tags',
+                                          'url' => '#',
+                                          'items' => $gr,
+                                            ]]]);
+                         }
 
-                         echo dmstr\widgets\Menu::widget(
-                            [
-                                'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
-                                'items' => [
-                                    [
-                                        'label' => 'Gestión Requerimientos',
-                                        'icon' => 'tags',
-                                        'url' => '#',
-                                        'items' => $gr,
-                                          ]]]);
 
 
                         if ($this->context->findVar(13)){
                           $ryp[] = ['label' => 'Roles', 'icon' => 'file-code-o', 'url' => ['roles/index']];
                         }
+                        else {
+                          $ryp=null;
+                        }
                         if ($this->context->findVar(14)){
                           $ryp[] = ['label' => 'Rolintecoma', 'icon' => 'bank', 'url' => ['rolintecoma/index']];
+                        }
+                        else {
+                          $ryp=null;
                         }
                         if ($this->context->findVar(15)){
                           $ryp[] = ['label' => 'Rolusua', 'icon' => 'bank', 'url' => ['rolusua/index']];
                         }
-
-                        echo dmstr\widgets\Menu::widget(
-                           [
-                               'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
-                               'items' => [
-                                   [
-                                       'label' => 'Roles y Permisos',
-                                       'icon' => 'address-card',
-                                       'url' => '#',
-                                       'items' => $ryp,
-                                         ]]]);
-
+                        else {
+                          $ryp=null;
+                        }
+                        if ($ryp != null) {
+                          echo dmstr\widgets\Menu::widget(
+                             [
+                                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
+                                 'items' => [
+                                     [
+                                         'label' => 'Roles y Permisos',
+                                         'icon' => 'address-card',
+                                         'url' => '#',
+                                         'items' => $ryp,
+                                           ]]]);
+                        }
 
                          if ($this->context->findVar(16)){
                            $pds[] = ['label' => 'Tipo', 'icon' => 'cog', 'url' => ['tipo/index']];
                          }
+                         else {
+                           $pds=null;
+                         }
                          if ($this->context->findVar(17)){
                            $pds[] = ['label' => 'Tipos', 'icon' => 'cog', 'url' => ['tipos/index']];
+                         }
+                         else {
+                           $pds=null;
                          }
                          if ($this->context->findVar(18)){
                            $pds[] = ['label' => 'Interfaces', 'icon' => 'bank', 'url' => ['interfaces/index']];
                          }
+                         else {
+                           $pds=null;
+                         }
                          if ($this->context->findVar(19)){
                            $pds[] = ['label' => 'Comandos', 'icon' => 'cog', 'url' => ['comandos/index']];
+                         }
+                         else {
+                           $pds=null;
                          }
                          if ($this->context->findVar(20)){
                            $pds[] = ['label' => 'Intecoma', 'icon' => 'bank', 'url' => ['intecoma/index']];
                          }
-
-                         echo dmstr\widgets\Menu::widget(
-                            [
-                                'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
-                                'items' => [
-                                    [
-                                        'label' => 'Parámetros del Sistema',
-                                        'icon' => 'cogs',
-                                        'url' => '#',
-                                        'items' => $pds,
-                                          ]]]);
-
+                         else {
+                           $pds=null;
+                         }
+                         if ($pds != null) {
+                           echo dmstr\widgets\Menu::widget(
+                              [
+                                  'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
+                                  'items' => [
+                                      [
+                                          'label' => 'Parámetros del Sistema',
+                                          'icon' => 'cogs',
+                                          'url' => '#',
+                                          'items' => $pds,
+                                            ]]]);
+                         }
                          // if ($this->context->findVar(16))
                          //     echo dmstr\widgets\Menu::widget(
                          //         [
