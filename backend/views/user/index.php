@@ -3,9 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
-
 use backend\controllers\SiteController;
-
 use backend\models\Tipos;
 use backend\models\Dependencias;
 use yii\helpers\ArrayHelper;
@@ -40,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
         if (SiteController::findCom(3)) {
           $update = '{update}';
         } else {
-          $view = '';
+          $update = '';
         }
         ?>
 
