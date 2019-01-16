@@ -35,13 +35,18 @@ class CambioalcanceController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CambioalcanceSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if(SiteController::findVar(9)){
+          $searchModel = new CambioalcanceSearch();
+          $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+          return $this->render('index', [
+              'searchModel' => $searchModel,
+              'dataProvider' => $dataProvider,
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -52,9 +57,14 @@ class CambioalcanceController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+        if(SiteController::findVar(9)){
+          return $this->render('view', [
+          'model' => $this->findModel($id),
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -64,6 +74,7 @@ class CambioalcanceController extends Controller
      */
     public function actionCreate()
     {
+        if(SiteController::findVar(9)){
         $model = new Cambioalcance();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -73,6 +84,10 @@ class CambioalcanceController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -84,15 +99,20 @@ class CambioalcanceController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        if(SiteController::findVar(9)){
+          $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->CAlcId]);
+          if ($model->load(Yii::$app->request->post()) && $model->save()) {
+              return $this->redirect(['view', 'id' => $model->CAlcId]);
         }
 
         return $this->render('update', [
             'model' => $model,
         ]);
+        }
+        else {
+          $this->redirect(['site/error']);
+      }
     }
 
     /**
@@ -104,9 +124,14 @@ class CambioalcanceController extends Controller
      */
     public function actionDelete($id)
     {
+        if(SiteController::findVar(9)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+      }
+      else {
+        $this->redirect(['site/error']);
+    }
     }
 
     /**

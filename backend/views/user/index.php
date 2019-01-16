@@ -3,9 +3,13 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
+use backend\controllers\SiteController;
+
 use backend\models\Tipos;
 use backend\models\Dependencias;
 use yii\helpers\ArrayHelper;
+
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -20,7 +24,28 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
+
+        <?php
+        if (SiteController::findCom(1)) {
+          echo Html::a('Crear Usuario', ['create'], ['class' => 'btn btn-success']);
+        }
+        else {
+          // code...
+        }
+        if (SiteController::findCom(2)) {
+          $view = '{view}';
+        } else {
+          $view = '';
+        }
+        if (SiteController::findCom(3)) {
+          $update = '{update}';
+        } else {
+          $view = '';
+        }
+        ?>
+
         <?= Html::a('Crear Usuario', ['registro/registro'], ['class' => 'btn btn-success']) ?>
+
     </p>
 
     <?= GridView::widget([
@@ -61,7 +86,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'created_at',
             //'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+             'template' => "$view $update"],
         ],
     ]); ?>
     <?php Pjax::end(); ?>
