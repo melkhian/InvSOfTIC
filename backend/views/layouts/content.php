@@ -1,7 +1,8 @@
 <?php
 use yii\widgets\Breadcrumbs;
 use dmstr\widgets\Alert;
-
+use backend\controllers\SiteController;
+$footer = SiteController::footer();
 ?>
 <div class="content-wrapper">
     <section class="content-header">
@@ -41,7 +42,7 @@ use dmstr\widgets\Alert;
     </div>
     <!-- <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
     reserved. -->
-    <strong> <a href="https://www.valledelcauca.gov.co/">Gobernación VALLE DEL CAUCA</a> &copy; 2015-2019.</strong> All rights
+    <strong> <a href="https://www.valledelcauca.gov.co/">Gobernación VALLE DEL CAUCA</a> &copy; <?= $footer ?>.</strong> All rights
     reserved.
 </footer>
 

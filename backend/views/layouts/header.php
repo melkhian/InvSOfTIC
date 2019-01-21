@@ -1,8 +1,9 @@
 <?php
 use yii\helpers\Html;
-
+use backend\controllers\SiteController;
 /* @var $this \yii\web\View */
 /* @var $content string */
+$img = SiteController::header();
 ?>
 
 <header class="main-header">
@@ -20,7 +21,10 @@ use yii\helpers\Html;
             <ul class="nav navbar-nav">
 
                 <!-- Messages: style can be found in dropdown.less-->
-                <li class="dropdown messages-menu">
+                <li class="dropdown user user-menu">
+                  <a href="https://www.valledelcauca.gov.co/" >                    
+                    <img src="<?= $directoryAsset ?><?= $img ?>">
+                  </a>
                     <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
                         <span class="label label-success">4</span>
@@ -108,6 +112,7 @@ use yii\helpers\Html;
                     </a> -->
                     <ul class="dropdown-menu">
                         <li class="header">You have 10 notifications</li>
+
                         <li>
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">

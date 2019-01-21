@@ -1,8 +1,24 @@
 <?php
+use yii\web\Controller;
+use backend\controllers\SiteController;
+$IdUser = Yii::$app->user->identity->id;
+$formatter = Yii::$app->formatter->asDate('now', 'yyyy-MM-dd');
+if ($formatter >= SiteController::DateValidator()) {
+  // $jhon = 'jhon';
+  // $jhon =SiteController::DateValidator();
+  $jhon = SiteController::DateValidator();
+    // Yii::$app->db->createCommand()
+    //         ->update('rolusua', ['RUsuCadu' => '0000-00-00'],'RUsuId = $IdUser')
+    //         ->execute();
 
+  // $db->createCommand()->update("UPDATE parametros SET RUsuCadu=2019-02-27 WHERE RUsuId=$IdUser")->execute();
+}
+else {
+  $jhon = $formatter;
+}
 /* @var $this yii\web\View */
 
-$this->title = 'INVSOFTIC';
+$this->title ='INVSOFTIC';
 ?>
 <div class="site-index">
 

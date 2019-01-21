@@ -20,12 +20,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <p>
-
         <?php
         if (SiteController::findCom(1)) {
           echo Html::a('Crear Usuario', ['registro/registro'], ['class' => 'btn btn-success']);
+          // echo SiteController::header();
         }
         else {
           // code...

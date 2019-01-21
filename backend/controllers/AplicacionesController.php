@@ -35,7 +35,7 @@ class AplicacionesController extends Controller
      */
     public function actionIndex()
     {
-        if(SiteController::findVar(3)){
+        if(SiteController::findVar(3)){          
           $searchModel = new AplicacionesSearch();
           $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

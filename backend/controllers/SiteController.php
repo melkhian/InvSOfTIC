@@ -71,6 +71,7 @@ class SiteController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
+            // Yii::$app->session->set('userSessionTimeout', time() + Yii::$app->params['sessionTimeoutSeconds']);
             return $this->goHome();
         }
 
@@ -100,43 +101,92 @@ class SiteController extends Controller
 
     public static function findVar($var)
     {
-      $IdUser = Yii::$app->user->identity->id;
+      if (isset(Yii::$app->user->identity->id)) {
+        $IdUser = Yii::$app->user->identity->id;
+        $query = (new \yii\db\Query())
+        ->select('intId')
+        ->from('user')
+        ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
+        ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
+        ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
+        ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
+        ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
+        ->where([
+          'id' => $IdUser,
+          'IntId' => $var]);
+          $command = $query->createCommand();
+          $rows = $command->queryScalar();
+          return $rows;
+      }else {
+        $this->redirect(['site/login']);
+      }
+
       // $var = 'Usuarios';
+
+    }
+
+    public static function findCom($com)
+    {
+      if (isset(Yii::$app->user->identity->id)) {
+        $IdUser = Yii::$app->user->identity->id;
+        $query = (new \yii\db\Query())
+        ->select('comId')
+        ->from('user')
+        ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
+        ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
+        ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
+        ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
+        ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
+        ->innerJoin('comandos','comandos.comid = interfaces.intId')
+        ->where([
+          'id' => $IdUser,
+          'comid_fk' => $com]);
+          $command = $query->createCommand();
+          $rows = $command->queryScalar();
+          return $rows;
+      }else {
+
+      }
+
+      // $var = 'Usuarios';
+
+    }
+
+    public function header(){
       $query = (new \yii\db\Query())
-      ->select('intId')
-      ->from('user')
-      ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
-      ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
-      ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
-      ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
-      ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
-      ->where([
-        'id' => $IdUser,
-        'IntId' => $var]);
+      ->select('header')
+      ->from('parametros');
+      // ->where([
+      //   'header' => $IdUser,
+      //   'IntId' => $var]);
         $command = $query->createCommand();
         $rows = $command->queryScalar();
         return $rows;
     }
 
-    public static function findCom($com)
-    {
-      $IdUser = Yii::$app->user->identity->id;
-      // $var = 'Usuarios';
+    public function footer(){
       $query = (new \yii\db\Query())
-      ->select('comId')
-      ->from('user')
-      ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
-      ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
-      ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
-      ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
-      ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
-      ->innerJoin('comandos','comandos.comid = interfaces.intId')
-      ->where([
-        'id' => $IdUser,
-        'comid_fk' => $com]);
+      ->select('footer')
+      ->from('parametros');
+      // ->where([
+      //   'header' => $IdUser,
+      //   'IntId' => $var]);
         $command = $query->createCommand();
         $rows = $command->queryScalar();
         return $rows;
     }
+
+    public function DateValidator(){
+      $userId = Yii::$app->user->identity->id;
+      $query = (new \yii\db\Query())
+      ->select('RUsuCadu')
+      ->from('rolusua')
+      ->where([
+        'RUsuId' => $userId]);
+        $command = $query->createCommand();
+        $rows = $command->queryScalar();
+        return $rows;
+    }
+
 
 }
