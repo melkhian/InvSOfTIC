@@ -98,7 +98,7 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    public static function findVar($var)
+    public function findVar($var)
     {
       $IdUser = Yii::$app->user->identity->id;
       // $var = 'Usuarios';
@@ -118,7 +118,7 @@ class SiteController extends Controller
         return $rows;
     }
 
-    public static function findCom($com)
+    public function findCom($com)
     {
       $IdUser = Yii::$app->user->identity->id;
       // $var = 'Usuarios';
@@ -137,6 +137,6 @@ class SiteController extends Controller
         $command = $query->createCommand();
         $rows = $command->queryScalar();
         return $rows;
-    }
+    }    
 
 }

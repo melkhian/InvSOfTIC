@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         if (SiteController::findCom(8)){
 
-        // if (AplicacionesController::findCom(8)){
+        if (AplicacionesController::findCom(8)){
 
           // if ($this->context->findVar(1)){
           echo Html::a('Crear Aplicación', ['create'], ['class' => 'btn btn-success']);

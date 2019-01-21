@@ -3,6 +3,8 @@
 use backend\controllers\SiteController;
 
 
+use backend\controllers\SiteController;
+
 
 
 
@@ -11,6 +13,22 @@ use backend\controllers\SiteController;
 
     <section class="sidebar">
 
+
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="<?= $directoryAsset ?>/img/avatar04.png" class="img-circle" alt="User Image"/>
+            </div>
+            <div class="pull-left info">
+                <p><?= Yii::$app->user->identity->username?></p>
+
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+
+        <!--
+
+=======
 
         <!-- Sidebar user panel -->
         <div class="user-panel">
@@ -37,7 +55,7 @@ use backend\controllers\SiteController;
                   [
                       'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                       'items' => [
-                          ['label' => 'Usuarios', 'icon' => 'users', 'url' => ['user/index']],
+                          ['label' => 'Usuarios', 'icon' => 'user', 'url' => ['user/index']],
                         ]]);
             if ($this->context->findVar(2))
                 echo dmstr\widgets\Menu::widget(

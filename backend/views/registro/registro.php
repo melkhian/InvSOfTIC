@@ -39,8 +39,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                 <?= $form->field($model, 'usuiden')->textInput(['maxlength' => true]) ?>
-                
-                <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
                 <?= $form->field($model, 'usuprimnomb')->textInput(['maxlength' => true]) ?>
 
@@ -52,7 +50,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'usutelepers')->textInput(['maxlength' => true]) ?>
 
-                <?= $form->field($model, 'usuteleofic')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+
+                <?= $form->field($model, 'usuteleofic')->textInput(['maxlength' => true]) ?>                
 
                 <?= $form->field($model, 'depid_fk')->dropDownList(ArrayHelper::map(Dependencias::find()->all(),'DepId','DepNomb'), ['prompt'=> 'Seleccione la Dependencia'])?>
 

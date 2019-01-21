@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?php
         if (SiteController::findCom(1)) {
-          echo Html::a('Crear Usuario', ['registro/registro'], ['class' => 'btn btn-success']);
+          echo Html::a('Crear Usuario', ['create'], ['class' => 'btn btn-success']);
         }
         else {
           // code...
@@ -44,6 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
         }
         ?>
 
+        <?= Html::a('Crear Usuario', ['registro/registro'], ['class' => 'btn btn-success']) ?>
 
     </p>
 
