@@ -35,7 +35,8 @@ class AppmodulosController extends Controller
      */
     public function actionIndex()
     {
-        if(SiteController::findVar(4)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(12) or SiteController::findCom(13) or SiteController::findCom(14)){
         $searchModel = new AppmodulosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -47,7 +48,10 @@ class AppmodulosController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Displays a single Appmodulos model.
@@ -57,6 +61,7 @@ class AppmodulosController extends Controller
      */
     public function actionView($id)
     {
+      if(isset(Yii::$app->user->identity->id)){
         if(SiteController::findVar(4)){
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -65,7 +70,10 @@ class AppmodulosController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Creates a new Appmodulos model.
@@ -74,6 +82,7 @@ class AppmodulosController extends Controller
      */
     public function actionCreate()
     {
+      if(isset(Yii::$app->user->identity->id)){
         if(SiteController::findVar(4)){
         $model = new Appmodulos();
 
@@ -88,7 +97,10 @@ class AppmodulosController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Updates an existing Appmodulos model.
@@ -99,6 +111,7 @@ class AppmodulosController extends Controller
      */
     public function actionUpdate($id)
     {
+      if(isset(Yii::$app->user->identity->id)){
         if(SiteController::findVar(4)){
         $model = $this->findModel($id);
 
@@ -113,7 +126,10 @@ class AppmodulosController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Deletes an existing Appmodulos model.

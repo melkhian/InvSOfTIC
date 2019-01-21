@@ -5,7 +5,7 @@ use yii\widgets\DetailView;
 use backend\models\Tipos;
 use backend\models\Empsoporte;
 use backend\models\Empdistribuidora;
-
+use backend\controllers\SiteController;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Aplicaciones */
 
@@ -18,14 +18,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Actualizar', ['update', 'id' => $model->AppId], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->AppId], [
+        <?php
+        if (SiteController::findCom(10)) {
+          echo Html::a('Actualizar', ['update', 'id' => $model->AppId], ['class' => 'btn btn-primary']);
+        }
+        ?>
+        <!-- <?= Html::a('Delete', ['delete', 'id' => $model->AppId], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?>
+        ]) ?> -->
     </p>
 
     <!-- INICIO

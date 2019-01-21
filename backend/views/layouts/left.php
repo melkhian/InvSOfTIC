@@ -1,11 +1,6 @@
 <?php
 
 use backend\controllers\SiteController;
-
-
-
-
-
 ?>
 <aside class="main-sidebar">
 
@@ -18,7 +13,16 @@ use backend\controllers\SiteController;
                 <img src="<?= $directoryAsset ?>/img/avatar04.png" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p><?= Yii::$app->user->identity->username?></p>
+                <p>
+                  <?php
+                    if(isset(Yii::$app->user->identity->id)){
+                      echo Yii::$app->user->identity->username;
+                    }else {
+                      Yii::$app->user->logout();
+                      // $this->redirect(Yii::app()->homeUrl);
+                    }
+                  ?>
+                </p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -32,34 +36,39 @@ use backend\controllers\SiteController;
         -->
 
         <?php
-          if ($this->context->findVar(1))
+          if (SiteController::findvar(1))
+          // if ($this->context->findVar(1))
               echo dmstr\widgets\Menu::widget(
                   [
                       'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                       'items' => [
                           ['label' => 'Usuarios', 'icon' => 'users', 'url' => ['user/index']],
                         ]]);
-            if ($this->context->findVar(2))
+            if (SiteController::findvar(2))
+            // if ($this->context->findVar(2))
                 echo dmstr\widgets\Menu::widget(
                   [
                     'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                       'items' => [
                                  ['label' => 'Dependencias', 'icon' => 'bank', 'url' => ['dependencias/index']],
                                  ]]);
-            if ($this->context->findVar(3)){
+            if (SiteController::findvar(3)){
+            // if ($this->context->findVar(3)){
             $gda[] = ['label' => 'Aplicaciones', 'icon' => 'window-restore', 'url' => ['aplicaciones/index']];
             }
             else {
               $gda=null;
             }
-            if ($this->context->findVar(4)){
+            if (SiteController::findvar(4)){
+            // if ($this->context->findVar(4)){
             $gda[] = ['label' => 'AppModulos', 'icon' => 'sliders', 'url' => ['appmodulos/index']];
                         // ['label' => 'AppModulos', 'icon' => 'sliders', 'url' => ['appmodulos/index']],
             }
             else {
               $gda=null;
             }
-            if ($this->context->findVar(5)){
+            if (SiteController::findvar(5)){
+            // if ($this->context->findVar(5)){
             $gda[] = ['label' => 'AppDependencias', 'icon' => 'tasks', 'url' => ['appdependencias/index']];
             }
             else {
@@ -99,13 +108,15 @@ use backend\controllers\SiteController;
                //             'items' => [
                //                 ['label' => 'Aplicaciones', 'icon' => 'window-restore', 'url' => ['aplicaciones/index']],
                //               ]]);
-               if ($this->context->findVar(6)){
+               if (SiteController::findvar(6)){
+               // if ($this->context->findVar(6)){
                  $gde[] = ['label' => 'EmpDistribuidoras', 'icon' => 'truck', 'url' => ['empdistribuidora/index']];
                }
                else {
                  $gde=null;
                }
-               if ($this->context->findVar(7)){
+               if (SiteController::findvar(7)){
+               // if ($this->context->findVar(7)){
                  $gde[] = ['label' => 'EmpSoporte', 'icon' => 'wrench', 'url' => ['empsoporte/index']];
                }
                else {
@@ -138,14 +149,15 @@ use backend\controllers\SiteController;
                //             'items' => [
                //                   ['label' => 'EmpSoporte', 'icon' => 'wrench', 'url' => ['empsoporte/index']],
                //               ]]);
-
-               if ($this->context->findVar(8)){
+               if (SiteController::findvar(8)){
+               // if ($this->context->findVar(8)){
                  $gdp[] = ['label' => 'Proyectos', 'icon' => 'line-chart', 'url' => ['proyectos/index']];
                }
                else {
                  $gdp=null;
                }
-               if ($this->context->findVar(9)){
+               if (SiteController::findvar(9)){
+               // if ($this->context->findVar(9)){
                  $gdp[] = ['label' => 'Cambio Alcance', 'icon' => 'exchange', 'url' => ['cambioalcance/index']];
                }
                else {
@@ -178,20 +190,22 @@ use backend\controllers\SiteController;
                          //             'items' => [
                          //                 ['label' => 'Cambio Alcance', 'icon' => 'exchange', 'url' => ['cambioalcance/index']],
                          //               ]]);
-
-                         if ($this->context->findVar(10)){
+                         if (SiteController::findvar(10)){
+                         // if ($this->context->findVar(10)){
                            $gr[] = ['label' => 'Requerimientos', 'icon' => 'stack-overflow', 'url' => ['requerimientos/index']];
                          }
                          else {
                            $gr=null;
                          }
-                         if ($this->context->findVar(11)){
+                         if (SiteController::findvar(11)){
+                         // if ($this->context->findVar(11)){
                            $gr[] = ['label' => 'Versión Requerimientos', 'icon' => 'bank', 'url' => ['versdocrequerimientos/index']];
                          }
                          else {
                            $gr=null;
                          }
-                         if ($this->context->findVar(12)){
+                         if (SiteController::findvar(12)){
+                         // if ($this->context->findVar(12)){
                            $gr[] = ['label' => 'Estado Requerimientos', 'icon' => 'bank', 'url' => ['estrequerimientos/index']];
                          }
                          else {
@@ -211,20 +225,22 @@ use backend\controllers\SiteController;
                          }
 
 
-
-                        if ($this->context->findVar(13)){
+                        if (SiteController::findvar(13)){
+                        // if ($this->context->findVar(13)){
                           $ryp[] = ['label' => 'Roles', 'icon' => 'file-code-o', 'url' => ['roles/index']];
                         }
                         else {
                           $ryp=null;
                         }
-                        if ($this->context->findVar(14)){
+                        if (SiteController::findvar(14)){
+                        // if ($this->context->findVar(14)){
                           $ryp[] = ['label' => 'Rolintecoma', 'icon' => 'bank', 'url' => ['rolintecoma/index']];
                         }
                         else {
                           $ryp=null;
                         }
-                        if ($this->context->findVar(15)){
+                        if (SiteController::findvar(15)){
+                        // if ($this->context->findVar(15)){
                           $ryp[] = ['label' => 'Rolusua', 'icon' => 'bank', 'url' => ['rolusua/index']];
                         }
                         else {
@@ -242,32 +258,36 @@ use backend\controllers\SiteController;
                                          'items' => $ryp,
                                            ]]]);
                         }
-
-                         if ($this->context->findVar(16)){
+                         if (SiteController::findvar(16)){
+                         // if ($this->context->findVar(16)){
                            $pds[] = ['label' => 'Tipo', 'icon' => 'cog', 'url' => ['tipo/index']];
                          }
                          else {
                            $pds=null;
                          }
-                         if ($this->context->findVar(17)){
+                         if (SiteController::findvar(17)){
+                         // if ($this->context->findVar(17)){
                            $pds[] = ['label' => 'Tipos', 'icon' => 'cog', 'url' => ['tipos/index']];
                          }
                          else {
                            $pds=null;
                          }
-                         if ($this->context->findVar(18)){
+                         if (SiteController::findvar(18)){
+                         // if ($this->context->findVar(18)){
                            $pds[] = ['label' => 'Interfaces', 'icon' => 'bank', 'url' => ['interfaces/index']];
                          }
                          else {
                            $pds=null;
                          }
-                         if ($this->context->findVar(19)){
+                         if (SiteController::findvar(19)){
+                         // if ($this->context->findVar(19)){
                            $pds[] = ['label' => 'Comandos', 'icon' => 'cog', 'url' => ['comandos/index']];
                          }
                          else {
                            $pds=null;
                          }
-                         if ($this->context->findVar(20)){
+                         if (SiteController::findvar(20)){
+                         // if ($this->context->findVar(20)){
                            $pds[] = ['label' => 'Intecoma', 'icon' => 'bank', 'url' => ['intecoma/index']];
                          }
                          else {

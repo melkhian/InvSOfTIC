@@ -37,6 +37,16 @@ $this->params['breadcrumbs'][] = $this->title;
         else {
           $this->redirect(['site/error']);
         }
+        if (SiteController::findCom(9)) {
+          $view = '{view}';
+        } else {
+          $view = '';
+        }
+        if (SiteController::findCom(10)) {
+          $update = '{update}';
+        } else {
+          $update = '';
+        }
         ?>
     </p>
 
@@ -71,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'AppBaseDato',
 
             ['class' => 'yii\grid\ActionColumn',
-             'template' => '{view} {update}'],
+             'template' => "$view $update"],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

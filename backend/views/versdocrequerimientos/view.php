@@ -1,5 +1,5 @@
 <?php
-
+use backend\controllers\SiteController;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use backend\models\Requerimientos;
@@ -16,14 +16,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Actualizar', ['update', 'id' => $model->VDReqId], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->VDReqId], [
+        <?php
+        if (SiteController::findCom(35)) {
+        echo Html::a('Actualizar', ['update', 'id' => $model->VDReqId], ['class' => 'btn btn-primary']);
+        }
+        ?>
+        <!-- <?= Html::a('Delete', ['delete', 'id' => $model->VDReqId], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?>
+        ]) ?> -->
     </p>
 
     <!-- INICIO

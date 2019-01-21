@@ -35,7 +35,8 @@ class AplicacionesController extends Controller
      */
     public function actionIndex()
     {
-        if(SiteController::findVar(3)){          
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(8) or SiteController::findCom(9) or SiteController::findCom(10) or SiteController::findCom(11)){
           $searchModel = new AplicacionesSearch();
           $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -43,10 +44,13 @@ class AplicacionesController extends Controller
               'searchModel' => $searchModel,
               'dataProvider' => $dataProvider,
           ]);
-        }
-        else {
-          $this->redirect(['site/error']);
-        }
+          }
+          else {
+            $this->redirect(['site/error']);
+          }
+      }else {
+        $this->redirect(['site/login']);
+      }
     }
 
     /**
@@ -57,7 +61,8 @@ class AplicacionesController extends Controller
      */
     public function actionView($id)
     {
-        if(SiteController::findVar(3)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(9)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -65,7 +70,10 @@ class AplicacionesController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+  }
 
     /**
      * Creates a new Aplicaciones model.
@@ -74,7 +82,8 @@ class AplicacionesController extends Controller
      */
     public function actionCreate()
     {
-        if(SiteController::findVar(3)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(8)){
         $model = new Aplicaciones();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -84,9 +93,12 @@ class AplicacionesController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
-      }
-      else{
-        $this->redirect(['site/error']);
+        }
+        else{
+          $this->redirect(['site/error']);
+        }
+      }else {
+        $this->redirect(['site/login']);
       }
     }
 
@@ -99,7 +111,8 @@ class AplicacionesController extends Controller
      */
     public function actionUpdate($id)
     {
-        if(SiteController::findVar(3)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(10)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -109,12 +122,14 @@ class AplicacionesController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
-      }
-      else {
-        $this->redirect(['site/error']);
+        }
+        else {
+          $this->redirect(['site/error']);
+        }
+      }else {
+        $this->redirect(['site/login']);
       }
     }
-
     /**
      * Deletes an existing Aplicaciones model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -124,7 +139,7 @@ class AplicacionesController extends Controller
      */
     public function actionDelete($id)
     {
-        if(SiteController::findVar(3)){
+        if(SiteController::findCom(11)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

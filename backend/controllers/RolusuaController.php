@@ -36,7 +36,8 @@ class RolusuaController extends Controller
      */
     public function actionIndex()
     {
-        if(SiteController::findVar(15)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(45) or SiteController::findCom(46) or SiteController::findCom(47)){
         $searchModel = new RolusuaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -48,7 +49,10 @@ class RolusuaController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Displays a single Rolusua model.
@@ -58,7 +62,8 @@ class RolusuaController extends Controller
      */
     public function actionView($id)
     {
-        if(SiteController::findVar(15)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(46)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -66,7 +71,10 @@ class RolusuaController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Creates a new Rolusua model.
@@ -75,7 +83,8 @@ class RolusuaController extends Controller
      */
     public function actionCreate()
     {
-        if(SiteController::findVar(15)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(45)){
         $model = new Rolusua();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -89,7 +98,10 @@ class RolusuaController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Updates an existing Rolusua model.
@@ -100,7 +112,8 @@ class RolusuaController extends Controller
      */
     public function actionUpdate($id)
     {
-        if(SiteController::findVar(15)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(47)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -114,7 +127,10 @@ class RolusuaController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Deletes an existing Rolusua model.

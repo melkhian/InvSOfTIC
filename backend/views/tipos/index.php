@@ -1,5 +1,5 @@
 <?php
-
+use backend\controllers\SiteController;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -19,7 +19,24 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Tipos', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php
+        if (SiteController::findCom(51)) {
+        echo Html::a('Crear Tipos', ['create'], ['class' => 'btn btn-success']);
+        }
+        else {
+          $this->redirect(['site/error']);
+        }
+        if (SiteController::findCom(52)) {
+          $view = '{view}';
+        } else {
+          $view = '';
+        }
+        if (SiteController::findCom(53)) {
+          $update = '{update}';
+        } else {
+          $update = '';
+        }
+        ?>
     </p>
 
     <?= GridView::widget([
@@ -36,7 +53,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'TiposDesc',
             'TiposValo',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+             'template' => "$view $update"],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

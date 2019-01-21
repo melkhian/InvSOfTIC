@@ -35,18 +35,23 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
-        if(SiteController::findCom(1)){
-        $searchModel = new UserSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if(isset(Yii::$app->user->identity->id)){
+          if(SiteController::findCom(1) or SiteController::findCom(2) or SiteController::findCom(3) or SiteController::findCom(4)){
+          $searchModel = new UserSearch();
+          $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-      }
-      else {
-        $this->redirect(['site/error']);
-      }
+          return $this->render('index', [
+              'searchModel' => $searchModel,
+              'dataProvider' => $dataProvider,
+          ]);
+          }
+          else {
+            $this->redirect(['site/error']);
+          }
+        }
+        else {
+          $this->redirect(['site/login']);
+        }
     }
 
     /**
@@ -57,15 +62,19 @@ class UserController extends Controller
      */
     public function actionView($id)
     {
-        if(SiteController::findCom(1)){
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        if(isset(Yii::$app->user->identity->id)){
+          if(SiteController::findCom(2)){
+          return $this->render('view', [
+              'model' => $this->findModel($id),
+          ]);
+          }
+          else {
+            $this->redirect(['site/error']);
+          }
+        }else {
+          $this->redirect(['site/login']);
+        }
       }
-      else {
-        $this->redirect(['site/error']);
-      }
-    }
 
     /**
      * Creates a new User model.
@@ -74,6 +83,7 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
+      if(isset(Yii::$app->user->identity->id)){
         if(SiteController::findCom(1)){
         $model = new User();
 
@@ -88,7 +98,10 @@ class UserController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+  }
 
     /**
      * Updates an existing User model.
@@ -99,7 +112,8 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
-        if(SiteController::findCom(1)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(3)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -113,7 +127,10 @@ class UserController extends Controller
         else {
           $this->redirect(['site/error']);
         }
+    }else {
+      $this->redirect(['site/login']);
     }
+  }
 
     /**
      * Deletes an existing User model.
@@ -124,7 +141,7 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
-        if(SiteController::findCom(1)){
+        if(SiteController::findCom(4)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
