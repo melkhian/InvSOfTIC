@@ -47,6 +47,7 @@ class RegistroForm extends Model
             [['usuiden', 'usutelepers', 'usuteleofic'], 'string', 'max' => 20],
             [['usuprimnomb', 'ususegunomb', 'usuprimapel', 'ususeguapel'], 'string', 'max' => 30],
             [['username', 'email'], 'string', 'max' => 255],
+            [['username','usuiden'], 'unique' , 'targetClass' => '\backend\models\User'],
 
         ];
     }
@@ -54,6 +55,20 @@ class RegistroForm extends Model
     public function attributeLabels()
     {
         return [
+          'id'=>'Id',
+          'usuiden'=>'Número de Identificación',
+          'username'=>'Nombre de Usuario',
+          'usuprimnomb'=>'Primer Nombre',
+          'ususegunomb'=>'Segundo Nombre',
+          'usuprimapel'=>'Primer Apellido',
+          'ususeguapel'=>'Segundo Apellido',
+          'usutelepers'=>'Teléfono Personal',
+          'usuteleofic'=>'Teléfono Oficina',
+          'email'=>'Correo Electrónico',
+          'depid_fk'=>'Departamento',
+          'tiposid_fk1'=>'Cargo',
+          'tiposid_fk2'=>'Tipo de Contrato',
+          'status'=>'Estado',
             // 'cedula_funcionario' => 'Cédula o Nit sin dígito de verificación',
             // 'password' => 'Contraseña',
             // 'id_rol' => 'Tipo de usuario',
