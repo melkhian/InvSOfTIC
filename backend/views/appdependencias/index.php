@@ -6,6 +6,7 @@ use yii\widgets\Pjax;
 use backend\models\Dependencias;
 use backend\models\Aplicaciones;
 use yii\helpers\ArrayHelper;
+use backend\controllers\SiteController;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AppdependenciasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -20,7 +21,24 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Aplicativo por Dependencia', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php
+        if (SiteController::findCom(15)){
+        echo Html::a('Crear Aplicativo por Dependencia', ['create'], ['class' => 'btn btn-success']);
+        }
+        else {
+          $this->redirect(['site/error']);
+        }
+        if (SiteController::findCom(16)) {
+          $view = '{view}';
+        } else {
+          $view = '';
+        }
+        if (SiteController::findCom(17)) {
+          $update = '{update}';
+        } else {
+          $update = '';
+        }
+        ?>
     </p>
 
     <?= GridView::widget([
@@ -41,7 +59,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'ADepCantUsua',
             'ADepFechSist',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+             'template' => "$view $update"],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

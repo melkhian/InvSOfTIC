@@ -22,7 +22,7 @@ $img = SiteController::header();
 
                 <!-- Messages: style can be found in dropdown.less-->
                 <li class="dropdown user user-menu">
-                  <a href="https://www.valledelcauca.gov.co/" >                    
+                  <a href="https://www.valledelcauca.gov.co/" >
                     <img src="<?= $directoryAsset ?><?= $img ?>">
                   </a>
                     <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -235,7 +235,16 @@ $img = SiteController::header();
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<?= $directoryAsset ?>/img/avatar04.png" class="user-image" alt="User Image"/>
-                        <span class="hidden-xs"><b><?= Yii::$app->user->identity->username?></b></span>
+                        <span class="hidden-xs"><b>
+                          <?php
+                          if(isset(Yii::$app->user->identity->id)){
+                            echo Yii::$app->user->identity->username;
+                          }else {
+                            Yii::$app->user->logout();
+                            // $this->redirect(Yii::app()->homeUrl);
+                          }
+                          ?>
+                        </b></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -244,7 +253,16 @@ $img = SiteController::header();
                                  alt="User Image"/>
 
                             <p>
-                                <b><?= Yii::$app->user->identity->username?></b> - Web Developer
+                                <b>
+                                  <?php
+                                  if(isset(Yii::$app->user->identity->id)){
+                                    echo Yii::$app->user->identity->username;
+                                  }else {
+                                    Yii::$app->user->logout();
+                                    // $this->redirect(Yii::app()->homeUrl);
+                                  }
+                                  ?>
+                                </b> - Web Developer
                                 <small>Member since Nov. 2015</small>
                             </p>
                         </li>

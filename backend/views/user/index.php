@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?php
         if (SiteController::findCom(1)) {
+          // echo SiteController::timeOut();
           echo Html::a('Crear Usuario', ['registro/registro'], ['class' => 'btn btn-success']);
           // echo SiteController::header();
         }

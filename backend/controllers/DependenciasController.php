@@ -35,7 +35,8 @@ class DependenciasController extends Controller
      */
     public function actionIndex()
     {
-        if(SiteController::findVar(2)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(5) or SiteController::findCom(6) or SiteController::findCom(7)){
         $searchModel = new DependenciasSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -47,7 +48,10 @@ class DependenciasController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Displays a single Dependencias model.
@@ -57,7 +61,8 @@ class DependenciasController extends Controller
      */
     public function actionView($id)
     {
-        if(SiteController::findVar(2)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(6)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -65,7 +70,10 @@ class DependenciasController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Creates a new Dependencias model.
@@ -74,7 +82,8 @@ class DependenciasController extends Controller
      */
     public function actionCreate()
     {
-        if(SiteController::findVar(2)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(5)){
         $model = new Dependencias();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -88,7 +97,10 @@ class DependenciasController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Updates an existing Dependencias model.
@@ -99,7 +111,8 @@ class DependenciasController extends Controller
      */
     public function actionUpdate($id)
     {
-        if(SiteController::findVar(2)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(7)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -113,7 +126,10 @@ class DependenciasController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Deletes an existing Dependencias model.
@@ -124,7 +140,7 @@ class DependenciasController extends Controller
      */
     public function actionDelete($id)
     {
-        if(SiteController::findVar(2)){
+        if(SiteController::findCom(100)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

@@ -118,7 +118,7 @@ class SiteController extends Controller
           $rows = $command->queryScalar();
           return $rows;
       }else {
-        $this->redirect(['site/login']);
+        Yii::$app->user->logout();
       }
 
       // $var = 'Usuarios';
@@ -145,7 +145,7 @@ class SiteController extends Controller
           $rows = $command->queryScalar();
           return $rows;
       }else {
-
+        Yii::$app->user->logout();
       }
 
       // $var = 'Usuarios';
@@ -183,6 +183,16 @@ class SiteController extends Controller
       ->from('rolusua')
       ->where([
         'RUsuId' => $userId]);
+        $command = $query->createCommand();
+        $rows = $command->queryScalar();
+        return $rows;
+    }
+    public static function timeOut(){
+      $query = (new \yii\db\Query())
+      ->select('timeExpiration')
+      ->from('parametros');
+      // ->where([
+      //   'RUsuId' => $userId]);
         $command = $query->createCommand();
         $rows = $command->queryScalar();
         return $rows;

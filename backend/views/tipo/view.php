@@ -1,5 +1,5 @@
 <?php
-
+use backend\controllers\SiteController;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -15,14 +15,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Actualizar', ['update', 'id' => $model->TipoId], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->TipoId], [
+        <?php
+        if (SiteController::findCom(50)) {
+        echo Html::a('Actualizar', ['update', 'id' => $model->TipoId], ['class' => 'btn btn-primary']);
+      }
+        ?>
+        <!-- <?= Html::a('Delete', ['delete', 'id' => $model->TipoId], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?>
+        ]) ?> -->
     </p>
 
     <?= DetailView::widget([

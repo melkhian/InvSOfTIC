@@ -5,6 +5,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 use backend\models\Tipos;
 use yii\helpers\ArrayHelper;
+use backend\controllers\SiteController;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\DependenciasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -19,7 +20,24 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Dependencia', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php
+        if (SiteController::findCom(5)) {
+        echo Html::a('Crear Dependencia', ['create'], ['class' => 'btn btn-success']);
+        }
+        else {
+          // code...
+        }
+        if (SiteController::findCom(6)) {
+          $view = '{view}';
+        } else {
+          $view = '';
+        }
+        if (SiteController::findCom(7)) {
+          $update = '{update}';
+        } else {
+          $update = '';
+        }
+        ?>
     </p>
 
     <?= GridView::widget([
@@ -39,7 +57,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'TiposId_fk2',
             //'DepCorr',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+             'template' => "$view $update"],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

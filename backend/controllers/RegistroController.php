@@ -3,6 +3,7 @@
 namespace backend\controllers;
 //error_reporting(E_ERROR | E_WARNING | E_PARSE);
 use Yii;
+use backend\controllers\SiteController;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -78,24 +79,24 @@ class RegistroController extends Controller{
           ]);
       }
 
-      public function findVar($var)
-      {
-        $IdUser = Yii::$app->user->identity->id;
-        // $var = 'Usuarios';
-        $query = (new \yii\db\Query())
-        ->select('intId')
-        ->from('user')
-        ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
-        ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
-        ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
-        ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
-        ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
-        ->where([
-          'id' => $IdUser,
-          'IntId' => $var]);
-          $command = $query->createCommand();
-          $rows = $command->queryScalar();
-          return $rows;
-      }
+      // public function findVar($var)
+      // {
+      //   $IdUser = Yii::$app->user->identity->id;
+      //   // $var = 'Usuarios';
+      //   $query = (new \yii\db\Query())
+      //   ->select('intId')
+      //   ->from('user')
+      //   ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
+      //   ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
+      //   ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
+      //   ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
+      //   ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
+      //   ->where([
+      //     'id' => $IdUser,
+      //     'IntId' => $var]);
+      //     $command = $query->createCommand();
+      //     $rows = $command->queryScalar();
+      //     return $rows;
+      // }
     }
  ?>

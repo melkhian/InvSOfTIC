@@ -1,5 +1,5 @@
 <?php
-
+use backend\controllers\SiteController;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -17,7 +17,25 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Empresa de Soporte', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php
+        if (SiteController::findCom(21)) {
+        echo Html::a('Crear Empresa de Soporte', ['create'], ['class' => 'btn btn-success']);
+        }
+        else {
+          $this->redirect(['site/error']);
+        }
+        if (SiteController::findCom(22)) {
+          $view = '{view}';
+        } else {
+          $view = '';
+        }
+        if (SiteController::findCom(23)) {
+          $update = '{update}';
+        } else {
+          $update = '';
+        }
+        ?>
+
     </p>
 
     <?= GridView::widget([
@@ -34,7 +52,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'ESopTele',
             //'ESopCorr',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+             'template' => "$view $update"],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

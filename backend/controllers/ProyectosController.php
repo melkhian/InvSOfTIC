@@ -35,7 +35,8 @@ class ProyectosController extends Controller
      */
     public function actionIndex()
     {
-        if(SiteController::findVar(8)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(24) or SiteController::findCom(25) or SiteController::findCom(26)){
         $searchModel = new ProyectosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -47,7 +48,10 @@ class ProyectosController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Displays a single Proyectos model.
@@ -57,7 +61,8 @@ class ProyectosController extends Controller
      */
     public function actionView($id)
     {
-        if(SiteController::findVar(8)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(25)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -65,7 +70,10 @@ class ProyectosController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Creates a new Proyectos model.
@@ -74,7 +82,8 @@ class ProyectosController extends Controller
      */
     public function actionCreate()
     {
-        if(SiteController::findVar(8)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(24)){
         $model = new Proyectos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -88,7 +97,10 @@ class ProyectosController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Updates an existing Proyectos model.
@@ -99,7 +111,8 @@ class ProyectosController extends Controller
      */
     public function actionUpdate($id)
     {
-        if(SiteController::findVar(8)){
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(26)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -113,7 +126,10 @@ class ProyectosController extends Controller
       else {
         $this->redirect(['site/error']);
       }
+    }else {
+      $this->redirect(['site/login']);
     }
+}
 
     /**
      * Deletes an existing Proyectos model.
