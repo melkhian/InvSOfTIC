@@ -6,6 +6,9 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \common\models\LoginForm */
 
+
+
+
 $this->title = 'Inicio de Sesión';
 
 $fieldOptions1 = [
@@ -18,7 +21,14 @@ $fieldOptions2 = [
     'inputTemplate' => "{input}<span class='glyphicon glyphicon-lock form-control-feedback'></span>"
 ];
 ?>
+<?php
+  if(Yii::$app->session->hasFlash('fail')){
 
+    echo "<div class='alert alert-danger'>" . Yii::$app->session->getFlash('fail') . "<button type='button' class='close' data-dismiss='alert' aria-label='Cerrar'>
+    <span aria-hidden='true'>&times;</span>
+    </button>" . "</div>";    
+}
+?>
 <div class="login-box">
     <div class="login-logo">
         <b>INVSOFTIC</b>
