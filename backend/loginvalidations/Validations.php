@@ -19,46 +19,39 @@ class Validations extends \yii\db\ActiveRecord
   public static function handleNewUser($event)
 
   {
-    // echo "<pre>";
-    // print_r($event->identity->id);
-    // echo "</pre>";
-    // exit();
     $id = $event->identity->id;
     $session = Yii::$app->session;
+
     $fecha_actual = strtotime(date("d-m-Y",time()));
-    // $data = new User;
     $data = Validations::RUsuId($id);
-    // echo "<pre>";
-    // print_r($data);
-    // echo "</pre>";
-    // exit();
+    // $status = Validations::status($id);
     $fechaCad = strtotime($data);
-    // echo "<pre>";
-    // print_r($fechaCad);
-    // echo "<br>";
-    // print_r($fecha_actual);
-    // echo "</pre>";
-    // exit();
+    //Función para comparar la fecha actual con la fecha de caducidad de Rolusua
     if ($fecha_actual > $fechaCad) {
-      //           $cookies = Yii::$app->response->cookies;
-      // $cookies->remove('_csrf-backend');
-      // unset($cookies['_csrf-backend']);
-      //Agregar función Afterlogout
+
       Yii::$app->user->logout();
 
       $session = Yii::$app->session;
-      $session->destroy();
-      $session->open();
 
-      Yii::$app->session->setFlash('fail', "A LA FECHA SU USUARIO HA CADUCADO");
+      $session->open();
       Yii::$app->request->bodyParams = [];
       $_POST = array();
       $_GET = array();
-
-      // return $this->goHome();
-      // unset($_POST['username']);
-
+      Yii::$app->session->setFlash('fail', "A LA FECHA SU ROL HA CADUCADO");
     }
+
+    // if ($status != 10) {
+    //
+    //   Yii::$app->user->logout();
+    //
+    //   $session = Yii::$app->session;
+    //
+    //   $session->open();
+    //   Yii::$app->request->bodyParams = [];
+    //   $_POST = array();
+    //   $_GET = array();
+    //   Yii::$app->session->setFlash('fail', "SU USUARIO SE ENCUENTRA DESHABILITADO");
+    // }
 
   }
 
@@ -73,7 +66,17 @@ class Validations extends \yii\db\ActiveRecord
     $command = $query->createCommand();
     $rows = $command->queryScalar();
     return $rows;
-
-
   }
+
+  // public static function status($id)
+  // {
+  //   // $IdUser = Yii::$app->user->identity->id;
+  //   $query = (new \yii\db\Query())
+  //   ->select('status')
+  //   ->from('user')
+  //   ->where(['id' => $id]);
+  //   $command = $query->createCommand();
+  //   $rows = $command->queryScalar();
+  //   return $rows;
+  // }
 }

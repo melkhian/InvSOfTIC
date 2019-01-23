@@ -3,16 +3,24 @@ namespace common\models;
 use yii\helpers\Html;
 use Yii;
 use yii\base\Model;
+use backend\models\Rolusua;
+
 
 /**
  * Login form
  */
 class LoginForm extends Model
 {
-    public $username;
-    public $password;
+    public $username ='';
+    public $password = '';
     public $rememberMe = true;
-    public $reCaptcha;
+    public $reCaptcha ='';
+    public $id;
+    public $fecha_actual;
+    public $data;
+    public $fechaCad;
+    public $status;
+
 
     private $_user;
 
@@ -29,8 +37,10 @@ class LoginForm extends Model
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+            // ['RUsuCadu','exist','targetClass'=> Rolusua::class, 'targetAttribute' => ['RUsuCadu' => 'RUsuCadu']],
+            // ['RUsuCadu', 'validateRolusua'],
 
-            // [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'secret' => '6LeFaIUUAAAAAJCMIw8Y_zrv28SVitGpW6F-AWpw', 'uncheckedMessage' => 'Please confirm that you are not a bot.']
+             // [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'secret' => '6LeFaIUUAAAAAJCMIw8Y_zrv28SVitGpW6F-AWpw', 'uncheckedMessage' => 'Please confirm that you are not a bot.']
         ];
     }
 
@@ -45,12 +55,53 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-            if (!$user || !$user->validatePassword($this->password)) {
-                  $this->addError($attribute, 'Incorrect username or password.');
-
-
+            if($user){
+              $id = $user->id;
+              $fecha_actual = strtotime(date("d-m-Y",time()));
+              $data = LoginForm::RUsuId($id);
+              $fechaCad = strtotime($data);
+              $status = LoginForm::Status($id);
             }
-        }
+
+            if (!$user || !$user->validatePassword($this->password)) {
+                  $this->addError($attribute, 'Nombre de Usuario o contraseña incorrectos.');
+
+              } elseif ($status !=10) {
+                $this->addError($attribute, 'Su cuenta se encuentra DESHABILITADA');
+              }elseif ($fecha_actual > $fechaCad) {
+                  $this->addError($attribute, 'A la fecha su ROL a vencido');
+              }
+
+                }
+            // echo "<pre>";
+            // print_r ($id);
+            // echo "</pre>";
+            // exit();
+    }
+
+    public static function RUsuId($id)
+    {
+      // $IdUser = Yii::$app->user->identity->id;
+      $query = (new \yii\db\Query())
+      ->select('RUsuCadu')
+      ->from('rolusua')
+      ->innerJoin('user','user.id = rolusua.UsuId_fk')
+      ->where(['id' => $id]);
+      $command = $query->createCommand();
+      $rows = $command->queryScalar();
+      return $rows;
+    }
+
+    public static function Status($id)
+    {
+      // $IdUser = Yii::$app->user->identity->id;
+      $query = (new \yii\db\Query())
+      ->select('status')
+      ->from('user')
+      ->where(['id' => $id]);
+      $command = $query->createCommand();
+      $rows = $command->queryScalar();
+      return $rows;
     }
 
     /**
