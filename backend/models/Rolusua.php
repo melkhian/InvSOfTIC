@@ -85,4 +85,6 @@ class Rolusua extends \yii\db\ActiveRecord
 
         return $data['username'];
     }
+
+
 }

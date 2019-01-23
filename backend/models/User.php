@@ -7,6 +7,10 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use yii\web\Controller;
+use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use common\models\LoginForm;
 
 /**
  * This is the model class for table "user".
@@ -37,6 +41,9 @@ use yii\web\IdentityInterface;
  */
 class User extends \yii\db\ActiveRecord
 {
+
+private $var;
+
     /**
      * @inheritdoc
      */
@@ -100,6 +107,40 @@ class User extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+
+
+    public static function handleNewUser($event)
+
+    { $session = Yii::$app->session;
+      $fecha_actual = strtotime(date("d-m-Y",time()));
+      // $data = new User;
+      $data = User::RUsuId();
+      $fechaCad = strtotime($data);
+        if ($fecha_actual >$fechaCad) {
+          Yii::$app->user->logout();
+        }
+
+
+    }
+
+    public static function RUsuId()
+    {
+        $IdUser = Yii::$app->user->identity->id;
+        $query = (new \yii\db\Query())
+        ->select('RUsuCadu')
+        ->from('rolusua')
+        ->innerJoin('user','user.id = rolusua.UsuId_fk')
+        ->where(['id' => $IdUser]);
+          $command = $query->createCommand();
+          $rows = $command->queryScalar();
+          return $rows;
+
+
     }
 
     /**
