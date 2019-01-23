@@ -11,6 +11,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use backend\controllers\SiteController;
 
 /**
  * This is the model class for table "user".
@@ -113,39 +114,6 @@ private $var;
      * @return \yii\db\ActiveQuery
      */
 
-
-    public static function handleNewUser($event)
-
-    { $session = Yii::$app->session;
-      $fecha_actual = strtotime(date("d-m-Y",time()));
-      // $data = new User;
-      $data = User::RUsuId();
-      $fechaCad = strtotime($data);
-        if ($fecha_actual >$fechaCad) {
-          Yii::$app->user->logout();
-        }
-
-
-    }
-
-    public static function RUsuId()
-    {
-        $IdUser = Yii::$app->user->identity->id;
-        $query = (new \yii\db\Query())
-        ->select('RUsuCadu')
-        ->from('rolusua')
-        ->innerJoin('user','user.id = rolusua.UsuId_fk')
-        ->where(['id' => $IdUser]);
-          $command = $query->createCommand();
-          $rows = $command->queryScalar();
-          return $rows;
-
-
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getProyectos()
     {
         return $this->hasMany(Proyectos::className(), ['UsuId_fk' => 'id']);

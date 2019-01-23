@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use backend\controllers\SiteController;
 /* @var $this \yii\web\View */
 /* @var $content string */
-$img = SiteController::header();
+// $img = SiteController::header();
 ?>
 
 <header class="main-header">
@@ -23,7 +23,6 @@ $img = SiteController::header();
                 <!-- Messages: style can be found in dropdown.less-->
                 <li class="dropdown user user-menu">
                   <a href="https://www.valledelcauca.gov.co/" >
-                    <img src="<?= $directoryAsset ?><?= $img ?>">
                   </a>
                     <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
