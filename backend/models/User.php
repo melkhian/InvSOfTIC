@@ -150,6 +150,7 @@ private $var;
           Yii::$app->request->bodyParams = [];
           $_POST = array();
           $_GET = array();
+          // unset(Yii::$app->request->cookies['advanced-backend']);
           // return $this->goHome();
           // unset($_POST['username']);
 

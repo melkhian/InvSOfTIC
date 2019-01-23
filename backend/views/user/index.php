@@ -7,7 +7,10 @@ use backend\controllers\SiteController;
 use backend\models\Tipos;
 use backend\models\Dependencias;
 use yii\helpers\ArrayHelper;
-
+use yii\bootstrap\Modal;
+use yii\bootstrap\ActiveForm;
+use yii\widget\Block;
+use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -19,12 +22,31 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
     <p>
         <?php
         if (SiteController::findCom(1)) {
           // echo SiteController::timeOut();
           echo Html::a('Crear Usuario', ['registro/registro'], ['class' => 'btn btn-success']);
+          // Modal::begin([
+          //   'id' => 'modal',
+          //   'header' => '<h2>Usuario</h2>',
+          //   'toggleButton' => ['label' => 'Seleccione usuario'],
+          //   ]);
+          //   echo GridView::widget([
+          //        'dataProvider' => $dataProvider,
+          //        'filterModel' => $searchModel,
+          //        'columns' => [
+          //            ['class' => 'yii\grid\CheckboxColumn'],
+          //            'id',
+          //            'usuiden',
+          //            'usuprimnomb',
+          //            'ususegunomb',
+          //            'usuprimapel',
+          //            'email',
+          //        ],
+          //     ]);
+          //     echo Html::a('Guardar',['index'],['class' => 'btn btn-primary']);
+          // Modal::end();
           // echo SiteController::header();
         }
         else {
@@ -86,6 +108,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn',
              'template' => "$view $update"],
         ],
-    ]); ?>
+    ]);
+    
+    ?>
     <?php Pjax::end(); ?>
 </div>
