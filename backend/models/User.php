@@ -114,6 +114,7 @@ private $var;
      * @return \yii\db\ActiveQuery
      */
 
+
     public function getProyectos()
     {
         return $this->hasMany(Proyectos::className(), ['UsuId_fk' => 'id']);
