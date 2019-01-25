@@ -75,9 +75,9 @@ private $var;
             [['usuiden', 'usutelepers', 'usuteleofic'], 'string', 'max' => 20],
             [['usuprimnomb', 'ususegunomb', 'usuprimapel', 'ususeguapel'], 'string', 'max' => 30],
             [['username', 'email'], 'string', 'max' => 255],
-
             [['username'], 'unique'],
             [['email'], 'unique'],
+            [['usuiden'], 'unique'],
 
         ];
     }

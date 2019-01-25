@@ -68,8 +68,10 @@ class LoginForm extends Model
 
               } elseif ($status !=10) {
                 $this->addError($attribute, 'Su cuenta se encuentra DESHABILITADA');
+              }elseif (empty($data)) {
+                $this->addError($attribute, 'Su Usuario NO tiene ROL asignado');
               }elseif ($fecha_actual > $fechaCad) {
-                  $this->addError($attribute, 'A la fecha su ROL a vencido');
+                $this->addError($attribute, 'A la fecha su ROL a expirado');
               }
 
                 }
