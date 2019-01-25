@@ -22,12 +22,13 @@ use yii\data\ActiveDataProvider;
 -->
 <?php
 $searchModel = new UserSearch;
-$dataProvider = new ActiveDataProvider([
-    'query' => user::find(),
-    'pagination' => [
-        'pageSize' => 20,
-    ],
-]);
+$dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
+// $dataProvider = new ActiveDataProvider([
+//     'query' => user::find(),
+//     'pagination' => [
+//         'pageSize' => 20,
+//     ],
+// ]);
 ?>
 <!--
 ////////////////////////////////////////
@@ -44,25 +45,32 @@ $dataProvider = new ActiveDataProvider([
     <?php
     Modal::begin([
       'id' => 'modal',
-      'header' => '<h2>Usuario</h2>',
+      'header' => '<h2>Usuarios</h2>',
+      'size' => 'modal-lg',
       'toggleButton' => ['label' => 'Seleccione usuario','class' => 'btn btn-primary']
       ]);
       echo GridView::widget([
            'dataProvider' => $dataProvider,
            'filterModel' => $searchModel,
            'columns' => [
-               ['class' => 'yii\grid\CheckboxColumn'],
+               ['class' => 'yii\grid\CheckboxColumn',
+                'checkboxOptions' => function($model, $key, $index, $column) {
+                    return ['value' => $model->id];
+                  },
+                ],
                 'id',
+                'usuprimnomb',
+                'usuprimapel',
                 'email',
-                ['class' => 'yii\grid\ActionColumn'],
+                // ['class' => 'yii\grid\ActionColumn'],
            ],
         ]);
-        echo Html::a('Guardar',['create'],['class' => 'btn btn-primary'])  ;
+          var keys = $('#grid').yiiGridView('getSelectedRows');
+          print_r(var);
+          // echo Html::a('Guardar',['create'],['class' => 'btn btn-primary']);
+
 
     Modal::end();
-    // echo GridView::widget([
-    //     'dataProvider' => $dataProvider,
-    // ]);
     ?>
     <p/>
     <?= $form->field($model, 'UsuId_fk')->dropDownList(ArrayHelper::map(User::find()->all(),'id','email'), ['prompt'=> 'Seleccione el Usuario'])?>

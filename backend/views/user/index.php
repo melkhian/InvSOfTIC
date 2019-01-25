@@ -25,29 +25,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?php
         if (SiteController::findCom(1)) {
-          // echo SiteController::timeOut();
+          // echo Yii::$app->user->authTimeout;
+          // echo Yii::$app->request->post();
           echo Html::a('Crear Usuario', ['registro/registro'], ['class' => 'btn btn-success']);
-          // Modal::begin([
-          //   'id' => 'modal',
-          //   'header' => '<h2>Usuario</h2>',
-          //   'toggleButton' => ['label' => 'Seleccione usuario'],
-          //   ]);
-          //   echo GridView::widget([
-          //        'dataProvider' => $dataProvider,
-          //        'filterModel' => $searchModel,
-          //        'columns' => [
-          //            ['class' => 'yii\grid\CheckboxColumn'],
-          //            'id',
-          //            'usuiden',
-          //            'usuprimnomb',
-          //            'ususegunomb',
-          //            'usuprimapel',
-          //            'email',
-          //        ],
-          //     ]);
-          //     echo Html::a('Guardar',['index'],['class' => 'btn btn-primary']);
-          // Modal::end();
-          // echo SiteController::header();
         }
         else {
           // code...
@@ -109,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
              'template' => "$view $update"],
         ],
     ]);
-    
+
     ?>
     <?php Pjax::end(); ?>
 </div>

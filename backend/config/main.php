@@ -1,5 +1,6 @@
 <?php
 use backend\controllers\SiteController;
+use backend\components\webuser;
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -26,9 +27,10 @@ return [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
+            'class' => WebUser::class,
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => false,
-            'authTimeout' => 300,
+            // 'authTimeout' => WebUser::class,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
         'session' => [
