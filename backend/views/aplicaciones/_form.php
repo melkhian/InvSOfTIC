@@ -24,9 +24,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'AppUrl')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk1')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk1')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk2')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk2')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppNumeDocuAdqu')->textInput(['maxlength' => true]) ?>
 
@@ -34,7 +34,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'AppFechAdqu')->textInput() ?>
 
-    <?= $form->field($model, 'TiposId_fk3')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk3')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppNombProc')->textInput(['maxlength' => true]) ?>
 
@@ -42,61 +42,61 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'ESopId2')->textInput() ?>
 
-    <?= $form->field($model, 'TiposId_fk4')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk4')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'UsuId_fk')->textInput() ?>
 
     <?= $form->field($model, 'AppAcueNiveServ')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk5')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk5')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppFechPues')->textInput() ?>
 
     <?= $form->field($model, 'AppServPues')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk6')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk6')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk7')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk7')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk8')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk8')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppVersServ')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk9')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk9')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppOtroCual1')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk10')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk10')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppOtroCual2')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk11')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk11')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk12')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk12')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppOtroCual3')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk13')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk13')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk14')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk14')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppOtroCual4')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk15')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk15')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk16')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk16')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk17')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk17')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk18')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk18')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppOtroCual6')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk19')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk19')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppCual')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk20')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk20')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppDondUbic')->textInput(['maxlength' => true]) ?>
 
@@ -104,15 +104,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'AppNumeLice')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk21')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk21')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk22')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk22')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk23')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk23')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppVersDist')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk24')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk24')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppLengServ')->textInput(['maxlength' => true]) ?>
 
@@ -172,79 +172,79 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'AppProy')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk25')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk25')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppOtroCual7')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppPoliBack')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk26')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk26')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk27')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk27')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppOtroCual8')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk28')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk28')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppOtroCual9')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppCantLice')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk29')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk29')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk30')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk30')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk31')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk31')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk32')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk32')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk33')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk33')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk34')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk34')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk35')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk35')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk36')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk36')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk37')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk37')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk38')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk38')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk39')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk39')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk40')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk40')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk41')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk41')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk42')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk42')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk43')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk43')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk44')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk44')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk45')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk45')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk46')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk46')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk47')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk47')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk48')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk48')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk49')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk49')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk50')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk50')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk51')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk51')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk52')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk52')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk53')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk53')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk54')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk54')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppUbic')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk55')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk55')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AppUbicDocu')->textInput(['maxlength' => true]) ?>
 
