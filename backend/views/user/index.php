@@ -9,7 +9,6 @@ use backend\models\Dependencias;
 use yii\helpers\ArrayHelper;
 use yii\bootstrap\Modal;
 use yii\bootstrap\ActiveForm;
-use yii\widget\Block;
 use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\UserSearch */

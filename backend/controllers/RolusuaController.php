@@ -37,6 +37,10 @@ class RolusuaController extends Controller
     public function actionIndex()
     {
       if(isset(Yii::$app->user->identity->id)){
+        $selection = (array)Yii::$app->request->post('selection'); 
+        foreach ($selection as $item) {
+            /* your code to do with the checked rows*/
+   	      }
         if(SiteController::findCom(45) or SiteController::findCom(46) or SiteController::findCom(47)){
         $searchModel = new RolusuaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -186,5 +190,4 @@ class RolusuaController extends Controller
         $rows = $command->queryScalar();
         return $rows;
     }
-
 }

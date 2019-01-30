@@ -27,7 +27,7 @@ return [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
-            'class' => WebUser::class,
+            'class' => WebUser::class, // Tiempo de expiraciondesde la base de datos
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => false,
             // 'authTimeout' => WebUser::class,
