@@ -51,35 +51,39 @@ class LoginForm extends Model
      * @param string $attribute the attribute currently being validated
      * @param array $params the additional name-value pairs given in the rule
      */
-    public function validatePassword($attribute, $params)
-    {
-        if (!$this->hasErrors()) {
-            $user = $this->getUser();
-            if($user){
-              $id = $user->id;
-              $fecha_actual = strtotime(date("d-m-Y",time()));
-              $data = LoginForm::RUsuId($id);
-              $fechaCad = strtotime($data);
-              $status = LoginForm::Status($id);
-            }
+     public function validatePassword($attribute, $params)
+     {
+       if (!$this->hasErrors()) {
+         $user = $this->getUser();
 
-            if (!$user || !$user->validatePassword($this->password)) {
-                  $this->addError($attribute, 'Nombre de Usuario o contraseña incorrectos.');
+         //Validación para comparar la fecha actual con la fecha de caducidad del ROL
+         if($user){
+           $id = $user->id;
+           $fecha_actual = strtotime(date("d-m-Y",time()));
+           $data = LoginForm::RUsuId($id);
+           $fechaCad = strtotime($data);
+           $status = LoginForm::Status($id);
+         }
 
-              } elseif ($status !=10) {
-                $this->addError($attribute, 'Su cuenta se encuentra DESHABILITADA');
-              }elseif (empty($data)) {
-                $this->addError($attribute, 'Su Usuario NO tiene ROL asignado');
-              }elseif ($fecha_actual > $fechaCad) {
-                $this->addError($attribute, 'A la fecha su ROL a expirado');
-              }
+         if (!$user || !$user->validatePassword($this->password)) {
+           $this->addError($attribute, 'Nombre de Usuario o contraseña incorrectos.');
 
-                }
-            // echo "<pre>";
-            // print_r ($id);
-            // echo "</pre>";
-            // exit();
-    }
+           //Validación para verificar antes del login si el Usuario está o no HABILITADO
+
+         } elseif ($status !=10) {
+           $this->addError($attribute, 'Su cuenta se encuentra DESHABILITADA');
+         }
+         //Validación para verificar antes del login si el Usuario tiene ROL asignado
+         elseif (empty($data)) {
+           $this->addError($attribute, 'Su Usuario NO tiene ROL asignado');
+         }
+         //Validación para verificar antes del login si a la fecha su ROL ha expirado o no
+         elseif ($fecha_actual > $fechaCad) {
+           $this->addError($attribute, 'A la fecha su ROL a expirado');
+         }
+
+       }
+     }
 
     public static function RUsuId($id)
     {

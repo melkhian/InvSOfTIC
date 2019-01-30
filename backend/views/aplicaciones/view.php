@@ -66,6 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'AppOtroCual4',
             'TiposId_fk15',
             'TiposId_fk16',
+            'AppOtroCual10',
             'TiposId_fk17',
             'TiposId_fk18',
             'AppOtroCual6',

@@ -26,7 +26,7 @@ use Yii;
  * @property string $TiposId_fk4 Entidad, Área
  * @property int $UsuId_fk Funcionario
  * @property string $AppAcueNiveServ Acuerdos de niveles de servicio
- * @property string $TiposId_fk5 Tipo de Puesta 
+ * @property string $TiposId_fk5 Tipo de Puesta
  * @property string $AppFechPues Fecha de puesta
  * @property string $AppServPues Servidor de puesta
  * @property string $TiposId_fk6 Ámbito de aplicación
@@ -35,7 +35,7 @@ use Yii;
  * @property string $AppVersServ Versión del servidor
  * @property string $TiposId_fk9 Código ejecutado en el cliente
  * @property string $AppOtroCual1 Cuál
- * @property string $TiposId_fk10 Código ejecutado en el servidor 
+ * @property string $TiposId_fk10 Código ejecutado en el servidor
  * @property string $AppOtroCual2 Cuál
  * @property string $TiposId_fk11 ¿Requiere base de datos?
  * @property string $TiposId_fk12 ¿Cuál?
@@ -45,6 +45,7 @@ use Yii;
  * @property string $AppOtroCual4 Cuál
  * @property string $TiposId_fk15 ¿Utiliza Manejador de Reportes?
  * @property string $TiposId_fk16 ¿Cuál?
+ * @property string $AppOtroCual10
  * @property string $TiposId_fk17 ¿Permite exportar datos?
  * @property string $TiposId_fk18 ¿Cuál?
  * @property string $AppOtroCual6 Cuál
@@ -102,11 +103,11 @@ use Yii;
  * @property string $TiposId_fk31 Plan de Proyecto Medio
  * @property string $TiposId_fk32 Definición y Alcance ¿Se entregó?
  * @property string $TiposId_fk33 Definición y Alcance ¿Se aprobó?
- * @property string $TiposId_fk34 Definición y Alcance Medio 
+ * @property string $TiposId_fk34 Definición y Alcance Medio
  * @property string $TiposId_fk35 Documento de requerimientos ¿Se entregó?
  * @property string $TiposId_fk36 Documento de requerimientos ¿Se aprobó?
  * @property string $TiposId_fk37 Documento de requerimientos
- * @property string $TiposId_fk38 Documento de Diseño ¿Se entregó? 
+ * @property string $TiposId_fk38 Documento de Diseño ¿Se entregó?
  * @property string $TiposId_fk39 Documento de Diseño ¿Se aprobó?
  * @property string $TiposId_fk40 Documento de Diseño Medio
  * @property string $TiposId_fk41 Documento de Pruebas ¿Se entregó?
@@ -152,10 +153,10 @@ class Aplicaciones extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['AppNomb', 'AppDesc', 'AppSigl', 'AppVers', 'ESopId1', 'AppUrl', 'TiposId_fk1', 'TiposId_fk2', 'AppNumeDocuAdqu', 'AppValoAdqu', 'AppFechAdqu', 'TiposId_fk3', 'AppNombProc', 'AppEnti', 'ESopId2', 'TiposId_fk4', 'UsuId_fk', 'AppAcueNiveServ', 'TiposId_fk5', 'AppFechPues', 'AppServPues', 'TiposId_fk6', 'TiposId_fk7', 'TiposId_fk8', 'AppVersServ', 'TiposId_fk9', 'AppOtroCual1', 'TiposId_fk10', 'AppOtroCual2', 'TiposId_fk11', 'TiposId_fk12', 'AppOtroCual3', 'TiposId_fk13', 'TiposId_fk14', 'AppOtroCual4', 'TiposId_fk15', 'TiposId_fk16', 'TiposId_fk17', 'TiposId_fk18', 'AppOtroCual6', 'TiposId_fk19', 'AppCual', 'TiposId_fk20', 'AppDondUbic', 'AppTipoLice', 'AppNumeLice', 'TiposId_fk21', 'TiposId_fk22', 'TiposId_fk23', 'AppVersDist', 'TiposId_fk24', 'AppLengServ', 'AppVersApli', 'AppBibl', 'AppObse1', 'AppMane', 'AppVersBD', 'AppPuer1', 'AppObse2', 'AppTipoHard', 'AppProc', 'AppMemo', 'AppEspaDisc', 'AppObse3', 'AppDirec1', 'AppNombArch', 'AppVari', 'AppNombVari', 'AppDescPara', 'AppObse4', 'AppUrlFuen', 'AppServ', 'AppPuer2', 'AppDirec2', 'AppNombServBd', 'AppUsua', 'AppNombBd', 'AppRuta', 'AppEspaActu', 'AppProy', 'TiposId_fk25', 'AppOtroCual7', 'AppPoliBack', 'TiposId_fk26', 'TiposId_fk27', 'AppOtroCual8', 'TiposId_fk28', 'AppOtroCual9', 'AppCantLice', 'TiposId_fk29', 'TiposId_fk30', 'TiposId_fk31', 'TiposId_fk32', 'TiposId_fk33', 'TiposId_fk34', 'TiposId_fk35', 'TiposId_fk36', 'TiposId_fk37', 'TiposId_fk38', 'TiposId_fk39', 'TiposId_fk40', 'TiposId_fk41', 'TiposId_fk42', 'TiposId_fk43', 'TiposId_fk44', 'TiposId_fk45', 'TiposId_fk46', 'TiposId_fk47', 'TiposId_fk48', 'TiposId_fk49', 'TiposId_fk50', 'TiposId_fk51', 'TiposId_fk52', 'TiposId_fk53', 'TiposId_fk54', 'AppUbic', 'TiposId_fk55', 'AppUbicDocu', 'AppUbicUlti', 'AppObse7', 'AppFuncApru'], 'required'],
+            [['AppNomb', 'AppDesc', 'AppSigl', 'AppVers', 'ESopId1', 'AppUrl', 'TiposId_fk1', 'TiposId_fk2', 'AppNumeDocuAdqu', 'AppValoAdqu', 'AppFechAdqu', 'TiposId_fk3', 'AppNombProc', 'AppEnti', 'ESopId2', 'TiposId_fk4', 'UsuId_fk', 'AppAcueNiveServ', 'TiposId_fk5', 'AppFechPues', 'AppServPues', 'TiposId_fk6', 'TiposId_fk7', 'TiposId_fk8', 'AppVersServ', 'TiposId_fk9', 'AppOtroCual1', 'TiposId_fk10', 'AppOtroCual2', 'TiposId_fk11', 'TiposId_fk12', 'AppOtroCual3', 'TiposId_fk13', 'TiposId_fk14', 'AppOtroCual4', 'TiposId_fk15', 'TiposId_fk16', 'AppOtroCual10', 'TiposId_fk17', 'TiposId_fk18', 'AppOtroCual6', 'TiposId_fk19', 'AppCual', 'TiposId_fk20', 'AppDondUbic', 'AppTipoLice', 'AppNumeLice', 'TiposId_fk21', 'TiposId_fk22', 'TiposId_fk23', 'AppVersDist', 'TiposId_fk24', 'AppLengServ', 'AppVersApli', 'AppBibl', 'AppObse1', 'AppMane', 'AppVersBD', 'AppPuer1', 'AppObse2', 'AppTipoHard', 'AppProc', 'AppMemo', 'AppEspaDisc', 'AppObse3', 'AppDirec1', 'AppNombArch', 'AppVari', 'AppNombVari', 'AppDescPara', 'AppObse4', 'AppUrlFuen', 'AppServ', 'AppPuer2', 'AppDirec2', 'AppNombServBd', 'AppUsua', 'AppNombBd', 'AppRuta', 'AppEspaActu', 'AppProy', 'TiposId_fk25', 'AppOtroCual7', 'AppPoliBack', 'TiposId_fk26', 'TiposId_fk27', 'AppOtroCual8', 'TiposId_fk28', 'AppOtroCual9', 'AppCantLice', 'TiposId_fk29', 'TiposId_fk30', 'TiposId_fk31', 'TiposId_fk32', 'TiposId_fk33', 'TiposId_fk34', 'TiposId_fk35', 'TiposId_fk36', 'TiposId_fk37', 'TiposId_fk38', 'TiposId_fk39', 'TiposId_fk40', 'TiposId_fk41', 'TiposId_fk42', 'TiposId_fk43', 'TiposId_fk44', 'TiposId_fk45', 'TiposId_fk46', 'TiposId_fk47', 'TiposId_fk48', 'TiposId_fk49', 'TiposId_fk50', 'TiposId_fk51', 'TiposId_fk52', 'TiposId_fk53', 'TiposId_fk54', 'AppUbic', 'TiposId_fk55', 'AppUbicDocu', 'AppUbicUlti', 'AppObse7', 'AppFuncApru'], 'required'],
             [['ESopId1', 'ESopId2', 'UsuId_fk'], 'integer'],
             [['AppFechAdqu', 'AppFechPues'], 'safe'],
-            [['AppNomb', 'AppSigl', 'AppVers', 'AppNumeDocuAdqu', 'AppVersServ', 'AppUsua', 'AppEspaActu', 'AppProy'], 'string', 'max' => 50],
+            [['AppNomb', 'AppSigl', 'AppVers', 'AppNumeDocuAdqu', 'AppVersServ', 'AppOtroCual10', 'AppUsua', 'AppEspaActu', 'AppProy'], 'string', 'max' => 50],
             [['AppDesc', 'AppAcueNiveServ'], 'string', 'max' => 500],
             [['AppUrl', 'AppValoAdqu', 'AppNombProc', 'AppEnti', 'AppServPues', 'AppOtroCual1', 'AppOtroCual2', 'AppOtroCual3', 'AppOtroCual4', 'AppOtroCual6', 'AppCual', 'AppTipoLice', 'AppNumeLice', 'AppVersDist', 'AppLengServ', 'AppVersApli', 'AppBibl', 'AppMane', 'AppVersBD', 'AppPuer1', 'AppMemo', 'AppEspaDisc', 'AppDirec1', 'AppNombArch', 'AppVari', 'AppNombVari', 'AppPuer2', 'AppNombServBd', 'AppNombBd', 'AppRuta', 'AppOtroCual7', 'AppPoliBack', 'AppOtroCual8', 'AppOtroCual9', 'AppFuncApru'], 'string', 'max' => 100],
             [['TiposId_fk1', 'TiposId_fk2', 'TiposId_fk3', 'TiposId_fk4', 'TiposId_fk5', 'TiposId_fk6', 'TiposId_fk7', 'TiposId_fk8', 'TiposId_fk9', 'TiposId_fk10', 'TiposId_fk11', 'TiposId_fk12', 'TiposId_fk13', 'TiposId_fk14', 'TiposId_fk15', 'TiposId_fk16', 'TiposId_fk17', 'TiposId_fk18', 'TiposId_fk19', 'TiposId_fk20', 'TiposId_fk21', 'TiposId_fk22', 'TiposId_fk23', 'TiposId_fk24', 'TiposId_fk25', 'TiposId_fk26', 'TiposId_fk27', 'TiposId_fk28', 'TiposId_fk29', 'TiposId_fk30', 'TiposId_fk31', 'TiposId_fk32', 'TiposId_fk33', 'TiposId_fk34', 'TiposId_fk35', 'TiposId_fk36', 'TiposId_fk37', 'TiposId_fk38', 'TiposId_fk39', 'TiposId_fk40', 'TiposId_fk41', 'TiposId_fk42', 'TiposId_fk43', 'TiposId_fk44', 'TiposId_fk45', 'TiposId_fk46', 'TiposId_fk47', 'TiposId_fk48', 'TiposId_fk49', 'TiposId_fk50', 'TiposId_fk51', 'TiposId_fk52', 'TiposId_fk53', 'TiposId_fk54', 'TiposId_fk55'], 'string', 'max' => 20],
@@ -189,7 +190,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
             'AppNombProc' => 'Nombre del Proceso',
             'AppEnti' => 'Entidad o Dependencias Usuarias',
             'ESopId2' => 'Empresa Soporte',
-            'TiposId_fk4' => 'Entidad, Área',
+            'TiposId_fk4' => 'Entidad / Área',
             'UsuId_fk' => 'Funcionario',
             'AppAcueNiveServ' => 'Acuerdos de niveles de servicio',
             'TiposId_fk5' => 'Tipo de Puesta ',
@@ -211,6 +212,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
             'AppOtroCual4' => 'Cuál',
             'TiposId_fk15' => '¿Utiliza Manejador de Reportes?',
             'TiposId_fk16' => '¿Cuál?',
+            'AppOtroCual10' => 'Cuál',
             'TiposId_fk17' => '¿Permite exportar datos?',
             'TiposId_fk18' => '¿Cuál?',
             'AppOtroCual6' => 'Cuál',
@@ -336,5 +338,26 @@ class Aplicaciones extends \yii\db\ActiveRecord
     public function getAppmodulos()
     {
         return $this->hasMany(Appmodulos::className(), ['AppId_fk' => 'AppId']);
+    }
+
+    //Función para manejar los checkBoxList del formulario, donde el Array se convierte a String antes de validar
+    // 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 21,
+    public function beforeValidate(){
+      if (is_array($this->TiposId_fk5) && is_array($this->TiposId_fk6) && is_array($this->TiposId_fk7) && is_array($this->TiposId_fk8)
+       && is_array($this->TiposId_fk9) && is_array($this->TiposId_fk10) && is_array($this->TiposId_fk12) && is_array($this->TiposId_fk14)
+       && is_array($this->TiposId_fk16) && is_array($this->TiposId_fk18) && is_array($this->TiposId_fk21)) {
+        $this->TiposId_fk5 = implode(',',$this->TiposId_fk5);
+        $this->TiposId_fk6 = implode(',',$this->TiposId_fk6);
+        $this->TiposId_fk7 = implode(',',$this->TiposId_fk7);
+        $this->TiposId_fk8 = implode(',',$this->TiposId_fk8);
+        $this->TiposId_fk9 = implode(',',$this->TiposId_fk9);
+        $this->TiposId_fk10 = implode(',',$this->TiposId_fk10);
+        $this->TiposId_fk12 = implode(',',$this->TiposId_fk12);
+        $this->TiposId_fk14 = implode(',',$this->TiposId_fk14);
+        $this->TiposId_fk16 = implode(',',$this->TiposId_fk16);
+        $this->TiposId_fk18 = implode(',',$this->TiposId_fk18);
+        $this->TiposId_fk21 = implode(',',$this->TiposId_fk21);
+      }
+      return parent::beforeValidate();
     }
 }
