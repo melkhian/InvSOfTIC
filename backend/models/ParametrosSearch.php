@@ -5,12 +5,12 @@ namespace backend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Empsoporte;
+use backend\models\Parametros;
 
 /**
- * EmpsoporteSearch represents the model behind the search form of `backend\models\Empsoporte`.
+ * ParametrosSearch represents the model behind the search form of `backend\models\Parametros`.
  */
-class EmpsoporteSearch extends Empsoporte
+class ParametrosSearch extends Parametros
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class EmpsoporteSearch extends Empsoporte
     public function rules()
     {
         return [
-            [['ESopId', 'UsuId_fk', 'TiposId_fk'], 'integer'],
-            [['ESopNit', 'ESopNomb', 'ESopDire', 'ESopCont', 'ESopTelePers', 'ESopTeleOfic', 'ESopCorr'], 'safe'],
+            [['ParId', 'ParMult', 'ParFall', 'TiposId_fk'], 'integer'],
+            [['ParHead', 'ParFoot', 'ParNemo'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class EmpsoporteSearch extends Empsoporte
      */
     public function search($params)
     {
-        $query = Empsoporte::find();
+        $query = Parametros::find();
 
         // add conditions that should always apply here
 
@@ -59,18 +59,15 @@ class EmpsoporteSearch extends Empsoporte
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'ESopId' => $this->ESopId,
-            'UsuId_fk' => $this->UsuId_fk,
+            'ParId' => $this->ParId,
+            'ParMult' => $this->ParMult,
+            'ParFall' => $this->ParFall,
             'TiposId_fk' => $this->TiposId_fk,
         ]);
 
-        $query->andFilterWhere(['like', 'ESopNit', $this->ESopNit])
-            ->andFilterWhere(['like', 'ESopNomb', $this->ESopNomb])
-            ->andFilterWhere(['like', 'ESopDire', $this->ESopDire])
-            ->andFilterWhere(['like', 'ESopCont', $this->ESopCont])
-            ->andFilterWhere(['like', 'ESopTelePers', $this->ESopTelePers])
-            ->andFilterWhere(['like', 'ESopTeleOfic', $this->ESopTeleOfic])
-            ->andFilterWhere(['like', 'ESopCorr', $this->ESopCorr]);
+        $query->andFilterWhere(['like', 'ParHead', $this->ParHead])
+            ->andFilterWhere(['like', 'ParFoot', $this->ParFoot])
+            ->andFilterWhere(['like', 'ParNemo', $this->ParNemo]);
 
         return $dataProvider;
     }

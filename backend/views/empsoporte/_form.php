@@ -20,12 +20,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'ESopCont')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'ESopTele')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'UsuId_fk')->textInput() ?>
+
+    <?= $form->field($model, 'ESopTelePers')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'ESopTeleOfic')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'ESopCorr')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'TiposId_fk')->textInput() ?>
+
     <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

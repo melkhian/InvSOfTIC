@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\EmpsoporteSearch */
+/* @var $model backend\models\ParametrosSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="empsoporte-search">
+<div class="parametros-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -18,25 +18,19 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'ESopId') ?>
+    <?= $form->field($model, 'ParId') ?>
 
-    <?= $form->field($model, 'ESopNit') ?>
+    <?= $form->field($model, 'ParHead') ?>
 
-    <?= $form->field($model, 'ESopNomb') ?>
+    <?= $form->field($model, 'ParFoot') ?>
 
-    <?= $form->field($model, 'ESopDire') ?>
+    <?= $form->field($model, 'ParMult') ?>
 
-    <?= $form->field($model, 'ESopCont') ?>
-
-    <?php // echo $form->field($model, 'UsuId_fk') ?>
-
-    <?php // echo $form->field($model, 'ESopTelePers') ?>
-
-    <?php // echo $form->field($model, 'ESopTeleOfic') ?>
-
-    <?php // echo $form->field($model, 'ESopCorr') ?>
+    <?= $form->field($model, 'ParFall') ?>
 
     <?php // echo $form->field($model, 'TiposId_fk') ?>
+
+    <?php // echo $form->field($model, 'ParNemo') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

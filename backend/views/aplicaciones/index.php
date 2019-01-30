@@ -3,14 +3,6 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
-use backend\models\Empdistribuidora;
-use backend\models\Empsoporte;
-
-use backend\controllers\SiteController;
-
-use backend\controllers\AplicacionesController;
-
-use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AplicacionesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -25,29 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?php
-
-        if (SiteController::findCom(8)){
-
-        // if (AplicacionesController::findCom(8)){
-
-          // if ($this->context->findVar(1)){
-          echo Html::a('Crear Aplicación', ['create'], ['class' => 'btn btn-success']);
-        }
-        else {
-          $this->redirect(['site/error']);
-        }
-        if (SiteController::findCom(9)) {
-          $view = '{view}';
-        } else {
-          $view = '';
-        }
-        if (SiteController::findCom(10)) {
-          $update = '{update}';
-        } else {
-          $update = '';
-        }
-        ?>
+        <?= Html::a('Create Aplicaciones', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -58,30 +28,128 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'AppId',
             'AppNomb',
-            //'AppDesc',
+            'AppDesc',
+            'AppSigl',
             'AppVers',
+            //'ESopId1',
+            //'AppUrl',
             //'TiposId_fk1',
-            //'AppNumeLice',
             //'TiposId_fk2',
+            //'AppNumeDocuAdqu',
+            //'AppValoAdqu',
+            //'AppFechAdqu',
             //'TiposId_fk3',
-            ['attribute'=>'EDDesId_fk',
-             'value'=> function($model){return $model->EDDesId_fk();},
-             'filter' => Html::activeDropDownList($searchModel, 'EDDesId_fk', ArrayHelper::map(Empdistribuidora::find()->all(),'EDisId','EDisNomb'),['class'=>'form-control','prompt' => 'Seleccione Empresa Distribuidora']),
-            ],
+            //'AppNombProc',
+            //'AppEnti',
+            //'ESopId2',
             //'TiposId_fk4',
+            //'UsuId_fk',
+            //'AppAcueNiveServ',
             //'TiposId_fk5',
-            //'AppInteApp',
-            ['attribute'=>'ESopId_fk',
-             'value'=> function($model){return $model->ESopId_fk();},
-             'filter' => Html::activeDropDownList($searchModel, 'ESopId_fk', ArrayHelper::map(Empsoporte::find()->all(),'ESopId','ESopNomb'),['class'=>'form-control','prompt' => 'Seleccione Empresa Soporte']),
-            ],
+            //'AppFechPues',
+            //'AppServPues',
             //'TiposId_fk6',
             //'TiposId_fk7',
+            //'TiposId_fk8',
+            //'AppVersServ',
+            //'TiposId_fk9',
+            //'AppOtroCual1',
+            //'TiposId_fk10',
+            //'AppOtroCual2',
+            //'TiposId_fk11',
+            //'TiposId_fk12',
+            //'AppOtroCual3',
+            //'TiposId_fk13',
+            //'TiposId_fk14',
+            //'AppOtroCual4',
+            //'TiposId_fk15',
+            //'TiposId_fk16',
+            //'TiposId_fk17',
+            //'TiposId_fk18',
+            //'AppOtroCual6',
+            //'TiposId_fk19',
+            //'AppCual',
+            //'TiposId_fk20',
+            //'AppDondUbic',
+            //'AppTipoLice',
+            //'AppNumeLice',
+            //'TiposId_fk21',
+            //'TiposId_fk22',
+            //'TiposId_fk23',
+            //'AppVersDist',
+            //'TiposId_fk24',
+            //'AppLengServ',
+            //'AppVersApli',
+            //'AppBibl',
+            //'AppObse1',
+            //'AppMane',
             //'AppVersBD',
-            //'AppBaseDato',
+            //'AppPuer1',
+            //'AppObse2',
+            //'AppTipoHard',
+            //'AppProc',
+            //'AppMemo',
+            //'AppEspaDisc',
+            //'AppObse3',
+            //'AppDirec1',
+            //'AppNombArch',
+            //'AppVari',
+            //'AppNombVari',
+            //'AppDescPara',
+            //'AppObse4',
+            //'AppUrlFuen',
+            //'AppServ',
+            //'AppPuer2',
+            //'AppDirec2',
+            //'AppNombServBd',
+            //'AppUsua',
+            //'AppNombBd',
+            //'AppRuta',
+            //'AppEspaActu',
+            //'AppProy',
+            //'TiposId_fk25',
+            //'AppOtroCual7',
+            //'AppPoliBack',
+            //'TiposId_fk26',
+            //'TiposId_fk27',
+            //'AppOtroCual8',
+            //'TiposId_fk28',
+            //'AppOtroCual9',
+            //'AppCantLice',
+            //'TiposId_fk29',
+            //'TiposId_fk30',
+            //'TiposId_fk31',
+            //'TiposId_fk32',
+            //'TiposId_fk33',
+            //'TiposId_fk34',
+            //'TiposId_fk35',
+            //'TiposId_fk36',
+            //'TiposId_fk37',
+            //'TiposId_fk38',
+            //'TiposId_fk39',
+            //'TiposId_fk40',
+            //'TiposId_fk41',
+            //'TiposId_fk42',
+            //'TiposId_fk43',
+            //'TiposId_fk44',
+            //'TiposId_fk45',
+            //'TiposId_fk46',
+            //'TiposId_fk47',
+            //'TiposId_fk48',
+            //'TiposId_fk49',
+            //'TiposId_fk50',
+            //'TiposId_fk51',
+            //'TiposId_fk52',
+            //'TiposId_fk53',
+            //'TiposId_fk54',
+            //'AppUbic',
+            //'TiposId_fk55',
+            //'AppUbicDocu',
+            //'AppUbicUlti',
+            //'AppObse7',
+            //'AppFuncApru',
 
-            ['class' => 'yii\grid\ActionColumn',
-             'template' => "$view $update"],
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

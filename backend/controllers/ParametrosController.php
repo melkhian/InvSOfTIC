@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Aplicaciones;
-use backend\models\AplicacionesSearch;
+use backend\models\Parametros;
+use backend\models\ParametrosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * AplicacionesController implements the CRUD actions for Aplicaciones model.
+ * ParametrosController implements the CRUD actions for Parametros model.
  */
-class AplicacionesController extends Controller
+class ParametrosController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class AplicacionesController extends Controller
     }
 
     /**
-     * Lists all Aplicaciones models.
+     * Lists all Parametros models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AplicacionesSearch();
+        $searchModel = new ParametrosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class AplicacionesController extends Controller
     }
 
     /**
-     * Displays a single Aplicaciones model.
+     * Displays a single Parametros model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,16 +58,16 @@ class AplicacionesController extends Controller
     }
 
     /**
-     * Creates a new Aplicaciones model.
+     * Creates a new Parametros model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Aplicaciones();
+        $model = new Parametros();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->AppId]);
+            return $this->redirect(['view', 'id' => $model->ParId]);
         }
 
         return $this->render('create', [
@@ -76,7 +76,7 @@ class AplicacionesController extends Controller
     }
 
     /**
-     * Updates an existing Aplicaciones model.
+     * Updates an existing Parametros model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -87,7 +87,7 @@ class AplicacionesController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->AppId]);
+            return $this->redirect(['view', 'id' => $model->ParId]);
         }
 
         return $this->render('update', [
@@ -96,7 +96,7 @@ class AplicacionesController extends Controller
     }
 
     /**
-     * Deletes an existing Aplicaciones model.
+     * Deletes an existing Parametros model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class AplicacionesController extends Controller
     }
 
     /**
-     * Finds the Aplicaciones model based on its primary key value.
+     * Finds the Parametros model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Aplicaciones the loaded model
+     * @return Parametros the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Aplicaciones::findOne($id)) !== null) {
+        if (($model = Parametros::findOne($id)) !== null) {
             return $model;
         }
 

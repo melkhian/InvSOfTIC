@@ -4,20 +4,20 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\EmpsoporteSearch */
+/* @var $searchModel backend\models\ParametrosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Empsoportes';
+$this->title = 'Parametros';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="empsoporte-index">
+<div class="parametros-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Empsoporte', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Parametros', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -26,16 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'ESopId',
-            'ESopNit',
-            'ESopNomb',
-            'ESopDire',
-            'ESopCont',
-            //'UsuId_fk',
-            //'ESopTelePers',
-            //'ESopTeleOfic',
-            //'ESopCorr',
+            'ParId',
+            'ParHead',
+            'ParFoot',
+            'ParMult',
+            'ParFall',
             //'TiposId_fk',
+            //'ParNemo',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
