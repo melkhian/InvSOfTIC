@@ -37,7 +37,7 @@ class RolusuaController extends Controller
     public function actionIndex()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(45) or SiteController::findCom(46) or SiteController::findCom(47)){
+        if(SiteController::findCom(42) or SiteController::findCom(43) or SiteController::findCom(44)){
         $searchModel = new RolusuaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -63,7 +63,7 @@ class RolusuaController extends Controller
     public function actionView($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(46)){
+        if(SiteController::findCom(43)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -84,7 +84,7 @@ class RolusuaController extends Controller
     public function actionCreate()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(45)){
+        if(SiteController::findCom(42)){
         $model = new Rolusua();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -113,7 +113,7 @@ class RolusuaController extends Controller
     public function actionUpdate($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(47)){
+        if(SiteController::findCom(44)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -141,7 +141,7 @@ class RolusuaController extends Controller
      */
     public function actionDelete($id)
     {
-        if(SiteController::findVar(15)){
+        if(SiteController::findVar(1500)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

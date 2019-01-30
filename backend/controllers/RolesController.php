@@ -36,7 +36,7 @@ class RolesController extends Controller
     public function actionIndex()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(39) or SiteController::findCom(40) or SiteController::findCom(41)){
+        if(SiteController::findCom(36) or SiteController::findCom(37) or SiteController::findCom(38)){
         $searchModel = new RolesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -62,7 +62,7 @@ class RolesController extends Controller
     public function actionView($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(40)){
+        if(SiteController::findCom(37)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -83,7 +83,7 @@ class RolesController extends Controller
     public function actionCreate()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(39)){
+        if(SiteController::findCom(36)){
         $model = new Roles();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -112,7 +112,7 @@ class RolesController extends Controller
     public function actionUpdate($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(41)){
+        if(SiteController::findCom(38)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -140,7 +140,7 @@ class RolesController extends Controller
      */
     public function actionDelete($id)
     {
-        if(SiteController::findVar(13)){
+        if(SiteController::findVar(1300)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

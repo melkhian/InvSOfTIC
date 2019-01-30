@@ -36,7 +36,7 @@ class RequerimientosController extends Controller
     public function actionIndex()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(30) or SiteController::findCom(31) or SiteController::findCom(32)){
+        if(SiteController::findCom(27) or SiteController::findCom(28) or SiteController::findCom(29)){
         $searchModel = new RequerimientosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -62,7 +62,7 @@ class RequerimientosController extends Controller
     public function actionView($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(31)){
+        if(SiteController::findCom(28)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -83,7 +83,7 @@ class RequerimientosController extends Controller
     public function actionCreate()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(30)){
+        if(SiteController::findCom(27)){
         $model = new Requerimientos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -112,7 +112,7 @@ class RequerimientosController extends Controller
     public function actionUpdate($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(32)){
+        if(SiteController::findCom(29)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -140,7 +140,7 @@ class RequerimientosController extends Controller
      */
     public function actionDelete($id)
     {
-        if(SiteController::findVar(10)){
+        if(SiteController::findVar(1001)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

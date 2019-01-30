@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php
-        if (SiteController::findCom(35)) {
+        if (SiteController::findCom(32)) {
         echo Html::a('Actualizar', ['update', 'id' => $model->VDReqId], ['class' => 'btn btn-primary']);
         }
         ?>
