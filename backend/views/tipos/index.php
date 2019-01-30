@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'TiposId',
             ['attribute'=>'TipoId_fk',
              'value'=> function($model){return $model->TipoId_fk();},
-             'filter' => Html::activeDropDownList($searchModel, 'TipoId_fk', ArrayHelper::map(Tipo::find()->all(),'TipoId','TipoDesc'),['class'=>'form-control','prompt' => 'Seleccione el Tipo']),
+             'filter' => Html::activeDropDownList($searchModel, 'TipoId_fk', ArrayHelper::map(Tipo::find()->orderBy("TipoDesc ASC")->all(),'TipoId','TipoDesc'),['class'=>'form-control','prompt' => 'Seleccione el Tipo']),
             ],
             'TiposDesc',
             'TiposValo',

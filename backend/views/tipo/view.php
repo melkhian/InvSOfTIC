@@ -19,6 +19,12 @@ $this->params['breadcrumbs'][] = $this->title;
         if (SiteController::findCom(50)) {
         echo Html::a('Actualizar', ['update', 'id' => $model->TipoId], ['class' => 'btn btn-primary']);
       }
+      if (SiteController::findCom(48)) {
+      echo Html::a('Crear Tipo', ['create'], ['class' => 'btn btn-success']);
+      }
+      else {
+        $this->redirect(['site/error']);
+      }
         ?>
         <!-- <?= Html::a('Delete', ['delete', 'id' => $model->TipoId], [
             'class' => 'btn btn-danger',
