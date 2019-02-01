@@ -14,17 +14,10 @@ use kartik\date\DatePicker;
 <script type = "text/javascript">
   function TiposId_fk5(){
 
-
-var arry ='';
+    var arry ='';
     var TiposId_fk5 = document.querySelector("#aplicaciones-tiposid_fk5 > label:nth-child(3) > input[type='checkbox']");
-    arry= TiposId_fk5.value;
+    arry= TiposId_fk5.checked;
     alert(arry);
-
-//     for (var index = 0; index < TiposId_fk5.length; index++) {
-//
-//     alert(arry);
-// }
-
 
   }
 </script>
