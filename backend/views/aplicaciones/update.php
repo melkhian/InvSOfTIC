@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Actualizar Aplicaciones: ' . $model->AppNomb;
 $this->params['breadcrumbs'][] = ['label' => 'Aplicaciones', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->AppId, 'url' => ['view', 'id' => $model->AppId]];
+$this->params['breadcrumbs'][] = ['label' => $model->AppNomb, 'url' => ['view', 'id' => $model->AppId]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="aplicaciones-update">

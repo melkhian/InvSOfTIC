@@ -12,7 +12,3 @@ use backend\models\Tipos;
 ?>
 <br><br>
     <?= $form->field($model, 'AppFuncApru')->textInput(['maxlength' => true]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
-    </div>

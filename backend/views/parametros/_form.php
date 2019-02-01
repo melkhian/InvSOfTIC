@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use backend\models\Tipos;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Parametros */
@@ -20,12 +22,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'ParFall')->textInput() ?>
 
-    <?= $form->field($model, 'TiposId_fk')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk')
+    ->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 51')->all(),'TiposId','TiposDesc'),
+    ['prompt'=> 'Seleccione el Estado del Aplicativo'])?>
 
     <?= $form->field($model, 'ParNemo')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

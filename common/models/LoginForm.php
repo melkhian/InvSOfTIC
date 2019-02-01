@@ -63,9 +63,16 @@ class LoginForm extends Model
            $data = LoginForm::RUsuId($id);
            $fechaCad = strtotime($data);
            $status = LoginForm::Status($id);
+           $parstatus = LoginForm::ParStatus();
+           $userRol = LoginForm::UserRol($id);
+           // print_r($parstatus);
+           // die();
          }
 
-         if (!$user || !$user->validatePassword($this->password)) {
+          //Validación para verificar si el aplicativo está HABILITADO para los usuarios
+         if ($parstatus == 150 && $userRol != 1) {
+           $this->addError($attribute, 'El aplicativo se encuentra DESHABILITADO');
+         }elseif (!$user || !$user->validatePassword($this->password)) {
            $this->addError($attribute, 'Nombre de Usuario o contraseña incorrectos.');
 
            //Validación para verificar antes del login si el Usuario está o no HABILITADO
@@ -98,6 +105,18 @@ class LoginForm extends Model
       return $rows;
     }
 
+    public static function ParStatus()
+    {
+      $query = (new \yii\db\Query())
+      ->select('TiposId_fk')
+      ->from('parametros')
+      ->orderby(['ParId'=> SORT_DESC])
+      ->limit(1);
+      $command = $query->createCommand();
+      $rows = $command->queryScalar();
+      return $rows;
+    }
+
     public static function Status($id)
     {
       // $IdUser = Yii::$app->user->identity->id;
@@ -110,6 +129,17 @@ class LoginForm extends Model
       return $rows;
     }
 
+    public static function UserRol($id)
+    {
+      // $IdUser = Yii::$app->user->identity->id;
+      $query = (new \yii\db\Query())
+      ->select('RolId')
+      ->from('roles')
+      ->where(['RolId' => $id]);
+      $command = $query->createCommand();
+      $rows = $command->queryScalar();
+      return $rows;
+    }
     /**
      * Logs in a user using the provided username and password.
      *

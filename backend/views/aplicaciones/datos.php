@@ -5,6 +5,8 @@ use yii\widgets\ActiveForm;
 use yii\bootstrap\Tabs;
 use yii\helpers\ArrayHelper;
 use backend\models\Tipos;
+use backend\models\Empsoporte;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Formulario */
@@ -19,7 +21,7 @@ use backend\models\Tipos;
 
 <?= $form->field($model, 'AppVers')->textInput(['maxlength' => true]) ?>
 
-<?= $form->field($model, 'ESopId1')->textInput() ?>
+<?= $form->field($model, 'ESopId1')->dropDownList(ArrayHelper::map(Empsoporte::find()->all(),'ESopId','ESopNomb'), ['prompt'=> 'Seleccione la Empresa de Soporte'])?>
 
 <?= $form->field($model, 'AppUrl')->textInput(['maxlength' => true]) ?>
 
@@ -31,7 +33,14 @@ use backend\models\Tipos;
 
 <?= $form->field($model, 'AppValoAdqu')->textInput(['maxlength' => true]) ?>
 
-<?= $form->field($model, 'AppFechAdqu')->textInput() ?>
+<?= $form->field($model, 'AppFechAdqu')->widget( DatePicker::className(),
+        ['name' => 'check_issue_date',
+        'value' => date('d-M-Y', strtotime('+2 days')),
+        'options' => ['placeholder' => 'Seleccione la fecha de Adquisición'],
+        'pluginOptions' => [
+        'format' => 'yyyy-mm-dd',
+        'todayHighlight' => true]]);
+ ?>
 
 <?= $form->field($model, 'TiposId_fk3')->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 22')->all(),'TiposValo','TiposDesc'))?>
 

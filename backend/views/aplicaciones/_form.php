@@ -14,23 +14,26 @@ use backend\models\Tipos;
 <div class="aplicaciones-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <div class="form-group">
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+    </div>
     <?= Tabs::widget([
             'items' => [
                 [
-                    'label' => 'Datos Generales',
+                    'label' => 'I',
                     'content' => $this->render('datos', ['model' => $model, 'form' => $form]),
                     'active' => true
                 ],
                 [
-                    'label' => 'Población Objetivo',
+                    'label' => 'II',
                     'content' => $this->render('poblacion', ['model' => $model, 'form' => $form]),
                 ],
                 [
-                    'label' => 'Soporte del Desarrollador',
+                    'label' => 'III',
                     'content' => $this->render('soporte', ['model' => $model, 'form' => $form]),
                 ],
                 [
-                    'label' => 'Soporte Funcional Interno',
+                    'label' => 'IV',
                     'content' => $this->render('soporteInterno', ['model' => $model, 'form' => $form]),
                 ],
                 [
@@ -38,36 +41,36 @@ use backend\models\Tipos;
                     'content' => $this->render('acuerdos', ['model' => $model, 'form' => $form]),
                 ],
                 [
-                    'label' => 'Datos Básicos Aplicación',
+                    'label' => 'VII',
                     'content' => $this->render('datosApp', ['model' => $model, 'form' => $form]),
                 ],
                 [
-                    'label' => 'Requerimientos de Software para el Servidor',
+                    'label' => 'VIII',
                     'content' => $this->render('reqSoftware', ['model' => $model, 'form' => $form]),
                 ],
                 [
-                    'label' => 'Requerimientos de Hardware para el Servidor',
+                    'label' => 'IX',
                     'content' => $this->render('reqHardware', ['model' => $model, 'form' => $form]),
                 ],
                 [
-                    'label' => 'Archivos de Configuración',
+                    'label' => 'X',
                     'content' => $this->render('archConfiguracion', ['model' => $model, 'form' => $form]),
                 ],
                 [
-                    'label' => 'Parámetros de Configuración',
+                    'label' => 'VIII',
                     'content' => $this->render('paraConfiguracion', ['model' => $model, 'form' => $form]),
                 ],
                 [
-                    'label' => 'Información de Base de Datos Asociada/s a la aplicación',
+                    'label' => 'XI',
                     'content' => $this->render('infoBase', ['model' => $model, 'form' => $form]),
                 ],
 
                 [
-                    'label' => 'Documentación',
+                    'label' => 'XV',
                     'content' => $this->render('documentacion', ['model' => $model, 'form' => $form]),
                 ],
                 [
-                    'label' => 'Aceptación',
+                    'label' => 'XVI',
                     'content' => $this->render('funcAprueba', ['model' => $model, 'form' => $form]),
                 ],
             ]]);

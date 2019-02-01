@@ -5,16 +5,43 @@ use yii\widgets\ActiveForm;
 use yii\bootstrap\Tabs;
 use yii\helpers\ArrayHelper;
 use backend\models\Tipos;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Formulario */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<script type = "text/javascript">
+  function TiposId_fk5(){
+
+var arry ='';
+    var TiposId_fk5 = document.getElementsByName("Aplicaciones[TiposId_fk5][]");
+    arry= TiposId_fk5.value;
+    alert(arry);
+
+//     for (var index = 0; index < TiposId_fk5.length; index++) {
+//
+//     alert(arry);
+// }
+
+
+  }
+</script>
 <br><br>
     <?= $form->field($model, 'TiposId_fk5')
-    ->checkboxList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 23')->all(),'TiposValo','TiposDesc'))?>
+    ->checkboxList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 23')->all(),'TiposValo','TiposDesc'),
+                  [
+                    'onchange'=>'TiposId_fk5(this);'
+                    ])?>
 
-    <?= $form->field($model, 'AppFechPues')->textInput() ?>
+    <?= $form->field($model, 'AppFechPues')->widget( DatePicker::className(),
+            ['name' => 'check_issue_date',
+            'value' => date('d-M-Y', strtotime('+2 days')),
+            'options' => ['placeholder' => 'Seleccione la fecha de Adquisición'],
+            'pluginOptions' => [
+            'format' => 'yyyy-mm-dd',
+            'todayHighlight' => true]]);
+     ?>
 
     <?= $form->field($model, 'AppServPues')->textInput(['maxlength' => true]) ?>
 

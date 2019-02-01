@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use backend\models\Tipos;
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\ParametrosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -17,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Parametros', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Parametro', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -30,9 +32,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'ParHead',
             'ParFoot',
             'ParMult',
-            'ParFall',
-            //'TiposId_fk',
-            //'ParNemo',
+            ['attribute'=>'TiposId_fk',
+             'value'=> function($model){return $model->TiposId_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'TiposId_fk', ArrayHelper::map(Tipos::find()->where('tipoid_fk = 51')->all(),'TiposId','TiposDesc'),['class'=>'form-control','prompt' => 'Seleccione el Tipo']),
+            ],
+            'ParNemo',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
