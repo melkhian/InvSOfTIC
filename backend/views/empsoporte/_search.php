@@ -28,7 +28,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'ESopCont') ?>
 
-    <?php // echo $form->field($model, 'UsuId_fk') ?>
+    <?php // echo $form->field($model, 'TiposId_fk1') ?>
 
     <?php // echo $form->field($model, 'ESopTelePers') ?>
 
@@ -36,7 +36,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'ESopCorr') ?>
 
-    <?php // echo $form->field($model, 'TiposId_fk') ?>
+    <?php // echo $form->field($model, 'TiposId_fk2') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

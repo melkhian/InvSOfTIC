@@ -68,43 +68,43 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'TiposId_fk8') ?>
 
-    <?php // echo $form->field($model, 'AppVersServ') ?>
+    <?php // echo $form->field($model, 'AppOtroCual8') ?>
 
     <?php // echo $form->field($model, 'TiposId_fk9') ?>
 
-    <?php // echo $form->field($model, 'AppOtroCual1') ?>
+    <?php // echo $form->field($model, 'AppOtroCual9') ?>
 
     <?php // echo $form->field($model, 'TiposId_fk10') ?>
 
-    <?php // echo $form->field($model, 'AppOtroCual2') ?>
+    <?php // echo $form->field($model, 'AppOtroCual10') ?>
 
     <?php // echo $form->field($model, 'TiposId_fk11') ?>
 
     <?php // echo $form->field($model, 'TiposId_fk12') ?>
 
-    <?php // echo $form->field($model, 'AppOtroCual3') ?>
+    <?php // echo $form->field($model, 'AppOtroCual12') ?>
 
     <?php // echo $form->field($model, 'TiposId_fk13') ?>
 
     <?php // echo $form->field($model, 'TiposId_fk14') ?>
 
-    <?php // echo $form->field($model, 'AppOtroCual4') ?>
+    <?php // echo $form->field($model, 'AppOtroCual14') ?>
 
     <?php // echo $form->field($model, 'TiposId_fk15') ?>
 
     <?php // echo $form->field($model, 'TiposId_fk16') ?>
 
-    <?php // echo $form->field($model, 'AppOtroCual10') ?>
+    <?php // echo $form->field($model, 'AppOtroCual16') ?>
 
     <?php // echo $form->field($model, 'TiposId_fk17') ?>
 
     <?php // echo $form->field($model, 'TiposId_fk18') ?>
 
-    <?php // echo $form->field($model, 'AppOtroCual6') ?>
+    <?php // echo $form->field($model, 'AppOtroCual18') ?>
 
     <?php // echo $form->field($model, 'TiposId_fk19') ?>
 
-    <?php // echo $form->field($model, 'AppCual') ?>
+    <?php // echo $form->field($model, 'AppOtroCual19') ?>
 
     <?php // echo $form->field($model, 'TiposId_fk20') ?>
 
@@ -184,7 +184,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'TiposId_fk25') ?>
 
-    <?php // echo $form->field($model, 'AppOtroCual7') ?>
+    <?php // echo $form->field($model, 'AppOtroCual25') ?>
 
     <?php // echo $form->field($model, 'AppPoliBack') ?>
 
@@ -192,11 +192,11 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'TiposId_fk27') ?>
 
-    <?php // echo $form->field($model, 'AppOtroCual8') ?>
+    <?php // echo $form->field($model, 'AppOtroCual27') ?>
 
     <?php // echo $form->field($model, 'TiposId_fk28') ?>
 
-    <?php // echo $form->field($model, 'AppOtroCual9') ?>
+    <?php // echo $form->field($model, 'AppOtroCual28') ?>
 
     <?php // echo $form->field($model, 'AppCantLice') ?>
 

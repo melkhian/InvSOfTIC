@@ -12,6 +12,8 @@ use kartik\date\DatePicker;
 /* @var $model backend\models\Formulario */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<br>
+<h1>I. DATOS GENERALES</h1>
 <br><br>
 <?= $form->field($model, 'AppNomb')->textInput(['maxlength' => true]) ?>
 
@@ -31,7 +33,7 @@ use kartik\date\DatePicker;
 
 <?= $form->field($model, 'AppNumeDocuAdqu')->textInput(['maxlength' => true]) ?>
 
-<?= $form->field($model, 'AppValoAdqu')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'AppValoAdqu')->textInput(['maxlength' => true, 'placeholder' => "Pesos o Dólares"]) ?>
 
 <?= $form->field($model, 'AppFechAdqu')->widget( DatePicker::className(),
         ['name' => 'check_issue_date',

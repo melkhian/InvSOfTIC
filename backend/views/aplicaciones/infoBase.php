@@ -10,6 +10,8 @@ use backend\models\Tipos;
 /* @var $model backend\models\Formulario */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<br>
+<h1>XI. INFORMACIÓN DE BASE DE DATOS ASOCIADA/S A LA APLICACIÓN</h1>
 <br><br>
 <?= $form->field($model, 'AppNombServBd')->textInput(['maxlength' => true]) ?>
 
@@ -24,9 +26,11 @@ use backend\models\Tipos;
 <?= $form->field($model, 'AppProy')->textInput(['maxlength' => true]) ?>
 
 <?= $form->field($model, 'TiposId_fk25')
-->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 42')->all(),'TiposValo','TiposDesc'))?>
+->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 42')->all(),'TiposValo','TiposDesc'),
+                ['onchange'=>'TiposId_fk($id=25,$tab=10,$tipo="radio");'
+                  ])?>
 
-<?= $form->field($model, 'AppOtroCual7')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'AppOtroCual25')->textInput(['maxlength' => true]) ?>
 
 <?= $form->field($model, 'AppPoliBack')->textInput(['maxlength' => true]) ?>
 
@@ -34,13 +38,17 @@ use backend\models\Tipos;
 ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 43')->all(),'TiposValo','TiposDesc'))?>
 
 <?= $form->field($model, 'TiposId_fk27')
-->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 44')->all(),'TiposValo','TiposDesc'))?>
+->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 44')->all(),'TiposValo','TiposDesc'),
+                ['onchange'=>'TiposId_fk($id=27,$tab=10,$tipo="radio");'
+                  ])?>
 
-<?= $form->field($model, 'AppOtroCual8')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'AppOtroCual27')->textInput(['maxlength' => true]) ?>
 
 <?= $form->field($model, 'TiposId_fk28')
-->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 45')->all(),'TiposValo','TiposDesc'))?>
+->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 45')->all(),'TiposValo','TiposDesc'),
+                ['onchange'=>'TiposId_fk($id=28,$tab=10,$tipo="radio");'
+                  ])?>
 
-<?= $form->field($model, 'AppOtroCual9')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'AppOtroCual28')->textInput(['maxlength' => true]) ?>
 
 <?= $form->field($model, 'AppCantLice')->textInput(['maxlength' => true]) ?>

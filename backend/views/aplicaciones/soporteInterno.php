@@ -11,6 +11,8 @@ use backend\models\User;
 /* @var $model backend\models\Formulario */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<br>
+<h1>IV. SOPORTE FUNCIONAL INTERNO</h1>
 <br><br>
     <?= $form->field($model, 'TiposId_fk4')->textInput(['maxlength' => true]) ?>
 

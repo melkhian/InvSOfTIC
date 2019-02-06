@@ -10,9 +10,11 @@ use backend\models\Tipos;
 /* @var $model backend\models\Formulario */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<br>
+<h1>VIII. REQUERIMIENTOS DE SOFTWARE PARA EL SERVIDOR</h1>
 <br><br>
     <?= $form->field($model, 'TiposId_fk23')
-    ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 38')->all(),'TiposValo','TiposDesc'))?>
+    ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 40')->all(),'TiposValo','TiposDesc'))?>
 
     <?= $form->field($model, 'AppVersDist')->textInput(['maxlength' => true]) ?>
 

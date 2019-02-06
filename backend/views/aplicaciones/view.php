@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Aplicaciones */
 
-$this->title = $model->AppNomb;
+$this->title = $model->AppId;
 $this->params['breadcrumbs'][] = ['label' => 'Aplicaciones', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,14 +15,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Actualizar', ['update', 'id' => $model->AppId], ['class' => 'btn btn-primary']) ?>
-        <!-- <?= Html::a('Eliminar', ['delete', 'id' => $model->AppId], [
+        <?= Html::a('Update', ['update', 'id' => $model->AppId], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->AppId], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => '¿Está seguro de eliminar este elemento?',
+                'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?> -->
+        ]) ?>
     </p>
 
     <?= DetailView::widget([
@@ -53,25 +53,25 @@ $this->params['breadcrumbs'][] = $this->title;
             'TiposId_fk6',
             'TiposId_fk7',
             'TiposId_fk8',
-            'AppVersServ',
+            'AppOtroCual8',
             'TiposId_fk9',
-            'AppOtroCual1',
+            'AppOtroCual9',
             'TiposId_fk10',
-            'AppOtroCual2',
+            'AppOtroCual10',
             'TiposId_fk11',
             'TiposId_fk12',
-            'AppOtroCual3',
+            'AppOtroCual12',
             'TiposId_fk13',
             'TiposId_fk14',
-            'AppOtroCual4',
+            'AppOtroCual14',
             'TiposId_fk15',
             'TiposId_fk16',
-            'AppOtroCual10',
+            'AppOtroCual16',
             'TiposId_fk17',
             'TiposId_fk18',
-            'AppOtroCual6',
+            'AppOtroCual18',
             'TiposId_fk19',
-            'AppCual',
+            'AppOtroCual19',
             'TiposId_fk20',
             'AppDondUbic',
             'AppTipoLice',
@@ -111,13 +111,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'AppEspaActu',
             'AppProy',
             'TiposId_fk25',
-            'AppOtroCual7',
+            'AppOtroCual25',
             'AppPoliBack',
             'TiposId_fk26',
             'TiposId_fk27',
-            'AppOtroCual8',
+            'AppOtroCual27',
             'TiposId_fk28',
-            'AppOtroCual9',
+            'AppOtroCual28',
             'AppCantLice',
             'TiposId_fk29',
             'TiposId_fk30',

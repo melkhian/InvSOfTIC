@@ -10,5 +10,7 @@ use backend\models\Tipos;
 /* @var $model backend\models\Formulario */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-  <br><br>
+<br>
+<h1>ACUERDOS DE NIVELES DE SERVICIO</h1>
+<br><br>
     <?= $form->field($model, 'AppAcueNiveServ')->textInput(['maxlength' => true]) ?>

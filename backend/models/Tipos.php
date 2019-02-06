@@ -48,8 +48,9 @@ class Tipos extends \yii\db\ActiveRecord
     {
         return [
             [['TipoId_fk', 'TiposDesc'], 'required'],
-            [['TipoId_fk', 'TiposValo'], 'integer'],
+            [['TipoId_fk'], 'integer'],
             [['TiposDesc'], 'string', 'max' => 100],
+            [['TiposValo'], 'string', 'max' => 50],
             [['TipoId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Tipo::className(), 'targetAttribute' => ['TipoId_fk' => 'TipoId']],
         ];
     }

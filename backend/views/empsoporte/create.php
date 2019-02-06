@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\Empsoporte */
 
 $this->title = 'Crear Empresa de Soporte';
-$this->params['breadcrumbs'][] = ['label' => 'Empresas de Soporte', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Empresa de Soporte', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="empsoporte-create">

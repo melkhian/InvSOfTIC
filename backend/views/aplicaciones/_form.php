@@ -10,6 +10,10 @@ use backend\models\Tipos;
 /* @var $model backend\models\Aplicaciones */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<!-- INICIO INCLUDE para mostrar u ocultar los campos dependientes cuando se selecciona Otro en las opciones de los checkBoxList -->
+<?php include 'otros.php';?>
+<!-- FIN INCLUDE -->
+<body onload="Init()"></body>
 
 <div class="aplicaciones-form">
 

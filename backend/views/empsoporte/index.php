@@ -31,11 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'ESopNomb',
             'ESopDire',
             'ESopCont',
-            //'UsuId_fk',
+            //'TiposId_fk1',
             //'ESopTelePers',
             //'ESopTeleOfic',
             //'ESopCorr',
-            //'TiposId_fk',
+            //'TiposId_fk2',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
