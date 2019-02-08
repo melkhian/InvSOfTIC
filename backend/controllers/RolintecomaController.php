@@ -36,7 +36,7 @@ class RolintecomaController extends Controller
     public function actionIndex()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(42) or SiteController::findCom(43) or SiteController::findCom(44)){
+        if(SiteController::findCom(39) or SiteController::findCom(40) or SiteController::findCom(41)){
         $searchModel = new RolintecomaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -62,7 +62,7 @@ class RolintecomaController extends Controller
     public function actionView($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(43)){
+        if(SiteController::findCom(40)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -84,7 +84,7 @@ class RolintecomaController extends Controller
     public function actionCreate()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(42)){
+        if(SiteController::findCom(39)){
         $model = new Rolintecoma();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -113,7 +113,7 @@ class RolintecomaController extends Controller
     public function actionUpdate($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(44)){
+        if(SiteController::findCom(41)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

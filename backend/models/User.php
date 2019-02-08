@@ -75,9 +75,9 @@ private $var;
             [['usuiden', 'usutelepers', 'usuteleofic'], 'string', 'max' => 20],
             [['usuprimnomb', 'ususegunomb', 'usuprimapel', 'ususeguapel'], 'string', 'max' => 30],
             [['username', 'email'], 'string', 'max' => 255],
-
             [['username'], 'unique'],
             [['email'], 'unique'],
+            [['usuiden'], 'unique'],
 
         ];
     }
@@ -176,6 +176,7 @@ private $var;
     /**
      * @return \yii\db\ActiveQuery
      */
+
     public function getProyectos()
     {
         return $this->hasMany(Proyectos::className(), ['UsuId_fk' => 'id']);

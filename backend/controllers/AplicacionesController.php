@@ -8,7 +8,7 @@ use backend\models\AplicacionesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use backend\controllers\SiteController;
+
 /**
  * AplicacionesController implements the CRUD actions for Aplicaciones model.
  */
@@ -37,18 +37,18 @@ class AplicacionesController extends Controller
     {
       if(isset(Yii::$app->user->identity->id)){
         if(SiteController::findCom(8) or SiteController::findCom(9) or SiteController::findCom(10) or SiteController::findCom(11)){
-          $searchModel = new AplicacionesSearch();
-          $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $searchModel = new AplicacionesSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-          return $this->render('index', [
-              'searchModel' => $searchModel,
-              'dataProvider' => $dataProvider,
-          ]);
-          }
-          else {
-            $this->redirect(['site/error']);
-          }
-      }else {
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+        }else {
+          $this->redirect(['site/error']);
+        }
+      }
+      else {
         $this->redirect(['site/login']);
       }
     }
@@ -63,17 +63,17 @@ class AplicacionesController extends Controller
     {
       if(isset(Yii::$app->user->identity->id)){
         if(SiteController::findCom(9)){
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+          return $this->render('view', [
+              'model' => $this->findModel($id),
+          ]);
+        }
+        else {
+          $this->redirect(['site/error']);
+        }
+      }else {
+        $this->redirect(['site/login']);
       }
-      else {
-        $this->redirect(['site/error']);
-      }
-    }else {
-      $this->redirect(['site/login']);
     }
-  }
 
     /**
      * Creates a new Aplicaciones model.
@@ -93,15 +93,14 @@ class AplicacionesController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
-        }
-        else{
-          $this->redirect(['site/error']);
-        }
-      }else {
-        $this->redirect(['site/login']);
       }
+      else {
+        $this->redirect(['site/error']);
+      }
+    }else {
+      $this->redirect(['site/login']);
     }
-
+  }
     /**
      * Updates an existing Aplicaciones model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -113,7 +112,21 @@ class AplicacionesController extends Controller
     {
       if(isset(Yii::$app->user->identity->id)){
         if(SiteController::findCom(10)){
-        $model = $this->findModel($id);
+          $model = $this->findModel($id);
+
+        //Se agrega para pasar de String a Array
+        $model->TiposId_fk5 = explode(',',$model->TiposId_fk5);
+        $model->TiposId_fk6 = explode(',',$model->TiposId_fk6);
+        $model->TiposId_fk7 = explode(',',$model->TiposId_fk7);
+        $model->TiposId_fk8 = explode(',',$model->TiposId_fk8);
+        $model->TiposId_fk9 = explode(',',$model->TiposId_fk9);
+        $model->TiposId_fk10 = explode(',',$model->TiposId_fk10);
+        $model->TiposId_fk12 = explode(',',$model->TiposId_fk12);
+        $model->TiposId_fk14 = explode(',',$model->TiposId_fk14);
+        $model->TiposId_fk16 = explode(',',$model->TiposId_fk16);
+        $model->TiposId_fk18 = explode(',',$model->TiposId_fk18);
+        $model->TiposId_fk21 = explode(',',$model->TiposId_fk21);
+        $model->TiposId_fk26 = explode(',',$model->TiposId_fk26);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->AppId]);
@@ -122,14 +135,14 @@ class AplicacionesController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
-        }
-        else {
-          $this->redirect(['site/error']);
-        }
-      }else {
-        $this->redirect(['site/login']);
       }
+      else {
+        $this->redirect(['site/error']);
+      }
+    }else {
+      $this->redirect(['site/login']);
     }
+  }
     /**
      * Deletes an existing Aplicaciones model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -139,15 +152,19 @@ class AplicacionesController extends Controller
      */
     public function actionDelete($id)
     {
+      if(isset(Yii::$app->user->identity->id)){
         if(SiteController::findCom(11)){
-        $this->findModel($id)->delete();
+          $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
-      }
-      else {
-        $this->redirect(['site/error']);
-      }
+          return $this->redirect(['index']);
     }
+    else {
+      $this->redirect(['site/error']);
+    }
+  }else {
+    $this->redirect(['site/login']);
+  }
+}
 
     /**
      * Finds the Aplicaciones model based on its primary key value.
@@ -165,45 +182,5 @@ class AplicacionesController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function findVar($var)
-    {
-      $IdUser = Yii::$app->user->identity->id;
-      // $var = 'Usuarios';
-      $query = (new \yii\db\Query())
-      ->select('intId')
-      ->from('user')
-      ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
-      ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
-      ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
-      ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
-      ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
-      ->where([
-        'id' => $IdUser,
-        'IntId' => $var]);
-        $command = $query->createCommand();
-        $rows = $command->queryScalar();
-        return $rows;
-    }
-
-    // public function findCom($com)
-    // {
-    //   $IdUser = Yii::$app->user->identity->id;
-    //   // $var = 'Usuarios';
-    //   $query = (new \yii\db\Query())
-    //   ->select('comId')
-    //   ->from('user')
-    //   ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
-    //   ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
-    //   ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
-    //   ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
-    //   ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
-    //   ->innerJoin('comandos','comandos.comid = interfaces.intId')
-    //   ->where([
-    //     'id' => $IdUser,
-    //     'comid_fk' => $com]);
-    //     $command = $query->createCommand();
-    //     $rows = $command->queryScalar();
-    //     return $rows;
-    // }
-
+  public function loadFunctions(){}
 }

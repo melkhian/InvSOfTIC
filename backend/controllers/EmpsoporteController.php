@@ -36,7 +36,7 @@ class EmpsoporteController extends Controller
     public function actionIndex()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(21) or SiteController::findCom(22) or SiteController::findCom(23)){
+        if(SiteController::findCom(18) or SiteController::findCom(19) or SiteController::findCom(20)){
         $searchModel = new EmpsoporteSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -44,13 +44,13 @@ class EmpsoporteController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-      }
-      else {
-        $this->redirect(['site/error']);
-      }
-    }else {
-      $this->redirect(['site/login']);
     }
+    else {
+      $this->redirect(['site/error']);
+    }
+  }else {
+    $this->redirect(['site/login']);
+  }
 }
 
     /**
@@ -62,17 +62,17 @@ class EmpsoporteController extends Controller
     public function actionView($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(22)){
+        if(SiteController::findCom(19)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
-      }
-      else {
-        $this->redirect(['site/error']);
-      }
-    }else {
-      $this->redirect(['site/login']);
     }
+    else {
+      $this->redirect(['site/error']);
+    }
+  }else {
+    $this->redirect(['site/login']);
+  }
 }
 
     /**
@@ -83,7 +83,7 @@ class EmpsoporteController extends Controller
     public function actionCreate()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(21)){
+        if(SiteController::findCom(18)){
         $model = new Empsoporte();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -93,13 +93,13 @@ class EmpsoporteController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
-      }
-      else {
-        $this->redirect(['site/error']);
-      }
-    }else {
-      $this->redirect(['site/login']);
     }
+    else {
+      $this->redirect(['site/error']);
+    }
+  }else {
+    $this->redirect(['site/login']);
+  }
 }
 
     /**
@@ -112,7 +112,7 @@ class EmpsoporteController extends Controller
     public function actionUpdate($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(23)){
+        if(SiteController::findCom(20)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -122,13 +122,13 @@ class EmpsoporteController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
-      }
-      else {
-        $this->redirect(['site/error']);
-      }
-    }else {
-      $this->redirect(['site/login']);
     }
+    else {
+      $this->redirect(['site/error']);
+    }
+  }else {
+    $this->redirect(['site/login']);
+  }
 }
 
     /**
@@ -140,14 +140,9 @@ class EmpsoporteController extends Controller
      */
     public function actionDelete($id)
     {
-        if(SiteController::findVar(7)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
-      }
-      else {
-        $this->redirect(['site/error']);
-      }
     }
 
     /**
@@ -165,25 +160,4 @@ class EmpsoporteController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-    public function findVar($var)
-    {
-      $IdUser = Yii::$app->user->identity->id;
-      // $var = 'Usuarios';
-      $query = (new \yii\db\Query())
-      ->select('intId')
-      ->from('user')
-      ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
-      ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
-      ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
-      ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
-      ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
-      ->where([
-        'id' => $IdUser,
-        'IntId' => $var]);
-        $command = $query->createCommand();
-        $rows = $command->queryScalar();
-        return $rows;
-    }
-
 }

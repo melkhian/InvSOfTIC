@@ -36,7 +36,7 @@ class EstrequerimientosController extends Controller
     public function actionIndex()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(36) or SiteController::findCom(37) or SiteController::findCom(38)){
+        if(SiteController::findCom(33) or SiteController::findCom(34) or SiteController::findCom(35)){
         $searchModel = new EstrequerimientosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -62,7 +62,7 @@ class EstrequerimientosController extends Controller
     public function actionView($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(37)){
+        if(SiteController::findCom(34)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -83,7 +83,7 @@ class EstrequerimientosController extends Controller
     public function actionCreate()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(36)){
+        if(SiteController::findCom(33)){
         $model = new Estrequerimientos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -112,7 +112,7 @@ class EstrequerimientosController extends Controller
     public function actionUpdate($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-      if(SiteController::findCom(38)){
+      if(SiteController::findCom(35)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

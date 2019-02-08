@@ -2,55 +2,83 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use backend\models\Tipos;
-use backend\models\Empdistribuidora;
-use backend\models\Empsoporte;
+use yii\bootstrap\Tabs;
 use yii\helpers\ArrayHelper;
+use backend\models\Tipos;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Aplicaciones */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<!-- INICIO INCLUDE para mostrar u ocultar los campos dependientes cuando se selecciona Otro en las opciones de los checkBoxList -->
+<?php include 'otros.php';?>
+<!-- FIN INCLUDE -->
+<body onload="Init()"></body>
 
 <div class="aplicaciones-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'AppNomb')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'AppDesc')->textarea(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'AppVers')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'TiposId_fk1')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 5')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Tipo de Licencia'])?>
-
-    <?= $form->field($model, 'AppNumeLice')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'TiposId_fk2')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 6')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Nivel Administrativo'])?>
-
-    <?= $form->field($model, 'TiposId_fk3')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 7')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Tipo de Propiedad'])?>
-
-    <?= $form->field($model, 'EDDesId_fk')->dropDownList(ArrayHelper::map(Empdistribuidora::find()->all(),'EDisId','EDisNomb'), ['prompt'=> 'Seleccione la Empresa Distribuidora'])?>
-
-    <?= $form->field($model, 'TiposId_fk4')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 8')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Sistema Operativo'])?>
-
-    <?= $form->field($model, 'TiposId_fk5')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 9')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione la Relación con Aplicativo'])?>
-
-    <?= $form->field($model, 'AppInteApp')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'ESopId_fk')->dropDownList(ArrayHelper::map(Empsoporte::find()->all(),'ESopId','ESopNomb'), ['prompt'=> 'Seleccione la Empresa de Soporte'])?>
-
-    <?= $form->field($model, 'TiposId_fk6')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 10')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Método de Copia de Seguridad'])?>
-
-    <?= $form->field($model, 'TiposId_fk7')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 11')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione la Política de Copia de Seguridad'])?>
-
-    <?= $form->field($model, 'AppVersBD')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'AppBaseDato')->textInput(['maxlength' => true]) ?>
-
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
+    <?= Tabs::widget([
+            'items' => [
+                [
+                    'label' => 'I',
+                    'content' => $this->render('datos', ['model' => $model, 'form' => $form]),
+                    'active' => true
+                ],
+                [
+                    'label' => 'II',
+                    'content' => $this->render('poblacion', ['model' => $model, 'form' => $form]),
+                ],
+                [
+                    'label' => 'III',
+                    'content' => $this->render('soporte', ['model' => $model, 'form' => $form]),
+                ],
+                [
+                    'label' => 'IV',
+                    'content' => $this->render('soporteInterno', ['model' => $model, 'form' => $form]),
+                ],
+                [
+                    'label' => 'Acuerdo de Niveles de Servicio',
+                    'content' => $this->render('acuerdos', ['model' => $model, 'form' => $form]),
+                ],
+                [
+                    'label' => 'VII',
+                    'content' => $this->render('datosApp', ['model' => $model, 'form' => $form]),
+                ],
+                [
+                    'label' => 'VIII',
+                    'content' => $this->render('reqSoftware', ['model' => $model, 'form' => $form]),
+                ],
+                [
+                    'label' => 'IX',
+                    'content' => $this->render('reqHardware', ['model' => $model, 'form' => $form]),
+                ],
+                [
+                    'label' => 'X',
+                    'content' => $this->render('archConfiguracion', ['model' => $model, 'form' => $form]),
+                ],
+                [
+                    'label' => 'VIII',
+                    'content' => $this->render('paraConfiguracion', ['model' => $model, 'form' => $form]),
+                ],
+                [
+                    'label' => 'XI',
+                    'content' => $this->render('infoBase', ['model' => $model, 'form' => $form]),
+                ],
+
+                [
+                    'label' => 'XV',
+                    'content' => $this->render('documentacion', ['model' => $model, 'form' => $form]),
+                ],
+                [
+                    'label' => 'XVI',
+                    'content' => $this->render('funcAprueba', ['model' => $model, 'form' => $form]),
+                ],
+            ]]);
+     ?>
 
     <?php ActiveForm::end(); ?>
 

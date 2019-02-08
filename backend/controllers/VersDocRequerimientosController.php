@@ -36,7 +36,7 @@ class VersdocrequerimientosController extends Controller
     public function actionIndex()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(33) or SiteController::findCom(34) or SiteController::findCom(35)){
+        if(SiteController::findCom(30) or SiteController::findCom(31) or SiteController::findCom(32)){
         $searchModel = new VersdocrequerimientosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -62,7 +62,7 @@ class VersdocrequerimientosController extends Controller
     public function actionView($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(34)){
+        if(SiteController::findCom(31)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -83,7 +83,7 @@ class VersdocrequerimientosController extends Controller
     public function actionCreate()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(33)){
+        if(SiteController::findCom(30)){
         $model = new Versdocrequerimientos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -112,7 +112,7 @@ class VersdocrequerimientosController extends Controller
     public function actionUpdate($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(35)){
+        if(SiteController::findCom(32)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -140,7 +140,7 @@ class VersdocrequerimientosController extends Controller
      */
     public function actionDelete($id)
     {
-        if(SiteController::findVar(11)){
+        if(SiteController::findVar(1100)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

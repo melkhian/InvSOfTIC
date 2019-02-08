@@ -20,18 +20,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php
-        if (SiteController::findCom(51)) {
+        if (SiteController::findCom(48)) {
         echo Html::a('Crear Tipos', ['create'], ['class' => 'btn btn-success']);
         }
         else {
           $this->redirect(['site/error']);
         }
-        if (SiteController::findCom(52)) {
+        if (SiteController::findCom(49)) {
           $view = '{view}';
         } else {
           $view = '';
         }
-        if (SiteController::findCom(53)) {
+        if (SiteController::findCom(50)) {
           $update = '{update}';
         } else {
           $update = '';
@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'TiposId',
             ['attribute'=>'TipoId_fk',
              'value'=> function($model){return $model->TipoId_fk();},
-             'filter' => Html::activeDropDownList($searchModel, 'TipoId_fk', ArrayHelper::map(Tipo::find()->all(),'TipoId','TipoDesc'),['class'=>'form-control','prompt' => 'Seleccione el Tipo']),
+             'filter' => Html::activeDropDownList($searchModel, 'TipoId_fk', ArrayHelper::map(Tipo::find()->orderBy("TipoDesc ASC")->all(),'TipoId','TipoDesc'),['class'=>'form-control','prompt' => 'Seleccione el Tipo']),
             ],
             'TiposDesc',
             'TiposValo',

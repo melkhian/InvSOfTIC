@@ -18,8 +18,8 @@ class EmpsoporteSearch extends Empsoporte
     public function rules()
     {
         return [
-            [['ESopId'], 'integer'],
-            [['ESopNit', 'ESopNomb', 'ESopDire', 'ESopCont', 'ESopTele', 'ESopCorr'], 'safe'],
+            [['ESopId', 'TiposId_fk1', 'TiposId_fk2'], 'integer'],
+            [['ESopNit', 'ESopNomb', 'ESopDire', 'ESopCont', 'ESopTelePers', 'ESopTeleOfic', 'ESopCorr'], 'safe'],
         ];
     }
 
@@ -60,13 +60,16 @@ class EmpsoporteSearch extends Empsoporte
         // grid filtering conditions
         $query->andFilterWhere([
             'ESopId' => $this->ESopId,
+            'TiposId_fk1' => $this->TiposId_fk1,
+            'TiposId_fk2' => $this->TiposId_fk2,
         ]);
 
         $query->andFilterWhere(['like', 'ESopNit', $this->ESopNit])
             ->andFilterWhere(['like', 'ESopNomb', $this->ESopNomb])
             ->andFilterWhere(['like', 'ESopDire', $this->ESopDire])
             ->andFilterWhere(['like', 'ESopCont', $this->ESopCont])
-            ->andFilterWhere(['like', 'ESopTele', $this->ESopTele])
+            ->andFilterWhere(['like', 'ESopTelePers', $this->ESopTelePers])
+            ->andFilterWhere(['like', 'ESopTeleOfic', $this->ESopTeleOfic])
             ->andFilterWhere(['like', 'ESopCorr', $this->ESopCorr]);
 
         return $dataProvider;

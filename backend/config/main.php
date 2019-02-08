@@ -30,7 +30,10 @@ return [
             'class' => WebUser::class, // Tiempo de expiraciondesde la base de datos
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => false,
-            // 'authTimeout' => WebUser::class,
+
+
+            'authTimeout' => 100000,
+
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
         'session' => [

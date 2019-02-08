@@ -28,9 +28,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'ESopCont') ?>
 
-    <?php // echo $form->field($model, 'ESopTele') ?>
+    <?php // echo $form->field($model, 'TiposId_fk1') ?>
+
+    <?php // echo $form->field($model, 'ESopTelePers') ?>
+
+    <?php // echo $form->field($model, 'ESopTeleOfic') ?>
 
     <?php // echo $form->field($model, 'ESopCorr') ?>
+
+    <?php // echo $form->field($model, 'TiposId_fk2') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

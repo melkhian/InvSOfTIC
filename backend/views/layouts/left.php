@@ -36,6 +36,26 @@ use backend\controllers\SiteController;
         -->
 
         <?php
+        echo dmstr\widgets\Menu::widget(
+           [
+               'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
+               'items' => [
+                   [
+                       'label' => 'Administración',
+                       'icon' => 'code',
+                       'url' => '#',
+                       'items' => null,
+                         ]]]);
+         echo dmstr\widgets\Menu::widget(
+            [
+                'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
+                'items' => [
+                    [
+                        'label' => 'Parametros',
+                        'icon' => 'code',
+                        'url' => '#',
+                        'items' => null,
+                          ]]]);
           if (SiteController::findvar(1))
           // if ($this->context->findVar(1))
               echo dmstr\widgets\Menu::widget(
@@ -76,7 +96,7 @@ use backend\controllers\SiteController;
             }
             // print_r($gda);
             if ($gda != null) {
-              echo dmstr\widgets\Menu::widget(
+            echo dmstr\widgets\Menu::widget(
                  [
                      'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                      'items' => [
@@ -87,6 +107,7 @@ use backend\controllers\SiteController;
                              'items' => $gda,
                                ]]]);
             }
+            // echo $gdaa;
                // if ($this->context->findVar(4))
                //     echo dmstr\widgets\Menu::widget(
                //         [
@@ -108,14 +129,14 @@ use backend\controllers\SiteController;
                //             'items' => [
                //                 ['label' => 'Aplicaciones', 'icon' => 'window-restore', 'url' => ['aplicaciones/index']],
                //               ]]);
+               // if (SiteController::findvar(6)){
+               // // if ($this->context->findVar(6)){
+               //   $gde[] = ['label' => 'EmpDistribuidoras', 'icon' => 'truck', 'url' => ['empdistribuidora/index']];
+               // }
+               // else {
+               //   $gde=null;
+               // }
                if (SiteController::findvar(6)){
-               // if ($this->context->findVar(6)){
-                 $gde[] = ['label' => 'EmpDistribuidoras', 'icon' => 'truck', 'url' => ['empdistribuidora/index']];
-               }
-               else {
-                 $gde=null;
-               }
-               if (SiteController::findvar(7)){
                // if ($this->context->findVar(7)){
                  $gde[] = ['label' => 'EmpSoporte', 'icon' => 'wrench', 'url' => ['empsoporte/index']];
                }
@@ -149,14 +170,14 @@ use backend\controllers\SiteController;
                //             'items' => [
                //                   ['label' => 'EmpSoporte', 'icon' => 'wrench', 'url' => ['empsoporte/index']],
                //               ]]);
-               if (SiteController::findvar(8)){
+               if (SiteController::findvar(7)){
                // if ($this->context->findVar(8)){
                  $gdp[] = ['label' => 'Proyectos', 'icon' => 'line-chart', 'url' => ['proyectos/index']];
                }
                else {
                  $gdp=null;
                }
-               if (SiteController::findvar(9)){
+               if (SiteController::findvar(8)){
                // if ($this->context->findVar(9)){
                  $gdp[] = ['label' => 'Cambio Alcance', 'icon' => 'exchange', 'url' => ['cambioalcance/index']];
                }
@@ -190,21 +211,21 @@ use backend\controllers\SiteController;
                          //             'items' => [
                          //                 ['label' => 'Cambio Alcance', 'icon' => 'exchange', 'url' => ['cambioalcance/index']],
                          //               ]]);
-                         if (SiteController::findvar(10)){
+                         if (SiteController::findvar(9)){
                          // if ($this->context->findVar(10)){
                            $gr[] = ['label' => 'Requerimientos', 'icon' => 'stack-overflow', 'url' => ['requerimientos/index']];
                          }
                          else {
                            $gr=null;
                          }
-                         if (SiteController::findvar(11)){
+                         if (SiteController::findvar(10)){
                          // if ($this->context->findVar(11)){
                            $gr[] = ['label' => 'Versión Requerimientos', 'icon' => 'bank', 'url' => ['versdocrequerimientos/index']];
                          }
                          else {
                            $gr=null;
                          }
-                         if (SiteController::findvar(12)){
+                         if (SiteController::findvar(11)){
                          // if ($this->context->findVar(12)){
                            $gr[] = ['label' => 'Estado Requerimientos', 'icon' => 'bank', 'url' => ['estrequerimientos/index']];
                          }
@@ -225,21 +246,21 @@ use backend\controllers\SiteController;
                          }
 
 
-                        if (SiteController::findvar(13)){
+                        if (SiteController::findvar(12)){
                         // if ($this->context->findVar(13)){
                           $ryp[] = ['label' => 'Roles', 'icon' => 'file-code-o', 'url' => ['roles/index']];
                         }
                         else {
                           $ryp=null;
                         }
-                        if (SiteController::findvar(14)){
+                        if (SiteController::findvar(13)){
                         // if ($this->context->findVar(14)){
                           $ryp[] = ['label' => 'Rolintecoma', 'icon' => 'bank', 'url' => ['rolintecoma/index']];
                         }
                         else {
                           $ryp=null;
                         }
-                        if (SiteController::findvar(15)){
+                        if (SiteController::findvar(14)){
                         // if ($this->context->findVar(15)){
                           $ryp[] = ['label' => 'Rolusua', 'icon' => 'bank', 'url' => ['rolusua/index']];
                         }
@@ -258,35 +279,35 @@ use backend\controllers\SiteController;
                                          'items' => $ryp,
                                            ]]]);
                         }
-                         if (SiteController::findvar(16)){
+                         if (SiteController::findvar(15)){
                          // if ($this->context->findVar(16)){
                            $pds[] = ['label' => 'Tipo', 'icon' => 'cog', 'url' => ['tipo/index']];
                          }
                          else {
                            $pds=null;
                          }
-                         if (SiteController::findvar(17)){
+                         if (SiteController::findvar(16)){
                          // if ($this->context->findVar(17)){
                            $pds[] = ['label' => 'Tipos', 'icon' => 'cog', 'url' => ['tipos/index']];
                          }
                          else {
                            $pds=null;
                          }
-                         if (SiteController::findvar(18)){
+                         if (SiteController::findvar(17)){
                          // if ($this->context->findVar(18)){
                            $pds[] = ['label' => 'Interfaces', 'icon' => 'bank', 'url' => ['interfaces/index']];
                          }
                          else {
                            $pds=null;
                          }
-                         if (SiteController::findvar(19)){
+                         if (SiteController::findvar(18)){
                          // if ($this->context->findVar(19)){
                            $pds[] = ['label' => 'Comandos', 'icon' => 'cog', 'url' => ['comandos/index']];
                          }
                          else {
                            $pds=null;
                          }
-                         if (SiteController::findvar(20)){
+                         if (SiteController::findvar(19)){
                          // if ($this->context->findVar(20)){
                            $pds[] = ['label' => 'Intecoma', 'icon' => 'bank', 'url' => ['intecoma/index']];
                          }
@@ -383,151 +404,168 @@ use backend\controllers\SiteController;
                          //                   ['label' => 'Rolusua', 'icon' => 'bank', 'url' => ['rolusua/index']],
                          //               ]]);
         ?>
-        <!-- <?= dmstr\widgets\Menu::widget(
+         <!-- <?= dmstr\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     ['label' => 'Usuarios', 'icon' => 'group', 'url' => ['user/index']],
-                    ['label' => 'Dependencias', 'icon' => 'bank', 'url' => ['dependencias/index']],
-                    [
-                        'label' => 'Gestión de Aplicaciones',
-                        'icon' => 'code',
-                        'url' => '#',
-                        'items' => [
-                            ['label' => 'Aplicaciones', 'icon' => 'window-restore', 'url' => ['aplicaciones/index']],
-                            ['label' => 'Módulos por Aplicativo', 'icon' => 'sliders', 'url' => ['appmodulos/index']],
-                            ['label' => 'Aplicativos por Dependencias', 'icon' => 'tasks', 'url' => ['appdependencias/index']],
+                    ['label' => 'Dependencias', 'icon' => 'bank', 'url' => ['dependencias/index']]],
+                  ])?> -->
 
-                            ['label' => 'Aplicativo por Dependencia', 'icon' => 'tasks', 'url' => ['appdependencias/index']],
-
-
-                            /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
-                            [
-                                'label' => 'Level One',
-                                'icon' => 'circle-o',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
-                                    [
-                                        'label' => 'Level Two',
-                                        'icon' => 'circle-o',
-                                        'url' => '#',
-                                        'items' => [
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                        ],
-                                    ],
-                                ],
-                            ],*/
-                        ],
-                    ],
-                    [
-                        'label' => 'Gestión de Empresas',
-                        'icon' => 'building',
-                        'url' => '#',
-                        'items' => [
-                                ['label' => 'Distribuidoras', 'icon' => 'truck', 'url' => ['empdistribuidora/index']],
-                                ['label' => 'Soporte', 'icon' => 'wrench', 'url' => ['empsoporte/index']],
-                            /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
-                            [
-                                'label' => 'Level One',
-                                'icon' => 'circle-o',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
-                                    [
-                                        'label' => 'Level Two',
-                                        'icon' => 'circle-o',
-                                        'url' => '#',
-                                        'items' => [
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                        ],
-                                    ],
-                                ],
-                            ],*/
-                        ],
-                    ],
-                    [
-                        'label' => 'Gestión de Proyectos',
-                        'icon' => 'map',
-                        'url' => '#',
-                        'items' => [
-                            ['label' => 'Proyectos', 'icon' => 'line-chart', 'url' => ['proyectos/index']],
-                            ['label' => 'Cambio de Alcance', 'icon' => 'exchange', 'url' => ['cambioalcance/index']],
-                            /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
-                            [
-                                'label' => 'Level One',
-                                'icon' => 'circle-o',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
-                                    [
-                                        'label' => 'Level Two',
-                                        'icon' => 'circle-o',
-                                        'url' => '#',
-                                        'items' => [
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                        ],
-                                    ],
-                                ],
-                            ],*/
-                        ],
-                    ],
-                    [
-                        'label' => 'Gestión Requerimientos',
-                        'icon' => 'tags',
-                        'url' => '#',
-                        'items' => [
-                            ['label' => 'Requerimientos', 'icon' => 'stack-overflow', 'url' => ['requerimientos/index']],
-                            ['label' => 'Versión Requerimientos', 'icon' => 'file-text-o', 'url' => ['versdocrequerimientos/index']],
-                            ['label' => 'Estado Requerimientos', 'icon' => 'tripadvisor', 'url' => ['estrequerimientos/index']],
-                        ],
-                    ],
-                    [
-                        'label' => 'Roles y Permisos',
-                        'icon' => 'address-card',
-                        'url' => '#',
-                        'items' => [
-                            ['label' => 'Roles', 'icon' => 'user-circle', 'url' => ['roles/index'],],
-                            ['label' => 'Rol por Funcionalidad', 'icon' => 'window-close', 'url' => ['rolintecoma/index']],
-                            ['label' => 'Rol por Usuario', 'icon' => 'id-badge', 'url' => ['rolusua/index']],
-                        ],
-                    ],
-                    [
-                        'label' => 'Parámetros del Sistema',
-                        'icon' => 'cogs',
-                        'url' => '#',
-                        'items' => [
-                            ['label' => 'Tipo', 'icon' => 'check-square', 'url' => ['tipo/index'],],
-                            ['label' => 'Tipos', 'icon' => 'minus-square', 'url' => ['tipos/index'],],
-                            ['label' => 'Interfaces', 'icon' => 'window-maximize', 'url' => ['interfaces/index']],
-                            ['label' => 'Comandos', 'icon' => 'compass', 'url' => ['comandos/index'],],
-                            ['label' => 'Interfaz por Comando', 'icon' => 'magic', 'url' => ['intecoma/index']],
-                            /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
-                            [
-                                'label' => 'Level One',
-                                'icon' => 'circle-o',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
-                                    [
-                                        'label' => 'Level Two',
-                                        'icon' => 'circle-o',
-                                        'url' => '#',
-                                        'items' => [
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                        ],
-                                    ],
-                                ],
-                            ],*/
-                        ],
-                    ],
-                ],
-            ]
-        ) ?> -->
+                  <!--
+        //           dmstr\widgets\Menu::widget([
+        //           'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
+        //           'items' => [
+        //
+        //
+        //
+        //         // ])
+        //             // ,
+        //             [
+        //             // 'label' => 'Administración Usuarios',
+        //             // 'icon' => 'code',
+        //             // 'url' => '#',
+        //             // 'items' => [
+        //                 'label' => 'Gestión de Aplicaciones',
+        //                 'icon' => 'code',
+        //                 'url' => '#',
+        //                 'items' => [
+        //                     ['label' => 'Aplicaciones', 'icon' => 'window-restore', 'url' => ['aplicaciones/index']],
+        //                     ['label' => 'Módulos por Aplicativo', 'icon' => 'sliders', 'url' => ['appmodulos/index']],
+        //                     ['label' => 'Aplicativos por Dependencias', 'icon' => 'tasks', 'url' => ['appdependencias/index']],
+        //
+        //                     ['label' => 'Aplicativo por Dependencia', 'icon' => 'tasks', 'url' => ['appdependencias/index']],
+        //
+        //
+        //                     /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
+        //                     [
+        //                         'label' => 'Level One',
+        //                         'icon' => 'circle-o',
+        //                         'url' => '#',
+        //                         'items' => [
+        //                             ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
+        //                             [
+        //                                 'label' => 'Level Two',
+        //                                 'icon' => 'circle-o',
+        //                                 'url' => '#',
+        //                                 'items' => [
+        //                                     ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+        //                                     ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+        //                                 ],
+        //                             ],
+        //                         ],
+        //                     ],*/
+        //                 ],
+        //
+        //             ],
+        //             [
+        //                 'label' => 'Gestión de Empresas',
+        //                 'icon' => 'building',
+        //                 'url' => '#',
+        //                 'items' => [
+        //                         ['label' => 'Distribuidoras', 'icon' => 'truck', 'url' => ['empdistribuidora/index']],
+        //                         ['label' => 'Soporte', 'icon' => 'wrench', 'url' => ['empsoporte/index']],
+        //                     /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
+        //                     [
+        //                         'label' => 'Level One',
+        //                         'icon' => 'circle-o',
+        //                         'url' => '#',
+        //                         'items' => [
+        //                             ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
+        //                             [
+        //                                 'label' => 'Level Two',
+        //                                 'icon' => 'circle-o',
+        //                                 'url' => '#',
+        //                                 'items' => [
+        //                                     ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+        //                                     ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+        //                                 ],
+        //                             ],
+        //                         ],
+        //                     ],*/
+        //                 ],
+        //             ],
+        //             [
+        //                 'label' => 'Gestión de Proyectos',
+        //                 'icon' => 'map',
+        //                 'url' => '#',
+        //                 'items' => [
+        //                     ['label' => 'Proyectos', 'icon' => 'line-chart', 'url' => ['proyectos/index']],
+        //                     ['label' => 'Cambio de Alcance', 'icon' => 'exchange', 'url' => ['cambioalcance/index']],
+        //                     /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
+        //                     [
+        //                         'label' => 'Level One',
+        //                         'icon' => 'circle-o',
+        //                         'url' => '#',
+        //                         'items' => [
+        //                             ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
+        //                             [
+        //                                 'label' => 'Level Two',
+        //                                 'icon' => 'circle-o',
+        //                                 'url' => '#',
+        //                                 'items' => [
+        //                                     ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+        //                                     ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+        //                                 ],
+        //                             ],
+        //                         ],
+        //                     ],*/
+        //                 ],
+        //             ],
+        //             [
+        //                 'label' => 'Gestión Requerimientos',
+        //                 'icon' => 'tags',
+        //                 'url' => '#',
+        //                 'items' => [
+        //                     ['label' => 'Requerimientos', 'icon' => 'stack-overflow', 'url' => ['requerimientos/index']],
+        //                     ['label' => 'Versión Requerimientos', 'icon' => 'file-text-o', 'url' => ['versdocrequerimientos/index']],
+        //                     ['label' => 'Estado Requerimientos', 'icon' => 'tripadvisor', 'url' => ['estrequerimientos/index']],
+        //                 ],
+        //             ],
+        //             [
+        //                 'label' => 'Roles y Permisos',
+        //                 'icon' => 'address-card',
+        //                 'url' => '#',
+        //                 'items' => [
+        //                     ['label' => 'Roles', 'icon' => 'user-circle', 'url' => ['roles/index'],],
+        //                     ['label' => 'Rol por Funcionalidad', 'icon' => 'window-close', 'url' => ['rolintecoma/index']],
+        //                     ['label' => 'Rol por Usuario', 'icon' => 'id-badge', 'url' => ['rolusua/index']],
+        //                 ],
+        //             ],
+        //             [
+        //                 'label' => 'Parámetros del Sistema',
+        //                 'icon' => 'cogs',
+        //                 'url' => '#',
+        //                 'items' => [
+        //                     ['label' => 'Tipo', 'icon' => 'check-square', 'url' => ['tipo/index'],],
+        //                     ['label' => 'Tipos', 'icon' => 'minus-square', 'url' => ['tipos/index'],],
+        //                     ['label' => 'Interfaces', 'icon' => 'window-maximize', 'url' => ['interfaces/index']],
+        //                     ['label' => 'Comandos', 'icon' => 'compass', 'url' => ['comandos/index'],],
+        //                     ['label' => 'Interfaz por Comando', 'icon' => 'magic', 'url' => ['intecoma/index']],
+        //                     /*['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
+        //                     [
+        //                         'label' => 'Level One',
+        //                         'icon' => 'circle-o',
+        //                         'url' => '#',
+        //                         'items' => [
+        //                             ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
+        //                             [
+        //                                 'label' => 'Level Two',
+        //                                 'icon' => 'circle-o',
+        //                                 'url' => '#',
+        //                                 'items' => [
+        //                                     ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+        //                                     ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
+        //                                 ],
+        //                             ],
+        //                         ],
+        //                     ],*/
+        //                 ],
+        //             ],
+        //         ],
+        //     ]
+        // )
+        -->
 
     </section>
 

@@ -18,18 +18,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php
-        if (SiteController::findCom(21)) {
-        echo Html::a('Crear Empresa de Soporte', ['create'], ['class' => 'btn btn-success']);
+        if (SiteController::findCom(18)){
+        echo Html::a('Crear Empresa Soporte', ['create'], ['class' => 'btn btn-success']);
         }
         else {
           $this->redirect(['site/error']);
         }
-        if (SiteController::findCom(22)) {
+        if (SiteController::findCom(19)) {
           $view = '{view}';
         } else {
           $view = '';
         }
-        if (SiteController::findCom(23)) {
+        if (SiteController::findCom(20)) {
           $update = '{update}';
         } else {
           $update = '';
@@ -49,8 +49,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'ESopNomb',
             'ESopDire',
             'ESopCont',
-            //'ESopTele',
+            //'TiposId_fk1',
+            //'ESopTelePers',
+            //'ESopTeleOfic',
             //'ESopCorr',
+            //'TiposId_fk2',
 
             ['class' => 'yii\grid\ActionColumn',
              'template' => "$view $update"],
