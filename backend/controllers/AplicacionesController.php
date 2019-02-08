@@ -114,6 +114,20 @@ class AplicacionesController extends Controller
         if(SiteController::findCom(10)){
           $model = $this->findModel($id);
 
+        //Se agrega para pasar de String a Array
+        $model->TiposId_fk5 = explode(',',$model->TiposId_fk5);
+        $model->TiposId_fk6 = explode(',',$model->TiposId_fk6);
+        $model->TiposId_fk7 = explode(',',$model->TiposId_fk7);
+        $model->TiposId_fk8 = explode(',',$model->TiposId_fk8);
+        $model->TiposId_fk9 = explode(',',$model->TiposId_fk9);
+        $model->TiposId_fk10 = explode(',',$model->TiposId_fk10);
+        $model->TiposId_fk12 = explode(',',$model->TiposId_fk12);
+        $model->TiposId_fk14 = explode(',',$model->TiposId_fk14);
+        $model->TiposId_fk16 = explode(',',$model->TiposId_fk16);
+        $model->TiposId_fk18 = explode(',',$model->TiposId_fk18);
+        $model->TiposId_fk21 = explode(',',$model->TiposId_fk21);
+        $model->TiposId_fk26 = explode(',',$model->TiposId_fk26);
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->AppId]);
         }
@@ -167,4 +181,6 @@ class AplicacionesController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+  public function loadFunctions(){}
 }

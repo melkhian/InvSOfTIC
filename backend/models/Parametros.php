@@ -64,4 +64,11 @@ class Parametros extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Tipos::className(), ['TiposId' => 'TiposId_fk']);
     }
+
+    public function TiposId_fk()
+    {
+        $data = Tipos::findOne($this->TiposId_fk);
+
+        return $data['TiposDesc'];
+    }
 }

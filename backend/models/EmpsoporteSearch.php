@@ -18,7 +18,7 @@ class EmpsoporteSearch extends Empsoporte
     public function rules()
     {
         return [
-            [['ESopId', 'UsuId_fk', 'TiposId_fk'], 'integer'],
+            [['ESopId', 'TiposId_fk1', 'TiposId_fk2'], 'integer'],
             [['ESopNit', 'ESopNomb', 'ESopDire', 'ESopCont', 'ESopTelePers', 'ESopTeleOfic', 'ESopCorr'], 'safe'],
         ];
     }
@@ -60,8 +60,8 @@ class EmpsoporteSearch extends Empsoporte
         // grid filtering conditions
         $query->andFilterWhere([
             'ESopId' => $this->ESopId,
-            'UsuId_fk' => $this->UsuId_fk,
-            'TiposId_fk' => $this->TiposId_fk,
+            'TiposId_fk1' => $this->TiposId_fk1,
+            'TiposId_fk2' => $this->TiposId_fk2,
         ]);
 
         $query->andFilterWhere(['like', 'ESopNit', $this->ESopNit])

@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\EmpsoporteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Empsoportes';
+$this->title = 'Empresas de Soporte';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="empsoporte-index">
@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
           $update = '';
         }
         ?>
+
     </p>
 
     <?= GridView::widget([
@@ -48,11 +49,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'ESopNomb',
             'ESopDire',
             'ESopCont',
-            //'UsuId_fk',
+            //'TiposId_fk1',
             //'ESopTelePers',
             //'ESopTeleOfic',
             //'ESopCorr',
-            //'TiposId_fk',
+            //'TiposId_fk2',
 
             ['class' => 'yii\grid\ActionColumn',
              'template' => "$view $update"],
