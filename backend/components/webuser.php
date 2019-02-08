@@ -11,7 +11,7 @@ class WebUser extends \yii\web\User {
         parent::init();
 
         $this->authTimeout = (new \yii\db\Query())
-            ->select('timeExpiration')
+            ->select('ParTiemExpi')
             ->from('parametros')
             // ->where('name = :name', ['name' => 'authTimeout'])
             ->scalar();

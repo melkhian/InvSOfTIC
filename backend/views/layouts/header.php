@@ -23,10 +23,6 @@ use backend\controllers\SiteController;
                 <!-- Messages: style can be found in dropdown.less-->
                 <li class="dropdown user user-menu">
 
-                  <!-- <a href="https://www.valledelcauca.gov.co/" >
-                    <img src="<?= $directoryAsset ?><?= $img ?>">
-                  </a> -->
-
                     <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
                         <span class="label label-success">4</span>

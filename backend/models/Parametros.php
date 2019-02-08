@@ -33,7 +33,7 @@ class Parametros extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ParHead', 'ParFoot', 'ParMult', 'ParFall', 'TiposId_fk', 'ParNemo'], 'required'],
+            [['ParHead', 'ParFoot', 'ParMult', 'ParFall', 'TiposId_fk', 'ParNemo','ParTiemExpi'], 'required'],
             [['ParMult', 'ParFall', 'TiposId_fk'], 'integer'],
             [['ParHead', 'ParFoot'], 'string', 'max' => 200],
             [['ParNemo'], 'string', 'max' => 50],
@@ -54,6 +54,7 @@ class Parametros extends \yii\db\ActiveRecord
             'ParFall' => 'Número de intentos fallidos antes de bloquear Usuario',
             'TiposId_fk' => 'Estado del Aplicativo',
             'ParNemo' => 'Nemotecnia configurable de Contraseña',
+            'ParTiemExpi' => 'Tiempo de Expiración de Sesión',
         ];
     }
 
