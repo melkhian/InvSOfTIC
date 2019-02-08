@@ -1,7 +1,10 @@
 <?php
 use yii\web\Controller;
-// use backend\controllers\SiteController;
+
+use backend\controllers\SiteController;
+
 use yii\helpers\Html;
+
 // $IdUser = Yii::$app->user->identity->id;
 // $formatter = Yii::$app->formatter->asDate('now', 'yyyy-MM-dd');
 // if ($formatter >= SiteController::DateValidator()) {
@@ -17,7 +20,9 @@ use yii\helpers\Html;
 // else {
 //   $jhon = $formatter;
 // }
-// /* @var $this yii\web\View */
+
+/* @var $this yii\web\View */
+
 
 $this->title ='INVSOFTIC';
 ?>
