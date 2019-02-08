@@ -36,7 +36,7 @@ class ProyectosController extends Controller
     public function actionIndex()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(24) or SiteController::findCom(25) or SiteController::findCom(26)){
+        if(SiteController::findCom(21) or SiteController::findCom(22) or SiteController::findCom(23)){
         $searchModel = new ProyectosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -62,7 +62,7 @@ class ProyectosController extends Controller
     public function actionView($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(25)){
+        if(SiteController::findCom(22)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -83,7 +83,7 @@ class ProyectosController extends Controller
     public function actionCreate()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(24)){
+        if(SiteController::findCom(21)){
         $model = new Proyectos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -112,7 +112,7 @@ class ProyectosController extends Controller
     public function actionUpdate($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(26)){
+        if(SiteController::findCom(23)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -140,7 +140,7 @@ class ProyectosController extends Controller
      */
     public function actionDelete($id)
     {
-        if(SiteController::findVar(8)){
+        if(SiteController::findVar(1008)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

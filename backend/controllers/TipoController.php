@@ -36,7 +36,7 @@ class TipoController extends Controller
     public function actionIndex()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(48) or SiteController::findCom(49) or SiteController::findCom(50)){
+        if(SiteController::findCom(45) or SiteController::findCom(46) or SiteController::findCom(47)){
         $searchModel = new TipoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -62,7 +62,7 @@ class TipoController extends Controller
     public function actionView($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(49)){
+        if(SiteController::findCom(46)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -83,7 +83,7 @@ class TipoController extends Controller
     public function actionCreate()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(48)){
+        if(SiteController::findCom(45)){
         $model = new Tipo();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -112,7 +112,7 @@ class TipoController extends Controller
     public function actionUpdate($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(50)){
+        if(SiteController::findCom(47)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

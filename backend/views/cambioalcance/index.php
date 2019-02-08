@@ -20,18 +20,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php
-        if (SiteController::findCom(27)) {
+        if (SiteController::findCom(24)) {
         echo Html::a('Crear Cambio de Alcance', ['create'], ['class' => 'btn btn-success']);
         }
         else {
           $this->redirect(['site/error']);
         }
-        if (SiteController::findCom(28)) {
+        if (SiteController::findCom(25)) {
           $view = '{view}';
         } else {
           $view = '';
         }
-        if (SiteController::findCom(29)) {
+        if (SiteController::findCom(26)) {
           $update = '{update}';
         } else {
           $update = '';

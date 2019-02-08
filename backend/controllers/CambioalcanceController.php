@@ -36,7 +36,7 @@ class CambioalcanceController extends Controller
     public function actionIndex()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(27) or SiteController::findCom(28) or SiteController::findCom(29)){
+        if(SiteController::findCom(24) or SiteController::findCom(25) or SiteController::findCom(26)){
           $searchModel = new CambioalcanceSearch();
           $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -62,7 +62,7 @@ class CambioalcanceController extends Controller
     public function actionView($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(28)){
+        if(SiteController::findCom(25)){
           return $this->render('view', [
           'model' => $this->findModel($id),
         ]);
@@ -83,7 +83,7 @@ class CambioalcanceController extends Controller
     public function actionCreate()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(27)){
+        if(SiteController::findCom(24)){
         $model = new Cambioalcance();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -112,7 +112,7 @@ class CambioalcanceController extends Controller
     public function actionUpdate($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(29)){
+        if(SiteController::findCom(26)){
           $model = $this->findModel($id);
 
           if ($model->load(Yii::$app->request->post()) && $model->save()) {
