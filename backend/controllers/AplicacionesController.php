@@ -94,12 +94,11 @@ class AplicacionesController extends Controller
         $model->TiposId_fk9 = explode(',',$model->TiposId_fk9);
         $model->TiposId_fk10 = explode(',',$model->TiposId_fk10);
         $model->TiposId_fk12 = explode(',',$model->TiposId_fk12);
-        if (!empty($model->TiposId_fk14)) {
-          $model->TiposId_fk14 = explode(',',$model->TiposId_fk14);
-        }        
+        $model->TiposId_fk14 = explode(',',$model->TiposId_fk14);
         $model->TiposId_fk16 = explode(',',$model->TiposId_fk16);
         $model->TiposId_fk18 = explode(',',$model->TiposId_fk18);
         $model->TiposId_fk21 = explode(',',$model->TiposId_fk21);
+        $model->TiposId_fk26 = explode(',',$model->TiposId_fk26);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->AppId]);

@@ -35,7 +35,7 @@ use backend\models\Tipos;
 <?= $form->field($model, 'AppPoliBack')->textInput(['maxlength' => true]) ?>
 
 <?= $form->field($model, 'TiposId_fk26')
-->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 43')->all(),'TiposValo','TiposDesc'))?>
+->checkBoxList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 43')->all(),'TiposValo','TiposDesc'))?>
 
 <?= $form->field($model, 'TiposId_fk27')
 ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 44')->all(),'TiposValo','TiposDesc'),

@@ -83,7 +83,9 @@ use kartik\date\DatePicker;
     <?= $form->field($model, 'AppOtroCual14')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'TiposId_fk15')
-    ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 46')->all(),'TiposValo','TiposDesc'))?>
+    ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 46')->all(),'TiposValo','TiposDesc'),
+                    ['onchange'=>'TiposId_fk($id=15,$tab=5,$tipo="radio");'
+                      ])?>
 
     <?= $form->field($model, 'TiposId_fk16')
     ->checkboxList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 34')->all(),'TiposValo','TiposDesc'),
@@ -93,7 +95,9 @@ use kartik\date\DatePicker;
     <?= $form->field($model, 'AppOtroCual16')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'TiposId_fk17')
-    ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 46')->all(),'TiposValo','TiposDesc'))?>
+    ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 46')->all(),'TiposValo','TiposDesc'),
+                    ['onchange'=>'TiposId_fk($id=17,$tab=5,$tipo="radio");'
+                      ])?>
 
     <?= $form->field($model, 'TiposId_fk18')
     ->checkboxList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 36')->all(),'TiposValo','TiposDesc'),
