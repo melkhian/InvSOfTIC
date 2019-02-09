@@ -7,13 +7,17 @@ use backend\controllers\SiteController;
 use backend\models\Tipos;
 use backend\models\Dependencias;
 use yii\helpers\ArrayHelper;
-
+// use yii\bootstrap\Html;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Usuarios';
 $this->params['breadcrumbs'][] = $this->title;
+// echo Html::a('Sign Up',['site/signup'], ['class' => 'btn btn-black', 'title' => 'Sign Up']);
+// echo Html::a('<i class="fa fa-question-circle"></i> Help',['site/signup'], ['class' => 'btn btn-black', 'title' => 'Sign Up']);
+// $id = Yii::$app->user->identity->id;
+// echo Html::tag('p', Html::encode($id->id), ['class' => 'username']);
 ?>
 <div class="user-index">
 

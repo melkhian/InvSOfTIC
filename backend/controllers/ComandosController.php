@@ -36,7 +36,7 @@ class ComandosController extends Controller
     public function actionIndex()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(57) or SiteController::findCom(58) or SiteController::findCom(59)){
+        if(SiteController::findCom(54) or SiteController::findCom(55) or SiteController::findCom(56)){
           $searchModel = new ComandosSearch();
           $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -62,7 +62,7 @@ class ComandosController extends Controller
     public function actionView($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(58)){
+        if(SiteController::findCom(55)){
           return $this->render('view', [
               'model' => $this->findModel($id),
         ]);
@@ -83,7 +83,7 @@ class ComandosController extends Controller
     public function actionCreate()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(57)){
+        if(SiteController::findCom(54)){
         $model = new Comandos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -112,7 +112,7 @@ class ComandosController extends Controller
     public function actionUpdate($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(59)){
+        if(SiteController::findCom(56)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

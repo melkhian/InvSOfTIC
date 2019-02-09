@@ -36,7 +36,7 @@ class InterfacesController extends Controller
     public function actionIndex()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(54) or SiteController::findCom(55) or SiteController::findCom(56)){
+        if(SiteController::findCom(51) or SiteController::findCom(52) or SiteController::findCom(53)){
         $searchModel = new InterfacesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -62,7 +62,7 @@ class InterfacesController extends Controller
     public function actionView($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(55)){
+        if(SiteController::findCom(52)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -83,7 +83,7 @@ class InterfacesController extends Controller
     public function actionCreate()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(54)){
+        if(SiteController::findCom(51)){
         $model = new Interfaces();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -112,7 +112,7 @@ class InterfacesController extends Controller
     public function actionUpdate($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(56)){
+        if(SiteController::findCom(53)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -140,7 +140,7 @@ class InterfacesController extends Controller
      */
     public function actionDelete($id)
     {
-        if(SiteController::findVar(18)){
+        if(SiteController::findVar(1001)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

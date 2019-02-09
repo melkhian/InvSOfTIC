@@ -35,6 +35,8 @@ class EmpsoporteController extends Controller
      */
     public function actionIndex()
     {
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(18) or SiteController::findCom(19) or SiteController::findCom(20)){
         $searchModel = new EmpsoporteSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -43,6 +45,13 @@ class EmpsoporteController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    else {
+      $this->redirect(['site/error']);
+    }
+  }else {
+    $this->redirect(['site/login']);
+  }
+}
 
     /**
      * Displays a single Empsoporte model.
@@ -52,10 +61,19 @@ class EmpsoporteController extends Controller
      */
     public function actionView($id)
     {
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(19)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
+    else {
+      $this->redirect(['site/error']);
+    }
+  }else {
+    $this->redirect(['site/login']);
+  }
+}
 
     /**
      * Creates a new Empsoporte model.
@@ -64,6 +82,8 @@ class EmpsoporteController extends Controller
      */
     public function actionCreate()
     {
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(18)){
         $model = new Empsoporte();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -74,6 +94,13 @@ class EmpsoporteController extends Controller
             'model' => $model,
         ]);
     }
+    else {
+      $this->redirect(['site/error']);
+    }
+  }else {
+    $this->redirect(['site/login']);
+  }
+}
 
     /**
      * Updates an existing Empsoporte model.
@@ -84,6 +111,8 @@ class EmpsoporteController extends Controller
      */
     public function actionUpdate($id)
     {
+      if(isset(Yii::$app->user->identity->id)){
+        if(SiteController::findCom(20)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -94,6 +123,13 @@ class EmpsoporteController extends Controller
             'model' => $model,
         ]);
     }
+    else {
+      $this->redirect(['site/error']);
+    }
+  }else {
+    $this->redirect(['site/login']);
+  }
+}
 
     /**
      * Deletes an existing Empsoporte model.

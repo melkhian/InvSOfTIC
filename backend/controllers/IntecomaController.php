@@ -36,7 +36,7 @@ class IntecomaController extends Controller
     public function actionIndex()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(60) or SiteController::findCom(61) or SiteController::findCom(62)){
+        if(SiteController::findCom(57) or SiteController::findCom(58) or SiteController::findCom(59)){
         $searchModel = new IntecomaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -62,7 +62,7 @@ class IntecomaController extends Controller
     public function actionView($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(61)){
+        if(SiteController::findCom(58)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -83,7 +83,7 @@ class IntecomaController extends Controller
     public function actionCreate()
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(60)){
+        if(SiteController::findCom(57)){
         $model = new Intecoma();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -112,7 +112,7 @@ class IntecomaController extends Controller
     public function actionUpdate($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(62)){
+        if(SiteController::findCom(59)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -140,7 +140,7 @@ class IntecomaController extends Controller
      */
     public function actionDelete($id)
     {
-        if(SiteController::findVar(20)){
+        if(SiteController::findVar(3000)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

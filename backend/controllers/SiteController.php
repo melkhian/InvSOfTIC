@@ -143,6 +143,7 @@ class SiteController extends Controller
           'comid_fk' => $com]);
           $command = $query->createCommand();
           $rows = $command->queryScalar();
+          // print_r($rows);
           return $rows;
       }else {
         Yii::$app->user->logout();
