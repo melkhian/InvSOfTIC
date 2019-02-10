@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Parametros */
 
-$this->title = 'Crear Parametro';
+$this->title = 'Create Parametros';
 $this->params['breadcrumbs'][] = ['label' => 'Parametros', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

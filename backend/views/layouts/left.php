@@ -96,6 +96,7 @@ use backend\controllers\SiteController;
             }
             // print_r($gda);
             if ($gda != null) {
+            // print_r($gda);
             echo dmstr\widgets\Menu::widget(
                  [
                      'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
@@ -104,7 +105,7 @@ use backend\controllers\SiteController;
                              'label' => 'Gestión de Aplicaciones',
                              'icon' => 'code',
                              'url' => '#',
-                             'items' => $gda,
+                             'items' => $gda,                             
                                ]]]);
             }
             // echo $gdaa;
@@ -310,6 +311,13 @@ use backend\controllers\SiteController;
                          if (SiteController::findvar(19)){
                          // if ($this->context->findVar(20)){
                            $pds[] = ['label' => 'Intecoma', 'icon' => 'bank', 'url' => ['intecoma/index']];
+                         }
+                         else {
+                           $pds=null;
+                         }
+                         if (SiteController::findvar(20)){
+                         // if ($this->context->findVar(20)){
+                           $pds[] = ['label' => 'Parametros', 'icon' => 'cog', 'url' => ['parametros/index']];
                          }
                          else {
                            $pds=null;

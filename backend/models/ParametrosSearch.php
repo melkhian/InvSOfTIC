@@ -18,7 +18,7 @@ class ParametrosSearch extends Parametros
     public function rules()
     {
         return [
-            [['ParId', 'ParMult', 'ParFall', 'TiposId_fk'], 'integer'],
+            [['ParId', 'ParMult', 'ParFall', 'TiposId_fk', 'ParTiemExpi'], 'integer'],
             [['ParHead', 'ParFoot', 'ParNemo'], 'safe'],
         ];
     }
@@ -63,6 +63,7 @@ class ParametrosSearch extends Parametros
             'ParMult' => $this->ParMult,
             'ParFall' => $this->ParFall,
             'TiposId_fk' => $this->TiposId_fk,
+            'ParTiemExpi' => $this->ParTiemExpi,
         ]);
 
         $query->andFilterWhere(['like', 'ParHead', $this->ParHead])

@@ -3,12 +3,12 @@
 namespace backend\controllers;
 
 use Yii;
+use yii\web\Controller;
 use backend\models\Appdependencias;
 use backend\models\AppdependenciasSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use backend\controllers\SiteController;
 /**
  * AppdependenciasController implements the CRUD actions for Appdependencias model.
  */
@@ -93,8 +93,7 @@ class AppdependenciasController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
-      }
-      else {
+      } else {
         $this->redirect(['site/error']);
       }
     }else {
@@ -112,7 +111,7 @@ class AppdependenciasController extends Controller
     public function actionUpdate($id)
     {
       if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findVar(17)){
+        if(SiteController::findCom(17)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -140,7 +139,7 @@ class AppdependenciasController extends Controller
      */
     public function actionDelete($id)
     {
-        if(SiteController::findVar(5)){
+        if(SiteController::findCom(500)){
           $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -166,24 +165,6 @@ class AppdependenciasController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function findVar($var)
-    {
-      $IdUser = Yii::$app->user->identity->id;
-      // $var = 'Usuarios';
-      $query = (new \yii\db\Query())
-      ->select('intId')
-      ->from('user')
-      ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
-      ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
-      ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
-      ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
-      ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
-      ->where([
-        'id' => $IdUser,
-        'IntId' => $var]);
-        $command = $query->createCommand();
-        $rows = $command->queryScalar();
-        return $rows;
-    }
+    
 
 }

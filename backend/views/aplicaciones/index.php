@@ -1,5 +1,5 @@
 <?php
-
+use backend\controllers\SiteController;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -17,7 +17,30 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear Aplicación', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php
+        if (SiteController::findCom(8)) { 
+            echo Html::a('Crear Aplicación', ['create'], ['class' => 'btn btn-success']);
+        }
+        else {
+          // $this->redirect(['site/error']);
+        }
+        if (SiteController::findCom(9)) {
+          $view = '{view}';
+        } else {
+          $view = '';
+        }
+        if (SiteController::findCom(10)) {
+          $update = '{update}';
+        } else {
+          $update = '';
+        }
+        if (SiteController::findCom(11)) {
+          $delete = '{delete}';
+        } else {
+          $delete = '';
+        }
+
+        ?>
     </p>
 
     <?= GridView::widget([
@@ -150,7 +173,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'AppObse7',
             //'AppFuncApru',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+             'template' => "$view $update $delete"],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

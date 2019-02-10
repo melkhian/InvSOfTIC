@@ -26,7 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
         echo Html::a('Crear Aplicativo por Dependencia', ['create'], ['class' => 'btn btn-success']);
         }
         else {
-          $this->redirect(['site/error']);
+        //   Yii::$app->response->redirect(['site/error']);
+        //   // $this->redirect(['site/error']);
         }
         if (SiteController::findCom(16)) {
           $view = '{view}';

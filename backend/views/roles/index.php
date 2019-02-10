@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         echo Html::a('Crear Rol', ['create'], ['class' => 'btn btn-success']);
         }
         else {
-          $this->redirect(['site/error']);
+          // $this->redirect(['site/error']);
         }
         if (SiteController::findCom(40)) {
           $view = '{view}';

@@ -208,11 +208,10 @@ class RolusuaController extends Controller
       ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
       ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
       ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
-      ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
-      ->where([
-        'id' => $IdUser,
-        'IntId' => $var]);
-        $command = $query->createCommand();
+      ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk');
+
+      $query->andWhere(['in','id' => $IdUser,'IntId' => $var]);
+        // $command = $query->createCommand();
         $rows = $command->queryScalar();
         return $rows;
     }
