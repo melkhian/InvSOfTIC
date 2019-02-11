@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'ParFall',
             //'TiposId_fk',
             //'ParNemo',
-            //'ParTiemExpi',
+            'ParTiemExpi',
 
             ['class' => 'yii\grid\ActionColumn',
              'template' => "$view $update"],

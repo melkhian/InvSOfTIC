@@ -165,4 +165,14 @@ class Requerimientos extends \yii\db\ActiveRecord
 
         return $data['username'];
     }
+
+    // public function behaviors()
+    // {
+    //     return array(
+    //     // Classname => path to Class
+    //     'ActiveRecordLogableBehavior'=>
+    //         'application.behaviors.ActiveRecordLogableBehavior',
+    //     );
+    // }
+
 }

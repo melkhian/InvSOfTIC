@@ -285,42 +285,49 @@ use backend\controllers\SiteController;
                            $pds[] = ['label' => 'Tipo', 'icon' => 'cog', 'url' => ['tipo/index']];
                          }
                          else {
-                           $pds=null;
+                           $pds[] = null;
                          }
                          if (SiteController::findvar(16)){
                          // if ($this->context->findVar(17)){
                            $pds[] = ['label' => 'Tipos', 'icon' => 'cog', 'url' => ['tipos/index']];
                          }
                          else {
-                           $pds=null;
+                           $pds[] = null;
                          }
                          if (SiteController::findvar(17)){
                          // if ($this->context->findVar(18)){
                            $pds[] = ['label' => 'Interfaces', 'icon' => 'bank', 'url' => ['interfaces/index']];
                          }
                          else {
-                           $pds=null;
+                           $pds[] = null;
                          }
                          if (SiteController::findvar(18)){
                          // if ($this->context->findVar(19)){
                            $pds[] = ['label' => 'Comandos', 'icon' => 'cog', 'url' => ['comandos/index']];
                          }
                          else {
-                           $pds=null;
+                           $pds[] = null;
                          }
                          if (SiteController::findvar(19)){
                          // if ($this->context->findVar(20)){
                            $pds[] = ['label' => 'Intecoma', 'icon' => 'bank', 'url' => ['intecoma/index']];
                          }
                          else {
-                           $pds=null;
+                           $pds[] = null;
                          }
                          if (SiteController::findvar(20)){
                          // if ($this->context->findVar(20)){
                            $pds[] = ['label' => 'Parametros', 'icon' => 'cog', 'url' => ['parametros/index']];
                          }
                          else {
-                           $pds=null;
+                           $pds[] = null;
+                         }
+                         if (SiteController::findvar(21)){
+                         // if ($this->context->findVar(20)){
+                           $pds[] = ['label' => 'Auditorias', 'icon' => 'cog', 'url' => ['auditorias/index']];
+                         }
+                         else {
+                           $pds[] = null;
                          }
                          if ($pds != null) {
                            echo dmstr\widgets\Menu::widget(

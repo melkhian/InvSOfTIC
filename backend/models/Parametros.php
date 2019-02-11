@@ -48,13 +48,13 @@ class Parametros extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ParId' => 'Par ID',
-            'ParHead' => 'Par Head',
-            'ParFoot' => 'Par Foot',
-            'ParMult' => 'Par Mult',
-            'ParFall' => 'Par Fall',
-            'TiposId_fk' => 'Tipos Id Fk',
-            'ParNemo' => 'Par Nemo',
+            'ParId' => 'Id',
+            'ParHead' => 'Imagen del Header',
+            'ParFoot' => 'Imagen del Footer',
+            'ParMult' => 'Número de multisesiones permitidas',
+            'ParFall' => 'Número de intentos fallidos antes de bloquear Usuario',
+            'TiposId_fk' => 'Estado del Aplicativo',
+            'ParNemo' => 'Nemotecnia configurable de Contraseña',
             'ParTiemExpi' => 'Par Tiem Expi',
         ];
     }

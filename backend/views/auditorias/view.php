@@ -4,22 +4,22 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Parametros */
+/* @var $model backend\models\Auditorias */
 
-$this->title = $model->ParId;
-$this->params['breadcrumbs'][] = ['label' => 'Parametros', 'url' => ['index']];
+$this->title = $model->AudId;
+$this->params['breadcrumbs'][] = ['label' => 'Auditorias', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="parametros-view">
+<div class="auditorias-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
+        <?
+        if (SiteController::findCom(65))
+        echo Html::a('Actualizar', ['update', 'id' => $model->AudId], ['class' => 'btn btn-primary']) ?>
         <?php 
-        if (SiteController::findCom(62))
-        echo Html::a('Actualizar', ['update', 'id' => $model->ParId], ['class' => 'btn btn-primary']) ?>
-        <?php 
-        // Html::a('Delete', ['delete', 'id' => $model->ParId], [
+        // Html::a('Delete', ['delete', 'id' => $model->AudId], [
         //     'class' => 'btn btn-danger',
         //     'data' => [
         //         'confirm' => 'Are you sure you want to delete this item?',
@@ -32,14 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'ParId',
-            'ParHead',
-            'ParFoot',
-            'ParMult',
-            'ParFall',
-            'TiposId_fk',
-            'ParNemo',
-            'ParTiemExpi',
+            'AudId',
+            'UsuId_fk',
+            'AudAcci',
+            'AudDatoAnte',
+            'AudDatoDesp',
+            'AudIp',
+            'AudFechHora',
         ],
     ]) ?>
 

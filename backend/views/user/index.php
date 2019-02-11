@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 // $id = Yii::$app->user->identity->id;
 // echo Html::tag('p', Html::encode($id->id), ['class' => 'username']);
 ?>
+
 <div class="user-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
