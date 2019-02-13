@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $AudId Id
  * @property int $UsuId_fk Usuario
+ * @property string $AudMod Modelo
  * @property string $AudAcci Acción
  * @property string $AudDatoAnte Dato Anterior
  * @property string $AudDatoDesp Dato Actual
@@ -33,10 +34,12 @@ class Auditorias extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['UsuId_fk', 'AudAcci', 'AudDatoAnte', 'AudDatoDesp', 'AudIp', 'AudFechHora'], 'required'],
+            [['UsuId_fk', 'AudMod', 'AudAcci', 'AudDatoAnte', 'AudDatoDesp', 'AudIp', 'AudFechHora'], 'required'],
             [['UsuId_fk'], 'integer'],
             [['AudFechHora'], 'safe'],
-            [['AudAcci', 'AudDatoAnte', 'AudDatoDesp', 'AudIp'], 'string', 'max' => 100],
+            [['AudMod'], 'string', 'max' => 200],
+            [['AudAcci', 'AudDatoAnte', 'AudIp'], 'string', 'max' => 100],
+            [['AudDatoDesp'], 'string', 'max' => 5000],
             [['UsuId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['UsuId_fk' => 'id']],
         ];
     }
@@ -49,6 +52,7 @@ class Auditorias extends \yii\db\ActiveRecord
         return [
             'AudId' => 'Id',
             'UsuId_fk' => 'Usuario',
+            'AudMod' => 'Modelo',
             'AudAcci' => 'Acción',
             'AudDatoAnte' => 'Dato Anterior',
             'AudDatoDesp' => 'Dato Actual',

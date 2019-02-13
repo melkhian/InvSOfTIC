@@ -22,11 +22,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'UsuId_fk') ?>
 
+    <?= $form->field($model, 'AudMod') ?>
+
     <?= $form->field($model, 'AudAcci') ?>
 
     <?= $form->field($model, 'AudDatoAnte') ?>
 
-    <?= $form->field($model, 'AudDatoDesp') ?>
+    <?php // echo $form->field($model, 'AudDatoDesp') ?>
 
     <?php // echo $form->field($model, 'AudIp') ?>
 

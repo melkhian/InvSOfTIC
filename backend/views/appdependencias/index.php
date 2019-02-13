@@ -1,5 +1,5 @@
 <?php
-
+use yii\helpers\VarDumper;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -22,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php
+
         if (SiteController::findCom(15)){
         echo Html::a('Crear Aplicativo por Dependencia', ['create'], ['class' => 'btn btn-success']);
         }

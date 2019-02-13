@@ -112,4 +112,59 @@ return array (
       '@kartik/date' => $vendorDir . '/kartik-v/yii2-widget-datepicker/src',
     ),
   ),
+  'yurkinx/yii2-image' => 
+  array (
+    'name' => 'yurkinx/yii2-image',
+    'version' => '1.2.0.0',
+    'alias' => 
+    array (
+      '@yii/image' => $vendorDir . '/yurkinx/yii2-image/yii/image',
+    ),
+  ),
+  'asinfotrack/yii2-toolbox' => 
+  array (
+    'name' => 'asinfotrack/yii2-toolbox',
+    'version' => '0.8.13.0',
+    'alias' => 
+    array (
+      '@asinfotrack/yii2/toolbox' => $vendorDir . '/asinfotrack/yii2-toolbox',
+    ),
+  ),
+  'asinfotrack/yii2-audittrail' => 
+  array (
+    'name' => 'asinfotrack/yii2-audittrail',
+    'version' => '0.8.4.0',
+    'alias' => 
+    array (
+      '@asinfotrack/yii2/audittrail' => $vendorDir . '/asinfotrack/yii2-audittrail',
+    ),
+  ),
+  'sammaye/yii2-audittrail' => 
+  array (
+    'name' => 'sammaye/yii2-audittrail',
+    'version' => '1.2.0.0',
+    'alias' => 
+    array (
+      '@sammaye/audittrail' => $vendorDir . '/sammaye/yii2-audittrail',
+    ),
+  ),
+  '2amigos/yii2-chartjs-widget' => 
+  array (
+    'name' => '2amigos/yii2-chartjs-widget',
+    'version' => '2.1.2.0',
+    'alias' => 
+    array (
+      '@dosamigos/chartjs' => $vendorDir . '/2amigos/yii2-chartjs-widget/src',
+    ),
+  ),
+  'bedezign/yii2-audit' => 
+  array (
+    'name' => 'bedezign/yii2-audit',
+    'version' => '1.1.1.0',
+    'alias' => 
+    array (
+      '@bedezign/yii2/audit' => $vendorDir . '/bedezign/yii2-audit/src',
+    ),
+    'bootstrap' => 'bedezign\\yii2\\audit\\Bootstrap',
+  ),
 );

@@ -2,6 +2,7 @@
 use backend\controllers\SiteController;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use backend\models\User;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Auditorias */
@@ -15,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?
+        <?php
         if (SiteController::findCom(65))
         echo Html::a('Actualizar', ['update', 'id' => $model->AudId], ['class' => 'btn btn-primary']) ?>
         <?php 
@@ -29,16 +30,25 @@ $this->params['breadcrumbs'][] = $this->title;
         ?>
     </p>
 
+     <?php
+     $UsuId_fk= User::findOne($model->UsuId_fk);
+     ?>
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'AudId',
-            'UsuId_fk',
+            ['attribute' => 'UsuId_fk',
+             'value'=> $UsuId_fk['username'],
+            ],
+            // 'UsuId_fk',
+            'AudMod',
             'AudAcci',
             'AudDatoAnte',
             'AudDatoDesp',
             'AudIp',
             'AudFechHora',
+            
         ],
     ]) ?>
 

@@ -2,8 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use backend\models\Aplicaciones;
-use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Appmodulos */
@@ -14,12 +12,18 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'AppId_fk')->dropDownList(ArrayHelper::map(Aplicaciones::find()->all(),'AppId','AppNomb'), ['prompt'=> 'Seleccione la Aplicación'])?>
+    <?= $form->field($model, 'AppId_fk')->textInput() ?>
 
-    <?= $form->field($model, 'AModDesc')->textarea(['maxlength' => true]) ?>
+    <?= $form->field($model, 'AModNomb')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'AModDesc')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'TiposId_fk')->textInput() ?>
+
+    <?= $form->field($model, 'AModObse')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

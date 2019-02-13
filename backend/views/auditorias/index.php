@@ -48,6 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'AudAcci',
             'AudDatoAnte',
             'AudDatoDesp',
+            'AudMod',
             //'AudIp',
             //'AudFechHora',
 

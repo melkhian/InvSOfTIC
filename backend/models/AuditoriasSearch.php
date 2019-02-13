@@ -19,7 +19,7 @@ class AuditoriasSearch extends Auditorias
     {
         return [
             [['AudId', 'UsuId_fk'], 'integer'],
-            [['AudAcci', 'AudDatoAnte', 'AudDatoDesp', 'AudIp', 'AudFechHora'], 'safe'],
+            [['AudMod', 'AudAcci', 'AudDatoAnte', 'AudDatoDesp', 'AudIp', 'AudFechHora'], 'safe'],
         ];
     }
 
@@ -64,7 +64,8 @@ class AuditoriasSearch extends Auditorias
             'AudFechHora' => $this->AudFechHora,
         ]);
 
-        $query->andFilterWhere(['like', 'AudAcci', $this->AudAcci])
+        $query->andFilterWhere(['like', 'AudMod', $this->AudMod])
+            ->andFilterWhere(['like', 'AudAcci', $this->AudAcci])
             ->andFilterWhere(['like', 'AudDatoAnte', $this->AudDatoAnte])
             ->andFilterWhere(['like', 'AudDatoDesp', $this->AudDatoDesp])
             ->andFilterWhere(['like', 'AudIp', $this->AudIp]);

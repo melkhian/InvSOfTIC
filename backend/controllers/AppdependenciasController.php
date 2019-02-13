@@ -165,6 +165,18 @@ class AppdependenciasController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    
+    // public function afterAction($action, $result)
+    // {
+    //     $result = parent::afterAction($action, $result);
+
+    //     if($action->id == 'create'){
+    //         Yii::$app->db->createCommand()->insert('auditorias', ['UsuId_fk' => '1'])->execute();
+    //         // file_put_contents('view.txt', 'test');
+    //     }
+    //     // else{
+    //     //     Yii::$app->user->logout();
+    //     // }        
+    //     return $result;
+    // }
 
 }
