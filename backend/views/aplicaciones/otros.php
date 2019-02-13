@@ -20,56 +20,56 @@ function Init(){
   var tiposid_fk18 = document.querySelector('#aplicaciones-tiposid_fk17 > label:nth-child(1) > input[type="radio"]').checked;
 
   // alert(appotrocual27);
-  // #aplicaciones-tiposid_fk27 > label:nth-child(5) > input[type="radio"]
+  // #w0-tab5 > div.form-group.field-aplicaciones-appotrocual8
 
   if (appotrocual8 ==="") {
-    document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-appotrocual8').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual8').style.visibility = "hidden";
   }
   if (appotrocual9 ==="") {
-    document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-appotrocual9').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual9').style.visibility = "hidden";
   }
   if (appotrocual10 ==="") {
-    document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-appotrocual10').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual10').style.visibility = "hidden";
   }
   if (appotrocual12 ==="") {
-    document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-appotrocual12').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual12').style.visibility = "hidden";
   }
   if (appotrocual14 ==="") {
-    document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-appotrocual14').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual14').style.visibility = "hidden";
   }
   if (appotrocual16 ==="") {
-    document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-appotrocual16').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual16').style.visibility = "hidden";
   }
   if (appotrocual18 ==="") {
-    document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-appotrocual18').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual18').style.visibility = "hidden";
   }
   if (appotrocual19 ==="") {
-    document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.visibility = "hidden";
   }
   if (!tiposid_fk12) {
-    document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-tiposid_fk12').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-tiposid_fk12').style.visibility = "hidden";
   }
   if (!tiposid_fk14) {
-    document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-tiposid_fk14').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-tiposid_fk14').style.visibility = "hidden";
   }
   if (!tiposid_fk16) {
-    document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-tiposid_fk16').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-tiposid_fk16').style.visibility = "hidden";
   }
   if (!tiposid_fk18) {
-    document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-tiposid_fk18').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-tiposid_fk18').style.visibility = "hidden";
   }
   if (!appotrocual19) {
     // alert(appotrocual19);
-    document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.visibility = "hidden";
   }
   if (!appotrocual25) {
-    document.querySelector('#w1-tab10 > div.form-group.field-aplicaciones-appotrocual25').style.visibility = "hidden";
+    document.querySelector('#w0-tab10 > div.form-group.field-aplicaciones-appotrocual25').style.visibility = "hidden";
   }
   if (!appotrocual27) {
-    document.querySelector('#w1-tab10 > div.form-group.field-aplicaciones-appotrocual27').style.visibility = "hidden";
+    document.querySelector('#w0-tab10 > div.form-group.field-aplicaciones-appotrocual27').style.visibility = "hidden";
   }
   if (!appotrocual28) {
-    document.querySelector('#w1-tab10 > div.form-group.field-aplicaciones-appotrocual28').style.visibility = "hidden";
+    document.querySelector('#w0-tab10 > div.form-group.field-aplicaciones-appotrocual28').style.visibility = "hidden";
   }
 
 }
@@ -111,17 +111,17 @@ function TiposId_fk($id,$tab,$tipo){
           if ($id ==19 ||$id ==25 || $id==27 || $id==28) {
             // alert($id);
             // alert("Here");
-            document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.visibility = "visible";
+            document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.visibility = "visible";
           }else {
             // alert($id);
             // alert("2nd Here");
             $id++;
-            document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-tiposid_fk'+$id+'').style.visibility = "visible";
+            document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-tiposid_fk'+$id+'').style.visibility = "visible";
           }
         }else {
           // alert($id + " id Check Visible");
           //Código para desplegar el campo Cual luego de seleccionar Otro como opción en el checkbox o Si en el radio Button
-          document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.visibility = "visible";
+          document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.visibility = "visible";
           document.getElementById('aplicaciones-appotrocual'+$id+'').type="";
           document.getElementById('aplicaciones-appotrocual'+$id+'').placeholder="Otro";
         }
@@ -132,16 +132,16 @@ function TiposId_fk($id,$tab,$tipo){
           //Se parchea porque hay un inconveninete con TiposId_fk19, TiposId_fk27, esto debido a mala nomenclatura de campos, se parchea con IF()
           //Autor Diego Realpe
           if ($id ==19 ||$id ==25 || $id==27 || $id==28) {
-            document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.visibility = "hidden";
+            document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.visibility = "hidden";
 
           }else {
             $id++;
-            document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-tiposid_fk'+$id+'').style.visibility = "hidden";
+            document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-tiposid_fk'+$id+'').style.visibility = "hidden";
           }
 
         }else {
           // alert($id + " id Check Hidden");
-          document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.visibility = "hidden";
+          document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.visibility = "hidden";
           // Opción para borrar el texto dentro de el campo Cual SI en el Checkbox se quita el chequeo en Otro
           // document.getElementById('aplicaciones-appotrocual'+$id+'').value="";
         }

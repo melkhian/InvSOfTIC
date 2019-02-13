@@ -153,15 +153,15 @@ class Aplicaciones extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['AppNomb', 'AppDesc', 'AppSigl', 'AppVers', 'ESopId1', 'AppUrl', 'TiposId_fk1', 'TiposId_fk2', 'AppNumeDocuAdqu', 'AppValoAdqu', 'AppFechAdqu', 'TiposId_fk3', 'AppNombProc', 'AppEnti', 'ESopId2', 'TiposId_fk4', 'UsuId_fk'], 'required'],
-            [['TiposId_fk5', 'AppFechPues', 'AppServPues', 'TiposId_fk6', 'TiposId_fk7', 'TiposId_fk8', 'TiposId_fk9', 'TiposId_fk10', 'TiposId_fk11', 'TiposId_fk13','TiposId_fk15','TiposId_fk17', 'TiposId_fk19', 'TiposId_fk20'], 'required'],
-            [['TiposId_fk24', 'AppLengServ', 'AppVersApli', 'AppBibl', 'AppObse1', 'AppMane', 'AppVersBD', 'AppPuer1', 'AppObse2', 'AppTipoHard', 'AppProc', 'AppMemo', 'AppEspaDisc', 'AppObse3', 'AppDirec1', 'AppNombArch', 'AppVari'], 'required'],
-            [['AppObse4', 'AppUrlFuen', 'AppServ', 'AppPuer2', 'AppDirec2', 'AppNombServBd', 'AppUsua', 'AppNombBd', 'AppRuta', 'AppEspaActu', 'AppProy', 'TiposId_fk25', 'AppPoliBack', 'TiposId_fk26', 'TiposId_fk27', 'TiposId_fk28'], 'required'],
-            [['TiposId_fk31', 'TiposId_fk32', 'TiposId_fk33', 'TiposId_fk34', 'TiposId_fk35', 'TiposId_fk36', 'TiposId_fk37', 'TiposId_fk38', 'TiposId_fk39', 'TiposId_fk40', 'TiposId_fk41', 'TiposId_fk42', 'TiposId_fk43', 'TiposId_fk44'], 'required'],
-            [['TiposId_fk50', 'TiposId_fk51', 'TiposId_fk52', 'TiposId_fk53', 'TiposId_fk54', 'AppUbic', 'TiposId_fk55', 'AppUbicDocu', 'AppUbicUlti', 'AppObse7', 'AppFuncApru', 'AppServWebVers', 'TiposId_fk48', 'TiposId_fk49'], 'required'],
-            [['AppTipoLice', 'AppNumeLice', 'TiposId_fk22', 'TiposId_fk23', 'AppVersDist', 'AppNombVari', 'AppDescPara', 'AppCantLice', 'TiposId_fk29', 'TiposId_fk30', 'TiposId_fk45', 'TiposId_fk46', 'TiposId_fk47'], 'required'],
+            // [['AppNomb', 'AppDesc', 'AppSigl', 'AppVers', 'ESopId1', 'AppUrl', 'TiposId_fk1', 'TiposId_fk2', 'AppNumeDocuAdqu', 'AppValoAdqu', 'AppFechAdqu', 'TiposId_fk3', 'AppNombProc', 'AppEnti', 'ESopId2', 'TiposId_fk4', 'UsuId_fk'], 'required'],
+            // [['TiposId_fk5', 'AppFechPues', 'AppServPues', 'TiposId_fk6', 'TiposId_fk7', 'TiposId_fk8', 'TiposId_fk9', 'TiposId_fk10', 'TiposId_fk11', 'TiposId_fk13','TiposId_fk15','TiposId_fk17', 'TiposId_fk19', 'TiposId_fk20'], 'required'],
+            // [['TiposId_fk24', 'AppLengServ', 'AppVersApli', 'AppBibl', 'AppObse1', 'AppMane', 'AppVersBD', 'AppPuer1', 'AppObse2', 'AppTipoHard', 'AppProc', 'AppMemo', 'AppEspaDisc', 'AppObse3', 'AppDirec1', 'AppNombArch', 'AppVari'], 'required'],
+            // [['AppObse4', 'AppUrlFuen', 'AppServ', 'AppPuer2', 'AppDirec2', 'AppNombServBd', 'AppUsua', 'AppNombBd', 'AppRuta', 'AppEspaActu', 'AppProy', 'TiposId_fk25', 'AppPoliBack', 'TiposId_fk26', 'TiposId_fk27', 'TiposId_fk28'], 'required'],
+            // [['TiposId_fk31', 'TiposId_fk32', 'TiposId_fk33', 'TiposId_fk34', 'TiposId_fk35', 'TiposId_fk36', 'TiposId_fk37', 'TiposId_fk38', 'TiposId_fk39', 'TiposId_fk40', 'TiposId_fk41', 'TiposId_fk42', 'TiposId_fk43', 'TiposId_fk44'], 'required'],
+            // [['TiposId_fk50', 'TiposId_fk51', 'TiposId_fk52', 'TiposId_fk53', 'TiposId_fk54', 'AppUbic', 'TiposId_fk55', 'AppUbicDocu', 'AppUbicUlti', 'AppObse7', 'AppFuncApru', 'AppServWebVers', 'TiposId_fk48', 'TiposId_fk49'], 'required'],
+            // [['AppTipoLice', 'AppNumeLice', 'TiposId_fk22', 'TiposId_fk23', 'AppVersDist', 'AppNombVari', 'AppDescPara', 'AppCantLice', 'TiposId_fk29', 'TiposId_fk30', 'TiposId_fk45', 'TiposId_fk46', 'TiposId_fk47'], 'required'],
             [['ESopId1', 'ESopId2', 'UsuId_fk'], 'integer'],
-            // [['AppFechAdqu', 'AppFechPues'], 'safe'],
+            [['AppFechAdqu', 'AppFechPues'], 'safe'],
             [['AppNomb', 'AppSigl', 'AppVers', 'AppNumeDocuAdqu', 'AppOtroCual8', 'AppOtroCual16', 'AppUsua', 'AppEspaActu', 'AppProy', 'AppServWebVers'], 'string', 'max' => 50],
             [['AppDesc', 'AppEnti', 'AppAcueNiveServ'], 'string', 'max' => 500],
             [['AppUrl', 'AppValoAdqu', 'AppNombProc', 'AppServPues', 'AppOtroCual9', 'AppOtroCual10', 'AppOtroCual12', 'AppOtroCual14', 'AppOtroCual18', 'AppOtroCual19', 'AppTipoLice', 'AppNumeLice', 'AppVersDist', 'AppLengServ', 'AppVersApli', 'AppBibl', 'AppMane', 'AppVersBD', 'AppPuer1', 'AppMemo', 'AppEspaDisc', 'AppDirec1', 'AppNombArch', 'AppVari', 'AppNombVari', 'AppPuer2', 'AppNombServBd', 'AppNombBd', 'AppRuta', 'AppOtroCual25', 'AppPoliBack', 'AppOtroCual27', 'AppOtroCual28', 'AppFuncApru'], 'string', 'max' => 100],
@@ -352,40 +352,42 @@ class Aplicaciones extends \yii\db\ActiveRecord
     public function beforeValidate(){
 
       if ($this->TiposId_fk5) {
-        $this->TiposId_fk5 = implode(',',$this->TiposId_fk5);
+        print_r($this->TiposId_fk5);
+        // die();
+        $this->TiposId_fk5 = implode(',',(array)$this->TiposId_fk5);
       }
       if ($this->TiposId_fk6) {
-        $this->TiposId_fk6 = implode(',',$this->TiposId_fk6);
+        $this->TiposId_fk6 = implode(',',(array)$this->TiposId_fk6);
       }
       if ($this->TiposId_fk7) {
-        $this->TiposId_fk7 = implode(',',$this->TiposId_fk7);
+        $this->TiposId_fk7 = implode(',',(array)$this->TiposId_fk7);
       }
       if ($this->TiposId_fk8) {
-        $this->TiposId_fk8 = implode(',',$this->TiposId_fk8);
+        $this->TiposId_fk8 = implode(',',(array)$this->TiposId_fk8);
       }
       if ($this->TiposId_fk9) {
-        $this->TiposId_fk9 = implode(',',$this->TiposId_fk9);
+        $this->TiposId_fk9 = implode(',',(array)$this->TiposId_fk9);
       }
       if ($this->TiposId_fk10) {
-        $this->TiposId_fk10 = implode(',',$this->TiposId_fk10);
+        $this->TiposId_fk10 = implode(',',(array)$this->TiposId_fk10);
       }
       if ($this->TiposId_fk12) {
-        $this->TiposId_fk12 = implode(',',$this->TiposId_fk12);
+        $this->TiposId_fk12 = implode(',',(array)$this->TiposId_fk12);
       }
       if ($this->TiposId_fk14) {
-        $this->TiposId_fk14 = implode(',',$this->TiposId_fk14);
+        $this->TiposId_fk14 = implode(',',(array)$this->TiposId_fk14);
       }
       if ($this->TiposId_fk16) {
-        $this->TiposId_fk16 = implode(',',$this->TiposId_fk16);
+        $this->TiposId_fk16 = implode(',',(array)$this->TiposId_fk16);
       }
       if ($this->TiposId_fk18) {
-        $this->TiposId_fk18 = implode(',',$this->TiposId_fk18);
+        $this->TiposId_fk18 = implode(',',(array)$this->TiposId_fk18);
       }
       if ($this->TiposId_fk21) {
-        $this->TiposId_fk21 = implode(',',$this->TiposId_fk21);
+        $this->TiposId_fk21 = implode(',',(array)$this->TiposId_fk21);
       }
       if ($this->TiposId_fk26) {
-        $this->TiposId_fk26 = implode(',',$this->TiposId_fk26);
+        $this->TiposId_fk26 = implode(',',(array)$this->TiposId_fk26);
       }
 
 

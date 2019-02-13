@@ -9,9 +9,13 @@ use Yii;
  *
  * @property int $AModId Id
  * @property int $AppId_fk Aplicación
+ * @property string $AModNomb Nombre del módulo
  * @property string $AModDesc Descripción
+ * @property int $TiposId_fk ¿Está instalado?
+ * @property string $AModObse Observaciones
  *
  * @property Aplicaciones $appIdFk
+ * @property Tipos $tiposIdFk
  */
 class Appmodulos extends \yii\db\ActiveRecord
 {
@@ -29,10 +33,13 @@ class Appmodulos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['AppId_fk', 'AModDesc'], 'required'],
-            [['AppId_fk'], 'integer'],
+            [['AppId_fk', 'AModNomb', 'AModDesc', 'TiposId_fk', 'AModObse'], 'required'],
+            [['AppId_fk', 'TiposId_fk'], 'integer'],
+            [['AModNomb'], 'string', 'max' => 50],
             [['AModDesc'], 'string', 'max' => 500],
+            [['AModObse'], 'string', 'max' => 200],
             [['AppId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Aplicaciones::className(), 'targetAttribute' => ['AppId_fk' => 'AppId']],
+            [['TiposId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['TiposId_fk' => 'TiposId']],
         ];
     }
 
@@ -44,7 +51,10 @@ class Appmodulos extends \yii\db\ActiveRecord
         return [
             'AModId' => 'Id',
             'AppId_fk' => 'Aplicación',
+            'AModNomb' => 'Nombre del módulo',
             'AModDesc' => 'Descripción',
+            'TiposId_fk' => '¿Está instalado?',
+            'AModObse' => 'Observaciones',
         ];
     }
 
@@ -56,12 +66,11 @@ class Appmodulos extends \yii\db\ActiveRecord
         return $this->hasOne(Aplicaciones::className(), ['AppId' => 'AppId_fk']);
     }
 
-    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
-
-            public function AppId_fk()
-        {
-            $data = Aplicaciones::findOne($this->AppId_fk);
-
-            return $data['AppNomb'];
-        }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTiposIdFk()
+    {
+        return $this->hasOne(Tipos::className(), ['TiposId' => 'TiposId_fk']);
+    }
 }

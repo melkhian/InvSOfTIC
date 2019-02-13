@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use backend\controllers\SiteController;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Aplicaciones */
 
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
       <?php
       if (SiteController::findCom(10)) {
-        echo Html::a('Actualizar', ['update', 'id' => $model->ADepId], ['class' => 'btn btn-primary']);
+        echo Html::a('Actualizar', ['update', 'id' => $model->AppId], ['class' => 'btn btn-primary']);
       }
       ?>
         <!-- <?= Html::a('Update', ['update', 'id' => $model->AppId], ['class' => 'btn btn-primary']) ?> -->

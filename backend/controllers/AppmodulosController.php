@@ -35,8 +35,6 @@ class AppmodulosController extends Controller
      */
     public function actionIndex()
     {
-      if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(12) or SiteController::findCom(13) or SiteController::findCom(14)){
         $searchModel = new AppmodulosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -44,14 +42,7 @@ class AppmodulosController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-      }
-      else {
-        $this->redirect(['site/error']);
-      }
-    }else {
-      $this->redirect(['site/login']);
     }
-}
 
     /**
      * Displays a single Appmodulos model.
@@ -61,19 +52,10 @@ class AppmodulosController extends Controller
      */
     public function actionView($id)
     {
-      if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findVar(4)){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
-      }
-      else {
-        $this->redirect(['site/error']);
-      }
-    }else {
-      $this->redirect(['site/login']);
     }
-}
 
     /**
      * Creates a new Appmodulos model.
@@ -82,8 +64,6 @@ class AppmodulosController extends Controller
      */
     public function actionCreate()
     {
-      if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findVar(4)){
         $model = new Appmodulos();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -93,14 +73,7 @@ class AppmodulosController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
-      }
-      else {
-        $this->redirect(['site/error']);
-      }
-    }else {
-      $this->redirect(['site/login']);
     }
-}
 
     /**
      * Updates an existing Appmodulos model.
@@ -111,8 +84,6 @@ class AppmodulosController extends Controller
      */
     public function actionUpdate($id)
     {
-      if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findVar(4)){
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -122,14 +93,7 @@ class AppmodulosController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
-      }
-      else {
-        $this->redirect(['site/error']);
-      }
-    }else {
-      $this->redirect(['site/login']);
     }
-}
 
     /**
      * Deletes an existing Appmodulos model.
@@ -140,14 +104,9 @@ class AppmodulosController extends Controller
      */
     public function actionDelete($id)
     {
-        if(SiteController::findVar(4)){
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
-      }
-      else {
-        $this->redirect(['site/error']);
-      }
     }
 
     /**
@@ -165,25 +124,4 @@ class AppmodulosController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-    public function findVar($var)
-    {
-      $IdUser = Yii::$app->user->identity->id;
-      // $var = 'Usuarios';
-      $query = (new \yii\db\Query())
-      ->select('intId')
-      ->from('user')
-      ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
-      ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
-      ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
-      ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
-      ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
-      ->where([
-        'id' => $IdUser,
-        'IntId' => $var]);
-        $command = $query->createCommand();
-        $rows = $command->queryScalar();
-        return $rows;
-    }
-
 }

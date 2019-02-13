@@ -18,8 +18,8 @@ class AppmodulosSearch extends Appmodulos
     public function rules()
     {
         return [
-            [['AModId', 'AppId_fk'], 'integer'],
-            [['AModDesc'], 'safe'],
+            [['AModId', 'AppId_fk', 'TiposId_fk'], 'integer'],
+            [['AModNomb', 'AModDesc', 'AModObse'], 'safe'],
         ];
     }
 
@@ -61,9 +61,12 @@ class AppmodulosSearch extends Appmodulos
         $query->andFilterWhere([
             'AModId' => $this->AModId,
             'AppId_fk' => $this->AppId_fk,
+            'TiposId_fk' => $this->TiposId_fk,
         ]);
 
-        $query->andFilterWhere(['like', 'AModDesc', $this->AModDesc]);
+        $query->andFilterWhere(['like', 'AModNomb', $this->AModNomb])
+            ->andFilterWhere(['like', 'AModDesc', $this->AModDesc])
+            ->andFilterWhere(['like', 'AModObse', $this->AModObse]);
 
         return $dataProvider;
     }

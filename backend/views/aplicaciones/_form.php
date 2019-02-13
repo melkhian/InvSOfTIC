@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\bootstrap\Tabs;
 use yii\helpers\ArrayHelper;
 use backend\models\Tipos;
+use wbraganca\dynamicform\DynamicFormWidget;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Aplicaciones */
@@ -17,7 +18,7 @@ use backend\models\Tipos;
 
 <div class="aplicaciones-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
@@ -46,7 +47,7 @@ use backend\models\Tipos;
                 ],
                 [
                     'label' => 'VII',
-                    'content' => $this->render('datosApp', ['model' => $model, 'form' => $form]),
+                    'content' => $this->render('datosApp', ['model' => $model, 'modelsAppmodulos' => $modelsAppmodulos, 'form' => $form]),
                 ],
                 [
                     'label' => 'VIII',
