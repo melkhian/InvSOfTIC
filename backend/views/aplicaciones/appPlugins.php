@@ -63,7 +63,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
               </div><!-- .row -->
               <div class="row">
                 <div class="col-sm-4">
-                  <?= $form->field($modelAppplugins, "[{$i}]ApluDesc")->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($modelAppplugins, "[{$i}]APluDesc")->textInput(['maxlength' => true]) ?>
                 </div>
               </div><!-- .row -->
             </div>

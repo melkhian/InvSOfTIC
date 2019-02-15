@@ -10,8 +10,8 @@ use Yii;
  * @property int $APluId Id
  * @property string $APluNomb Nombre
  * @property string $APluLice Licenciamiento
- * @property string $ApluDesc Descripción del uso
- * @property int $AppId_fk Id secuencia de aplicaciones
+ * @property string $APluDesc Descripción del uso
+ * @property int $AppId_fk Aplicación
  *
  * @property Aplicaciones $appIdFk
  */
@@ -31,12 +31,11 @@ class Appplugins extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-          // Se elimina AppId_fk de los campos requeridos, esto para que funcione como un modelo 1:N en Aplicaciones
-            [['APluNomb', 'APluLice', 'ApluDesc', 'AppId_fk'], 'required'],
+            [['APluNomb', 'APluLice', 'APluDesc', 'AppId_fk'], 'required'],
             [['AppId_fk'], 'integer'],
             [['APluNomb'], 'string', 'max' => 50],
             [['APluLice'], 'string', 'max' => 100],
-            [['ApluDesc'], 'string', 'max' => 200],
+            [['APluDesc'], 'string', 'max' => 200],
             [['AppId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Aplicaciones::className(), 'targetAttribute' => ['AppId_fk' => 'AppId']],
         ];
     }
@@ -50,8 +49,8 @@ class Appplugins extends \yii\db\ActiveRecord
             'APluId' => 'Id',
             'APluNomb' => 'Nombre',
             'APluLice' => 'Licenciamiento',
-            'ApluDesc' => 'Descripción del uso',
-            'AppId_fk' => 'Id secuencia de aplicaciones',
+            'APluDesc' => 'Descripción del uso',
+            'AppId_fk' => 'Aplicación',
         ];
     }
 
