@@ -101,30 +101,60 @@ class Appdependencias extends \yii\db\ActiveRecord
         if (!$insert){
             $AudAcci =  'update';
             // $xx = $this->getOldAttribute('ADepCantUsua');
-            // $oldAttributes[0] = $resultId;
+
+            if(!isset($changedAttributes['ADepId'])){
+                $oldAttributes[0] = '-';
+            }else{
+                $oldAttributes[0] = $changedAttributes['ADepId'];
+            } 
+            // $oldAttributes[0] = $$changedAttributes['ADepId'];
             // $oldAttributes[0] = '1';
-            $oldAttributes[1] = $changedAttributes['DepId_fk'];
-            $oldAttributes[2] = $changedAttributes['AppId_fk'];
-            $oldAttributes[3] = $changedAttributes['ADepCantUsua'];
+
+            if(!isset($changedAttributes['DepId_fk'])){
+                $oldAttributes[1] = '-';
+            }else{
+                $oldAttributes[1] = $changedAttributes['DepId_fk'];
+            } 
+            // $oldAttributes[1] = $changedAttributes['DepId_fk'];
+
+
+            if(!isset($changedAttributes['AppId_fk'])){
+                $oldAttributes[2] = '-';
+            }else{
+                $oldAttributes[2] = $changedAttributes['AppId_fk'];
+            } 
+            // $oldAttributes[2] = $changedAttributes['AppId_fk'];
+
+
+            if(!isset($changedAttributes['ADepCantUsua'])){
+                $oldAttributes[3] = '-';
+            }else{
+                $oldAttributes[3] = $changedAttributes['ADepCantUsua'];
+            } 
+            // $oldAttributes[3] = $changedAttributes['ADepCantUsua'];
+
+
             if(!isset($changedAttributes['ADepFechSist'])){
                 $oldAttributes[4] = '-';
             }else{
                 $oldAttributes[4] = $changedAttributes['ADepFechSist'];
             }            
+
+
             foreach ($rows2 as $key => $value) {
-                if ($key == 'ADepId' and $value !== $oldAttributes[0]) {
+                if ($key == 'ADepId' and $value != $oldAttributes[0]) {
                     $var[0] = $oldAttributes[0];
                 }
-                if ($key == 'DepId_fk' and $value !== $oldAttributes[1]) {
+                if ($key == 'DepId_fk' and $value != $oldAttributes[1]) {
                     $var[1] = $oldAttributes[1];
                 }
-                if ($key == 'AppId_fk' and $value !== $oldAttributes[2]) {
+                if ($key == 'AppId_fk' and $value != $oldAttributes[2]) {
                     $var[2] = $oldAttributes[2];
                 }
-                if ($key == 'ADepCantUsua' and $value !== $oldAttributes[3]) {
+                if ($key == 'ADepCantUsua' and $value != $oldAttributes[3]) {
                     $var[3] = $oldAttributes[3];
                 }
-                if ($key == 'ADepFechSist' and $value !== $oldAttributes[4]) {
+                if ($key == 'ADepFechSist' and $value != $oldAttributes[4]) {
                     $var[4] = $oldAttributes[4];
                 }
             }

@@ -53,11 +53,11 @@ $this->params['breadcrumbs'][] = $this->title;
              'filter' => Html::activeDropDownList($searchModel, 'UsuId_fk', ArrayHelper::map(User::find()->all(),'id','username'),['class'=>'form-control','prompt' => 'Seleccione el Tipo']),
             ],
             'AudAcci',
-            [
-            'attribute' => 'AudDatoAnte',
-            'label' => 'yourLabel',
-            'value' => function($model) { return "Id =>"  . " " . $model->AudDatoAnte[0];},
-            ],
+            // [
+            // 'attribute' => 'AudDatoAnte',
+            // 'label' => 'yourLabel',
+            // 'value' => function($model) { return "Id =>"  . " " . $model->AudDatoAnte[0];},
+            // ],
             'AudDatoAnte',
             'AudDatoDesp',
             'AudMod',
