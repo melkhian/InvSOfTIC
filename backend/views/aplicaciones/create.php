@@ -14,9 +14,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <?php // NOTE: Se agregan modelos extra para los formatos 1:N ?>
+
     <?= $this->render('_form', [
         'model' => $model,
         'modelsAppmodulos' => $modelsAppmodulos,
+        'modelsAppplugins' => $modelsAppplugins,
     ]) ?>
 
 </div>

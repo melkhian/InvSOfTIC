@@ -7,6 +7,7 @@ use backend\models\Aplicaciones;
 use backend\models\AplicacionesSearch;
 use backend\models\Appmodulos;
 use backend\models\Model;
+use backend\models\Appplugins;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -87,35 +88,38 @@ class AplicacionesController extends Controller
      {
        if(isset(Yii::$app->user->identity->id)){
          if(SiteController::findCom(8)){
+           // NOTE: Se agregan los modelos 1:N
            $model = new Aplicaciones();
            $modelsAppmodulos = [new Appmodulos];
+           $modelsAppplugins = [new Appplugins];
 
            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+             // NOTE: Se cargan los modelos 1:N
              $modelsAppmodulos = Model::createMultiple(Appmodulos::classname());
-               Model::loadMultiple($modelsAppmodulos, Yii::$app->request->post());
+             Model::loadMultiple($modelsAppmodulos, Yii::$app->request->post());
+             $modelsAppplugins = Model::createMultiple(Appplugins::classname());
+             Model::loadMultiple($modelsAppplugins, Yii::$app->request->post());
 
                // validate all models
                $valid = $model->validate();
-               echo "<pre>";
-               print_r($valid);
-               echo "</pre>";
-               echo "string";
                // $valid = Model::validateMultiple($modelsAppmodulos) && $valid;
-               echo "<pre>";
-               print_r(Model::validateMultiple($modelsAppmodulos));
-               echo "</pre>";
-               echo "string";
-               // die();
-
 
                if ($valid) {
 
                    $transaction = \Yii::$app->db->beginTransaction();
                    try {
                        if ($flag = $model->save(false)) {
+                         // NOTE: Se realiza foreach de los elementos pertenecientes a cada modelo 1:N, se relaciona la llave foránea con la primaria de Aplicaciones
                            foreach ($modelsAppmodulos as $modelAppmodulos) {
                                $modelAppmodulos->AppId_fk = $model->AppId;
                                if (! ($flag = $modelAppmodulos->save(false))) {
+                                   $transaction->rollBack();
+                                   break;
+                               }
+                           }
+                           foreach ($modelsAppplugins as $modelAppplugins) {
+                               $modelAppplugins->AppId_fk = $model->AppId;
+                               if (! ($flag = $modelAppplugins->save(false))) {
                                    $transaction->rollBack();
                                    break;
                                }
@@ -131,10 +135,11 @@ class AplicacionesController extends Controller
                }
 
            }
-
+// NOTE: Se renderizan todos los modelos que se usan en el formulario
            return $this->render('create', [
                'model' => $model,
-               'modelsAppmodulos' => (empty($modelsAppmodulos)) ? [new Appmodulos] : $modelsAppmodulos
+               'modelsAppmodulos' => (empty($modelsAppmodulos)) ? [new Appmodulos] : $modelsAppmodulos,
+               'modelsAppplugins' => (empty($modelsAppplugins)) ? [new Appplugins] : $modelsAppplugins,
            ]);
            }
          else {

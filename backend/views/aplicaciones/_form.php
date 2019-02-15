@@ -45,6 +45,8 @@ use wbraganca\dynamicform\DynamicFormWidget;
                     'label' => 'Acuerdo de Niveles de Servicio',
                     'content' => $this->render('acuerdos', ['model' => $model, 'form' => $form]),
                 ],
+
+                // NOTE: label 'VII' contiene un modelo extra, esto es para generar el modelo 1:N
                 [
                     'label' => 'VII',
                     'content' => $this->render('datosApp', ['model' => $model, 'modelsAppmodulos' => $modelsAppmodulos, 'form' => $form]),
@@ -68,6 +70,12 @@ use wbraganca\dynamicform\DynamicFormWidget;
                 [
                     'label' => 'XI',
                     'content' => $this->render('infoBase', ['model' => $model, 'form' => $form]),
+                ],
+
+                // NOTE: label 'XII' contiene un modelo extra, esto es para generar el modelo 1:N
+                [
+                    'label' => 'XII',
+                    'content' => $this->render('appPlugins', ['model' => $model, 'modelsAppplugins' => $modelsAppplugins, 'form' => $form]),
                 ],
 
                 [
