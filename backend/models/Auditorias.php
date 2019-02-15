@@ -68,4 +68,18 @@ class Auditorias extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'UsuId_fk']);
     }
+
+        public function UsuId_fk()
+    {
+        $data = User::findOne($this->UsuId_fk);
+
+        return $data['username'];
+    }
+
+    //     public function AudMod()
+    // {
+    //     $data = Auditorias::findOne($this->AudMod);
+
+    //     return $data['AudMod'];
+    // }
 }

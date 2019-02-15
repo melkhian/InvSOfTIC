@@ -3,6 +3,9 @@ use backend\controllers\SiteController;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\helpers\ArrayHelper;
+use backend\models\User;
+use backend\models\Auditorias;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AuditoriasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -40,15 +43,28 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+        // 'format' => 'raw',
+        'columns' => [            
 
             'AudId',
-            'UsuId_fk',
+            // 'UsuId_fk',
+            ['attribute'=>'UsuId_fk',
+             'value'=> function($model){return $model->UsuId_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'UsuId_fk', ArrayHelper::map(User::find()->all(),'id','username'),['class'=>'form-control','prompt' => 'Seleccione el Tipo']),
+            ],
             'AudAcci',
+            [
+            'attribute' => 'AudDatoAnte',
+            'label' => 'yourLabel',
+            'value' => function($model) { return "Id =>"  . " " . $model->AudDatoAnte[0];},
+            ],
             'AudDatoAnte',
             'AudDatoDesp',
             'AudMod',
+            // ['attribute'=>'AudMod',
+            //  'value'=> function($model){return $model->AudMod();},
+            //  'filter' => Html::activeDropDownList($searchModel, 'AudMod', ArrayHelper::map(Auditorias::find()->all(),'AudMod','AudMod'),['class'=>'form-control','prompt' => 'Seleccione el Tipo']),
+            // ],
             //'AudIp',
             //'AudFechHora',
 

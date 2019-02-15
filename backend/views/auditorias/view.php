@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
      <?php
-     $UsuId_fk= User::findOne($model->UsuId_fk);
+     $UsuId_fk = User::findOne($model->UsuId_fk);
      ?>
 
     <?= DetailView::widget([
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'AudId',
             ['attribute' => 'UsuId_fk',
-             'value'=> $UsuId_fk['username'],
+             'value' => $UsuId_fk['username'],
             ],
             // 'UsuId_fk',
             'AudMod',

@@ -56,23 +56,17 @@ class Appdependencias extends \yii\db\ActiveRecord
     
     public function afterSave($insert, $changedAttributes)
     {
-        // $log = new Auditorias();
-        // $log->description=  'User ' . Yii::app()->user->Name
-        //                         . ' changed ' . $name . ' for '
-        //                         . get_class($this->Owner)
-        //                         . '[' . $this->Owner->getPrimaryKey() .'].';
-        // $AudId = 'null';
-        $table=$this->getTableSchema();
+        parent::afterSave($insert, $changedAttributes);
+
+        $table = $this->getTableSchema();
         $pk = $table->primaryKey; //---------------------- [ADepID]
         $x = implode(",", $pk);
         $UsuId_fk = Yii::$app->user->identity->id;
-        $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]
-        $AudAcci =  'create';
-        // $log->model=        get_class($this->Owner);
-        // $log->idModel=      $this->Owner->getPrimaryKey();
+        $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
         $AudIp = Yii::$app->getRequest()->getUserIP();
-        $AudFechHora = new \yii\db\Expression('NOW()');//new CDbExpression('NOW()');
-        
+        $AudFechHora = new \yii\db\Expression('NOW()');      
+
+
         $MaxId = (new \yii\db\Query())
         ->select($pk)
         ->from($AudMod)
@@ -80,33 +74,96 @@ class Appdependencias extends \yii\db\ActiveRecord
         ->createCommand()
         ->execute();
 
-        $query = (new \yii\db\Query())
+
+        $queryId = (new \yii\db\Query())
+        ->select('ADepId')
+        ->from($AudMod)
+        ->where([$pk[0]=>$MaxId])
+        ->createCommand();    
+        $rows1 = $queryId->queryOne();
+        $resultId = implode(",", $rows1);  
+
+
+
+        $queryAll = (new \yii\db\Query())
         ->select('*')
         ->from($AudMod)
         ->where([$pk[0]=>$MaxId])
-        ->createCommand();
-        // ->execute();
-        $rows = $query->queryOne();
-        $string = implode(",", $rows);
-        // print_r($rows); 
-        // $log->save();        
-        Yii::$app->db->createCommand()->insert('auditorias', 
-                                // ['AudId'=> $AudId],
-                                [
-                                    'UsuId_fk' => Yii::$app->user->identity->id,
-                                    'AudMod' => $AudMod,
-                                    'AudAcci' => $AudAcci, 
-                                    'AudDatoAnte' => 'empty',
-                                    'AudDatoDesp' => $string,                                   
-                                    'AudIp'=> $AudIp,
-                                    'AudFechHora'=> $AudFechHora,                                                                    
-                                ])
-                                ->execute();
-        parent::afterSave($insert, $changedAttributes);
-     //  die;
-     /* $priority range low =1 normal =2 high=3*/
-     //background($name, $data = null, $priority = self::NORMAL, $unique = null)
-     
+        ->createCommand();    
+        $rows2 = $queryAll->queryOne();
+        $resultAll = implode(",", $rows2);
+    
+
+        $connection = Yii::$app->db;
+
+
+        // if (Yii::$app->controller->action->id == 'create') 
+        if (!$insert){
+            $AudAcci =  'update';
+            // $xx = $this->getOldAttribute('ADepCantUsua');
+            // $oldAttributes[0] = $resultId;
+            // $oldAttributes[0] = '1';
+            $oldAttributes[1] = $changedAttributes['DepId_fk'];
+            $oldAttributes[2] = $changedAttributes['AppId_fk'];
+            $oldAttributes[3] = $changedAttributes['ADepCantUsua'];
+            if(!isset($changedAttributes['ADepFechSist'])){
+                $oldAttributes[4] = '-';
+            }else{
+                $oldAttributes[4] = $changedAttributes['ADepFechSist'];
+            }            
+            foreach ($rows2 as $key => $value) {
+                if ($key == 'ADepId' and $value !== $oldAttributes[0]) {
+                    $var[0] = $oldAttributes[0];
+                }
+                if ($key == 'DepId_fk' and $value !== $oldAttributes[1]) {
+                    $var[1] = $oldAttributes[1];
+                }
+                if ($key == 'AppId_fk' and $value !== $oldAttributes[2]) {
+                    $var[2] = $oldAttributes[2];
+                }
+                if ($key == 'ADepCantUsua' and $value !== $oldAttributes[3]) {
+                    $var[3] = $oldAttributes[3];
+                }
+                if ($key == 'ADepFechSist' and $value !== $oldAttributes[4]) {
+                    $var[4] = $oldAttributes[4];
+                }
+            }
+            if (!isset($var)) {
+                $total = 'No Change';
+            }else{
+               $total = implode(",",$var); 
+            }
+            // $total = implode(",", $oldAttributes);
+            $connection->createCommand()->insert('auditorias', 
+                                    // ['AudId'=> $AudId],
+                                    [
+                                        'UsuId_fk' => Yii::$app->user->identity->id,
+                                        'AudMod' => $AudMod,
+                                        'AudAcci' => $AudAcci, 
+                                        'AudDatoAnte' => $total,
+                                        'AudDatoDesp' => $resultAll,                                   
+                                        'AudIp'=> $AudIp,
+                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                    ])
+                                    ->execute(); 
+
+        }
+        if ($insert)
+        {        
+            $AudAcci =  'create';
+            $connection->createCommand()->insert('auditorias', 
+                                    // ['AudId'=> $AudId],
+                                    [
+                                        'UsuId_fk' => Yii::$app->user->identity->id,
+                                        'AudMod' => $AudMod,
+                                        'AudAcci' => $AudAcci, 
+                                        'AudDatoAnte' => ' ',
+                                        'AudDatoDesp' => $resultId,                                   
+                                        'AudIp'=> $AudIp,
+                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                    ])
+                                    ->execute();                
+        }            
     }
     /**
      * @return \yii\db\ActiveQuery
