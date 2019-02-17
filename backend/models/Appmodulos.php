@@ -5,7 +5,7 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "appmodulos".
+ * This is the model class for table "{{%appmodulos}}".
  *
  * @property int $AModId Id
  * @property int $AppId_fk Aplicación
@@ -24,7 +24,7 @@ class Appmodulos extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'appmodulos';
+        return '{{%appmodulos}}';
     }
 
     /**

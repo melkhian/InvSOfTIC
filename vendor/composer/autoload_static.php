@@ -27,9 +27,15 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
             'yii\\bootstrap\\' => 14,
             'yii\\' => 4,
         ),
+
+        's' => 
+        array (
+            'sammaye\\audittrail\\' => 19,
+
         'w' => 
         array (
             'wbraganca\\dynamicform\\' => 22,
+
         ),
         'r' => 
         array (
@@ -51,11 +57,21 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         ),
         'd' => 
         array (
+            'dosamigos\\chartjs\\' => 18,
             'dmstr\\' => 6,
         ),
         'c' => 
         array (
             'cebe\\markdown\\' => 14,
+        ),
+        'b' => 
+        array (
+            'bedezign\\yii2\\audit\\' => 20,
+        ),
+        'a' => 
+        array (
+            'asinfotrack\\yii2\\toolbox\\' => 25,
+            'asinfotrack\\yii2\\audittrail\\' => 28,
         ),
         'W' => 
         array (
@@ -137,9 +153,15 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
+
+        'sammaye\\audittrail\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sammaye/yii2-audittrail',
+
         'wbraganca\\dynamicform\\' => 
         array (
             0 => __DIR__ . '/..' . '/wbraganca/yii2-dynamicform',
+
         ),
         'rmrevin\\yii\\fontawesome\\' => 
         array (
@@ -167,6 +189,10 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         array (
             0 => __DIR__ . '/..' . '/himiklab/yii2-recaptcha-widget/src',
         ),
+        'dosamigos\\chartjs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/2amigos/yii2-chartjs-widget/src',
+        ),
         'dmstr\\' => 
         array (
             0 => __DIR__ . '/..' . '/dmstr/yii2-adminlte-asset',
@@ -174,6 +200,18 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
+        ),
+        'bedezign\\yii2\\audit\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bedezign/yii2-audit/src',
+        ),
+        'asinfotrack\\yii2\\toolbox\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/asinfotrack/yii2-toolbox',
+        ),
+        'asinfotrack\\yii2\\audittrail\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/asinfotrack/yii2-audittrail',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -263,6 +301,13 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
     );
 
     public static $prefixesPsr0 = array (
+        'y' => 
+        array (
+            'yii\\image\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/yurkinx/yii2-image',
+            ),
+        ),
         'c' => 
         array (
             'cebe\\gravatar\\' => 

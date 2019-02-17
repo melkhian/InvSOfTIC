@@ -6,7 +6,6 @@ use common\models\LoginForm;
 namespace backend\components;
 
 class WebUser extends \yii\web\User {
-
     public function init() {
         parent::init();
 
@@ -17,4 +16,6 @@ class WebUser extends \yii\web\User {
             ->scalar();
     }
 }
+
 ?>
+

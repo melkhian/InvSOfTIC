@@ -35,14 +35,22 @@ class ParametrosController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ParametrosSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if(isset(Yii::$app->user->identity->id)){
+            if(SiteController::findCom(60) or SiteController::findCom(61) or SiteController::findCom(62)){
+                $searchModel = new ParametrosSearch();
+                $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
+                return $this->render('index', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                ]);
+            }else {
+                $this->redirect(['site/error']);
+            }
+        }else {
+                $this->redirect(['site/login']);
+            }
+        }    
 
     /**
      * Displays a single Parametros model.
@@ -52,9 +60,17 @@ class ParametrosController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        if(isset(Yii::$app->user->identity->id)){
+            if(SiteController::findCom(61)){
+                return $this->render('view', [
+                    'model' => $this->findModel($id),
+                ]);
+            }else {
+                $this->redirect(['site/error']);
+            }
+        }else {
+            $this->redirect(['site/login']);
+        }
     }
 
     /**
@@ -64,15 +80,23 @@ class ParametrosController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Parametros();
+        if(isset(Yii::$app->user->identity->id)){
+            if(SiteController::findCom(60)){
+                $model = new Parametros();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ParId]);
+                if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                    return $this->redirect(['view', 'id' => $model->ParId]);
+                }
+
+                return $this->render('create', [
+                'model' => $model,
+                ]);
+            }else {
+                $this->redirect(['site/error']);
+            }
+        }else {
+            $this->redirect(['site/login']);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
     }
 
     /**
@@ -84,15 +108,23 @@ class ParametrosController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        if(isset(Yii::$app->user->identity->id)){
+            if(SiteController::findCom(62)){
+                $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ParId]);
+                if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                    return $this->redirect(['view', 'id' => $model->ParId]);
+                }
+
+                return $this->render('update', [
+                'model' => $model,
+                ]);
+            }else {
+                $this->redirect(['site/error']);
+            }
+        }else {
+            $this->redirect(['site/login']);
         }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
     }
 
     /**

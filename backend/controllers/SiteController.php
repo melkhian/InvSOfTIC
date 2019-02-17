@@ -110,12 +110,20 @@ class SiteController extends Controller
         ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
         ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
         ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
-        ->where([
-          'id' => $IdUser,
-          'IntId' => $var]);
-          $command = $query->createCommand();
-          $rows = $command->queryScalar();
+        ->where(['id' => $IdUser,'IntId' => $var])
+        ->createCommand();
+        // echo $query->sql;
+        // print_r($query->params);
+        $rows = $query->queryAll();
+          // $command = $query->createCommand();
+          // $rows = $command->queryColumn();
+          // foreach ($rows as $key => $value) {
+          //   // if (SiteController::findvar(3) == 3){
+          //   //   echo "hola";
+          //   // }
+           // print_r($rows);
           return $rows;
+                
       }else {
         Yii::$app->user->logout();
       }
@@ -137,11 +145,11 @@ class SiteController extends Controller
         ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
         ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
         ->innerJoin('comandos','comandos.comid = interfaces.intId')
-        ->where([
-          'id' => $IdUser,
-          'comid_fk' => $com]);
-          $command = $query->createCommand();
-          $rows = $command->queryScalar();
+        ->where(['id' => $IdUser,'comid_fk' => $com])
+        ->createCommand();
+
+        $rows = $query->queryAll();
+          // print_r($rows);
           return $rows;
       }else {
         Yii::$app->user->logout();

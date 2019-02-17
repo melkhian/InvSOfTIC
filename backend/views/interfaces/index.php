@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
           echo Html::a('Crear Interfaz', ['create'], ['class' => 'btn btn-success']);
           }
           else {
-            $this->redirect(['site/error']);
+            // $this->redirect(['site/error']);
           }
           if (SiteController::findCom(52)) {
             $view = '{view}';

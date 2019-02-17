@@ -5,7 +5,7 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "parametros".
+ * This is the model class for table "{{%parametros}}".
  *
  * @property int $ParId Id
  * @property string $ParHead Imagen del Header
@@ -14,6 +14,7 @@ use Yii;
  * @property int $ParFall Número de intentos fallidos antes de bloquear Usuario
  * @property int $TiposId_fk Estado del Aplicativo
  * @property string $ParNemo Nemotecnia configurable de Contraseña
+ * @property int $ParTiemExpi
  *
  * @property Tipos $tiposIdFk
  */
@@ -24,7 +25,7 @@ class Parametros extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'parametros';
+        return '{{%parametros}}';
     }
 
     /**
@@ -33,8 +34,9 @@ class Parametros extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ParHead', 'ParFoot', 'ParMult', 'ParFall', 'TiposId_fk', 'ParNemo','ParTiemExpi'], 'required'],
-            [['ParMult', 'ParFall', 'TiposId_fk'], 'integer'],
+            [['ParHead', 'ParFoot', 'ParMult', 'ParFall', 'TiposId_fk', 'ParNemo', 'ParTiemExpi'], 'required'],
+            [['ParMult', 'ParFall', 'TiposId_fk', 'ParTiemExpi'], 'integer'],
+
             [['ParHead', 'ParFoot'], 'string', 'max' => 200],
             [['ParNemo'], 'string', 'max' => 50],
             [['TiposId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['TiposId_fk' => 'TiposId']],
@@ -54,7 +56,9 @@ class Parametros extends \yii\db\ActiveRecord
             'ParFall' => 'Número de intentos fallidos antes de bloquear Usuario',
             'TiposId_fk' => 'Estado del Aplicativo',
             'ParNemo' => 'Nemotecnia configurable de Contraseña',
+
             'ParTiemExpi' => 'Tiempo de Expiración de Sesión',
+
         ];
     }
 
@@ -64,12 +68,5 @@ class Parametros extends \yii\db\ActiveRecord
     public function getTiposIdFk()
     {
         return $this->hasOne(Tipos::className(), ['TiposId' => 'TiposId_fk']);
-    }
-
-    public function TiposId_fk()
-    {
-        $data = Tipos::findOne($this->TiposId_fk);
-
-        return $data['TiposDesc'];
     }
 }

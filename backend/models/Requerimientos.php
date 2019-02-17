@@ -1,7 +1,7 @@
 <?php
 
 namespace backend\models;
-
+use backend\models\AuditTrail;
 use Yii;
 
 /**
@@ -28,7 +28,14 @@ use Yii;
  * @property Versdocrequerimientos[] $versdocrequerimientos
  */
 class Requerimientos extends \yii\db\ActiveRecord
-{
+{    
+
+    public function behaviors()
+    {
+        return [
+            'sammaye\audittrail\LoggableBehavior'
+        ];
+    }   
     /**
      * @inheritdoc
      */
@@ -165,4 +172,14 @@ class Requerimientos extends \yii\db\ActiveRecord
 
         return $data['username'];
     }
+    // public function behaviors()
+    // {
+    //     return array(
+    //     // Classname => path to Class
+    //     'ActiveRecordLogableBehavior'=>
+    //         'application.behaviors.ActiveRecordLogableBehavior',
+    //     );
+    // }
+
 }
+?>

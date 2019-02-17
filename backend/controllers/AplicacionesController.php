@@ -84,6 +84,7 @@ class AplicacionesController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
+
      public function actionCreate()
      {
        if(isset(Yii::$app->user->identity->id)){
@@ -92,14 +93,12 @@ class AplicacionesController extends Controller
            $model = new Aplicaciones();
            $modelsAppmodulos = [new Appmodulos];
            $modelsAppplugins = [new Appplugins];
-
            if ($model->load(Yii::$app->request->post()) && $model->save()) {
              // NOTE: Se cargan los modelos 1:N
              $modelsAppmodulos = Model::createMultiple(Appmodulos::classname());
              Model::loadMultiple($modelsAppmodulos, Yii::$app->request->post());
              $modelsAppplugins = Model::createMultiple(Appplugins::classname());
              Model::loadMultiple($modelsAppplugins, Yii::$app->request->post());
-
                // validate all models
                $valid = $model->validate();
                // $valid = Model::validateMultiple($modelsAppmodulos) && $valid;
@@ -149,6 +148,7 @@ class AplicacionesController extends Controller
          $this->redirect(['site/login']);
        }
      }
+
     /**
      * Updates an existing Aplicaciones model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -162,8 +162,6 @@ class AplicacionesController extends Controller
         if(SiteController::findCom(10)){
           $model = $this->findModel($id);
           $modelsAppmodulos = $model->appmodulos;
-
-
           //Se agrega para pasar de String a Array
           $model->TiposId_fk5 = explode(',',$model->TiposId_fk5);
           $model->TiposId_fk6 = explode(',',$model->TiposId_fk6);
@@ -243,6 +241,7 @@ class AplicacionesController extends Controller
     else {
       $this->redirect(['site/error']);
     }
+
   }else {
     $this->redirect(['site/login']);
   }
@@ -263,6 +262,4 @@ class AplicacionesController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-  public function loadFunctions(){}
 }

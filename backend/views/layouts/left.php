@@ -15,7 +15,7 @@ use backend\controllers\SiteController;
             <div class="pull-left info">
                 <p>
                   <?php
-                    if(isset(Yii::$app->user->identity->id)){
+                    if(isset(Yii::$app->user->identity->id)){                      
                       echo Yii::$app->user->identity->username;
                     }else {
                       Yii::$app->user->logout();
@@ -36,33 +36,34 @@ use backend\controllers\SiteController;
         -->
 
         <?php
-        echo dmstr\widgets\Menu::widget(
-           [
-               'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
-               'items' => [
-                   [
-                       'label' => 'Administración',
-                       'icon' => 'code',
-                       'url' => '#',
-                       'items' => null,
-                         ]]]);
-         echo dmstr\widgets\Menu::widget(
-            [
-                'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
-                'items' => [
-                    [
-                        'label' => 'Parametros',
-                        'icon' => 'code',
-                        'url' => '#',
-                        'items' => null,
-                          ]]]);
-          if (SiteController::findvar(1))
+        // echo dmstr\widgets\Menu::widget(
+        //    [
+        //        'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
+        //        'items' => [
+        //            [
+        //                'label' => 'Administración',
+        //                'icon' => 'code',
+        //                'url' => '#',
+        //                'items' => null,
+        //                  ]]]);
+        //  echo dmstr\widgets\Menu::widget(
+        //     [
+        //         'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
+        //         'items' => [
+        //             [
+        //                 'label' => 'Parametros',
+        //                 'icon' => 'code',
+        //                 'url' => '#',
+        //                 'items' => null,
+        //                   ]]]);
+          if (SiteController::findvar(1))          
+
           // if ($this->context->findVar(1))
               echo dmstr\widgets\Menu::widget(
                   [
                       'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
-                      'items' => [
-                          ['label' => 'Usuarios', 'icon' => 'users', 'url' => ['user/index']],
+                        'items' => [
+                                   ['label' => 'Usuarios', 'icon' => 'users', 'url' => ['user/index']],
                         ]]);
             if (SiteController::findvar(2))
             // if ($this->context->findVar(2))
@@ -104,7 +105,7 @@ use backend\controllers\SiteController;
                              'label' => 'Gestión de Aplicaciones',
                              'icon' => 'code',
                              'url' => '#',
-                             'items' => $gda,
+                             'items' => $gda,                             
                                ]]]);
             }
             // echo $gdaa;
@@ -284,35 +285,49 @@ use backend\controllers\SiteController;
                            $pds[] = ['label' => 'Tipo', 'icon' => 'cog', 'url' => ['tipo/index']];
                          }
                          else {
-                           $pds=null;
+                           $pds[] = null;
                          }
                          if (SiteController::findvar(16)){
                          // if ($this->context->findVar(17)){
                            $pds[] = ['label' => 'Tipos', 'icon' => 'cog', 'url' => ['tipos/index']];
                          }
                          else {
-                           $pds=null;
+                           $pds[] = null;
                          }
                          if (SiteController::findvar(17)){
                          // if ($this->context->findVar(18)){
                            $pds[] = ['label' => 'Interfaces', 'icon' => 'bank', 'url' => ['interfaces/index']];
                          }
                          else {
-                           $pds=null;
+                           $pds[] = null;
                          }
                          if (SiteController::findvar(18)){
                          // if ($this->context->findVar(19)){
                            $pds[] = ['label' => 'Comandos', 'icon' => 'cog', 'url' => ['comandos/index']];
                          }
                          else {
-                           $pds=null;
+                           $pds[] = null;
                          }
                          if (SiteController::findvar(19)){
                          // if ($this->context->findVar(20)){
                            $pds[] = ['label' => 'Intecoma', 'icon' => 'bank', 'url' => ['intecoma/index']];
                          }
                          else {
-                           $pds=null;
+                           $pds[] = null;
+                         }
+                         if (SiteController::findvar(20)){
+                         // if ($this->context->findVar(20)){
+                           $pds[] = ['label' => 'Parametros', 'icon' => 'cog', 'url' => ['parametros/index']];
+                         }
+                         else {
+                           $pds[] = null;
+                         }
+                         if (SiteController::findvar(21)){
+                         // if ($this->context->findVar(20)){
+                           $pds[] = ['label' => 'Auditorias', 'icon' => 'cog', 'url' => ['auditorias/index']];
+                         }
+                         else {
+                           $pds[] = null;
                          }
                          if ($pds != null) {
                            echo dmstr\widgets\Menu::widget(

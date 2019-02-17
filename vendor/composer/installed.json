@@ -1,5 +1,65 @@
 [
     {
+        "name": "2amigos/yii2-chartjs-widget",
+        "version": "2.1.2",
+        "version_normalized": "2.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/2amigos/yii2-chartjs-widget.git",
+            "reference": "a5246d9bb491ef4ff82915dccc6980ed17ed0873"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/2amigos/yii2-chartjs-widget/zipball/a5246d9bb491ef4ff82915dccc6980ed17ed0873",
+            "reference": "a5246d9bb491ef4ff82915dccc6980ed17ed0873",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/chartjs": "~2.6",
+            "yiisoft/yii2": "~2.0.5"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.0",
+            "phpunit/phpunit": "~4.4"
+        },
+        "time": "2017-07-26T09:24:16+00:00",
+        "type": "yii2-extension",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "dosamigos\\chartjs\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "2amigOS! Consulting Group",
+                "email": "hola@2amigos.us",
+                "homepage": "http://2amigos.us",
+                "role": "Developer"
+            }
+        ],
+        "description": "ChartJs widget for Yii2.",
+        "homepage": "http://yiiwheels.com/extension/chartjs-widget",
+        "keywords": [
+            "2amigos",
+            "chartjs",
+            "extension",
+            "widget",
+            "yii",
+            "yii 2",
+            "yii2"
+        ]
+    },
+    {
         "name": "almasaeed2010/adminlte",
         "version": "v2.4.8",
         "version_normalized": "2.4.8.0",
@@ -43,6 +103,173 @@
             "template",
             "theme",
             "web"
+        ]
+    },
+    {
+        "name": "asinfotrack/yii2-audittrail",
+        "version": "0.8.4",
+        "version_normalized": "0.8.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/asinfotrack/yii2-audittrail.git",
+            "reference": "9511ec4510676921779ec4ff5aac3e47cd6190fc"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/asinfotrack/yii2-audittrail/zipball/9511ec4510676921779ec4ff5aac3e47cd6190fc",
+            "reference": "9511ec4510676921779ec4ff5aac3e47cd6190fc",
+            "shasum": ""
+        },
+        "require": {
+            "asinfotrack/yii2-toolbox": "~0.8.0",
+            "php": ">=5.4.0",
+            "yiisoft/yii2": "~2.0.6"
+        },
+        "time": "2018-10-17T07:26:22+00:00",
+        "type": "yii2-extension",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "asinfotrack\\yii2\\audittrail\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Pascal Mueller",
+                "email": "pascal.mueller@asinfotrack.ch",
+                "homepage": "http://www.asinfotrack.ch"
+            }
+        ],
+        "description": "Yii2-audittrail is a behavior and a set of widgets to track all modifications performed on a model",
+        "keywords": [
+            "Audit",
+            "Behavior",
+            "audittrail",
+            "bundle",
+            "history",
+            "trail",
+            "widget",
+            "yii2"
+        ]
+    },
+    {
+        "name": "asinfotrack/yii2-toolbox",
+        "version": "0.8.13",
+        "version_normalized": "0.8.13.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/asinfotrack/yii2-toolbox.git",
+            "reference": "200b92ec7c35cdcd3be6b0177a881d48d684cae2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/asinfotrack/yii2-toolbox/zipball/200b92ec7c35cdcd3be6b0177a881d48d684cae2",
+            "reference": "200b92ec7c35cdcd3be6b0177a881d48d684cae2",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0",
+            "yiisoft/yii2": "~2.0.6",
+            "yiisoft/yii2-bootstrap": "~2.0.0",
+            "yiisoft/yii2-gii": "~2.0.0",
+            "yurkinx/yii2-image": "~1.1"
+        },
+        "time": "2018-10-09T14:43:40+00:00",
+        "type": "yii2-extension",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "asinfotrack\\yii2\\toolbox\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Pascal Mueller",
+                "email": "pascal.mueller@asinfotrack.ch",
+                "homepage": "http://www.asinfotrack.ch"
+            }
+        ],
+        "description": "Yii2-Toolbox is a collection of useful helpers, widgets etc. extending the basic functionality of Yii2",
+        "keywords": [
+            "Toolbox",
+            "bundle",
+            "helpers",
+            "widgets",
+            "yii2"
+        ]
+    },
+    {
+        "name": "bedezign/yii2-audit",
+        "version": "1.1.1",
+        "version_normalized": "1.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bedezign/yii2-audit.git",
+            "reference": "2f5e9a935f0e3ab73aabec792de053af3663ab17"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bedezign/yii2-audit/zipball/2f5e9a935f0e3ab73aabec792de053af3663ab17",
+            "reference": "2f5e9a935f0e3ab73aabec792de053af3663ab17",
+            "shasum": ""
+        },
+        "require": {
+            "2amigos/yii2-chartjs-widget": "^2.0.1",
+            "ext-bcmath": "*",
+            "php": ">=5.4.0",
+            "phpspec/php-diff": "1.*",
+            "yiisoft/yii2": "^2.0.13",
+            "yiisoft/yii2-debug": "^2.0.7"
+        },
+        "suggest": {
+            "php-mime-mail-parser/php-mime-mail-parser": "Allows better displaying of logged emails."
+        },
+        "time": "2018-02-04T11:48:24+00:00",
+        "type": "yii2-extension",
+        "extra": {
+            "bootstrap": "bedezign\\yii2\\audit\\Bootstrap"
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "bedezign\\yii2\\audit\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Steve Guns",
+                "email": "Steve@bedezign.com",
+                "homepage": "http://bedezign.com/"
+            },
+            {
+                "name": "Marc Hollander",
+                "email": "marchollander@gmail.com",
+                "homepage": "http://maruc.nl/"
+            },
+            {
+                "name": "Brett O'Donnell",
+                "email": "cornernote@gmail.com",
+                "homepage": "https://mrphp.com.au/"
+            }
+        ],
+        "description": "Yii2 Audit records and displays web/cli requests, database changes, php/js errors and associated data.",
+        "keywords": [
+            "Audit",
+            "logging",
+            "trail",
+            "yii2"
         ]
     },
     {
@@ -123,6 +350,27 @@
         },
         "require": {
             "bower-asset/jquery": ">=1.9.1,<4.0"
+        },
+        "type": "bower-asset",
+        "installation-source": "dist",
+        "license": [
+            "MIT"
+        ]
+    },
+    {
+        "name": "bower-asset/chartjs",
+        "version": "v2.7.3",
+        "version_normalized": "2.7.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/chartjs/Chart.js.git",
+            "reference": "924a66bae23f7e938531024951f7251d46785473"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/chartjs/Chart.js/zipball/924a66bae23f7e938531024951f7251d46785473",
+            "reference": "924a66bae23f7e938531024951f7251d46785473",
+            "shasum": null
         },
         "type": "bower-asset",
         "installation-source": "dist",
@@ -2268,6 +2516,88 @@
         ]
     },
     {
+        "name": "sammaye/auditrail2",
+        "version": "2.1.0",
+        "version_normalized": "2.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Sammaye/yii-audittrail.git",
+            "reference": "4620ab6ff22561eadfaea23ea27037ecda8e886b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Sammaye/yii-audittrail/zipball/4620ab6ff22561eadfaea23ea27037ecda8e886b",
+            "reference": "4620ab6ff22561eadfaea23ea27037ecda8e886b",
+            "shasum": ""
+        },
+        "time": "2015-10-04T19:58:18+00:00",
+        "type": "yii-extension",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-2-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sammaye",
+                "homepage": "http://sammaye.wordpress.com"
+            }
+        ],
+        "description": "A reload of the popular audit trail extension",
+        "keywords": [
+            "Audit",
+            "phundament",
+            "trail",
+            "yii"
+        ]
+    },
+    {
+        "name": "sammaye/yii2-audittrail",
+        "version": "1.2.0",
+        "version_normalized": "1.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Sammaye/yii2-audittrail.git",
+            "reference": "8e38c7f2f8b54ec4aa45fb580fc1e65b8036e9d4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Sammaye/yii2-audittrail/zipball/8e38c7f2f8b54ec4aa45fb580fc1e65b8036e9d4",
+            "reference": "8e38c7f2f8b54ec4aa45fb580fc1e65b8036e9d4",
+            "shasum": ""
+        },
+        "require": {
+            "yiisoft/yii2": ">=2.0"
+        },
+        "time": "2016-11-01T14:35:48+00:00",
+        "type": "yii2-extension",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "sammaye\\audittrail\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD 3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sammaye",
+                "homepage": "http://sammaye.wordpress.com/"
+            }
+        ],
+        "description": "A port of audit trail",
+        "keywords": [
+            "Audit",
+            "audit trail",
+            "audittrail",
+            "extension",
+            "trail",
+            "yii2"
+        ]
+    },
+    {
         "name": "sebastian/code-unit-reverse-lookup",
         "version": "1.0.1",
         "version_normalized": "1.0.1.0",
@@ -4053,6 +4383,51 @@
             "mailer",
             "swift",
             "swiftmailer",
+            "yii2"
+        ]
+    },
+    {
+        "name": "yurkinx/yii2-image",
+        "version": "v1.2",
+        "version_normalized": "1.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/yurkinx/yii2-image.git",
+            "reference": "d1e1ea3bd5d768394aee82cb1b1c0b105adb037c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/yurkinx/yii2-image/zipball/d1e1ea3bd5d768394aee82cb1b1c0b105adb037c",
+            "reference": "d1e1ea3bd5d768394aee82cb1b1c0b105adb037c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0",
+            "yiisoft/yii2": "*"
+        },
+        "time": "2019-01-23T18:57:43+00:00",
+        "type": "yii2-extension",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "yii\\image\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Yuri Kileev",
+                "email": "kileev@gmail.com"
+            }
+        ],
+        "description": "Yii2 extension for image manipulating using Kohana Image Library.",
+        "homepage": "https://github.com/yurkinx/yii2-image",
+        "keywords": [
+            "extension",
+            "image",
             "yii2"
         ]
     }

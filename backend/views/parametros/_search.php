@@ -32,6 +32,8 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'ParNemo') ?>
 
+    <?php // echo $form->field($model, 'ParTiemExpi') ?>
+
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>

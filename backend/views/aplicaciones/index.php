@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         }
         else {
           $this->redirect(['site/error']);
+
         }
         if (SiteController::findCom(9)) {
           $view = '{view}';
@@ -34,6 +35,11 @@ $this->params['breadcrumbs'][] = $this->title;
           $update = '{update}';
         } else {
           $update = '';
+        }
+        if (SiteController::findCom(11)) {
+          $delete = '{delete}';
+        } else {
+          $delete = '';
         }
         ?>
     </p>
@@ -169,7 +175,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'AppFuncApru',
 
             ['class' => 'yii\grid\ActionColumn',
-             'template' => "$view $update"],
+             'template' => "$view $update $delete"],
+
         ],
     ]); ?>
     <?php Pjax::end(); ?>
