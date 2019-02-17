@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Appmodulos */
 
-$this->title = 'Create Appmodulos';
-$this->params['breadcrumbs'][] = ['label' => 'Appmodulos', 'url' => ['index']];
+$this->title = 'Crear Módulo por Aplicación';
+$this->params['breadcrumbs'][] = ['label' => 'Módulos por Aplicación', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="appmodulos-create">

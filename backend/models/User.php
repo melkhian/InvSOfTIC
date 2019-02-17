@@ -245,7 +245,9 @@ private $var;
     {
         $this->password_reset_token = "";
     }
-
+// NOTE:  Funciones creadas para cambiar en el Index el valor de las llaves foráneas y generar el filtrado por DropBox
+// donde $data = Dependencias::findOne($this->depid_fk); relaciona el modelo Dependencias con el nombre de la llave foránea.
+// y retorna el valor del campo a cambiar DepNomb
     public function depid_fk()
     {
         $data = Dependencias::findOne($this->depid_fk);

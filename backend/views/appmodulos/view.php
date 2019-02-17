@@ -2,12 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use backend\models\Tipos;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Appmodulos */
 
 $this->title = $model->AModId;
-$this->params['breadcrumbs'][] = ['label' => 'Appmodulos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Módulo por Aplicación', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="appmodulos-view">
@@ -15,15 +16,23 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->AModId], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->AModId], [
+        <?= Html::a('Actualizar', ['update', 'id' => $model->AModId], ['class' => 'btn btn-primary']) ?>
+        <!-- <?= Html::a('Delete', ['delete', 'id' => $model->AModId], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?>
+        ]) ?> -->
     </p>
+
+    <!-- INICIO
+        Obtengo el nombre de la llave foránea dentro del modelo para luego cambiar su valor a una descripción en la lista desplegable de Tipos
+    -->
+    <?php
+        $TiposId_fk= Tipos::findOne($model->TiposId_fk);
+    ?>
+    <!-- FIN -->
 
     <?= DetailView::widget([
         'model' => $model,
@@ -32,7 +41,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'AppId_fk',
             'AModNomb',
             'AModDesc',
-            'TiposId_fk',
+            ['attribute' => 'TiposId_fk',
+             'value'=> $TiposId_fk['TiposDesc'],
+            ],
+            // 'TiposId_fk',
             'AModObse',
         ],
     ]) ?>

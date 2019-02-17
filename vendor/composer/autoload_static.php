@@ -27,15 +27,13 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
             'yii\\bootstrap\\' => 14,
             'yii\\' => 4,
         ),
-
-        's' => 
-        array (
-            'sammaye\\audittrail\\' => 19,
-
         'w' => 
         array (
             'wbraganca\\dynamicform\\' => 22,
-
+        ),
+        's' => 
+        array (
+            'sammaye\\audittrail\\' => 19,
         ),
         'r' => 
         array (
@@ -153,15 +151,13 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
-
-        'sammaye\\audittrail\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sammaye/yii2-audittrail',
-
         'wbraganca\\dynamicform\\' => 
         array (
             0 => __DIR__ . '/..' . '/wbraganca/yii2-dynamicform',
-
+        ),
+        'sammaye\\audittrail\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sammaye/yii2-audittrail',
         ),
         'rmrevin\\yii\\fontawesome\\' => 
         array (
