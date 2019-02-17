@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\ArrayHelper;
 use backend\controllers\SiteController;
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -18,11 +19,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php
-        if (SiteController::findCom(8)) { 
-            echo Html::a('Crear Aplicación', ['create'], ['class' => 'btn btn-success']);
+        if (SiteController::findCom(8)){
+        echo Html::a('Crear Aplicaciones', ['create'], ['class' => 'btn btn-success']);
         }
         else {
-          // $this->redirect(['site/error']);
+          $this->redirect(['site/error']);
+
         }
         if (SiteController::findCom(9)) {
           $view = '{view}';
@@ -39,7 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
         } else {
           $delete = '';
         }
-
         ?>
     </p>
 
@@ -175,6 +176,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ['class' => 'yii\grid\ActionColumn',
              'template' => "$view $update $delete"],
+
         ],
     ]); ?>
     <?php Pjax::end(); ?>

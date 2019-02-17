@@ -22,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?php
         if (SiteController::findCom(57)) {
+
         echo Html::a('Crear Interfaz por Comando', ['create'], ['class' => 'btn btn-success']);
         }
         else {

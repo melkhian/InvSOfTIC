@@ -25,6 +25,8 @@
         "sammaye/auditrail2": "^2.1",
         "sammaye/yii2-audittrail": "^1.2",
         "bedezign/yii2-audit": "^1.0"
+        "wbraganca/yii2-dynamicform": "*"
+
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

@@ -17,13 +17,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-
         <?php
         if (SiteController::findCom(18)){
-        echo Html::a('Crear Empresa de Soporte', ['create'], ['class' => 'btn btn-success']);
+        echo Html::a('Crear Empresa Soporte', ['create'], ['class' => 'btn btn-success']);
         }
         else {
-          // $this->redirect(['site/error']);
+          $this->redirect(['site/error']);
         }
         if (SiteController::findCom(19)) {
           $view = '{view}';
@@ -35,7 +34,9 @@ $this->params['breadcrumbs'][] = $this->title;
         } else {
           $update = '';
         }
-          ?>
+        ?>
+
+
     </p>
 
     <?= GridView::widget([

@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\bootstrap\Tabs;
 use yii\helpers\ArrayHelper;
 use backend\models\Tipos;
+use wbraganca\dynamicform\DynamicFormWidget;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Aplicaciones */
@@ -17,7 +18,7 @@ use backend\models\Tipos;
 
 <div class="aplicaciones-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
@@ -44,9 +45,11 @@ use backend\models\Tipos;
                     'label' => 'Acuerdo de Niveles de Servicio',
                     'content' => $this->render('acuerdos', ['model' => $model, 'form' => $form]),
                 ],
+
+                // NOTE: label 'VII' contiene un modelo extra, esto es para generar el modelo 1:N
                 [
                     'label' => 'VII',
-                    'content' => $this->render('datosApp', ['model' => $model, 'form' => $form]),
+                    'content' => $this->render('datosApp', ['model' => $model, 'modelsAppmodulos' => $modelsAppmodulos, 'form' => $form]),
                 ],
                 [
                     'label' => 'VIII',
@@ -67,6 +70,12 @@ use backend\models\Tipos;
                 [
                     'label' => 'XI',
                     'content' => $this->render('infoBase', ['model' => $model, 'form' => $form]),
+                ],
+
+                // NOTE: label 'XII' contiene un modelo extra, esto es para generar el modelo 1:N
+                [
+                    'label' => 'XII',
+                    'content' => $this->render('appPlugins', ['model' => $model, 'modelsAppplugins' => $modelsAppplugins, 'form' => $form]),
                 ],
 
                 [

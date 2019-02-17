@@ -36,6 +36,7 @@ class Parametros extends \yii\db\ActiveRecord
         return [
             [['ParHead', 'ParFoot', 'ParMult', 'ParFall', 'TiposId_fk', 'ParNemo', 'ParTiemExpi'], 'required'],
             [['ParMult', 'ParFall', 'TiposId_fk', 'ParTiemExpi'], 'integer'],
+
             [['ParHead', 'ParFoot'], 'string', 'max' => 200],
             [['ParNemo'], 'string', 'max' => 50],
             [['TiposId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['TiposId_fk' => 'TiposId']],
@@ -55,7 +56,9 @@ class Parametros extends \yii\db\ActiveRecord
             'ParFall' => 'Número de intentos fallidos antes de bloquear Usuario',
             'TiposId_fk' => 'Estado del Aplicativo',
             'ParNemo' => 'Nemotecnia configurable de Contraseña',
-            'ParTiemExpi' => 'Par Tiem Expi',
+
+            'ParTiemExpi' => 'Tiempo de Expiración de Sesión',
+
         ];
     }
 

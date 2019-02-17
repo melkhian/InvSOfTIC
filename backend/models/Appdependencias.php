@@ -32,7 +32,7 @@ class Appdependencias extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['DepId_fk', 'AppId_fk', 'ADepCantUsua', 'ADepFechSist'], 'required'],
+            [['DepId_fk', 'AppId_fk', 'ADepCantUsua'], 'required'],
             [['DepId_fk', 'AppId_fk', 'ADepCantUsua'], 'integer'],
             [['ADepFechSist'], 'safe'],
             [['DepId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Dependencias::className(), 'targetAttribute' => ['DepId_fk' => 'DepId']],
