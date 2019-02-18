@@ -18,18 +18,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php
-        if (SiteController::findCom(39)) {
+        if (SiteController::findCom(36)) {
         echo Html::a('Crear Rol', ['create'], ['class' => 'btn btn-success']);
         }
         else {
           // $this->redirect(['site/error']);
         }
-        if (SiteController::findCom(40)) {
+        if (SiteController::findCom(37)) {
           $view = '{view}';
         } else {
           $view = '';
         }
-        if (SiteController::findCom(41)) {
+        if (SiteController::findCom(38)) {
           $update = '{update}';
         } else {
           $update = '';

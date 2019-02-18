@@ -112,6 +112,7 @@ return array (
       '@kartik/date' => $vendorDir . '/kartik-v/yii2-widget-datepicker/src',
     ),
   ),
+
   'yurkinx/yii2-image' => 
   array (
     'name' => 'yurkinx/yii2-image',
@@ -167,4 +168,14 @@ return array (
     ),
     'bootstrap' => 'bedezign\\yii2\\audit\\Bootstrap',
   ),
+  'wbraganca/yii2-dynamicform' => 
+  array (
+    'name' => 'wbraganca/yii2-dynamicform',
+    'version' => '2.0.2.0',
+    'alias' => 
+    array (
+      '@wbraganca/dynamicform' => $vendorDir . '/wbraganca/yii2-dynamicform',
+    ),
+  ),
+
 );

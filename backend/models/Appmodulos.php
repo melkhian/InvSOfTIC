@@ -73,5 +73,4 @@ class Appmodulos extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Tipos::className(), ['TiposId' => 'TiposId_fk']);
     }
-
 }

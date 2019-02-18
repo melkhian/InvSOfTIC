@@ -16,15 +16,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php
-        if (SiteController::findCom(50)) {
+        if (SiteController::findCom(47)) {
         echo Html::a('Actualizar', ['update', 'id' => $model->TipoId], ['class' => 'btn btn-primary']);
       }
-      if (SiteController::findCom(48)) {
-      echo Html::a('Crear Tipo', ['create'], ['class' => 'btn btn-success']);
-      }
-      else {
-        $this->redirect(['site/error']);
-      }
+      // if (SiteController::findCom(45)) {
+      // echo Html::a('Crear Tipo', ['create'], ['class' => 'btn btn-success']);
+      // }
+      // else {
+      //   $this->redirect(['site/error']);
+      // }
         ?>
         <!-- <?= Html::a('Delete', ['delete', 'id' => $model->TipoId], [
             'class' => 'btn btn-danger',

@@ -12,10 +12,13 @@ use backend\models\User;
 use kartik\date\DatePicker;
 use yii\bootstrap\Modal;
 use yii\grid\GridView;
+use yii\data\ActiveDataProvider;
+
 /* @var $this yii\web\View */
 /* @var $model backend\models\Rolusua */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+
 <!--////////////////////////////////
 ////////////////////////////////////////-> No se debe crear el modal dentro del activeform debido a que no funcionara correctamente el filtro del mismo.
 -->
@@ -120,6 +123,7 @@ use yii\grid\GridView;
 
     <!-- <?= $form->field($model, 'UsuId_fk')->dropDownList(ArrayHelper::map(User::find()->all(),'id','email'), ['prompt'=> 'Seleccione el Usuario'])?> -->
 
+
     <?= $form->field($model, 'RUsuCadu')->widget( DatePicker::className(),
           	['name' => 'check_issue_date',
           	'value' => date('d-M-Y', strtotime('+2 days')),
@@ -128,15 +132,12 @@ use yii\grid\GridView;
           	'format' => 'yyyy-mm-dd',
           	'todayHighlight' => true]]);
      ?>
-     <div id="user_list">
-
-     
+     <div id="user_list">     
      </div>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']);?>
     </div>
     <?php ActiveForm::end(); ?>
-    
-    
+
 </div>

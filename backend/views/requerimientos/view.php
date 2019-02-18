@@ -19,9 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?php
-        if (SiteController::findCom(32)) {
+        if (SiteController::findCom(29)) {
         echo Html::a('Actualizar', ['update', 'id' => $model->ReqId], ['class' => 'btn btn-primary']);
-        }    
+        }
         ?>
         <!-- <?= Html::a('Delete', ['delete', 'id' => $model->ReqId], [
             'class' => 'btn btn-danger',

@@ -13,7 +13,7 @@ use yii\helpers\ArrayHelper;
 
 <div class="user-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(); ?>    
 
     <?= $form->field($model, 'usuiden')->textInput(['maxlength' => true]) ?>
 

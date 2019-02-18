@@ -38,7 +38,9 @@ class RolusuaController extends Controller
     public function actionIndex()
     {
       if(isset(Yii::$app->user->identity->id)){
+
         if(SiteController::findCom(42) or SiteController::findCom(43) or SiteController::findCom(44)){
+
         $searchModel = new RolusuaSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

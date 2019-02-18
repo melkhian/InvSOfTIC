@@ -56,7 +56,8 @@ use backend\controllers\SiteController;
         //                 'url' => '#',
         //                 'items' => null,
         //                   ]]]);
-          if (SiteController::findvar(1))            
+          if (SiteController::findvar(1))          
+
           // if ($this->context->findVar(1))
               echo dmstr\widgets\Menu::widget(
                   [
@@ -96,7 +97,6 @@ use backend\controllers\SiteController;
             }
             // print_r($gda);
             if ($gda != null) {
-            // print_r($gda);
             echo dmstr\widgets\Menu::widget(
                  [
                      'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
