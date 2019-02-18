@@ -11,6 +11,6 @@ use backend\models\Tipos;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <br>
-<h1>ACUERDOS DE NIVELES DE SERVICIO</h1>
+<h1 align="center">ACUERDOS DE NIVELES DE SERVICIO</h1>
 <br><br>
-    <?= $form->field($model, 'AppAcueNiveServ')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'AppAcueNiveServ')->textarea(['maxlength' => true, 'rows' => '3']) ?>

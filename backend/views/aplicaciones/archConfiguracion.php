@@ -11,7 +11,7 @@ use backend\models\Tipos;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <br>
-<h1>X. ARCHIVOS DE CONFIGURACIÓN O PARAMETRIZACIÓN</h1>
+<h1 align="center">X. ARCHIVOS DE CONFIGURACIÓN O PARAMETRIZACIÓN</h1>
 <br><br>
     <?= $form->field($model, 'AppDirec1')->textInput(['maxlength' => true]) ?>
 

@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\bootstrap\Tabs;
@@ -11,12 +10,12 @@ use wbraganca\dynamicform\DynamicFormWidget;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <br>
-<h1>APLICACIONES/PLUGINS EXTERNOS REQUERIDOS PARA EL FUNCIONAMIENTO</h1>
+<h1 align="center">XII. APLICACIONES/PLUGINS EXTERNOS REQUERIDOS PARA EL FUNCIONAMIENTO</h1>
 <br><br>
 <?php // NOTE: Widget para el modelo 1:N ?>
 <div class="row">
   <div class="panel panel-default">
-    <div class="panel-heading"><h4><i class="glyphicon glyphicon-envelope"></i> Plugins</h4></div>
+    <div class="panel-heading"><h4><i class="glyphicon glyphicon-link"></i> APLICACIONES/PLUGINS EXTERNOS</h4></div>
     <div class="panel-body">
       <?php DynamicFormWidget::begin([
         'widgetContainer' => 'dynamicform_wrapper', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
@@ -39,7 +38,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
         <?php foreach ($modelsAppplugins as $i => $modelAppplugins): ?>
           <div class="item1 panel panel-default"><!-- widgetBody Se agrega el número 1 para diferenciarlo de otros similares DENTRO DEL MISMO FORMULARIO (Debe de ser constante en todo el widget)-->
             <div class="panel-heading">
-              <h3 class="panel-title pull-left">Plugin</h3>
+              <h3 class="panel-title pull-left">Aplicación/Plugin</h3>
               <div class="pull-right">
                 <button type="button" class="add-item1 btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i></button>
                 <!--  Se agrega el número 1 para diferenciarlo de otros similares DENTRO DEL MISMO FORMULARIO (Debe de ser constante en todo el widget)-->
@@ -55,15 +54,17 @@ use wbraganca\dynamicform\DynamicFormWidget;
                 echo Html::activeHiddenInput($modelAppplugins, "[{$i}]ApluId");
               }
               ?>
-              <?= $form->field($modelAppplugins, "[{$i}]APluNomb")->textInput(['maxlength' => true]) ?>
               <div class="row">
+                <div class="col-sm-6">
+                  <?= $form->field($modelAppplugins, "[{$i}]APluNomb")->textInput(['maxlength' => true]) ?>
+                </div>
                 <div class="col-sm-6">
                   <?= $form->field($modelAppplugins, "[{$i}]APluLice")->textInput(['maxlength' => true]) ?>
                 </div>
               </div><!-- .row -->
               <div class="row">
-                <div class="col-sm-4">
-                  <?= $form->field($modelAppplugins, "[{$i}]APluDesc")->textInput(['maxlength' => true]) ?>
+                <div class="col-sm-12">
+                  <?= $form->field($modelAppplugins, "[{$i}]APluDesc")->textarea(['maxlength' => true, 'rows' => '2']) ?>
                 </div>
               </div><!-- .row -->
             </div>

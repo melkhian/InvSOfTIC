@@ -11,7 +11,7 @@ use backend\models\Tipos;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <br>
-<h1>VIII. PARÁMETROS DE CONFIGURACIÓN</h1>
+<h1 align="center">VIII. PARÁMETROS DE CONFIGURACIÓN</h1>
 <br><br>
     <?= $form->field($model, 'AppUrlFuen')->textInput(['maxlength' => true]) ?>
 

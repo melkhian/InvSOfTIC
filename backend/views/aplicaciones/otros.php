@@ -11,12 +11,14 @@ function Init(){
   var appotrocual16 = document.getElementById('aplicaciones-appotrocual16').value;
   var appotrocual18 = document.getElementById('aplicaciones-appotrocual18').value;
   var appotrocual19 = document.querySelector('#aplicaciones-tiposid_fk19 > label:nth-child(1) > input[type="radio"]').checked;
+  var appotrocual20 = document.querySelector('#aplicaciones-tiposid_fk20 > label:nth-child(1) > input[type="radio"]').checked;
   var appotrocual25 = document.querySelector('#aplicaciones-tiposid_fk25 > label:nth-child(3) > input[type="radio"]').checked;
   var appotrocual27 = document.querySelector('#aplicaciones-tiposid_fk27 > label:nth-child(5) > input[type="radio"]').checked;
   var appotrocual28 = document.querySelector('#aplicaciones-tiposid_fk28 > label:nth-child(3) > input[type="radio"]').checked;
   var tiposid_fk12 = document.querySelector('#aplicaciones-tiposid_fk11 > label:nth-child(1) > input[type="radio"]').checked;
   var tiposid_fk14 = document.querySelector('#aplicaciones-tiposid_fk13 > label:nth-child(1) > input[type="radio"]').checked;
   var tiposid_fk16 = document.querySelector('#aplicaciones-tiposid_fk15 > label:nth-child(1) > input[type="radio"]').checked;
+  var tiposid_fk18 = document.querySelector('#aplicaciones-tiposid_fk17 > label:nth-child(1) > input[type="radio"]').checked;
   var tiposid_fk18 = document.querySelector('#aplicaciones-tiposid_fk17 > label:nth-child(1) > input[type="radio"]').checked;
 
   // alert(appotrocual27);
@@ -61,6 +63,10 @@ function Init(){
   if (!appotrocual19) {
     // alert(appotrocual19);
     document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.visibility = "hidden";
+  }
+  if (!appotrocual20) {
+    // alert(appotrocual19);
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual20').style.visibility = "hidden";
   }
   if (!appotrocual25) {
     document.querySelector('#w0-tab10 > div.form-group.field-aplicaciones-appotrocual25').style.visibility = "hidden";
@@ -108,7 +114,7 @@ function TiposId_fk($id,$tab,$tipo){
           // alert($id + " id Radio Visible");
           //Se parchea porque hay un inconveninete con TiposId_fk19, TiposId_fk27, esto debido a mala nomenclatura de campos, se parchea con IF()
           //Autor Diego Realpe
-          if ($id ==19 ||$id ==25 || $id==27 || $id==28) {
+          if ($id ==19 ||$id ==25 || $id==27 || $id==28 || $id==20) {
             // alert($id);
             // alert("Here");
             document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.visibility = "visible";
@@ -131,7 +137,7 @@ function TiposId_fk($id,$tab,$tipo){
           //Código para ocultar el campo Cual luego de seleccionar diferente a Otro como opción en el checkbox o Si en el radio Button
           //Se parchea porque hay un inconveninete con TiposId_fk19, TiposId_fk27, esto debido a mala nomenclatura de campos, se parchea con IF()
           //Autor Diego Realpe
-          if ($id ==19 ||$id ==25 || $id==27 || $id==28) {
+          if ($id ==19 ||$id ==25 || $id==27 || $id==28 || $id==20) {
             document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.visibility = "hidden";
 
           }else {

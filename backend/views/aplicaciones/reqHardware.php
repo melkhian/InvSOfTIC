@@ -11,7 +11,7 @@ use backend\models\Tipos;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <br>
-<h1>IX. REQUERIMIENTOS DE HARDWARE PARA EL SERVIDOR</h1>
+<h1 align="center">IX. REQUERIMIENTOS DE HARDWARE PARA EL SERVIDOR</h1>
 <br><br>
     <?= $form->field($model, 'AppTipoHard')->textInput(['maxlength' => true]) ?>
 
@@ -21,4 +21,4 @@ use backend\models\Tipos;
 
     <?= $form->field($model, 'AppEspaDisc')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'AppObse3')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'AppObse3')->textarea(['maxlength' => true, 'rows' => '3']) ?>

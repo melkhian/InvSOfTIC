@@ -11,7 +11,7 @@ use backend\models\Tipos;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <br>
-<h1>XI. INFORMACIÓN DE BASE DE DATOS ASOCIADA/S A LA APLICACIÓN</h1>
+<h1 align="center">XI. INFORMACIÓN DE BASE DE DATOS ASOCIADA/S A LA APLICACIÓN</h1>
 <br><br>
 <?= $form->field($model, 'AppNombServBd')->textInput(['maxlength' => true]) ?>
 

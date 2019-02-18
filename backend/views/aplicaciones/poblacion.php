@@ -11,6 +11,6 @@ use backend\models\Tipos;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <br>
-<h1>II. POBLACIÓN OBJETIVO</h1>
+<h1 align="center">II. POBLACIÓN OBJETIVO</h1>
 <br><br>
 <?= $form->field($model, 'AppEnti')->textInput(['maxlength' => true]) ?>

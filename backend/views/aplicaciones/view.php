@@ -2,7 +2,6 @@
 use backend\controllers\SiteController;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use backend\controllers\SiteController;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Aplicaciones */
 
