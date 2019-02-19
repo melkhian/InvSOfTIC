@@ -14,7 +14,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
 ?>
 
 <br>
-<h1>VII. DATOS BÁSICOS APLICACIÓN</h1>
+<h1 align="center">VII. DATOS BÁSICOS APLICACIÓN</h1>
 <br><br>
 <?= $form->field($model, 'TiposId_fk5')
 ->checkboxList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 23')->all(),'TiposValo','TiposDesc'))?>
@@ -115,9 +115,11 @@ use wbraganca\dynamicform\DynamicFormWidget;
   <?= $form->field($model, 'AppOtroCual19')->textInput(['maxlength' => true]) ?>
 
   <?= $form->field($model, 'TiposId_fk20')
-  ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 46')->all(),'TiposValo','TiposDesc'))?>
+  ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 46')->all(),'TiposValo','TiposDesc'),
+  ['onchange'=>'TiposId_fk($id=20,$tab=5,$tipo="radio");'
+  ])?>
 
-  <?= $form->field($model, 'AppDondUbic')->textInput(['maxlength' => true]) ?>
+  <?= $form->field($model, 'AppOtroCual20')->textInput(['maxlength' => true]) ?>
 
   <?= $form->field($model, 'AppTipoLice')->textInput(['maxlength' => true]) ?>
 
@@ -131,7 +133,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
 
   <div class="row">
     <div class="panel panel-default">
-      <div class="panel-heading"><h4><i class="glyphicon glyphicon-envelope"></i> Addresses</h4></div>
+      <div class="panel-heading"><h4><i class="	glyphicon glyphicon-equalizer"></i> MÓDULOS QUE LA COMPONEN</h4></div>
       <div class="panel-body">
         <?php DynamicFormWidget::begin([
           'widgetContainer' => 'dynamicform_wrapper', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
@@ -155,7 +157,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
           <?php foreach ($modelsAppmodulos as $i => $modelAppmodulos): ?>
             <div class="item panel panel-default"><!-- widgetBody -->
               <div class="panel-heading">
-                <h3 class="panel-title pull-left">Address</h3>
+                <h3 class="panel-title pull-left">Módulo</h3>
                 <div class="pull-right">
                   <button type="button" class="add-item btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i></button>
                   <button type="button" class="remove-item btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus"></i></button>
@@ -169,22 +171,29 @@ use wbraganca\dynamicform\DynamicFormWidget;
                   echo Html::activeHiddenInput($modelAppmodulos, "[{$i}]AModId");
                 }
                 ?>
-                <?= $form->field($modelAppmodulos, "[{$i}]AModNomb")->textInput(['maxlength' => true]) ?>
                 <div class="row">
-                  <div class="col-sm-6">
-                    <?= $form->field($modelAppmodulos, "[{$i}]AModDesc")->textInput(['maxlength' => true]) ?>
+                  <div class="col-sm-8">
+                    <?= $form->field($modelAppmodulos, "[{$i}]AModNomb")->textInput(['maxlength' => true]) ?>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-sm-4">
                     <?= $form->field($modelAppmodulos, "[{$i}]TiposId_fk")
                     ->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 46')->all(),'TiposId','TiposDesc'),
                     ['prompt'=> 'Seleccione la respuesta'])?>
                   </div>
-                </div><!-- .row -->
+                </div>
                 <div class="row">
-                  <div class="col-sm-4">
-                    <?= $form->field($modelAppmodulos, "[{$i}]AModObse")->textInput(['maxlength' => true]) ?>
+                  <div class="col-sm-12">
+                    <?= $form->field($modelAppmodulos, "[{$i}]AModDesc")->textInput(['maxlength' => true]) ?>
                   </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <?= $form->field($modelAppmodulos, "[{$i}]AModObse")->textarea(['maxlength' => true, 'rows' => '3']) ?>
+                    </div>
+
+                  </div><!-- .row -->
                 </div><!-- .row -->
+
               </div>
             </div>
           <?php endforeach; ?>
@@ -192,4 +201,3 @@ use wbraganca\dynamicform\DynamicFormWidget;
         <?php DynamicFormWidget::end(); ?>
       </div>
     </div>
-  </div>

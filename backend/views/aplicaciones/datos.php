@@ -13,7 +13,7 @@ use kartik\date\DatePicker;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <br>
-<h1>I. DATOS GENERALES</h1>
+<h1 align="center">I. DATOS GENERALES</h1>
 <br><br>
 <?= $form->field($model, 'AppNomb')->textInput(['maxlength' => true]) ?>
 

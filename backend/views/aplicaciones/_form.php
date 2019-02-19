@@ -78,6 +78,18 @@ use wbraganca\dynamicform\DynamicFormWidget;
                     'content' => $this->render('appPlugins', ['model' => $model, 'modelsAppplugins' => $modelsAppplugins, 'form' => $form]),
                 ],
 
+                // NOTE: label 'XIII' contiene un modelo extra, esto es para generar el modelo 1:N
+                [
+                    'label' => 'XIII',
+                    'content' => $this->render('appDirectorios', ['model' => $model, 'modelsAppdirectorios' => $modelsAppdirectorios, 'form' => $form]),
+                ],
+
+                // NOTE: label 'XIV' contiene un modelo extra, esto es para generar el modelo 1:N
+                [
+                    'label' => 'XIV',
+                    'content' => $this->render('appUsuarios', ['model' => $model, 'modelsAppusuarios' => $modelsAppusuarios, 'form' => $form]),
+                ],
+
                 [
                     'label' => 'XV',
                     'content' => $this->render('documentacion', ['model' => $model, 'form' => $form]),

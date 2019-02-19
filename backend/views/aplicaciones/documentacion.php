@@ -11,7 +11,7 @@ use backend\models\Tipos;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <br>
-<h1>XV. DOCUMENTACIÓN</h1>
+<h1 align="center">XV. DOCUMENTACIÓN</h1>
 <br><br>
     <?= $form->field($model, 'TiposId_fk29')
     ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 50')->all(),'TiposValo','TiposDesc'))?>
@@ -100,4 +100,4 @@ use backend\models\Tipos;
 
     <?= $form->field($model, 'AppUbicUlti')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'AppObse7')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'AppObse7')->textarea(['maxlength' => true, 'rows' => '3']) ?>

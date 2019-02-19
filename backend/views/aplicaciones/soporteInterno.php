@@ -12,7 +12,7 @@ use backend\models\User;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <br>
-<h1>IV. SOPORTE FUNCIONAL INTERNO</h1>
+<h1 align="center">IV. SOPORTE FUNCIONAL INTERNO</h1>
 <br><br>
     <?= $form->field($model, 'TiposId_fk4')->textInput(['maxlength' => true]) ?>
 

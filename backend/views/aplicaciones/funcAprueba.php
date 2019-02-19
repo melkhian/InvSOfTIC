@@ -11,6 +11,6 @@ use backend\models\Tipos;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <br>
-<h1>XVI. ACEPTACIÓN</h1>
+<h1 align="center">XVI. ACEPTACIÓN</h1>
 <br><br>
     <?= $form->field($model, 'AppFuncApru')->textInput(['maxlength' => true]) ?>

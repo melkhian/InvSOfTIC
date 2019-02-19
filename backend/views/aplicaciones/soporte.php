@@ -12,6 +12,6 @@ use backend\models\Empsoporte;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <br>
-<h1>III. SOPORTE DEL DESARROLLADOR</h1>
+<h1 align="center">III. SOPORTE DEL DESARROLLADOR</h1>
 <br><br>
 <?= $form->field($model, 'ESopId2')->dropDownList(ArrayHelper::map(Empsoporte::find()->all(),'ESopId','ESopNomb'), ['prompt'=> 'Seleccione la Empresa de Soporte'])?>
