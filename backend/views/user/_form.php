@@ -13,7 +13,7 @@ use yii\helpers\ArrayHelper;
 
 <div class="user-form">
 
-    <?php $form = ActiveForm::begin(); ?>    
+    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'usuiden')->textInput(['maxlength' => true]) ?>
 
@@ -33,19 +33,23 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'depid_fk')->dropDownList(ArrayHelper::map(Dependencias::find()->all(),'DepId','DepNomb'), ['prompt'=> 'Seleccione la Dependencia'])?>
+    <?= $form->field($model, 'depid_fk')
+    ->dropDownList(ArrayHelper::map(Dependencias::find()->all(),'DepId','DepNomb'), ['prompt'=> 'Seleccione la Dependencia'])?>
 
-    <?= $form->field($model, 'tiposid_fk1')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 1')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Cargo'])?>
+    <?= $form->field($model, 'tiposid_fk1')
+    ->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 1')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Cargo'])?>
 
-    <?= $form->field($model, 'tiposid_fk2')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 2')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Tipo de Contrato'])?>
+    <?= $form->field($model, 'tiposid_fk2')
+    ->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 2')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Tipo de Contrato'])?>
 
-    <?= $form->field($model, 'status')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 3')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Estado'])?>
+    <?= $form->field($model, 'status')
+    ->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 3')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Estado'])?>
 
-    <?= $form->field($model, 'auth_key')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'auth_key')->hiddenInput(['maxlength' => true])->label(false); ?>
 
-    <?= $form->field($model, 'password_hash')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'password_hash')->hiddenInput(['maxlength' => true])->label(false); ?>
 
-    <?= $form->field($model, 'password_reset_token')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'password_reset_token')->hiddenInput(['maxlength' => true])->label(false); ?>
 
     <?= $form->field($model, 'created_at')->textInput() ?>
 

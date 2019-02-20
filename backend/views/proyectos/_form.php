@@ -18,11 +18,11 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'ProNomb')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'ProDesc')->textarea(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ProDesc')->textarea(['maxlength' => true, 'rows' => '4']) ?>
 
-    <?= $form->field($model, 'ProObje')->textarea(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ProObje')->textarea(['maxlength' => true, 'rows' => '4']) ?>
 
-    <?= $form->field($model, 'UsuId_fk')->dropDownList(ArrayHelper::map(User::find()->all(),'id','email'), ['prompt'=> 'Seleccione el Usuario'])?>
+    <?= $form->field($model, 'UsuId_fk')->dropDownList(ArrayHelper::map(User::find()->all(),'id','username'), ['prompt'=> 'Seleccione el Usuario'])?>
 
     <?= $form->field($model, 'Tiposid_fk1')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 17')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione la Respuesta'])?>
 
@@ -57,7 +57,7 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'TiposId_fk2')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 18')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Estado del Proyecto'])?>
 
-    <?= $form->field($model, 'ProFinProy')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ProFinProy')->textarea(['maxlength' => true, 'rows' => '4']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

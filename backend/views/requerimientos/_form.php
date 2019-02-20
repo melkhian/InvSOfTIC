@@ -21,13 +21,17 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'ReqDesc')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'TiposId_fk1')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 13')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Tipo de Requerimiento'])?>
+    <?= $form->field($model, 'TiposId_fk1')
+    ->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 13')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Tipo de Requerimiento'])?>
 
-    <?= $form->field($model, 'UsuId_fk')->dropDownList(ArrayHelper::map(User::find()->all(),'id','email'), ['prompt'=> 'Seleccione el Usuario'])?>
+    <?= $form->field($model, 'UsuId_fk')
+    ->dropDownList(ArrayHelper::map(User::find()->all(),'id','username'), ['prompt'=> 'Seleccione el Usuario'])?>
 
-    <?= $form->field($model, 'Tiposid_fk2')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 14')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione la Respuesta'])?>
+    <?= $form->field($model, 'Tiposid_fk2')
+    ->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 14')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione la Respuesta'])?>
 
-    <?= $form->field($model, 'TiposId_fk3')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 15')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione la Respuesta'])?>
+    <?= $form->field($model, 'TiposId_fk3')
+    ->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 15')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione la Respuesta'])?>
 
     <?= $form->field($model, 'ReqFechTomaRequ')->widget( DatePicker::className(),
             ['name' => 'check_issue_date',

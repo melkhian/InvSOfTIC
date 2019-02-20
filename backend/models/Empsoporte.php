@@ -46,6 +46,8 @@ class Empsoporte extends \yii\db\ActiveRecord
             [['ESopTelePers', 'ESopTeleOfic'], 'string', 'max' => 50],
             [['TiposId_fk1'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['TiposId_fk1' => 'TiposId']],
             [['TiposId_fk2'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['TiposId_fk2' => 'TiposId']],
+            [['ESopNit', 'ESopCorr'], 'unique'],
+            [['ESopCorr'], 'email'],
         ];
     }
 

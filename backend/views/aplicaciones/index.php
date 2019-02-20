@@ -36,11 +36,12 @@ $this->params['breadcrumbs'][] = $this->title;
         } else {
           $update = '';
         }
-        if (SiteController::findCom(11)) {
-          $delete = '{delete}';
-        } else {
-          $delete = '';
-        }
+        // NOTE: se deshabilita, aunque en la tabla Rolintecoma está que es para deshabilitar la aplicación
+        // if (SiteController::findCom(11)) {
+        //   $delete = '{delete}';
+        // } else {
+        //   $delete = '';
+        // }
         ?>
     </p>
 
@@ -173,9 +174,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'AppUbicUlti',
             //'AppObse7',
             //'AppFuncApru',
-
+            
+            // NOTE: Se elimina de 'template' el $delete
             ['class' => 'yii\grid\ActionColumn',
-             'template' => "$view $update $delete"],
+             'template' => "$view $update"],
 
         ],
     ]); ?>
