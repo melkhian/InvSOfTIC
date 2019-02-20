@@ -17,6 +17,11 @@ $this->params['breadcrumbs'][] = 'Update';
     <?= $this->render('_form', [
         'model' => $model,
         'modelsAppmodulos' => $modelsAppmodulos,
+        'modelsAppplugins' => $modelsAppplugins,
+        'modelsAppdirectorios' => $modelsAppdirectorios,
+        'modelsAppusuarios' => $modelsAppusuarios,
+        'modelsApparchivos' => $modelsApparchivos,
+        'modelsAppparametros' => $modelsAppparametros,
     ]) ?>
 
 </div>

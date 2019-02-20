@@ -53,7 +53,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
             <?php
             // necessary for update action.
             if (! $modelAppusuarios->isNewRecord) {
-              echo Html::activeHiddenInput($modelAppusuarios, "[{$i}]AUsuUsua");
+              echo Html::activeHiddenInput($modelAppusuarios, "[{$i}]AUsuId");
             }
             ?>
             <?= $form->field($modelAppusuarios, "[{$i}]AUsuUsua")->textInput(['maxlength' => true]) ?>

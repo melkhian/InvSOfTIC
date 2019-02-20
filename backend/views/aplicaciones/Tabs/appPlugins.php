@@ -51,7 +51,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
               <?php
               // necessary for update action.
               if (! $modelAppplugins->isNewRecord) {
-                echo Html::activeHiddenInput($modelAppplugins, "[{$i}]ApluId");
+                echo Html::activeHiddenInput($modelAppplugins, "[{$i}]APluId");
               }
               ?>
               <div class="row">

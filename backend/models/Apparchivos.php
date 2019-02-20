@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "apparchivos".
  *
  * @property int $AArcId Id
+ * @property string $AArcDirec Directorio
  * @property string $AArcNombArch Nombre del archivo
  * @property string $AArcVari Variable / Tipo de variable
  * @property string $AArcNombVari Nombre de la Variable
@@ -32,9 +33,9 @@ class Apparchivos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['AArcNombArch', 'AArcVari', 'AArcNombVari', 'AArcDescPara', 'AppId_fk'], 'required'],
+            [['AArcDirec', 'AArcNombArch', 'AArcVari', 'AArcNombVari', 'AArcDescPara'], 'required'],
             [['AppId_fk'], 'integer'],
-            [['AArcNombArch', 'AArcVari', 'AArcNombVari'], 'string', 'max' => 100],
+            [['AArcDirec', 'AArcNombArch', 'AArcVari', 'AArcNombVari'], 'string', 'max' => 100],
             [['AArcDescPara'], 'string', 'max' => 200],
             [['AppId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Aplicaciones::className(), 'targetAttribute' => ['AppId_fk' => 'AppId']],
         ];
@@ -47,6 +48,7 @@ class Apparchivos extends \yii\db\ActiveRecord
     {
         return [
             'AArcId' => 'Id',
+            'AArcDirec' => 'Directorio',
             'AArcNombArch' => 'Nombre del archivo',
             'AArcVari' => 'Variable / Tipo de variable',
             'AArcNombVari' => 'Nombre de la Variable',

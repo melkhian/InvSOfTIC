@@ -32,7 +32,7 @@ class Appparametros extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['AParUrlFuen', 'AParServ', 'AParPuer', 'AParDirec', 'AppId_fk'], 'required'],
+            [['AParUrlFuen', 'AParServ', 'AParPuer', 'AParDirec'], 'required'],
             [['AppId_fk'], 'integer'],
             [['AParUrlFuen', 'AParServ'], 'string', 'max' => 100],
             [['AParPuer'], 'string', 'max' => 20],

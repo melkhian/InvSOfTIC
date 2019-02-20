@@ -22,8 +22,11 @@ class Model extends \yii\base\Model
         $models   = [];
 
         if (! empty($multipleModels)) {
-            $keys = array_keys(ArrayHelper::map($multipleModels, 'AModId', 'AModId'));
+          // NOTE: $llaves se usa para poder Editar los módulos 1:N, este obtiene el ID correspondiente de cada Modelo
+            $llaves =key($post[0]);
+            $keys = array_keys(ArrayHelper::map($multipleModels, $llaves, $llaves));
             $multipleModels = array_combine($keys, $multipleModels);
+
         }
 
         if ($post && is_array($post)) {

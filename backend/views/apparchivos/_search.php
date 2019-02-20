@@ -20,13 +20,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'AArcId') ?>
 
+    <?= $form->field($model, 'AArcDirec') ?>
+
     <?= $form->field($model, 'AArcNombArch') ?>
 
     <?= $form->field($model, 'AArcVari') ?>
 
     <?= $form->field($model, 'AArcNombVari') ?>
 
-    <?= $form->field($model, 'AArcDescPara') ?>
+    <?php // echo $form->field($model, 'AArcDescPara') ?>
 
     <?php // echo $form->field($model, 'AppId_fk') ?>
 

@@ -12,6 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'AArcDirec')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'AArcNombArch')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AArcVari')->textInput(['maxlength' => true]) ?>

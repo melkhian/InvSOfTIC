@@ -19,7 +19,7 @@ class ApparchivosSearch extends Apparchivos
     {
         return [
             [['AArcId', 'AppId_fk'], 'integer'],
-            [['AArcNombArch', 'AArcVari', 'AArcNombVari', 'AArcDescPara'], 'safe'],
+            [['AArcDirec', 'AArcNombArch', 'AArcVari', 'AArcNombVari', 'AArcDescPara'], 'safe'],
         ];
     }
 
@@ -63,7 +63,8 @@ class ApparchivosSearch extends Apparchivos
             'AppId_fk' => $this->AppId_fk,
         ]);
 
-        $query->andFilterWhere(['like', 'AArcNombArch', $this->AArcNombArch])
+        $query->andFilterWhere(['like', 'AArcDirec', $this->AArcDirec])
+            ->andFilterWhere(['like', 'AArcNombArch', $this->AArcNombArch])
             ->andFilterWhere(['like', 'AArcVari', $this->AArcVari])
             ->andFilterWhere(['like', 'AArcNombVari', $this->AArcNombVari])
             ->andFilterWhere(['like', 'AArcDescPara', $this->AArcDescPara]);

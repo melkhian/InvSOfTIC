@@ -27,10 +27,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'AArcId',
+            'AArcDirec',
             'AArcNombArch',
             'AArcVari',
             'AArcNombVari',
-            'AArcDescPara',
+            //'AArcDescPara',
             //'AppId_fk',
 
             ['class' => 'yii\grid\ActionColumn'],

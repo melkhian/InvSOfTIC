@@ -10,6 +10,8 @@ use backend\models\Model;
 use backend\models\Appplugins;
 use backend\models\Appdirectorios;
 use backend\models\Appusuarios;
+use backend\models\Apparchivos;
+use backend\models\Appparametros;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -99,6 +101,8 @@ class AplicacionesController extends Controller
         $modelsAppplugins = [new Appplugins];
         $modelsAppdirectorios = [new Appdirectorios];
         $modelsAppusuarios = [new Appusuarios];
+        $modelsApparchivos = [new Apparchivos];
+        $modelsAppparametros = [new Appparametros];
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
@@ -115,6 +119,12 @@ class AplicacionesController extends Controller
 
           $modelsAppusuarios = Model::createMultiple(Appusuarios::classname());
           Model::loadMultiple($modelsAppusuarios, Yii::$app->request->post());
+
+          $modelsApparchivos = Model::createMultiple(Apparchivos::classname());
+          Model::loadMultiple($modelsApparchivos, Yii::$app->request->post());
+
+          $modelsAppparametros = Model::createMultiple(Appparametros::classname());
+          Model::loadMultiple($modelsAppparametros, Yii::$app->request->post());
 
           // validate all models
           $valid = $model->validate();
@@ -154,6 +164,20 @@ class AplicacionesController extends Controller
                     break;
                   }
                 }
+                foreach ($modelsApparchivos as $modelApparchivos) {
+                  $modelApparchivos->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelApparchivos->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsAppparametros as $modelAppparametros) {
+                  $modelAppparametros->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppparametros->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
               }
               if ($flag) {
                 $transaction->commit();
@@ -171,7 +195,9 @@ class AplicacionesController extends Controller
           'modelsAppmodulos' => (empty($modelsAppmodulos)) ? [new Appmodulos] : $modelsAppmodulos,
           'modelsAppplugins' => (empty($modelsAppplugins)) ? [new Appplugins] : $modelsAppplugins,
           'modelsAppdirectorios' => (empty($modelsAppdirectorios)) ? [new Appdirectorios] : $modelsAppdirectorios,
-          'modelsAppusuarios' => (empty($modelsAppusuarios)) ? [new Appdirectorios] : $modelsAppusuarios,
+          'modelsAppusuarios' => (empty($modelsAppusuarios)) ? [new Appusuarios] : $modelsAppusuarios,
+          'modelsApparchivos' => (empty($modelsApparchivos)) ? [new Apparchivos] : $modelsApparchivos,
+          'modelsAppparametros' => (empty($modelsAppparametros)) ? [new Appparametros] : $modelsAppparametros,
         ]);
       }
       else {
@@ -195,6 +221,12 @@ class AplicacionesController extends Controller
       if(SiteController::findCom(10)){
         $model = $this->findModel($id);
         $modelsAppmodulos = $model->appmodulos;
+        $modelsAppplugins = $model->appplugins;
+        $modelsAppdirectorios = $model->appdirectorios;
+        $modelsAppusuarios = $model->appusuarios;
+        $modelsApparchivos = $model->apparchivos;
+        $modelsAppparametros = $model->appparametros;
+
         //Se agrega para pasar de String a Array
         $model->TiposId_fk5 = explode(',',$model->TiposId_fk5);
         $model->TiposId_fk6 = explode(',',$model->TiposId_fk6);
@@ -210,10 +242,36 @@ class AplicacionesController extends Controller
         $model->TiposId_fk26 = explode(',',$model->TiposId_fk26);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
           $oldIDs = ArrayHelper::map($modelsAppmodulos, 'AModId', 'AModId');
           $modelsAppmodulos = Model::createMultiple(Appmodulos::classname(), $modelsAppmodulos);
           Model::loadMultiple($modelsAppmodulos, Yii::$app->request->post());
           $deletedIDs = array_diff($oldIDs, array_filter(ArrayHelper::map($modelsAppmodulos, 'AModId', 'AModId')));
+
+          $oldIDs1 = ArrayHelper::map($modelsAppplugins, 'APluId', 'APluId');
+          $modelsAppplugins = Model::createMultiple(Appplugins::classname(), $modelsAppplugins);
+          Model::loadMultiple($modelsAppplugins, Yii::$app->request->post());
+          $deletedIDs1 = array_diff($oldIDs1, array_filter(ArrayHelper::map($modelsAppplugins, 'APluId', 'APluId')));
+
+          $oldIDs2 = ArrayHelper::map($modelsAppdirectorios, 'ADirId', 'ADirId');
+          $modelsAppdirectorios = Model::createMultiple(Appdirectorios::classname(), $modelsAppdirectorios);
+          Model::loadMultiple($modelsAppdirectorios, Yii::$app->request->post());
+          $deletedIDs2 = array_diff($oldIDs2, array_filter(ArrayHelper::map($modelsAppdirectorios, 'ADirId', 'ADirId')));
+
+          $oldIDs3 = ArrayHelper::map($modelsAppusuarios, 'AUsuId', 'AUsuId');
+          $modelsAppusuarios = Model::createMultiple(Appusuarios::classname(), $modelsAppusuarios);
+          Model::loadMultiple($modelsAppusuarios, Yii::$app->request->post());
+          $deletedIDs3 = array_diff($oldIDs3, array_filter(ArrayHelper::map($modelsAppusuarios, 'AUsuId', 'AUsuId')));
+
+          $oldIDs4 = ArrayHelper::map($modelsApparchivos, 'AArcId', 'AArcId');
+          $modelsApparchivos = Model::createMultiple(Apparchivos::classname(), $modelsApparchivos);
+          Model::loadMultiple($modelsApparchivos, Yii::$app->request->post());
+          $deletedIDs4 = array_diff($oldIDs4, array_filter(ArrayHelper::map($modelsApparchivos, 'AArcId', 'AArcId')));
+
+          $oldIDs5 = ArrayHelper::map($modelsAppparametros, 'AParId', 'AParId');
+          $modelsAppparametros = Model::createMultiple(Appparametros::classname(), $modelsAppparametros);
+          Model::loadMultiple($modelsAppparametros, Yii::$app->request->post());
+          $deletedIDs5 = array_diff($oldIDs5, array_filter(ArrayHelper::map($modelsAppparametros, 'AParId', 'AParId')));
 
           // validate all models
           $valid = $model->validate();
@@ -222,13 +280,65 @@ class AplicacionesController extends Controller
           if ($valid) {
             $transaction = \Yii::$app->db->beginTransaction();
             try {
+              // NOTE: Elimina los elementos del módulo correspondiente cuando se elimina del formulario en los modelos 1:N
               if ($flag = $model->save(false)) {
                 if (! empty($deletedIDs)) {
                   Appmodulos::deleteAll(['AModId' => $deletedIDs]);
                 }
+                if (! empty($deletedIDs1)) {
+                  Appplugins::deleteAll(['APluId' => $deletedIDs1]);
+                }
+                if (! empty($deletedIDs2)) {
+                  Appdirectorios::deleteAll(['ADirId' => $deletedIDs2]);
+                }
+                if (! empty($deletedIDs3)) {
+                  Appusuarios::deleteAll(['AUsuId' => $deletedIDs3]);
+                }
+                if (! empty($deletedIDs4)) {
+                  Apparchivos::deleteAll(['AArcId' => $deletedIDs4]);
+                }
+                if (! empty($deletedIDs5)) {
+                  Appparametros::deleteAll(['AParId' => $deletedIDs5]);
+                }
+
                 foreach ($modelsAppmodulos as $modelAppmodulos) {
                   $modelAppmodulos->AppId_fk = $model->AppId;
                   if (! ($flag = $modelAppmodulos->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsAppplugins as $modelAppplugins) {
+                  $modelAppplugins->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppplugins->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsAppdirectorios as $modelAppdirectorios) {
+                  $modelAppdirectorios->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppdirectorios->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsAppusuarios as $modelAppusuarios) {
+                  $modelAppusuarios->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppusuarios->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsApparchivos as $modelApparchivos) {
+                  $modelApparchivos->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelApparchivos->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsAppparametros as $modelAppparametros) {
+                  $modelAppparametros->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppparametros->save(false))) {
                     $transaction->rollBack();
                     break;
                   }
@@ -246,7 +356,12 @@ class AplicacionesController extends Controller
 
         return $this->render('update', [
           'model' => $model,
-          'modelsAppmodulos' => (empty($modelsAppmodulos)) ? [new Appmodulos] : $modelsAppmodulos
+          'modelsAppmodulos' => (empty($modelsAppmodulos)) ? [new Appmodulos] : $modelsAppmodulos,
+          'modelsAppplugins' => (empty($modelsAppplugins)) ? [new Appplugins] : $modelsAppplugins,
+          'modelsAppdirectorios' => (empty($modelsAppdirectorios)) ? [new Appdirectorios] : $modelsAppdirectorios,
+          'modelsAppusuarios' => (empty($modelsAppusuarios)) ? [new Appusuarios] : $modelsAppusuarios,
+          'modelsApparchivos' => (empty($modelsApparchivos)) ? [new Apparchivos] : $modelsApparchivos,
+          'modelsAppparametros' => (empty($modelsAppparametros)) ? [new Appparametros] : $modelsAppparametros,
         ]);
       }
       else {
