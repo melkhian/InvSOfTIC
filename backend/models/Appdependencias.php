@@ -57,113 +57,167 @@ class Appdependencias extends \yii\db\ActiveRecord
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
+        if (!$insert)
+        {
 
-        $table = $this->getTableSchema();
-        $pk = $table->primaryKey; //---------------------- [ADepID]
-        $x = implode(",", $pk);
-        $UsuId_fk = Yii::$app->user->identity->id;
-        $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
-        $AudIp = Yii::$app->getRequest()->getUserIP();
-        $AudFechHora = new \yii\db\Expression('NOW()');      
-
-
-        $MaxId = (new \yii\db\Query())
-        ->select($pk)
-        ->from($AudMod)
-        ->orderBy($pk[0]." DESC")          
-        ->createCommand()
-        ->execute();
-
-
-        $queryId = (new \yii\db\Query())
-        ->select('ADepId')
-        ->from($AudMod)
-        ->where([$pk[0]=>$MaxId])
-        ->createCommand();    
-        $rows1 = $queryId->queryOne();
-        $resultId = implode(",", $rows1);  
-
-
-
-        $queryAll = (new \yii\db\Query())
-        ->select('*')
-        ->from($AudMod)
-        ->where([$pk[0]=>$MaxId])
-        ->createCommand();    
-        $rows2 = $queryAll->queryOne();
-        $resultAll = implode(",", $rows2);
-    
-
-        $connection = Yii::$app->db;
-
-
-        // if (Yii::$app->controller->action->id == 'create') 
-        if (!$insert){
             $AudAcci =  'update';
-            // $xx = $this->getOldAttribute('ADepCantUsua');
-
-            if(!isset($changedAttributes['ADepId'])){
-                $oldAttributes[0] = '-';
-            }else{
-                $oldAttributes[0] = $changedAttributes['ADepId'];
-            } 
-            // $oldAttributes[0] = $$changedAttributes['ADepId'];
-            // $oldAttributes[0] = '1';
-
-            if(!isset($changedAttributes['DepId_fk'])){
-                $oldAttributes[1] = '-';
-            }else{
-                $oldAttributes[1] = $changedAttributes['DepId_fk'];
-            } 
-            // $oldAttributes[1] = $changedAttributes['DepId_fk'];
+            $table = $this->getTableSchema();
+            $pk = $table->primaryKey; //---------------------- [ADepID]            
+            $idSelect = $_GET['id'];
+            $UsuId_fk = Yii::$app->user->identity->id;
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudIp = Yii::$app->getRequest()->getUserIP();
+            $AudFechHora = new \yii\db\Expression('NOW()');      
+            $connection = Yii::$app->db;
 
 
-            if(!isset($changedAttributes['AppId_fk'])){
-                $oldAttributes[2] = '-';
-            }else{
-                $oldAttributes[2] = $changedAttributes['AppId_fk'];
-            } 
-            // $oldAttributes[2] = $changedAttributes['AppId_fk'];
+            $MaxId = (new \yii\db\Query()) 
+            ->select($pk)
+            ->from($AudMod)
+            ->orderBy($pk[0]." DESC")          
+            ->createCommand()
+            ->execute();
 
 
-            if(!isset($changedAttributes['ADepCantUsua'])){
-                $oldAttributes[3] = '-';
-            }else{
-                $oldAttributes[3] = $changedAttributes['ADepCantUsua'];
-            } 
-            // $oldAttributes[3] = $changedAttributes['ADepCantUsua'];
+            $queryAll = (new \yii\db\Query())
+            ->select('*')
+            ->from($AudMod)
+            ->where(['ADepId' => $idSelect])
+            ->createCommand();    
+            $rows = $queryAll->queryOne();
+            $resultAll = implode(",", $rows);
 
 
-            if(!isset($changedAttributes['ADepFechSist'])){
-                $oldAttributes[4] = '-';
-            }else{
-                $oldAttributes[4] = $changedAttributes['ADepFechSist'];
-            }            
+            $i=0;
 
-
-            foreach ($rows2 as $key => $value) {
-                if ($key == 'ADepId' and $value != $oldAttributes[0]) {
-                    $var[0] = $oldAttributes[0];
-                }
-                if ($key == 'DepId_fk' and $value != $oldAttributes[1]) {
-                    $var[1] = $oldAttributes[1];
-                }
-                if ($key == 'AppId_fk' and $value != $oldAttributes[2]) {
-                    $var[2] = $oldAttributes[2];
-                }
-                if ($key == 'ADepCantUsua' and $value != $oldAttributes[3]) {
-                    $var[3] = $oldAttributes[3];
-                }
-                if ($key == 'ADepFechSist' and $value != $oldAttributes[4]) {
-                    $var[4] = $oldAttributes[4];
-                }
+            //---------------------------------------------------------------//
+            
+            if(!isset($changedAttributes['ADepId']))
+            {
+                $oldAttributes[$i] = "Id => ".$idSelect;
+                $i++;
             }
-            if (!isset($var)) {
-                $total = 'No Change';
-            }else{
-               $total = implode(",",$var); 
+            else
+            {
+                $oldAttributes[$i] = "ADepId => ".$changedAttributes['ADepId'];
+                $i++;
             }
-            // $total = implode(",", $oldAttributes);
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['DepId_fk']))
+            {
+                
+            }
+            else
+            {
+                if ($changedAttributes['DepId_fk'] != $rows['DepId_fk']) 
+                {
+                    $oldAttributes[$i] = "DepId => ".$changedAttributes['DepId_fk'];
+                    $i++;
+                }            
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppId_fk']))
+            {
+
+            }
+            else
+            {
+                if ($changedAttributes['AppId_fk'] != $rows['AppId_fk']) 
+                {
+                    $oldAttributes[$i] = "AppId => ".$changedAttributes['AppId_fk'];
+                    $i++;
+                }
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['ADepCantUsua']))
+            {
+                
+            }
+            else
+            {
+                $oldAttributes[$i] = "CantUsua => ".$changedAttributes['ADepCantUsua'];
+                $i++;
+            }             
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['ADepFechSist']))
+            {
+                
+            }
+            else
+            {
+                $oldAttributes[$i] = "FechSist => ".$changedAttributes['ADepFechSist'];                
+            }  
+
+            //---------------------------------------------------------------//          
+
+            if (!isset($oldAttributes)) 
+            {
+                $total = 'no change';
+            }
+            else
+            {
+                $total = implode(",",$oldAttributes); 
+            }
+
+            //---------------------------------------------------------------//            
+            foreach ($rows as $key => $value) 
+            {
+                if ($key == 'ADepId') 
+                {
+                    $var[0] = "Id => ".$rows['ADepId'];
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'DepId_fk' and $value != $changedAttributes['DepId_fk']) 
+                {
+                    $var[1] = "DepId => ".$rows['DepId_fk'];
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'AppId_fk' and $value != $changedAttributes['AppId_fk']) 
+                {
+                    $var[2] = "AppId => ".$rows['AppId_fk'];
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'ADepCantUsua' and isset($changedAttributes['ADepCantUsua'])) 
+                {
+                    $var[3] = "CantUsua => ".$rows['ADepCantUsua'];
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'ADepFechSist' and isset($changedAttributes['ADepFechSist'])) 
+                {
+                    $var[4] = "FechSist => ".$rows['ADepFechSist'];
+                }
+
+                //---------------------------------------------------------------//
+
+            }
+
+            if (!isset($var)) 
+            {
+                $result = 'No Change';
+            }
+            else
+            {
+               $result = implode(",",$var); 
+            }
+
+                //---------------------------------------------------------------//
+
             $connection->createCommand()->insert('auditorias', 
                                     // ['AudId'=> $AudId],
                                     [
@@ -171,7 +225,7 @@ class Appdependencias extends \yii\db\ActiveRecord
                                         'AudMod' => $AudMod,
                                         'AudAcci' => $AudAcci, 
                                         'AudDatoAnte' => $total,
-                                        'AudDatoDesp' => $resultAll,                                   
+                                        'AudDatoDesp' => $result,                                   
                                         'AudIp'=> $AudIp,
                                         'AudFechHora'=> $AudFechHora,                                                                    
                                     ])
@@ -180,7 +234,38 @@ class Appdependencias extends \yii\db\ActiveRecord
         }
         if ($insert)
         {        
+            $connection = Yii::$app->db;
             $AudAcci =  'create';
+            $table = $this->getTableSchema();
+            $pk = $table->primaryKey;
+            $UsuId_fk = Yii::$app->user->identity->id;
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudIp = Yii::$app->getRequest()->getUserIP();
+            $AudFechHora = new \yii\db\Expression('NOW()');  
+
+        //---------------------------------------------------------------------------//
+
+
+            $MaxId = (new \yii\db\Query()) 
+            ->select($pk)
+            ->from($AudMod)
+            ->orderBy($pk[0]." DESC")          
+            ->createCommand()
+            ->execute();
+
+            //---------------------------------------------//
+
+            $queryId = (new \yii\db\Query())
+            ->select('ADepId')
+            ->from($AudMod)
+            ->where([$pk[0]=>$MaxId])
+            ->createCommand();    
+            $rows1 = $queryId->queryOne();            
+            $resultId = implode(",", $rows1);
+
+
+            //-----------------------------------------------//    
+
             $connection->createCommand()->insert('auditorias', 
                                     // ['AudId'=> $AudId],
                                     [
