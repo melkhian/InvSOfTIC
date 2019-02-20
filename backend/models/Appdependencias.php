@@ -167,7 +167,8 @@ class Appdependencias extends \yii\db\ActiveRecord
                 $total = implode(",",$oldAttributes); 
             }
 
-            //---------------------------------------------------------------//            
+            // ------------------------------------------------------------------//
+
             foreach ($rows as $key => $value) 
             {
                 if ($key == 'ADepId') 
@@ -258,11 +259,20 @@ class Appdependencias extends \yii\db\ActiveRecord
             $queryId = (new \yii\db\Query())
             ->select('ADepId')
             ->from($AudMod)
-            ->where([$pk[0]=>$MaxId])
+            ->where([$pk[0] => $MaxId])
             ->createCommand();    
             $rows1 = $queryId->queryOne();            
-            $resultId = implode(",", $rows1);
+            // $resultId = implode(",", $rows1);
 
+            foreach ($rows1 as $key => $value) 
+            {
+                if ($key == 'ADepId') 
+                {
+                    $var[0] = "Id => ".$rows1['ADepId'];
+                }
+            }
+
+            $resultId = implode(",", $var);
 
             //-----------------------------------------------//    
 

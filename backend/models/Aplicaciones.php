@@ -159,7 +159,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
       // [['AppObse4', 'AppNombServBd', 'AppUsua', 'AppNombBd', 'AppRuta', 'AppEspaActu', 'AppProy', 'TiposId_fk25', 'AppPoliBack', 'TiposId_fk26', 'TiposId_fk27', 'TiposId_fk28'], 'required'],
       // [['TiposId_fk31', 'TiposId_fk32', 'TiposId_fk33', 'TiposId_fk34', 'TiposId_fk35', 'TiposId_fk36', 'TiposId_fk37', 'TiposId_fk38', 'TiposId_fk39', 'TiposId_fk40', 'TiposId_fk41', 'TiposId_fk42', 'TiposId_fk43', 'TiposId_fk44'], 'required'],
       // [['TiposId_fk50', 'TiposId_fk51', 'TiposId_fk52', 'TiposId_fk53', 'TiposId_fk54', 'AppUbic', 'TiposId_fk55', 'AppUbicDocu', 'AppUbicUlti', 'AppObse7', 'AppFuncApru', 'AppServWebVers', 'TiposId_fk48', 'TiposId_fk49'], 'required'],
-      // [['AppTipoLice', 'AppNumeLice', 'TiposId_fk22', 'TiposId_fk23', 'AppVersDist', 'AppNombVari', 'AppCantLice', 'TiposId_fk29', 'TiposId_fk30', 'TiposId_fk45', 'TiposId_fk46', 'TiposId_fk47'], 'required'],
+      // [['AppTipoLice', 'AppNumeLice', 'TiposId_fk22', 'TiposId_fk23', 'AppVersDist', 'AppCantLice', 'TiposId_fk29', 'TiposId_fk30', 'TiposId_fk45', 'TiposId_fk46', 'TiposId_fk47'], 'required'],
       [['ESopId1', 'ESopId2', 'UsuId_fk'], 'integer'],
       [['AppFechAdqu', 'AppFechPues'], 'safe'],
       [['AppNomb', 'AppSigl', 'AppVers', 'AppNumeDocuAdqu', 'AppOtroCual8', 'AppOtroCual16', 'AppUsua', 'AppEspaActu', 'AppProy', 'AppServWebVers'], 'string', 'max' => 50],
@@ -309,6 +309,1729 @@ class Aplicaciones extends \yii\db\ActiveRecord
       'AppFuncApru' => 'Funcionario que recibe a satisfacción',
     ];
   }
+
+  public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+        if (!$insert)
+        {
+
+            $AudAcci =  'update';
+            $table = $this->getTableSchema();
+            $pk = $table->primaryKey; //---------------------- [APPID]            
+            $idSelect = $_GET['id'];  //---------------------- [ID] Item Seleccionado
+            $UsuId_fk = Yii::$app->user->identity->id; //----- [ID USER]
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudIp = Yii::$app->getRequest()->getUserIP();//-- [IP USER]
+            $AudFechHora = new \yii\db\Expression('NOW()');//- [FECHA]      
+            $connection = Yii::$app->db;
+
+
+            $MaxId = (new \yii\db\Query()) 
+            ->select($pk)
+            ->from($AudMod)
+            ->orderBy($pk[0]." DESC")          
+            ->createCommand()
+            ->execute();
+
+
+            $queryAll = (new \yii\db\Query())
+            ->select('*')
+            ->from($AudMod)
+            ->where([$pk[0] => $idSelect])
+            ->createCommand();    
+            $rows = $queryAll->queryOne();
+            $resultAll = implode(",", $rows);
+
+
+            $i=0;            
+            //---------------------------------------------------------------//
+            
+            if(!isset($changedAttributes['AppId']))
+            {
+                $oldAttributes[$i] = "Id => ".$idSelect;
+                $i++;
+            }
+            else
+            {
+                $oldAttributes[$i] = "Id => ".$changedAttributes['AppId'];
+                $i++;
+            }
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppNomb']))
+            {
+                
+            }
+            else
+            {              
+                    $oldAttributes[$i] = "Nombre => ".$changedAttributes['AppNomb'];
+                    $i++;                          
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppDesc']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Desc => ".$changedAttributes['AppDesc'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppSigl']))
+            {
+                
+            }
+            else
+            {
+                $oldAttributes[$i] = "Sigla => ".$changedAttributes['AppSigl'];
+                $i++;
+            }             
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppVers']))
+            {
+                
+            }
+            else
+            {
+                $oldAttributes[$i] = "Versión de la aplicación => ".$changedAttributes['AppVers'];   
+                $i++;             
+            }  
+
+            //---------------------------------------------------------------//   
+
+            if(!isset($changedAttributes['ESopId1']))
+            {
+                
+            }
+            else
+            {
+              if ($changedAttributes['ESopId1'] != $rows['ESopId1']) 
+              {
+                $oldAttributes[$i] = "Desarrollador => ".$changedAttributes['ESopId1']; 
+                $i++;               
+              }  
+            }
+            //---------------------------------------------------------------// 
+
+            if(!isset($changedAttributes['AppUrl ']))
+            {
+                
+            }
+            else
+            {
+                $oldAttributes[$i] = "Url => ".$changedAttributes['AppUrl '];   
+                $i++;             
+            }  
+
+            //---------------------------------------------------------------// 
+
+            if(!isset($changedAttributes['TiposId_fk1 ']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Tipo adqui  => ".$changedAttributes['TiposId_fk1 '];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk2']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Doc adqui  => ".$changedAttributes['TiposId_fk2'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------// 
+
+            if(!isset($changedAttributes['AppNumeDocuAdqu']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "AppNumeDocuAdqu  => ".$changedAttributes['AppNumeDocuAdqu'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------// 
+
+            if(!isset($changedAttributes['AppValoAdqu']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "AppValoAdqu  => ".$changedAttributes['AppValoAdqu'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppFechAdqu']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "AppFechAdqu  => ".$changedAttributes['AppFechAdqu'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk3']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Tipo software  => ".$changedAttributes['TiposId_fk3'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppNombProc']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "AppNombProc => ".$changedAttributes['AppNombProc'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppEnti']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "AppEnti => ".$changedAttributes['AppEnti'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['ESopId2']))
+            {
+                
+            }
+            else
+            {
+              if ($changedAttributes['ESopId2'] != $rows['ESopId2']) 
+              {
+                $oldAttributes[$i] = "Soporte => ".$changedAttributes['ESopId2']; 
+                $i++;               
+              }
+            }   
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk4']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Entidad => ".$changedAttributes['TiposId_fk4'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['UsuId_fk']))
+            {
+                
+            }
+            else
+            {
+              if ($changedAttributes['UsuId_fk'] != $rows['UsuId_fk']) 
+              {
+                $oldAttributes[$i] = "Funcionario => ".$changedAttributes['UsuId_fk']; 
+                $i++;               
+              }
+            }   
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppAcueNiveServ']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Acuerdos => ".$changedAttributes['AppAcueNiveServ'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk5']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Tipo de Puesta => ".$changedAttributes['TiposId_fk5'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppFechPues']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Fecha de puesta => ".$changedAttributes['AppFechPues'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppServPues']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Servidor de puesta => ".$changedAttributes['AppServPues'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk6']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Ámbito de aplicación => ".$changedAttributes['TiposId_fk6'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk7']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Propósito de Aplicación => ".$changedAttributes['TiposId_fk7'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk8']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Servidor Web => ".$changedAttributes['TiposId_fk8'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppServWebVers']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Versión => ".$changedAttributes['AppServWebVers'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppOtroCual8']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cual => ".$changedAttributes['AppOtroCual8'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk9']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Código ejecutado en el cliente => ".$changedAttributes['TiposId_fk9'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppOtroCual9']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual9'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------// 
+
+            if(!isset($changedAttributes['TiposId_fk10']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Código ejecutado en el servidor => ".$changedAttributes['TiposId_fk10'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppOtroCual10']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual10'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk11']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Requiere base de datos => ".$changedAttributes['TiposId_fk11'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk12']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cuál => ".$changedAttributes['TiposId_fk12'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppOtroCual12']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual12'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk13']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Maneja varios idiomas => ".$changedAttributes['TiposId_fk13'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk14']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cuál => ".$changedAttributes['TiposId_fk14'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppOtroCual14']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual14'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk15']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Utiliza Manejador de Reportes => ".$changedAttributes['TiposId_fk15'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk16']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cuál => ".$changedAttributes['TiposId_fk16'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppOtroCual16']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual16'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk17']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Permite exportar datos => ".$changedAttributes['TiposId_fk17'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk18']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cuál => ".$changedAttributes['TiposId_fk18'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppOtroCual18']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual18'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk19']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Interactúa con otra aplicación => ".$changedAttributes['TiposId_fk19'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+            
+            if(!isset($changedAttributes['AppOtroCual19']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual19'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk20']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Se tiene código fuente => ".$changedAttributes['TiposId_fk20'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppOtroCual20']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Dónde está ubicado => ".$changedAttributes['AppOtroCual20'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppTipoLice']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Tipo de Licencia => ".$changedAttributes['AppTipoLice'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppNumeLice']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Número de Licencia => ".$changedAttributes['AppNumeLice'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk21']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Interface del Aplicativo => ".$changedAttributes['TiposId_fk21'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk22']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Tiene ayudas en línea => ".$changedAttributes['TiposId_fk22'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk23']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Tipo de SO => ".$changedAttributes['TiposId_fk23'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppVersDist']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Versión/Distribución  => ".$changedAttributes['AppVersDist'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk24']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Tipo Arquitectura => ".$changedAttributes['TiposId_fk24'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppLengServ']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Lenguaje/Servicio => ".$changedAttributes['AppLengServ'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppVersApli']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Versión => ".$changedAttributes['AppVersApli'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppBibl']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Bibliotecas => ".$changedAttributes['AppBibl'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppObse1']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Observaciones => ".$changedAttributes['AppObse1'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppMane']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Manejador => ".$changedAttributes['AppMane'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppVersBD']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Versión => ".$changedAttributes['AppVersBD'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppPuer1']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Puerto => ".$changedAttributes['AppPuer1'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppObse2']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Observaciones => ".$changedAttributes['AppObse2'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppTipoHard']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Tipo Hardware => ".$changedAttributes['AppTipoHard'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppProc']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Procesador => ".$changedAttributes['AppProc'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppMemo']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Memoria => ".$changedAttributes['AppMemo'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//          
+
+            if(!isset($changedAttributes['AppEspaDisc']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Espacio en Disco => ".$changedAttributes['AppEspaDisc'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppObse3']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Observaciones => ".$changedAttributes['AppObse3'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppObse4']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Observaciones => ".$changedAttributes['AppObse4'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppNombServBd']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Nombre Servidor de BD => ".$changedAttributes['AppNombServBd'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppUsua']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Usuario => ".$changedAttributes['AppUsua'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppNombBd']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Nombre BD => ".$changedAttributes['AppNombBd'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppRuta']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Ruta => ".$changedAttributes['AppRuta'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppEspaActu']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Espacio en disco (Actual) => ".$changedAttributes['AppEspaActu'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppProy']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Proyección a 3 años => ".$changedAttributes['AppProy'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk25']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Método de Backup => ".$changedAttributes['TiposId_fk25'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppOtroCual25']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual25'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppPoliBack']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Política de Backup  => ".$changedAttributes['AppPoliBack'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk26']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Periocidad => ".$changedAttributes['TiposId_fk26'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk27']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Medio de Almacenamiento => ".$changedAttributes['TiposId_fk27'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppOtroCual27']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual27'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk28']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Licenciamiento de BD => ".$changedAttributes['TiposId_fk28'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppOtroCual28']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual28'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppCantLice']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Cantidad de licencias => ".$changedAttributes['AppCantLice'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppDireRaiz']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Directorio Raíz => ".$changedAttributes['AppDireRaiz'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppObse5']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Observaciones => ".$changedAttributes['AAppObse5'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppObse6']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Observaciones => ".$changedAttributes['AAppObse6'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk29']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Plan de Proyecto ¿Se entregó? => ".$changedAttributes['TiposId_fk29'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk30']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Plan de Proyecto ¿Se aprobó? => ".$changedAttributes['TiposId_fk30'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk31']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Plan de Proyecto Medio => ".$changedAttributes['TiposId_fk31'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk32']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Definición y Alcance ¿Se entregó => ".$changedAttributes['TiposId_fk32'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk33']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Definición y Alcance ¿Se aprobó => ".$changedAttributes['TiposId_fk33'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk34']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Definición y Alcance Medio => ".$changedAttributes['TiposId_fk34'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk35']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Documento de requerimientos ¿Se entregó? => ".$changedAttributes['TiposId_fk35'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk36']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Documento de requerimientos ¿Se aprobó? => ".$changedAttributes['TiposId_fk36'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk37']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Documento de requerimientos => ".$changedAttributes['TiposId_fk37'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk38']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Documento de Diseño ¿Se entregó? => ".$changedAttributes['TiposId_fk38'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk39']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Documento de Diseño ¿Se aprobó? => ".$changedAttributes['TiposId_fk39'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk40']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Documento de Diseño Medio => ".$changedAttributes['TiposId_fk40'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk41']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Documento de Pruebas ¿Se entregó? => ".$changedAttributes['TiposId_fk41'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk42']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Documento de Pruebas ¿Se aprobó? => ".$changedAttributes['TiposId_fk42'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk43']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Documento de Pruebas Medio => ".$changedAttributes['TiposId_fk43'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk44']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Manual Técnico y de Instalación ¿Se entregó? => ".$changedAttributes['TiposId_fk44'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk45']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Manual Técnico y de Instalación ¿Se aprobó? => ".$changedAttributes['TiposId_fk45'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk46']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Manual Técnico y de Instalación Medio => ".$changedAttributes['TiposId_fk46'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk47']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Manual de Administración ¿Se entregó? => ".$changedAttributes['TiposId_fk47'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk48']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Manual de Administración ¿Se aprobó? => ".$changedAttributes['TiposId_fk48'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk49']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Manual de Administración Medio => ".$changedAttributes['TiposId_fk49'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk50']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Manual de Usuario ¿Se entregó? => ".$changedAttributes['TiposId_fk50'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk51']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Manual de Usuario ¿Se aprobó? => ".$changedAttributes['TiposId_fk51'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk52']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Manual de Usuario Medio => ".$changedAttributes['TiposId_fk52'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk53']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "¿Se entregó Medio digital con la información de la aplicación? ¿Se entregó? 
+                     => ".$changedAttributes['TiposId_fk53'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk54']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "¿Se entregó Medio digital con la información de la aplicación? ¿Se aprobó? 
+                     => ".$changedAttributes['TiposId_fk54'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppUbic']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Ubicación Disco C: => ".$changedAttributes['AppUbic'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['TiposId_fk55']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "TiposId_fk55 => ".$changedAttributes['TiposId_fk55'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppUbicDocu']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Ubicación Documentación => ".$changedAttributes['AppUbicDocu'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppUbicUlti']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Ubicación última versión del código fuente => ".$changedAttributes['AppUbicUlti'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppObse7']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Observaciones => ".$changedAttributes['AppObse7'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if(!isset($changedAttributes['AppFuncApru']))
+            {
+
+            }
+            else
+            {
+                    $oldAttributes[$i] = "Funcionario que recibe a satisfacción => ".$changedAttributes['AppFuncApru'];
+                    $i++;                
+            } 
+
+            //---------------------------------------------------------------//
+
+            if (!isset($oldAttributes)) 
+            {
+                $total = 'no change';
+            }
+            else
+            {
+                $total = implode(",",$oldAttributes); 
+            }
+
+            //---------------------------------------------------------------// 
+            
+            foreach ($rows as $key => $value) 
+            {
+                if ($key == 'AppId') 
+                {
+                    $var[0] = "Id => ".$rows['AppId'];
+                    // $j++;
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'AppNomb' and isset($changedAttributes['AppNomb']))
+                {
+                    $var[1] = "Nombre => ".$rows['AppNomb'];
+                    // $j++;
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'AppDesc' and isset($changedAttributes['AppDesc']))
+                {
+                    $var[2] = "Descripción => ".$rows['AppDesc'];
+                    // $j++;
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'AppSigl' and isset($changedAttributes['AppSigl'])) 
+                {
+                    $var[3] = "Sigla => ".$rows['AppSigl'];
+                    // $j++;
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'AppVers' and isset($changedAttributes['AppVers'])) 
+                {
+                    $var[4] = "Versión de la aplicación => ".$rows['AppVers'];
+                    // $j++;
+                }
+
+                //---------------------------------------------------------------//
+                if (isset($changedAttributes['ESopId1'])) {
+                                 
+                  if ($key == 'ESopId1' and $value != $changedAttributes['ESopId1'])
+                  {                      
+                    $var[5] = "Desarrollador o Proveedor => ".$rows['ESopId1'];
+                    // $j++;
+                  }
+                }
+                //---------------------------------------------------------------//
+                
+                if ($key == 'AppUrl' and isset($changedAttributes['AppUrl']))
+                { 
+                    $var[6] = "URL de acceso => ".$rows['AppUrl'];
+                    // $j++;
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'TiposId_fk1' and isset($changedAttributes['TiposId_fk1']))
+                { 
+                    $var[7] = "Tipo de adquisición => ".$rows['TiposId_fk1'];
+                    // $j++;
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'TiposId_fk2' and isset($changedAttributes['TiposId_fk2']))
+                { 
+                    $var[8] = "Documento de adquisición => ".$rows['TiposId_fk2'];
+                    // $j++;
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'AppNumeDocuAdqu' and isset($changedAttributes['AppNumeDocuAdqu']))
+                { 
+                    $var[9] = "Número de documento de adquisición => ".$rows['AppNumeDocuAdqu'];
+                    // $j++;
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'AppValoAdqu' and isset($changedAttributes['AppValoAdqu']))
+                { 
+                    $var[10] = "Valor de adquisición => ".$rows['AppValoAdqu'];
+                    // $j++;
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'AppFechAdqu' and isset($changedAttributes['AppFechAdqu']))
+                { 
+                    $var[11] = "Fecha Adquisición => ".$rows['AppFechAdqu'];                    
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'TiposId_fk3' and isset($changedAttributes['TiposId_fk3']))
+                { 
+                    $var[12] = "Tipo Software => ".$rows['TiposId_fk3'];                   
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'AppNombProc' and isset($changedAttributes['AppNombProc']))
+                { 
+                    $var[13] = "Nombre del Proceso => ".$rows['AppNombProc'];                    
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'AppEnti' and isset($changedAttributes['AppEnti']))
+                { 
+                    $var[14] = "Dependencias Usuarias => ".$rows['AppEnti'];                   
+                }
+
+                //---------------------------------------------------------------//
+
+                if (isset($changedAttributes['ESopId2'])) {
+                                 
+                  if ($key == 'ESopId1' and $value != $changedAttributes['ESopId2'])
+                  {                      
+                    $var[15] = "Desarrollador o Proveedor => ".$rows['ESopId2'];
+                  }
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'TiposId_fk4' and isset($changedAttributes['TiposId_fk4']))
+                { 
+                    $var[16] = "Entidad, Área => ".$rows['TiposId_fk4'];                   
+                }
+
+                //---------------------------------------------------------------//
+
+                if (isset($changedAttributes['UsuId_fk'])) {
+                                 
+                  if ($key == 'UsuId_fk' and $value != $changedAttributes['UsuId_fk'])
+                  {                      
+                    $var[17] = "Desarrollador o Proveedor => ".$rows['UsuId_fk'];
+                  }
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'AppAcueNiveServ' and isset($changedAttributes['AppAcueNiveServ']))
+                { 
+                    $var[18] = "Acuerdos de niveles de servicio => ".$rows['AppAcueNiveServ'];                   
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'TiposId_fk5' and isset($changedAttributes['TiposId_fk5']))
+                { 
+                    $var[19] = "Tipo de Puesta => ".$rows['TiposId_fk5'];                   
+                }
+
+                //---------------------------------------------------------------//
+
+                if ($key == 'AppFechPues' and isset($changedAttributes['AppFechPues']))
+                { 
+                    $var[20] = "Fecha de puesta => ".$rows['AppFechPues'];                   
+                }
+
+                //---------------------------------------------------------------//
+
+            }
+            // print_r($var);
+            // die();
+            if (!isset($var)) 
+            {
+                $result = 'No Change';
+            }
+            else
+            {
+               $result = implode(",",$var); 
+            }
+
+                //---------------------------------------------------------------//
+
+            $connection->createCommand()->insert('auditorias', 
+                                    // ['AudId'=> $AudId],
+                                    [
+                                        'UsuId_fk' => Yii::$app->user->identity->id,
+                                        'AudMod' => $AudMod,
+                                        'AudAcci' => $AudAcci, 
+                                        'AudDatoAnte' => $total,
+                                        'AudDatoDesp' => $result,                                   
+                                        'AudIp'=> $AudIp,
+                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                    ])
+                                    ->execute(); 
+
+        
+        }
+        if ($insert)
+        {        
+            // print_r($pk);
+            // die();
+            $connection = Yii::$app->db;
+            $AudAcci =  'create';
+            $table = $this->getTableSchema();
+            $pk = $table->primaryKey;
+            $UsuId_fk = Yii::$app->user->identity->id;
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudIp = Yii::$app->getRequest()->getUserIP();
+            $AudFechHora = new \yii\db\Expression('NOW()');  
+
+        //---------------------------------------------------------------------------//
+
+
+            $MaxId = (new \yii\db\Query()) 
+            ->select($pk)
+            ->from($AudMod)
+            ->orderBy($pk[0]." DESC")          
+            ->createCommand()
+            ->execute();
+
+            //---------------------------------------------//
+
+            $queryId = (new \yii\db\Query())
+            ->select($pk)
+            ->from($AudMod)
+            ->where([$pk[0]=>$MaxId])
+            ->createCommand();    
+            $rows1 = $queryId->queryOne();            
+            $resultId = implode(",", $rows1);
+
+
+            //-----------------------------------------------//    
+
+            $connection->createCommand()->insert('auditorias', 
+                                    // ['AudId'=> $AudId],
+                                    [
+                                        'UsuId_fk' => Yii::$app->user->identity->id,
+                                        'AudMod' => $AudMod,
+                                        'AudAcci' => $AudAcci, 
+                                        'AudDatoAnte' => ' ',
+                                        'AudDatoDesp' => $resultId,                                   
+                                        'AudIp'=> $AudIp,
+                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                    ])
+                                    ->execute();                
+        }            
+    }
+
 
   /**
   * @return \yii\db\ActiveQuery
