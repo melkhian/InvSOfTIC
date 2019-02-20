@@ -118,6 +118,7 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
             'Codeception\\Extension\\' => 22,
             'Codeception\\' => 12,
         ),
+    	)
     );
 
     public static $prefixDirsPsr4 = array (
@@ -298,6 +299,7 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
             0 => __DIR__ . '/..' . '/codeception/base/src/Codeception',
             1 => __DIR__ . '/..' . '/codeception/stub/src',
         ),
+    )
     );
 
     public static $prefixesPsr0 = array (

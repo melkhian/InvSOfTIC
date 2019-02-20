@@ -167,8 +167,7 @@ class Appdependencias extends \yii\db\ActiveRecord
                 $total = implode(",",$oldAttributes); 
             }
 
-            //---------------------------------------------------------------//
-
+            //---------------------------------------------------------------//            
             foreach ($rows as $key => $value) 
             {
                 if ($key == 'ADepId') 
@@ -178,30 +177,30 @@ class Appdependencias extends \yii\db\ActiveRecord
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'DepId_fk') 
+                if ($key == 'DepId_fk' and $value != $changedAttributes['DepId_fk']) 
                 {
                     $var[1] = "DepId => ".$rows['DepId_fk'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'AppId_fk') 
+                if ($key == 'AppId_fk' and $value != $changedAttributes['AppId_fk']) 
                 {
                     $var[2] = "AppId => ".$rows['AppId_fk'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ADepCantUsua') 
+                if ($key == 'ADepCantUsua' and isset($changedAttributes['ADepCantUsua'])) 
                 {
                     $var[3] = "CantUsua => ".$rows['ADepCantUsua'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ADepFechSist') 
+                if ($key == 'ADepFechSist' and isset($changedAttributes['ADepFechSist'])) 
                 {
-                    $var[4] = "FechSista => ".$rows['ADepFechSist'];
+                    $var[4] = "FechSist => ".$rows['ADepFechSist'];
                 }
 
                 //---------------------------------------------------------------//
