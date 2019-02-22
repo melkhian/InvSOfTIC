@@ -314,8 +314,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
     {
         parent::afterSave($insert, $changedAttributes);
         if (!$insert)
-        {
-
+        {            
             $AudAcci =  'update';
             $table = $this->getTableSchema();
             $pk = $table->primaryKey; //---------------------- [APPID]            
@@ -344,7 +343,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             $resultAll = implode(",", $rows);
 
 
-            $i=0;            
+            $i=0;       // variable iteradora     
+            //$changeAtributes son los datos que cambiaron
             //---------------------------------------------------------------//
             
             if(!isset($changedAttributes['AppId']))
@@ -1977,10 +1977,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
                                         'AudIp'=> $AudIp,
                                         'AudFechHora'=> $AudFechHora,                                                                    
                                     ])
-                                    ->execute(); 
-
-        
-        }
+                                    ->execute();         
+        }                     
         if ($insert)
         {        
             // print_r($pk);
@@ -2029,9 +2027,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
                                         'AudFechHora'=> $AudFechHora,                                                                    
                                     ])
                                     ->execute();                
-        }            
+        }
     }
-
 
   /**
   * @return \yii\db\ActiveQuery
