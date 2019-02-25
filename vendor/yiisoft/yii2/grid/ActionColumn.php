@@ -149,7 +149,7 @@ class ActionColumn extends Column
             'data-method' => 'post',
         ]);
         $this->initDefaultButton('enable', 'adjust', [
-            'data-confirm' => Yii::t('yii', '¿Desea Habilitar/Deshabilitar este Usuario?'),
+            'data-confirm' => Yii::t('yii', '¿Desea Habilitar/Deshabilitar este Componente?'),
             'data-method' => 'post',
         ]);
     }

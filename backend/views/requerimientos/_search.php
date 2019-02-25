@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'ReqId') ?>
 
-    <?= $form->field($model, 'ProId_fk') ?>
+    <?= $form->field($model, 'AppId_fk') ?>
 
     <?= $form->field($model, 'ReqDesc') ?>
 

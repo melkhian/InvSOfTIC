@@ -18,7 +18,7 @@ class RequerimientosSearch extends Requerimientos
     public function rules()
     {
         return [
-            [['ReqId', 'ProId_fk', 'TiposId_fk1', 'UsuId_fk', 'Tiposid_fk2', 'TiposId_fk3', 'TiposId_fk4'], 'integer'],
+            [['ReqId', 'AppId_fk', 'TiposId_fk1', 'UsuId_fk', 'Tiposid_fk2', 'TiposId_fk3', 'TiposId_fk4'], 'integer'],
             [['ReqDesc', 'ReqFechTomaRequ', 'ReqFechSist'], 'safe'],
         ];
     }
@@ -60,7 +60,7 @@ class RequerimientosSearch extends Requerimientos
         // grid filtering conditions
         $query->andFilterWhere([
             'ReqId' => $this->ReqId,
-            'ProId_fk' => $this->ProId_fk,
+            'AppId_fk' => $this->AppId_fk,
             'TiposId_fk1' => $this->TiposId_fk1,
             'UsuId_fk' => $this->UsuId_fk,
             'Tiposid_fk2' => $this->Tiposid_fk2,

@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "requerimientos".
  *
  * @property int $ReqId Id
- * @property int $ProId_fk Proyecto
+ * @property int $AppId_fk Aplicación
  * @property string $ReqDesc Descripción
  * @property int $TiposId_fk1 Tipo de Requerimiento
  * @property int $UsuId_fk Funcionario que Aprueba
@@ -19,7 +19,7 @@ use Yii;
  * @property int $TiposId_fk4 Prioridad
  *
  * @property Estrequerimientos[] $estrequerimientos
- * @property Proyectos $proIdFk
+ * @property Aplicaciones $appIdFk
  * @property Tipos $tiposIdFk1
  * @property Tipos $tiposidFk2
  * @property Tipos $tiposIdFk3
@@ -28,14 +28,14 @@ use Yii;
  * @property Versdocrequerimientos[] $versdocrequerimientos
  */
 class Requerimientos extends \yii\db\ActiveRecord
-{    
+{
 
     public function behaviors()
     {
         return [
             'sammaye\audittrail\LoggableBehavior'
         ];
-    }   
+    }
     /**
      * @inheritdoc
      */
@@ -50,11 +50,11 @@ class Requerimientos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ProId_fk', 'ReqDesc', 'TiposId_fk1', 'UsuId_fk', 'Tiposid_fk2', 'TiposId_fk3', 'ReqFechTomaRequ', 'ReqFechSist', 'TiposId_fk4'], 'required'],
-            [['ProId_fk', 'TiposId_fk1', 'UsuId_fk', 'Tiposid_fk2', 'TiposId_fk3', 'TiposId_fk4'], 'integer'],
+            [['AppId_fk', 'ReqDesc', 'TiposId_fk1', 'UsuId_fk', 'Tiposid_fk2', 'TiposId_fk3', 'ReqFechTomaRequ', 'ReqFechSist', 'TiposId_fk4'], 'required'],
+            [['AppId_fk', 'TiposId_fk1', 'UsuId_fk', 'Tiposid_fk2', 'TiposId_fk3', 'TiposId_fk4'], 'integer'],
             [['ReqFechTomaRequ', 'ReqFechSist'], 'safe'],
             [['ReqDesc'], 'string', 'max' => 50],
-            [['ProId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Proyectos::className(), 'targetAttribute' => ['ProId_fk' => 'ProId']],
+            [['AppId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Aplicaciones::className(), 'targetAttribute' => ['AppId_fk' => 'AppId']],
             [['TiposId_fk1'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['TiposId_fk1' => 'TiposId']],
             [['Tiposid_fk2'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['Tiposid_fk2' => 'TiposId']],
             [['TiposId_fk3'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['TiposId_fk3' => 'TiposId']],
@@ -70,7 +70,7 @@ class Requerimientos extends \yii\db\ActiveRecord
     {
         return [
             'ReqId' => 'Id',
-            'ProId_fk' => 'Proyecto',
+            'AppId_fk' => 'Aplicación',
             'ReqDesc' => 'Descripción',
             'TiposId_fk1' => 'Tipo de Requerimiento',
             'UsuId_fk' => 'Funcionario que Aprueba',
@@ -93,10 +93,10 @@ class Requerimientos extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProIdFk()
-    {
-        return $this->hasOne(Proyectos::className(), ['ProId' => 'ProId_fk']);
-    }
+     public function getAppIdFk()
+     {
+         return $this->hasOne(Aplicaciones::className(), ['AppId' => 'AppId_fk']);
+     }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -148,11 +148,11 @@ class Requerimientos extends \yii\db\ActiveRecord
 
     //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
 
-    public function ProId_fk()
+    public function AppId_fk()
     {
-        $data = Proyectos::findOne($this->ProId_fk);
+        $data = Aplicaciones::findOne($this->AppId_fk);
 
-        return $data['ProNomb'];
+        return $data['AppNomb'];
     }
 
     //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
