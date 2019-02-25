@@ -139,17 +139,17 @@ class UserController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
-    {
-        if(SiteController::findCom(4)){
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-        }
-        else {
-          $this->redirect(['site/error']);
-        }
-    }
+    // public function actionDelete($id)
+    // {
+    //     if(SiteController::findCom(4)){
+    //     $this->findModel($id)->delete();
+    //
+    //     return $this->redirect(['index']);
+    //     }
+    //     else {
+    //       $this->redirect(['site/error']);
+    //     }
+    // }
 
     /**
      * Finds the User model based on its primary key value.
@@ -186,7 +186,36 @@ class UserController extends Controller
         $rows = $command->queryScalar();
         return $rows;
     }
+// NOTE: Función para Inhabilitar/Habilitar Usuarios desde la página Index a través del ícono Deshabilitar
+    public function actionEnable($id)
+    {
+      if(SiteController::findCom(4)){
+      $query = (new \yii\db\Query())
+      ->select('status')
+      ->from('user')
+      ->where(['id' => $id]);
+      $command = $query->createCommand();
+      $rows = $command->queryScalar();
 
+      if ($rows == 10) {
+        $connection = Yii::$app->db;
+        $connection->createCommand("UPDATE user SET status=6 WHERE id=$id")
+        ->execute();
+      }
+      if ($rows == 6) {
+        $connection = Yii::$app->db;
+        $connection->createCommand("UPDATE user SET status=10 WHERE id=$id")
+        ->execute();
+      }
+      $searchModel = new UserSearch();
+      $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $this->render('index', [
+            // 'model' => $this->findModel($id),
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+}
     // public function findCom($com)
     // {
     //   $IdUser = Yii::$app->user->identity->id;

@@ -49,9 +49,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'ProNomb',
             'ProDesc',
             'ProObje',
+            // NOTE: $model->UsuId_fk() esta función se encuentra en el modelo de Proyectos
             ['attribute'=>'UsuId_fk',
              'value'=> function($model){return $model->UsuId_fk();},
-             'filter' => Html::activeDropDownList($searchModel, 'UsuId_fk', ArrayHelper::map(User::find()->all(),'id','username'),['class'=>'form-control','prompt' => 'Seleccione el Usuario']),
+             'filter' => Html::activeDropDownList($searchModel, 'UsuId_fk',
+             ArrayHelper::map(User::find()->all(),'id','username'),['class'=>'form-control','prompt' => 'Seleccione el Usuario']),
             ],
             //'Tiposid_fk1',
             //'ProFechApro',

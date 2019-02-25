@@ -59,7 +59,7 @@ class ActionColumn extends Column
      *
      * @see buttons
      */
-    public $template = '{view} {update} {delete}';
+    public $template = '{view} {update} {delete} {enable}';
     /**
      * @var array button rendering callbacks. The array keys are the button names (without curly brackets),
      * and the values are the corresponding button rendering callbacks. The callbacks should use the following
@@ -148,6 +148,10 @@ class ActionColumn extends Column
             'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
             'data-method' => 'post',
         ]);
+        $this->initDefaultButton('enable', 'adjust', [
+            'data-confirm' => Yii::t('yii', '¿Desea Habilitar/Deshabilitar este Usuario?'),
+            'data-method' => 'post',
+        ]);
     }
 
     /**
@@ -170,6 +174,9 @@ class ActionColumn extends Column
                         break;
                     case 'delete':
                         $title = Yii::t('yii', 'Delete');
+                        break;
+                    case 'enable':
+                        $title = Yii::t('yii', 'Habilitar/Deshabilitar');
                         break;
                     default:
                         $title = ucfirst($name);

@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
              'filter' => Html::activeDropDownList($searchModel, 'TiposId_fk1', ArrayHelper::map(Tipos::find()->where('tipoid_fk = 1')->asArray()->all(), 'TiposId', 'TiposDesc'),['class'=>'form-control','prompt' => 'Seleccione el Cargo']),
             ],
             'DepTele',
-            //'DepDire',
+            'DepDire',
             //'TiposId_fk2',
             //'DepCorr',
 

@@ -69,6 +69,7 @@ private $var;
      */
     public function rules()
     {
+      // NOTE: Se eliminan campos como Password_hash, auth_key, created_at, update_at de los REQUERIDOS, esto cuando se genera el modelo desde GII.
         return [
             [['usuiden', 'usuprimnomb', 'usuprimapel', 'usutelepers', 'username', 'usuteleofic', 'email', 'depid_fk', 'tiposid_fk1', 'tiposid_fk2', 'status'], 'required'],
             [['depid_fk', 'tiposid_fk1', 'tiposid_fk2', 'status', 'created_at', 'updated_at'], 'integer'],

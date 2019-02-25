@@ -47,8 +47,12 @@ $this->params['breadcrumbs'][] = $this->title;
         } else {
           $update = '';
         }
+        if (SiteController::findCom(4)) {
+          $enable = '{enable}';
+        } else {
+          $enable = '';
+        }
         ?>
-
 
     </p>
 
@@ -95,8 +99,9 @@ $this->params['breadcrumbs'][] = $this->title;
             //'created_at',
             //'updated_at',
 
+            // NOTE: Custom entire project in ActionColumn: In vendor\yiisoft\yii2\grid\ActionColumn.php file
             ['class' => 'yii\grid\ActionColumn',
-             'template' => "$view $update"],
+             'template' => "$view $update $enable"],
         ],
     ]);
 
