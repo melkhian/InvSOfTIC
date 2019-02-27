@@ -30,12 +30,12 @@ use Yii;
 class Requerimientos extends \yii\db\ActiveRecord
 {
 
-    public function behaviors()
-    {
-        return [
-            'sammaye\audittrail\LoggableBehavior'
-        ];
-    }
+    // public function behaviors()
+    // {
+    //     return [
+    //         'sammaye\audittrail\LoggableBehavior'
+    //     ];
+    // }
     /**
      * @inheritdoc
      */

@@ -236,9 +236,12 @@ class UserController extends Controller
         $password_hash = Yii::$app->security->generatePasswordHash($password);
 
         // NOTE:
-        $connection = Yii::$app->db;
-        $connection->createCommand("UPDATE user SET password_hash='$password_hash' WHERE id=$id")
-        ->execute();
+        $model = User::findOne($id);
+        $model->password_hash = $password_hash;
+        $model->save();
+        // $connection = Yii::$app->db;
+        // $connection->createCommand("UPDATE user SET password_hash='$password_hash' WHERE id=$id")
+        // ->execute();
         Yii::$app->session->setFlash('success', 'Se ha restablecido la contraseña del Usuario ' . $rows);
         $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -248,6 +251,24 @@ class UserController extends Controller
               'dataProvider' => $dataProvider,
           ]);
     }
+  }
+
+  public function actionChange_password()
+  {
+    $user = Yii::$app->user->identity;
+    // var_dump($user->errors);
+    $loadedPost = $user->load(Yii::$app->request->post());
+
+    if ($loadedPost && $user->validate()) {
+      $user->password = $user->newPassword;
+      $user->save(false);
+      // $var_dump($user->errors);
+      Yii::$app->session->setFlash('success','Se ha cambiado la contraseña satisfactoriamente');
+      return $this->refresh();
+    }
+    return $this->render('change_password', [
+      'user' => $user,
+    ]);
   }
 }
     // public function findCom($com)
