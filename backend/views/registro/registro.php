@@ -38,8 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php  $form = ActiveForm::begin(['id' => 'form-registro']);  ?>
 
 
-                <?= $form->field($model, 'usuiden')->textInput(['maxlength' => true]) ?>
-                
+                <?= $form->field($model, 'usuiden')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
+
                 <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
                 <?= $form->field($model, 'usuprimnomb')->textInput(['maxlength' => true]) ?>
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'tiposid_fk2')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 2')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Tipo de Contrato'])?>
 
                 <?= $form->field($model, 'status')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 3')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Estado'])?>
-                <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
+                <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
 
                 <?= $form->field($model, 'password')->passwordInput() ?>

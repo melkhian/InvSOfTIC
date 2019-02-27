@@ -187,6 +187,7 @@ class UserController extends Controller
         return $rows;
     }
 // NOTE: Función para Inhabilitar/Habilitar Usuarios desde la página Index a través del ícono Deshabilitar
+
     public function actionEnable($id)
     {
       if(SiteController::findCom(4)){
@@ -216,6 +217,39 @@ class UserController extends Controller
         ]);
     }
 }
+  // NOTE: Función para restablecer la contraseña de Usuario a una por defecto definida dentro de los parámetros de la función.
+  //       Se llama desde el index y se ha codificado en vendor/yii2/grid/ActionColumn.php
+
+    public function actionReset($id)
+    {
+        if(SiteController::findCom(67)){
+          // NOTE: query para traer el username del usuario
+        $query = (new \yii\db\Query())
+        ->select('username')
+        ->from('user')
+        ->where(['id' => $id]);
+        $command = $query->createCommand();
+        $rows = $command->queryScalar();
+
+        // NOTE: Se genera un password por defecto y su respectivo HASH
+        $password ='123456';
+        $password_hash = Yii::$app->security->generatePasswordHash($password);
+
+        // NOTE:
+        $connection = Yii::$app->db;
+        $connection->createCommand("UPDATE user SET password_hash='$password_hash' WHERE id=$id")
+        ->execute();
+        Yii::$app->session->setFlash('success', 'Se ha restablecido la contraseña del Usuario ' . $rows);
+        $searchModel = new UserSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+          return $this->render('index', [
+              // 'model' => $this->findModel($id),
+              'searchModel' => $searchModel,
+              'dataProvider' => $dataProvider,
+          ]);
+    }
+  }
+}
     // public function findCom($com)
     // {
     //   $IdUser = Yii::$app->user->identity->id;
@@ -236,5 +270,3 @@ class UserController extends Controller
     //     $rows = $command->queryScalar();
     //     return $rows;
     // }
-
-}

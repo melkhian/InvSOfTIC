@@ -52,6 +52,11 @@ $this->params['breadcrumbs'][] = $this->title;
         } else {
           $enable = '';
         }
+        if (SiteController::findCom(67)) {
+          $reset = '{reset}';
+        } else {
+          $reset = '';
+        }
         ?>
 
     </p>
@@ -101,7 +106,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             // NOTE: Custom entire project in ActionColumn: In vendor\yiisoft\yii2\grid\ActionColumn.php file
             ['class' => 'yii\grid\ActionColumn',
-             'template' => "$view $update $enable"],
+             'template' => "$view $update $enable $reset"],
         ],
     ]);
 

@@ -16,7 +16,7 @@ use kartik\date\DatePicker;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'ProNomb')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ProNomb')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
 
     <?= $form->field($model, 'ProDesc')->textarea(['maxlength' => true, 'rows' => '4']) ?>
 

@@ -14,7 +14,7 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'DepNomb')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'DepNomb')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
 
     <?= $form->field($model, 'DepEnca')->textInput(['maxlength' => true]) ?>
 
