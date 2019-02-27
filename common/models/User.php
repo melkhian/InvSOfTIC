@@ -62,6 +62,13 @@ class User extends ActiveRecord implements IdentityInterface
       [['newPasswordConfirm'], 'compare','compareAttribute' => 'newPassword','message'=>'Las contraseñas NO coinciden'],
     ];
   }
+  public function attributeLabels(){
+    return[
+      'currentPassword' => 'Contraseña Actual',
+      'newPassword' =>'Nueva contraseña',
+      'newPasswordConfirm' => 'Confirmar nueva contraseña',
+    ];
+  }
 
   public function validateCurrentPassword(){
     if (!$this->verifyPassword($this->currentPassword)) {
