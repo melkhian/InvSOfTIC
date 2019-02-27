@@ -35,6 +35,7 @@ class RegistroController extends Controller{
       $msgreg = null;
           if ($model->load(Yii::$app->request->post())) {
               if ($user = $model->registro()) {
+                
 
               //
               //   Yii::$app->mailer->compose('bienvenido.php',[

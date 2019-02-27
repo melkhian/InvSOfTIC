@@ -408,7 +408,7 @@
         "version_normalized": "3.2.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/jquery/jquery-dist.git",
+            "url": "git@github.com:jquery/jquery-dist.git",
             "reference": "77d2a51d0520d2ee44173afdf4e40a9201f5964e"
         },
         "dist": {
