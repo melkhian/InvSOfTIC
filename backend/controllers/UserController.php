@@ -139,17 +139,17 @@ class UserController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
-    {
-        if(SiteController::findCom(4)){
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-        }
-        else {
-          $this->redirect(['site/error']);
-        }
-    }
+    // public function actionDelete($id)
+    // {
+    //     if(SiteController::findCom(4)){
+    //     $this->findModel($id)->delete();
+    //
+    //     return $this->redirect(['index']);
+    //     }
+    //     else {
+    //       $this->redirect(['site/error']);
+    //     }
+    // }
 
     /**
      * Finds the User model based on its primary key value.
@@ -186,7 +186,91 @@ class UserController extends Controller
         $rows = $command->queryScalar();
         return $rows;
     }
+// NOTE: Función para Inhabilitar/Habilitar Usuarios desde la página Index a través del ícono Deshabilitar
 
+    public function actionEnable($id)
+    {
+      if(SiteController::findCom(4)){
+      $query = (new \yii\db\Query())
+      ->select('status')
+      ->from('user')
+      ->where(['id' => $id]);
+      $command = $query->createCommand();
+      $rows = $command->queryScalar();
+
+      if ($rows == 10) {
+        $connection = Yii::$app->db;
+        $connection->createCommand("UPDATE user SET status=6 WHERE id=$id")
+        ->execute();
+      }
+      if ($rows == 6) {
+        $connection = Yii::$app->db;
+        $connection->createCommand("UPDATE user SET status=10 WHERE id=$id")
+        ->execute();
+      }
+      $searchModel = new UserSearch();
+      $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $this->render('index', [
+            // 'model' => $this->findModel($id),
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+}
+  // NOTE: Función para restablecer la contraseña de Usuario a una por defecto definida dentro de los parámetros de la función.
+  //       Se llama desde el index y se ha codificado en vendor/yii2/grid/ActionColumn.php
+
+    public function actionReset($id)
+    {
+        if(SiteController::findCom(67)){
+          // NOTE: query para traer el username del usuario
+        $query = (new \yii\db\Query())
+        ->select('username')
+        ->from('user')
+        ->where(['id' => $id]);
+        $command = $query->createCommand();
+        $rows = $command->queryScalar();
+
+        // NOTE: Se genera un password por defecto y su respectivo HASH
+        $password ='123456';
+        $password_hash = Yii::$app->security->generatePasswordHash($password);
+
+        // NOTE:
+        $model = User::findOne($id);
+        $model->password_hash = $password_hash;
+        $model->save();
+        // $connection = Yii::$app->db;
+        // $connection->createCommand("UPDATE user SET password_hash='$password_hash' WHERE id=$id")
+        // ->execute();
+        Yii::$app->session->setFlash('success', 'Se ha restablecido la contraseña del Usuario ' . $rows);
+        $searchModel = new UserSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+          return $this->render('index', [
+              // 'model' => $this->findModel($id),
+              'searchModel' => $searchModel,
+              'dataProvider' => $dataProvider,
+          ]);
+    }
+  }
+
+  public function actionChange_password()
+  {
+    $user = Yii::$app->user->identity;
+    // var_dump($user->errors);
+    $loadedPost = $user->load(Yii::$app->request->post());
+
+    if ($loadedPost && $user->validate()) {
+      $user->password = $user->newPassword;
+      $user->save(false);
+      // $var_dump($user->errors);
+      Yii::$app->session->setFlash('success','Se ha cambiado la contraseña satisfactoriamente');
+      return $this->refresh();
+    }
+    return $this->render('change_password', [
+      'user' => $user,
+    ]);
+  }
+}
     // public function findCom($com)
     // {
     //   $IdUser = Yii::$app->user->identity->id;
@@ -207,5 +291,3 @@ class UserController extends Controller
     //     $rows = $command->queryScalar();
     //     return $rows;
     // }
-
-}

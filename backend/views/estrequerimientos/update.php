@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\Estrequerimientos */
 
 $this->title = 'Actualizar Estado de Requerimiento';
-$this->params['breadcrumbs'][] = ['label' => 'Estrequerimientos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Estado de requerimiento', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->EReqId, 'url' => ['view', 'id' => $model->EReqId]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>

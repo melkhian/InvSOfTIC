@@ -153,13 +153,15 @@ class Aplicaciones extends \yii\db\ActiveRecord
   public function rules()
   {
     return [
-      // [['AppNomb', 'AppDesc', 'AppSigl', 'AppVers', 'ESopId1', 'AppUrl', 'TiposId_fk1', 'TiposId_fk2', 'AppNumeDocuAdqu', 'AppValoAdqu', 'AppFechAdqu', 'TiposId_fk3', 'AppNombProc', 'AppEnti', 'ESopId2', 'TiposId_fk4', 'UsuId_fk'], 'required'],
-      // [['TiposId_fk5', 'AppFechPues', 'AppServPues', 'TiposId_fk6', 'TiposId_fk7', 'TiposId_fk8', 'TiposId_fk9', 'TiposId_fk10', 'TiposId_fk11', 'TiposId_fk13','TiposId_fk15','TiposId_fk17', 'TiposId_fk19', 'TiposId_fk20'], 'required'],
-      // [['TiposId_fk24', 'AppLengServ', 'AppVersApli', 'AppBibl', 'AppObse1', 'AppMane', 'AppVersBD', 'AppPuer1', 'AppObse2', 'AppTipoHard', 'AppProc', 'AppMemo', 'AppEspaDisc', 'AppObse3'], 'required'],
-      // [['AppObse4', 'AppNombServBd', 'AppUsua', 'AppNombBd', 'AppRuta', 'AppEspaActu', 'AppProy', 'TiposId_fk25', 'AppPoliBack', 'TiposId_fk26', 'TiposId_fk27', 'TiposId_fk28'], 'required'],
-      // [['TiposId_fk31', 'TiposId_fk32', 'TiposId_fk33', 'TiposId_fk34', 'TiposId_fk35', 'TiposId_fk36', 'TiposId_fk37', 'TiposId_fk38', 'TiposId_fk39', 'TiposId_fk40', 'TiposId_fk41', 'TiposId_fk42', 'TiposId_fk43', 'TiposId_fk44'], 'required'],
-      // [['TiposId_fk50', 'TiposId_fk51', 'TiposId_fk52', 'TiposId_fk53', 'TiposId_fk54', 'AppUbic', 'TiposId_fk55', 'AppUbicDocu', 'AppUbicUlti', 'AppObse7', 'AppFuncApru', 'AppServWebVers', 'TiposId_fk48', 'TiposId_fk49'], 'required'],
-      // [['AppTipoLice', 'AppNumeLice', 'TiposId_fk22', 'TiposId_fk23', 'AppVersDist', 'AppCantLice', 'TiposId_fk29', 'TiposId_fk30', 'TiposId_fk45', 'TiposId_fk46', 'TiposId_fk47'], 'required'],
+
+      [['AppNomb', 'AppDesc', 'AppSigl', 'AppVers', 'ESopId1', 'AppUrl', 'TiposId_fk1', 'TiposId_fk2', 'AppNumeDocuAdqu', 'AppValoAdqu', 'AppFechAdqu', 'TiposId_fk3', 'AppNombProc', 'AppEnti', 'ESopId2', 'TiposId_fk4', 'UsuId_fk'], 'required'],
+      [['TiposId_fk5', 'AppFechPues', 'AppServPues', 'TiposId_fk6', 'TiposId_fk7', 'TiposId_fk8', 'TiposId_fk9', 'TiposId_fk10', 'TiposId_fk11', 'TiposId_fk13','TiposId_fk15','TiposId_fk17', 'TiposId_fk19', 'TiposId_fk20'], 'required'],
+      [['TiposId_fk24', 'AppLengServ', 'AppVersApli', 'AppBibl', 'AppObse1', 'AppMane', 'AppVersBD', 'AppPuer1', 'AppObse2', 'AppTipoHard', 'AppProc', 'AppMemo', 'AppEspaDisc', 'AppObse3'], 'required'],
+      [['AppObse4', 'AppNombServBd', 'AppUsua', 'AppNombBd', 'AppRuta', 'AppEspaActu', 'AppProy', 'TiposId_fk25', 'AppPoliBack', 'TiposId_fk26', 'TiposId_fk27', 'TiposId_fk28'], 'required'],
+      [['TiposId_fk31', 'TiposId_fk32', 'TiposId_fk33', 'TiposId_fk34', 'TiposId_fk35', 'TiposId_fk36', 'TiposId_fk37', 'TiposId_fk38', 'TiposId_fk39', 'TiposId_fk40', 'TiposId_fk41', 'TiposId_fk42', 'TiposId_fk43', 'TiposId_fk44'], 'required'],
+      [['TiposId_fk50', 'TiposId_fk51', 'TiposId_fk52', 'TiposId_fk53', 'TiposId_fk54', 'AppUbic', 'TiposId_fk55', 'AppUbicDocu', 'AppUbicUlti', 'AppObse7', 'AppFuncApru', 'AppServWebVers', 'TiposId_fk48', 'TiposId_fk49'], 'required'],
+      [['AppTipoLice', 'AppNumeLice', 'TiposId_fk22', 'TiposId_fk23', 'AppVersDist', 'AppCantLice', 'TiposId_fk29', 'TiposId_fk30', 'TiposId_fk45', 'TiposId_fk46', 'TiposId_fk47'], 'required'],
+
       [['ESopId1', 'ESopId2', 'UsuId_fk'], 'integer'],
       [['AppFechAdqu', 'AppFechPues'], 'safe'],
       [['AppNomb', 'AppSigl', 'AppVers', 'AppNumeDocuAdqu', 'AppOtroCual8', 'AppOtroCual16', 'AppUsua', 'AppEspaActu', 'AppProy', 'AppServWebVers'], 'string', 'max' => 50],
@@ -181,7 +183,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
   {
     return [
       'AppId' => 'Id',
-      'AppNomb' => 'Nombre',
+      'AppNomb' => 'Nombre del Software o Aplicación',
       'AppDesc' => 'Descripción',
       'AppSigl' => 'Sigla o Acrónimo',
       'AppVers' => 'Versión de la aplicación',
@@ -315,23 +317,23 @@ class Aplicaciones extends \yii\db\ActiveRecord
         parent::afterSave($insert, $changedAttributes);
 
         if (!$insert)
-        {            
+        {
             $AudAcci =  'update';
             $table = $this->getTableSchema();
-            $pk = $table->primaryKey; //---------------------- [APPID]            
+            $pk = $table->primaryKey; //---------------------- [APPID]
             $idSelect = $_GET['id'];  //---------------------- [ID] Item Seleccionado
             $UsuId_fk = Yii::$app->user->identity->id; //----- [ID USER]
-            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]
             $AudIp = Yii::$app->getRequest()->getUserIP();//-- [IP USER]
-            $AudFechHora = new \yii\db\Expression('NOW()');//- [FECHA]      
+            $AudFechHora = new \yii\db\Expression('NOW()');//- [FECHA]
             $connection = Yii::$app->db;
             // print_r($pk);
             // die();
 
-            $MaxId = (new \yii\db\Query()) 
+            $MaxId = (new \yii\db\Query())
             ->select($pk)
             ->from($AudMod)
-            ->orderBy($pk[0]." DESC")          
+            ->orderBy($pk[0]." DESC")
             ->createCommand()
             ->execute();
 
@@ -339,15 +341,15 @@ class Aplicaciones extends \yii\db\ActiveRecord
             ->select('*')
             ->from($AudMod)
             ->where([$pk[0] => $idSelect])
-            ->createCommand();    
+            ->createCommand();
             $rows = $queryAll->queryOne();
             $resultAll = implode(",", $rows);
 
 
-            $i=0;       // variable iteradora     
+            $i=0;       // variable iteradora
             //$changeAtributes son los datos que cambiaron
             //---------------------------------------------------------------//
-            
+
             if(!isset($changedAttributes['AppId']))
             {
                 $oldAttributes[$i] = "Id => ".$idSelect;
@@ -363,13 +365,13 @@ class Aplicaciones extends \yii\db\ActiveRecord
 
             if(!isset($changedAttributes['AppNomb']))
             {
-                
+
             }
             else
-            {              
+            {
                     $oldAttributes[$i] = "Nombre => ".$changedAttributes['AppNomb'];
-                    $i++;                          
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -380,60 +382,60 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Desc => ".$changedAttributes['AppDesc'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['AppSigl']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "Sigla => ".$changedAttributes['AppSigl'];
                 $i++;
-            }             
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['AppVers']))
             {
-                
+
             }
             else
             {
-                $oldAttributes[$i] = "Versión de la aplicación => ".$changedAttributes['AppVers'];   
-                $i++;             
-            }  
+                $oldAttributes[$i] = "Versión de la aplicación => ".$changedAttributes['AppVers'];
+                $i++;
+            }
 
-            //---------------------------------------------------------------//   
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ESopId1']))
             {
-                
+
             }
             else
             {
-              if ($changedAttributes['ESopId1'] != $rows['ESopId1']) 
+              if ($changedAttributes['ESopId1'] != $rows['ESopId1'])
               {
-                $oldAttributes[$i] = "Desarrollador => ".$changedAttributes['ESopId1']; 
-                $i++;               
-              }  
+                $oldAttributes[$i] = "Desarrollador => ".$changedAttributes['ESopId1'];
+                $i++;
+              }
             }
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['AppUrl ']))
             {
-                
+
             }
             else
             {
-                $oldAttributes[$i] = "Url => ".$changedAttributes['AppUrl '];   
-                $i++;             
-            }  
+                $oldAttributes[$i] = "Url => ".$changedAttributes['AppUrl '];
+                $i++;
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['TiposId_fk1 ']))
             {
@@ -442,8 +444,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Tipo adqui  => ".$changedAttributes['TiposId_fk1 '];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -454,10 +456,10 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Doc adqui  => ".$changedAttributes['TiposId_fk2'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['AppNumeDocuAdqu']))
             {
@@ -466,10 +468,10 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "AppNumeDocuAdqu  => ".$changedAttributes['AppNumeDocuAdqu'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['AppValoAdqu']))
             {
@@ -478,8 +480,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "AppValoAdqu  => ".$changedAttributes['AppValoAdqu'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -490,8 +492,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "AppFechAdqu  => ".$changedAttributes['AppFechAdqu'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -502,8 +504,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Tipo software  => ".$changedAttributes['TiposId_fk3'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -514,8 +516,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "AppNombProc => ".$changedAttributes['AppNombProc'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -526,23 +528,23 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "AppEnti => ".$changedAttributes['AppEnti'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ESopId2']))
             {
-                
+
             }
             else
             {
-              if ($changedAttributes['ESopId2'] != $rows['ESopId2']) 
+              if ($changedAttributes['ESopId2'] != $rows['ESopId2'])
               {
-                $oldAttributes[$i] = "Soporte => ".$changedAttributes['ESopId2']; 
-                $i++;               
+                $oldAttributes[$i] = "Soporte => ".$changedAttributes['ESopId2'];
+                $i++;
               }
-            }   
+            }
 
             //---------------------------------------------------------------//
 
@@ -553,23 +555,23 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Entidad => ".$changedAttributes['TiposId_fk4'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['UsuId_fk']))
             {
-                
+
             }
             else
             {
-              if ($changedAttributes['UsuId_fk'] != $rows['UsuId_fk']) 
+              if ($changedAttributes['UsuId_fk'] != $rows['UsuId_fk'])
               {
-                $oldAttributes[$i] = "Funcionario => ".$changedAttributes['UsuId_fk']; 
-                $i++;               
+                $oldAttributes[$i] = "Funcionario => ".$changedAttributes['UsuId_fk'];
+                $i++;
               }
-            }   
+            }
 
             //---------------------------------------------------------------//
 
@@ -580,8 +582,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Acuerdos => ".$changedAttributes['AppAcueNiveServ'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -592,8 +594,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Tipo de Puesta => ".$changedAttributes['TiposId_fk5'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -604,8 +606,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Fecha de puesta => ".$changedAttributes['AppFechPues'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -616,8 +618,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Servidor de puesta => ".$changedAttributes['AppServPues'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -628,8 +630,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Ámbito de aplicación => ".$changedAttributes['TiposId_fk6'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -640,8 +642,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Propósito de Aplicación => ".$changedAttributes['TiposId_fk7'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -652,8 +654,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Servidor Web => ".$changedAttributes['TiposId_fk8'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -664,8 +666,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Versión => ".$changedAttributes['AppServWebVers'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -676,8 +678,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cual => ".$changedAttributes['AppOtroCual8'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -688,8 +690,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Código ejecutado en el cliente => ".$changedAttributes['TiposId_fk9'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -700,10 +702,10 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual9'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['TiposId_fk10']))
             {
@@ -712,8 +714,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Código ejecutado en el servidor => ".$changedAttributes['TiposId_fk10'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -724,8 +726,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual10'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -736,8 +738,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Requiere base de datos => ".$changedAttributes['TiposId_fk11'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -748,8 +750,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cuál => ".$changedAttributes['TiposId_fk12'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -760,8 +762,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual12'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -772,8 +774,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Maneja varios idiomas => ".$changedAttributes['TiposId_fk13'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -784,8 +786,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cuál => ".$changedAttributes['TiposId_fk14'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -796,8 +798,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual14'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -808,8 +810,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Utiliza Manejador de Reportes => ".$changedAttributes['TiposId_fk15'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -820,8 +822,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cuál => ".$changedAttributes['TiposId_fk16'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -832,8 +834,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual16'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -844,8 +846,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Permite exportar datos => ".$changedAttributes['TiposId_fk17'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -856,8 +858,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cuál => ".$changedAttributes['TiposId_fk18'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -868,8 +870,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual18'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -880,11 +882,11 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Interactúa con otra aplicación => ".$changedAttributes['TiposId_fk19'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
-            
+
             if(!isset($changedAttributes['AppOtroCual19']))
             {
 
@@ -892,8 +894,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual19'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -904,8 +906,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Se tiene código fuente => ".$changedAttributes['TiposId_fk20'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -916,8 +918,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Dónde está ubicado => ".$changedAttributes['AppOtroCual20'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -928,8 +930,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Tipo de Licencia => ".$changedAttributes['AppTipoLice'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -940,8 +942,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Número de Licencia => ".$changedAttributes['AppNumeLice'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -952,8 +954,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Interface del Aplicativo => ".$changedAttributes['TiposId_fk21'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -964,8 +966,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Tiene ayudas en línea => ".$changedAttributes['TiposId_fk22'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -976,8 +978,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Tipo de SO => ".$changedAttributes['TiposId_fk23'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -988,8 +990,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Versión/Distribución  => ".$changedAttributes['AppVersDist'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1000,8 +1002,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Tipo Arquitectura => ".$changedAttributes['TiposId_fk24'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1012,8 +1014,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Lenguaje/Servicio => ".$changedAttributes['AppLengServ'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1024,8 +1026,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Versión => ".$changedAttributes['AppVersApli'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1036,8 +1038,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Bibliotecas => ".$changedAttributes['AppBibl'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1048,8 +1050,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Observaciones => ".$changedAttributes['AppObse1'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1060,8 +1062,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Manejador => ".$changedAttributes['AppMane'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1072,8 +1074,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Versión => ".$changedAttributes['AppVersBD'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1084,8 +1086,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Puerto => ".$changedAttributes['AppPuer1'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1096,8 +1098,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Observaciones => ".$changedAttributes['AppObse2'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1108,8 +1110,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Tipo Hardware => ".$changedAttributes['AppTipoHard'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1120,8 +1122,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Procesador => ".$changedAttributes['AppProc'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1132,10 +1134,10 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Memoria => ".$changedAttributes['AppMemo'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
-            //---------------------------------------------------------------//          
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['AppEspaDisc']))
             {
@@ -1144,8 +1146,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Espacio en Disco => ".$changedAttributes['AppEspaDisc'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1156,8 +1158,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Observaciones => ".$changedAttributes['AppObse3'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1168,8 +1170,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Observaciones => ".$changedAttributes['AppObse4'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1180,8 +1182,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Nombre Servidor de BD => ".$changedAttributes['AppNombServBd'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1192,8 +1194,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Usuario => ".$changedAttributes['AppUsua'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1204,8 +1206,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Nombre BD => ".$changedAttributes['AppNombBd'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1216,8 +1218,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Ruta => ".$changedAttributes['AppRuta'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1228,8 +1230,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Espacio en disco (Actual) => ".$changedAttributes['AppEspaActu'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1240,8 +1242,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Proyección a 3 años => ".$changedAttributes['AppProy'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1252,8 +1254,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Método de Backup => ".$changedAttributes['TiposId_fk25'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1264,8 +1266,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual25'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1276,8 +1278,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Política de Backup  => ".$changedAttributes['AppPoliBack'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1288,8 +1290,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Periocidad => ".$changedAttributes['TiposId_fk26'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1300,8 +1302,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Medio de Almacenamiento => ".$changedAttributes['TiposId_fk27'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1312,8 +1314,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual27'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1324,8 +1326,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Licenciamiento de BD => ".$changedAttributes['TiposId_fk28'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1336,8 +1338,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cuál => ".$changedAttributes['AppOtroCual28'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1348,8 +1350,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Cantidad de licencias => ".$changedAttributes['AppCantLice'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1360,8 +1362,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Directorio Raíz => ".$changedAttributes['AppDireRaiz'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1372,8 +1374,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Observaciones => ".$changedAttributes['AAppObse5'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1384,8 +1386,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Observaciones => ".$changedAttributes['AAppObse6'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1396,8 +1398,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Plan de Proyecto ¿Se entregó? => ".$changedAttributes['TiposId_fk29'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1408,8 +1410,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Plan de Proyecto ¿Se aprobó? => ".$changedAttributes['TiposId_fk30'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1420,8 +1422,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Plan de Proyecto Medio => ".$changedAttributes['TiposId_fk31'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1432,8 +1434,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Definición y Alcance ¿Se entregó => ".$changedAttributes['TiposId_fk32'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1444,8 +1446,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Definición y Alcance ¿Se aprobó => ".$changedAttributes['TiposId_fk33'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1456,8 +1458,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Definición y Alcance Medio => ".$changedAttributes['TiposId_fk34'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1468,8 +1470,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Documento de requerimientos ¿Se entregó? => ".$changedAttributes['TiposId_fk35'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1480,8 +1482,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Documento de requerimientos ¿Se aprobó? => ".$changedAttributes['TiposId_fk36'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1492,8 +1494,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Documento de requerimientos => ".$changedAttributes['TiposId_fk37'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1504,8 +1506,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Documento de Diseño ¿Se entregó? => ".$changedAttributes['TiposId_fk38'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1516,8 +1518,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Documento de Diseño ¿Se aprobó? => ".$changedAttributes['TiposId_fk39'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1528,8 +1530,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Documento de Diseño Medio => ".$changedAttributes['TiposId_fk40'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1540,8 +1542,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Documento de Pruebas ¿Se entregó? => ".$changedAttributes['TiposId_fk41'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1552,8 +1554,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Documento de Pruebas ¿Se aprobó? => ".$changedAttributes['TiposId_fk42'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1564,8 +1566,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Documento de Pruebas Medio => ".$changedAttributes['TiposId_fk43'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1576,8 +1578,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Manual Técnico y de Instalación ¿Se entregó? => ".$changedAttributes['TiposId_fk44'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1588,8 +1590,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Manual Técnico y de Instalación ¿Se aprobó? => ".$changedAttributes['TiposId_fk45'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1600,8 +1602,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Manual Técnico y de Instalación Medio => ".$changedAttributes['TiposId_fk46'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1612,8 +1614,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Manual de Administración ¿Se entregó? => ".$changedAttributes['TiposId_fk47'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1624,8 +1626,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Manual de Administración ¿Se aprobó? => ".$changedAttributes['TiposId_fk48'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1636,8 +1638,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Manual de Administración Medio => ".$changedAttributes['TiposId_fk49'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1648,8 +1650,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Manual de Usuario ¿Se entregó? => ".$changedAttributes['TiposId_fk50'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1660,8 +1662,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Manual de Usuario ¿Se aprobó? => ".$changedAttributes['TiposId_fk51'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1672,8 +1674,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Manual de Usuario Medio => ".$changedAttributes['TiposId_fk52'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1683,10 +1685,10 @@ class Aplicaciones extends \yii\db\ActiveRecord
             }
             else
             {
-                    $oldAttributes[$i] = "¿Se entregó Medio digital con la información de la aplicación? ¿Se entregó? 
+                    $oldAttributes[$i] = "¿Se entregó Medio digital con la información de la aplicación? ¿Se entregó?
                      => ".$changedAttributes['TiposId_fk53'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1696,10 +1698,10 @@ class Aplicaciones extends \yii\db\ActiveRecord
             }
             else
             {
-                    $oldAttributes[$i] = "¿Se entregó Medio digital con la información de la aplicación? ¿Se aprobó? 
+                    $oldAttributes[$i] = "¿Se entregó Medio digital con la información de la aplicación? ¿Se aprobó?
                      => ".$changedAttributes['TiposId_fk54'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1710,8 +1712,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Ubicación Disco C: => ".$changedAttributes['AppUbic'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1722,8 +1724,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "TiposId_fk55 => ".$changedAttributes['TiposId_fk55'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1734,8 +1736,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Ubicación Documentación => ".$changedAttributes['AppUbicDocu'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1746,8 +1748,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Ubicación última versión del código fuente => ".$changedAttributes['AppUbicUlti'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1758,8 +1760,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Observaciones => ".$changedAttributes['AppObse7'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
@@ -1770,25 +1772,25 @@ class Aplicaciones extends \yii\db\ActiveRecord
             else
             {
                     $oldAttributes[$i] = "Funcionario que recibe a satisfacción => ".$changedAttributes['AppFuncApru'];
-                    $i++;                
-            } 
+                    $i++;
+            }
 
             //---------------------------------------------------------------//
 
-            if (!isset($oldAttributes)) 
+            if (!isset($oldAttributes))
             {
                 $total = 'no change';
             }
             else
             {
-                $total = implode(",",$oldAttributes); 
+                $total = implode(",",$oldAttributes);
             }
 
-            //---------------------------------------------------------------// 
-            
-            foreach ($rows as $key => $value) 
+            //---------------------------------------------------------------//
+
+            foreach ($rows as $key => $value)
             {
-                if ($key == 'AppId') 
+                if ($key == 'AppId')
                 {
                     $var[0] = "Id => ".$rows['AppId'];
                     // $j++;
@@ -1812,7 +1814,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'AppSigl' and isset($changedAttributes['AppSigl'])) 
+                if ($key == 'AppSigl' and isset($changedAttributes['AppSigl']))
                 {
                     $var[3] = "Sigla => ".$rows['AppSigl'];
                     // $j++;
@@ -1820,7 +1822,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'AppVers' and isset($changedAttributes['AppVers'])) 
+                if ($key == 'AppVers' and isset($changedAttributes['AppVers']))
                 {
                     $var[4] = "Versión de la aplicación => ".$rows['AppVers'];
                     // $j++;
@@ -1828,17 +1830,17 @@ class Aplicaciones extends \yii\db\ActiveRecord
 
                 //---------------------------------------------------------------//
                 if (isset($changedAttributes['ESopId1'])) {
-                                 
+
                   if ($key == 'ESopId1' and $value != $changedAttributes['ESopId1'])
-                  {                      
+                  {
                     $var[5] = "Desarrollador o Proveedor => ".$rows['ESopId1'];
                     // $j++;
                   }
                 }
                 //---------------------------------------------------------------//
-                
+
                 if ($key == 'AppUrl' and isset($changedAttributes['AppUrl']))
-                { 
+                {
                     $var[6] = "URL de acceso => ".$rows['AppUrl'];
                     // $j++;
                 }
@@ -1846,7 +1848,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk1' and isset($changedAttributes['TiposId_fk1']))
-                { 
+                {
                     $var[7] = "Tipo de adquisición => ".$rows['TiposId_fk1'];
                     // $j++;
                 }
@@ -1854,7 +1856,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk2' and isset($changedAttributes['TiposId_fk2']))
-                { 
+                {
                     $var[8] = "Documento de adquisición => ".$rows['TiposId_fk2'];
                     // $j++;
                 }
@@ -1862,7 +1864,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppNumeDocuAdqu' and isset($changedAttributes['AppNumeDocuAdqu']))
-                { 
+                {
                     $var[9] = "Número de documento de adquisición => ".$rows['AppNumeDocuAdqu'];
                     // $j++;
                 }
@@ -1870,7 +1872,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppValoAdqu' and isset($changedAttributes['AppValoAdqu']))
-                { 
+                {
                     $var[10] = "Valor de adquisición => ".$rows['AppValoAdqu'];
                     // $j++;
                 }
@@ -1878,37 +1880,37 @@ class Aplicaciones extends \yii\db\ActiveRecord
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppFechAdqu' and isset($changedAttributes['AppFechAdqu']))
-                { 
-                    $var[11] = "Fecha Adquisición => ".$rows['AppFechAdqu'];                    
+                {
+                    $var[11] = "Fecha Adquisición => ".$rows['AppFechAdqu'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk3' and isset($changedAttributes['TiposId_fk3']))
-                { 
-                    $var[12] = "Tipo Software => ".$rows['TiposId_fk3'];                   
+                {
+                    $var[12] = "Tipo Software => ".$rows['TiposId_fk3'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppNombProc' and isset($changedAttributes['AppNombProc']))
-                { 
-                    $var[13] = "Nombre del Proceso => ".$rows['AppNombProc'];                    
+                {
+                    $var[13] = "Nombre del Proceso => ".$rows['AppNombProc'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppEnti' and isset($changedAttributes['AppEnti']))
-                { 
-                    $var[14] = "Dependencias Usuarias => ".$rows['AppEnti'];                   
+                {
+                    $var[14] = "Dependencias Usuarias => ".$rows['AppEnti'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if (isset($changedAttributes['ESopId2'])) {
-                                 
+
                   if ($key == 'ESopId1' and $value != $changedAttributes['ESopId2'])
-                  {                      
+                  {
                     $var[15] = "Desarrollador o Proveedor => ".$rows['ESopId2'];
                   }
                 }
@@ -1916,16 +1918,16 @@ class Aplicaciones extends \yii\db\ActiveRecord
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk4' and isset($changedAttributes['TiposId_fk4']))
-                { 
-                    $var[16] = "Entidad, Área => ".$rows['TiposId_fk4'];                   
+                {
+                    $var[16] = "Entidad, Área => ".$rows['TiposId_fk4'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if (isset($changedAttributes['UsuId_fk'])) {
-                                 
+
                   if ($key == 'UsuId_fk' and $value != $changedAttributes['UsuId_fk'])
-                  {                      
+                  {
                     $var[17] = "Desarrollador o Proveedor => ".$rows['UsuId_fk'];
                   }
                 }
@@ -1933,702 +1935,702 @@ class Aplicaciones extends \yii\db\ActiveRecord
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppAcueNiveServ' and isset($changedAttributes['AppAcueNiveServ']))
-                { 
-                    $var[18] = "Acuerdos de niveles de servicio => ".$rows['AppAcueNiveServ'];                   
+                {
+                    $var[18] = "Acuerdos de niveles de servicio => ".$rows['AppAcueNiveServ'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk5' and isset($changedAttributes['TiposId_fk5']))
-                { 
-                    $var[19] = "Tipo de Puesta => ".$rows['TiposId_fk5'];                   
+                {
+                    $var[19] = "Tipo de Puesta => ".$rows['TiposId_fk5'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppFechPues' and isset($changedAttributes['AppFechPues']))
-                { 
-                    $var[20] = "Fecha de puesta => ".$rows['AppFechPues'];                   
+                {
+                    $var[20] = "Fecha de puesta => ".$rows['AppFechPues'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppServPues' and isset($changedAttributes['AppServPues']))
-                { 
-                    $var[21] = "Servidor de puesta => ".$rows['AppServPues'];                   
+                {
+                    $var[21] = "Servidor de puesta => ".$rows['AppServPues'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk6' and isset($changedAttributes['TiposId_fk6']))
-                { 
-                    $var[22] = "Ámbito de aplicación => ".$rows['TiposId_fk6'];                   
+                {
+                    $var[22] = "Ámbito de aplicación => ".$rows['TiposId_fk6'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk7' and isset($changedAttributes['TiposId_fk7']))
-                { 
-                    $var[23] = "Propósito de Aplicación => ".$rows['TiposId_fk7'];                   
+                {
+                    $var[23] = "Propósito de Aplicación => ".$rows['TiposId_fk7'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk8' and isset($changedAttributes['TiposId_fk8']))
-                { 
-                    $var[24] = "Servidor Web => ".$rows['TiposId_fk8'];                   
+                {
+                    $var[24] = "Servidor Web => ".$rows['TiposId_fk8'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppServWebVers' and isset($changedAttributes['AppServWebVers']))
-                { 
-                    $var[25] = "Versión => ".$rows['AppServWebVers'];                   
+                {
+                    $var[25] = "Versión => ".$rows['AppServWebVers'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppOtroCual8' and isset($changedAttributes['AppOtroCual8']))
-                { 
-                    $var[26] = "Cuál => ".$rows['AppOtroCual8'];                   
+                {
+                    $var[26] = "Cuál => ".$rows['AppOtroCual8'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk9' and isset($changedAttributes['TiposId_fk9']))
-                { 
-                    $var[27] = "Código ejecutado en el cliente => ".$rows['TiposId_fk9'];                   
+                {
+                    $var[27] = "Código ejecutado en el cliente => ".$rows['TiposId_fk9'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppOtroCual9' and isset($changedAttributes['AppOtroCual9']))
-                { 
-                    $var[28] = "Cuál => ".$rows['AppOtroCual9'];                   
+                {
+                    $var[28] = "Cuál => ".$rows['AppOtroCual9'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk10' and isset($changedAttributes['TiposId_fk10']))
-                { 
-                    $var[29] = "Código ejecutado en el servidor => ".$rows['TiposId_fk10'];                   
+                {
+                    $var[29] = "Código ejecutado en el servidor => ".$rows['TiposId_fk10'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppOtroCual10' and isset($changedAttributes['AppOtroCual10']))
-                { 
-                    $var[30] = "Cuál => ".$rows['AppOtroCual10'];                   
+                {
+                    $var[30] = "Cuál => ".$rows['AppOtroCual10'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk11' and isset($changedAttributes['TiposId_fk11']))
-                { 
-                    $var[31] = "Requiere base de datos => ".$rows['TiposId_fk11'];                   
+                {
+                    $var[31] = "Requiere base de datos => ".$rows['TiposId_fk11'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk12' and isset($changedAttributes['TiposId_fk12']))
-                { 
-                    $var[32] = "Cuál => ".$rows['TiposId_fk12'];                   
+                {
+                    $var[32] = "Cuál => ".$rows['TiposId_fk12'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppOtroCual12' and isset($changedAttributes['AppOtroCual12']))
-                { 
-                    $var[33] = "Cuál => ".$rows['AppOtroCual12'];                   
+                {
+                    $var[33] = "Cuál => ".$rows['AppOtroCual12'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk13' and isset($changedAttributes['TiposId_fk13']))
-                { 
-                    $var[34] = "Maneja varios idiomas => ".$rows['TiposId_fk13'];                   
+                {
+                    $var[34] = "Maneja varios idiomas => ".$rows['TiposId_fk13'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk14' and isset($changedAttributes['TiposId_fk14']))
-                { 
-                    $var[35] = "Cuál => ".$rows['TiposId_fk14'];                   
+                {
+                    $var[35] = "Cuál => ".$rows['TiposId_fk14'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppOtroCual14' and isset($changedAttributes['AppOtroCual14']))
-                { 
-                    $var[36] = "Cuál => ".$rows['AppOtroCual14'];                   
+                {
+                    $var[36] = "Cuál => ".$rows['AppOtroCual14'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk15' and isset($changedAttributes['TiposId_fk15']))
-                { 
-                    $var[37] = "Utiliza Manejador de Reportes => ".$rows['iposId_fk15'];                   
+                {
+                    $var[37] = "Utiliza Manejador de Reportes => ".$rows['iposId_fk15'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk16' and isset($changedAttributes['TiposId_fk16']))
-                { 
-                    $var[38] = "Cuál => ".$rows['TiposId_fk16'];                   
+                {
+                    $var[38] = "Cuál => ".$rows['TiposId_fk16'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppOtroCual16' and isset($changedAttributes['AppOtroCual16']))
-                { 
-                    $var[39] = "Cuál => ".$rows['AppOtroCual16'];                   
+                {
+                    $var[39] = "Cuál => ".$rows['AppOtroCual16'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk17' and isset($changedAttributes['TiposId_fk17']))
-                { 
-                    $var[40] = "Permite exportar datos => ".$rows['TiposId_fk17'];                   
+                {
+                    $var[40] = "Permite exportar datos => ".$rows['TiposId_fk17'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk18' and isset($changedAttributes['TiposId_fk18']))
-                { 
-                    $var[41] = "Cuál => ".$rows['TiposId_fk18'];                   
+                {
+                    $var[41] = "Cuál => ".$rows['TiposId_fk18'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppOtroCual18' and isset($changedAttributes['AppOtroCual18']))
-                { 
-                    $var[42] = "Cuál => ".$rows['AppOtroCual18'];                   
+                {
+                    $var[42] = "Cuál => ".$rows['AppOtroCual18'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk19' and isset($changedAttributes['TiposId_fk19']))
-                { 
-                    $var[43] = "Interactúa con otra aplicación => ".$rows['TiposId_fk19'];                   
+                {
+                    $var[43] = "Interactúa con otra aplicación => ".$rows['TiposId_fk19'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppOtroCual19' and isset($changedAttributes['AppOtroCual19']))
-                { 
-                    $var[44] = "Cuál => ".$rows['AppOtroCual19'];                   
+                {
+                    $var[44] = "Cuál => ".$rows['AppOtroCual19'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk20' and isset($changedAttributes['TiposId_fk20']))
-                { 
-                    $var[45] = "Se tiene código fuente => ".$rows['TiposId_fk20'];                   
+                {
+                    $var[45] = "Se tiene código fuente => ".$rows['TiposId_fk20'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppOtroCual20' and isset($changedAttributes['AppOtroCual20']))
-                { 
-                    $var[46] = "Dónde está ubicado => ".$rows['AppOtroCual20'];                   
+                {
+                    $var[46] = "Dónde está ubicado => ".$rows['AppOtroCual20'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppTipoLice' and isset($changedAttributes['AppTipoLice']))
-                { 
-                    $var[47] = "Tipo de Licencia => ".$rows['AppTipoLice'];                   
+                {
+                    $var[47] = "Tipo de Licencia => ".$rows['AppTipoLice'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppNumeLice' and isset($changedAttributes['AppNumeLice']))
-                { 
-                    $var[48] = "Número de Licencias => ".$rows['AppNumeLice'];                   
+                {
+                    $var[48] = "Número de Licencias => ".$rows['AppNumeLice'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk21' and isset($changedAttributes['TiposId_fk21']))
-                { 
-                    $var[49] = "Interface del Aplicativo => ".$rows['TiposId_fk21'];                   
+                {
+                    $var[49] = "Interface del Aplicativo => ".$rows['TiposId_fk21'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk22' and isset($changedAttributes['TiposId_fk22']))
-                { 
-                    $var[50] = "Tiene ayudas en línea => ".$rows['TiposId_fk22'];                   
+                {
+                    $var[50] = "Tiene ayudas en línea => ".$rows['TiposId_fk22'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk23' and isset($changedAttributes['TiposId_fk23']))
-                { 
-                    $var[51] = "Tipo de SO => ".$rows['TiposId_fk23'];                   
+                {
+                    $var[51] = "Tipo de SO => ".$rows['TiposId_fk23'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppVersDist' and isset($changedAttributes['AppVersDist']))
-                { 
-                    $var[52] = "Versión/Distribución => ".$rows['AppVersDist'];                   
+                {
+                    $var[52] = "Versión/Distribución => ".$rows['AppVersDist'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk24' and isset($changedAttributes['TiposId_fk24']))
-                { 
-                    $var[53] = "Tipo Arquitectura => ".$rows['TiposId_fk24'];                   
+                {
+                    $var[53] = "Tipo Arquitectura => ".$rows['TiposId_fk24'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppLengServ' and isset($changedAttributes['AppLengServ']))
-                { 
-                    $var[54] = "Lenguaje/Servicio => ".$rows['AppLengServ'];                   
+                {
+                    $var[54] = "Lenguaje/Servicio => ".$rows['AppLengServ'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppVersApli' and isset($changedAttributes['AppVersApli']))
-                { 
-                    $var[55] = "Versión => ".$rows['AppVersApli'];                   
+                {
+                    $var[55] = "Versión => ".$rows['AppVersApli'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppBibl' and isset($changedAttributes['AppBibl']))
-                { 
-                    $var[56] = "Bibliotecas => ".$rows['AppBibl'];                   
+                {
+                    $var[56] = "Bibliotecas => ".$rows['AppBibl'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppObse1' and isset($changedAttributes['AppObse1']))
-                { 
-                    $var[57] = "Observaciones => ".$rows['AppObse1'];                   
+                {
+                    $var[57] = "Observaciones => ".$rows['AppObse1'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppMane' and isset($changedAttributes['AppMane']))
-                { 
-                    $var[58] = "Manejador => ".$rows['AppMane'];                   
+                {
+                    $var[58] = "Manejador => ".$rows['AppMane'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppVersBD' and isset($changedAttributes['AppVersBD']))
-                { 
-                    $var[59] = "Versión => ".$rows['AppVersBD'];                   
+                {
+                    $var[59] = "Versión => ".$rows['AppVersBD'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppPuer1' and isset($changedAttributes['AppPuer1']))
-                { 
-                    $var[60] = "Puerto  => ".$rows['AppPuer1'];                   
+                {
+                    $var[60] = "Puerto  => ".$rows['AppPuer1'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppObse2' and isset($changedAttributes['AppObse2']))
-                { 
-                    $var[61] = "Observaciones => ".$rows['AppObse2'];                   
+                {
+                    $var[61] = "Observaciones => ".$rows['AppObse2'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppTipoHard' and isset($changedAttributes['AppTipoHard']))
-                { 
-                    $var[62] = "Tipo Hardware => ".$rows['AppTipoHard'];                   
+                {
+                    $var[62] = "Tipo Hardware => ".$rows['AppTipoHard'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppProc' and isset($changedAttributes['AppProc']))
-                { 
-                    $var[63] = "Procesador => ".$rows['AppProc'];                   
+                {
+                    $var[63] = "Procesador => ".$rows['AppProc'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppMemo' and isset($changedAttributes['AppMemo']))
-                { 
-                    $var[64] = "Memoria => ".$rows['AppMemo'];                   
+                {
+                    $var[64] = "Memoria => ".$rows['AppMemo'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppEspaDisc' and isset($changedAttributes['AppEspaDisc']))
-                { 
-                    $var[65] = "Espacio en Disco => ".$rows['AppEspaDisc'];                   
+                {
+                    $var[65] = "Espacio en Disco => ".$rows['AppEspaDisc'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppObse3' and isset($changedAttributes['AppObse3']))
-                { 
-                    $var[66] = "Espacio en Disco => ".$rows['AppObse3'];                   
+                {
+                    $var[66] = "Espacio en Disco => ".$rows['AppObse3'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppObse4' and isset($changedAttributes['AppObse4']))
-                { 
-                    $var[67] = "Observaciones => ".$rows['AppObse4'];                   
+                {
+                    $var[67] = "Observaciones => ".$rows['AppObse4'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppNombServBd' and isset($changedAttributes['AppNombServBd']))
-                { 
-                    $var[68] = "Nombre Servidor de BD => ".$rows['AppNombServBd'];                   
+                {
+                    $var[68] = "Nombre Servidor de BD => ".$rows['AppNombServBd'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppUsua' and isset($changedAttributes['AppUsua']))
-                { 
-                    $var[69] = "Usuario => ".$rows['AppUsua'];                   
+                {
+                    $var[69] = "Usuario => ".$rows['AppUsua'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppNombBd' and isset($changedAttributes['AppNombBd']))
-                { 
-                    $var[70] = "Nombre BD => ".$rows['AppNombBd'];                   
+                {
+                    $var[70] = "Nombre BD => ".$rows['AppNombBd'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppRuta' and isset($changedAttributes['AppRuta']))
-                { 
-                    $var[71] = "Ruta => ".$rows['AppRuta'];                   
+                {
+                    $var[71] = "Ruta => ".$rows['AppRuta'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppEspaActu' and isset($changedAttributes['AppEspaActu']))
-                { 
-                    $var[72] = "Espacio en disco (Actual) => ".$rows['AppEspaActu'];                   
+                {
+                    $var[72] = "Espacio en disco (Actual) => ".$rows['AppEspaActu'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppProy' and isset($changedAttributes['AppProy']))
-                { 
-                    $var[73] = "Proyección a 3 años => ".$rows['AppProy'];                   
+                {
+                    $var[73] = "Proyección a 3 años => ".$rows['AppProy'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk25' and isset($changedAttributes['TiposId_fk25']))
-                { 
-                    $var[74] = "Método de Backup => ".$rows['TiposId_fk25'];                   
+                {
+                    $var[74] = "Método de Backup => ".$rows['TiposId_fk25'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppOtroCual25' and isset($changedAttributes['AppOtroCual25']))
-                { 
-                    $var[75] = "Cuál => ".$rows['AppOtroCual25'];                   
+                {
+                    $var[75] = "Cuál => ".$rows['AppOtroCual25'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppPoliBack' and isset($changedAttributes['AppPoliBack']))
-                { 
-                    $var[76] = "Política de Backup => ".$rows['AppPoliBack'];                   
+                {
+                    $var[76] = "Política de Backup => ".$rows['AppPoliBack'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk26' and isset($changedAttributes['TiposId_fk26']))
-                { 
-                    $var[77] = "Periocidad => ".$rows['TiposId_fk26'];                   
+                {
+                    $var[77] = "Periocidad => ".$rows['TiposId_fk26'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk27' and isset($changedAttributes['TiposId_fk27']))
-                { 
-                    $var[78] = "Medio de Almacenamiento => ".$rows['TiposId_fk27'];                   
+                {
+                    $var[78] = "Medio de Almacenamiento => ".$rows['TiposId_fk27'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppOtroCual27' and isset($changedAttributes['AppOtroCual27']))
-                { 
-                    $var[79] = "Cuál => ".$rows['AppOtroCual27'];                   
+                {
+                    $var[79] = "Cuál => ".$rows['AppOtroCual27'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk28' and isset($changedAttributes['TiposId_fk28']))
-                { 
-                    $var[80] = "Licenciamiento de BD => ".$rows['TiposId_fk28'];                   
+                {
+                    $var[80] = "Licenciamiento de BD => ".$rows['TiposId_fk28'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppOtroCual28' and isset($changedAttributes['AppOtroCual28']))
-                { 
-                    $var[81] = "Cuál => ".$rows['AppOtroCual28'];                   
+                {
+                    $var[81] = "Cuál => ".$rows['AppOtroCual28'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppCantLice' and isset($changedAttributes['AppCantLice']))
-                { 
-                    $var[82] = "Cantidad de licencias => ".$rows['AppCantLice'];                   
+                {
+                    $var[82] = "Cantidad de licencias => ".$rows['AppCantLice'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppDireRaiz' and isset($changedAttributes['AppDireRaiz']))
-                { 
-                    $var[83] = "Directorio Raíz => ".$rows['AppDireRaiz'];                   
+                {
+                    $var[83] = "Directorio Raíz => ".$rows['AppDireRaiz'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppObse5' and isset($changedAttributes['AppObse5']))
-                { 
-                    $var[84] = "Observaciones => ".$rows['AppObse5'];                   
+                {
+                    $var[84] = "Observaciones => ".$rows['AppObse5'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppObse6' and isset($changedAttributes['AppObse6']))
-                { 
-                    $var[85] = "Observaciones => ".$rows['AppObse6'];                   
+                {
+                    $var[85] = "Observaciones => ".$rows['AppObse6'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk29' and isset($changedAttributes['TiposId_fk29']))
-                { 
-                    $var[86] = "Plan de Proyecto ¿Se entregó? => ".$rows['TiposId_fk29'];                   
+                {
+                    $var[86] = "Plan de Proyecto ¿Se entregó? => ".$rows['TiposId_fk29'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk30' and isset($changedAttributes['TiposId_fk30']))
-                { 
-                    $var[87] = "Plan de Proyecto ¿Se aprobó? => ".$rows['TiposId_fk30'];                   
+                {
+                    $var[87] = "Plan de Proyecto ¿Se aprobó? => ".$rows['TiposId_fk30'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk31' and isset($changedAttributes['TiposId_fk31']))
-                { 
-                    $var[88] = "Plan de Proyecto Medio => ".$rows['TiposId_fk31'];                   
+                {
+                    $var[88] = "Plan de Proyecto Medio => ".$rows['TiposId_fk31'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk32' and isset($changedAttributes['TiposId_fk32']))
-                { 
-                    $var[89] = "Definición y Alcance ¿Se entregó? => ".$rows['TiposId_fk32'];                   
+                {
+                    $var[89] = "Definición y Alcance ¿Se entregó? => ".$rows['TiposId_fk32'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk33' and isset($changedAttributes['TiposId_fk33']))
-                { 
-                    $var[90] = "Definición y Alcance ¿Se aprobó? => ".$rows['TiposId_fk33'];                   
+                {
+                    $var[90] = "Definición y Alcance ¿Se aprobó? => ".$rows['TiposId_fk33'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk34' and isset($changedAttributes['TiposId_fk34']))
-                { 
-                    $var[91] = "Definición y Alcance Medio => ".$rows['TiposId_fk34'];                   
+                {
+                    $var[91] = "Definición y Alcance Medio => ".$rows['TiposId_fk34'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk35' and isset($changedAttributes['TiposId_fk35']))
-                { 
-                    $var[92] = "Documento de requerimientos ¿Se entregó? => ".$rows['TiposId_fk35'];                   
+                {
+                    $var[92] = "Documento de requerimientos ¿Se entregó? => ".$rows['TiposId_fk35'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk36' and isset($changedAttributes['TiposId_fk36']))
-                { 
-                    $var[93] = "Documento de requerimientos ¿Se aprobó? => ".$rows['TiposId_fk36'];                   
+                {
+                    $var[93] = "Documento de requerimientos ¿Se aprobó? => ".$rows['TiposId_fk36'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk37' and isset($changedAttributes['TiposId_fk37']))
-                { 
-                    $var[94] = "Documento de requerimientos => ".$rows['TiposId_fk37'];                   
+                {
+                    $var[94] = "Documento de requerimientos => ".$rows['TiposId_fk37'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk38' and isset($changedAttributes['TiposId_fk38']))
-                { 
-                    $var[95] = "Documento de Diseño ¿Se entregó? => ".$rows['TiposId_fk38'];                   
+                {
+                    $var[95] = "Documento de Diseño ¿Se entregó? => ".$rows['TiposId_fk38'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk39' and isset($changedAttributes['TiposId_fk39']))
-                { 
-                    $var[96] = "Documento de Diseño ¿Se aprobó? => ".$rows['TiposId_fk39'];                   
+                {
+                    $var[96] = "Documento de Diseño ¿Se aprobó? => ".$rows['TiposId_fk39'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk40' and isset($changedAttributes['TiposId_fk40']))
-                { 
-                    $var[97] = "Documento de Diseño Medio => ".$rows['TiposId_fk40'];                   
+                {
+                    $var[97] = "Documento de Diseño Medio => ".$rows['TiposId_fk40'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk41' and isset($changedAttributes['TiposId_fk41']))
-                { 
-                    $var[98] = "Documento de Pruebas ¿Se entregó? => ".$rows['TiposId_fk41'];                   
+                {
+                    $var[98] = "Documento de Pruebas ¿Se entregó? => ".$rows['TiposId_fk41'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk42' and isset($changedAttributes['TiposId_fk42']))
-                { 
-                    $var[99] = "Documento de Pruebas ¿Se aprobó? => ".$rows['TiposId_fk42'];                   
+                {
+                    $var[99] = "Documento de Pruebas ¿Se aprobó? => ".$rows['TiposId_fk42'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk43' and isset($changedAttributes['TiposId_fk43']))
-                { 
-                    $var[100] = "Documento de Pruebas Medio => ".$rows['TiposId_fk43'];                   
+                {
+                    $var[100] = "Documento de Pruebas Medio => ".$rows['TiposId_fk43'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk44' and isset($changedAttributes['TiposId_fk44']))
-                { 
-                    $var[101] = "Manual Técnico y de Instalación ¿Se entregó? => ".$rows['TiposId_fk44'];                   
+                {
+                    $var[101] = "Manual Técnico y de Instalación ¿Se entregó? => ".$rows['TiposId_fk44'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk45' and isset($changedAttributes['TiposId_fk45']))
-                { 
-                    $var[102] = "Manual Técnico y de Instalación ¿Se aprobó? => ".$rows['TiposId_fk45'];                   
+                {
+                    $var[102] = "Manual Técnico y de Instalación ¿Se aprobó? => ".$rows['TiposId_fk45'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk46' and isset($changedAttributes['TiposId_fk46']))
-                { 
-                    $var[103] = "Manual Técnico y de Instalación Medio => ".$rows['TiposId_fk46'];                   
+                {
+                    $var[103] = "Manual Técnico y de Instalación Medio => ".$rows['TiposId_fk46'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk47' and isset($changedAttributes['TiposId_fk47']))
-                { 
-                    $var[104] = "Manual de Administración ¿Se entregó? => ".$rows['TiposId_fk47'];                   
+                {
+                    $var[104] = "Manual de Administración ¿Se entregó? => ".$rows['TiposId_fk47'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk48' and isset($changedAttributes['TiposId_fk48']))
-                { 
-                    $var[105] = "Manual de Administración ¿Se aprobó? => ".$rows['TiposId_fk48'];                   
+                {
+                    $var[105] = "Manual de Administración ¿Se aprobó? => ".$rows['TiposId_fk48'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk49' and isset($changedAttributes['TiposId_fk49']))
-                { 
-                    $var[106] = "Manual de Administración Medio => ".$rows['TiposId_fk49'];                   
+                {
+                    $var[106] = "Manual de Administración Medio => ".$rows['TiposId_fk49'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk50' and isset($changedAttributes['TiposId_fk50']))
-                { 
-                    $var[107] = "Manual de Usuario ¿Se entregó? => ".$rows['TiposId_fk50'];                   
+                {
+                    $var[107] = "Manual de Usuario ¿Se entregó? => ".$rows['TiposId_fk50'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk51' and isset($changedAttributes['TiposId_fk51']))
-                { 
-                    $var[108] = "Manual de Usuario ¿Se aprobó? => ".$rows['TiposId_fk51'];                   
+                {
+                    $var[108] = "Manual de Usuario ¿Se aprobó? => ".$rows['TiposId_fk51'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk52' and isset($changedAttributes['TiposId_fk52']))
-                { 
-                    $var[109] = "Manual de Usuario Medio => ".$rows['TiposId_fk52'];                   
+                {
+                    $var[109] = "Manual de Usuario Medio => ".$rows['TiposId_fk52'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk53' and isset($changedAttributes['TiposId_fk53']))
-                { 
-                    $var[110] = "¿Se entregó Medio digital con la información de la aplicación? ¿Se entregó? 
-                     => ".$rows['TiposId_fk53'];                   
+                {
+                    $var[110] = "¿Se entregó Medio digital con la información de la aplicación? ¿Se entregó?
+                     => ".$rows['TiposId_fk53'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk54' and isset($changedAttributes['TiposId_fk54']))
-                { 
-                    $var[111] = "¿Se entregó Medio digital con la información de la aplicación? ¿Se aprobó? => ".$rows['TiposId_fk54'];                   
+                {
+                    $var[111] = "¿Se entregó Medio digital con la información de la aplicación? ¿Se aprobó? => ".$rows['TiposId_fk54'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppUbic' and isset($changedAttributes['AppUbic']))
-                { 
-                    $var[112] = "Ubicación Disco C: => ".$rows['AppUbic'];                   
+                {
+                    $var[112] = "Ubicación Disco C: => ".$rows['AppUbic'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk55' and isset($changedAttributes['TiposId_fk55']))
-                { 
-                    $var[113] = "Contenido del medio digital => ".$rows['TiposId_fk55'];                   
+                {
+                    $var[113] = "Contenido del medio digital => ".$rows['TiposId_fk55'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppUbicDocu' and isset($changedAttributes['AppUbicDocu']))
-                { 
-                    $var[114] = "Ubicación Documentación => ".$rows['AppUbicDocu'];                   
+                {
+                    $var[114] = "Ubicación Documentación => ".$rows['AppUbicDocu'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppUbicUlti' and isset($changedAttributes['AppUbicUlti']))
-                { 
-                    $var[115] = "¿Ubicación última versión del código fuente => ".$rows['AppUbicUlti'];                   
+                {
+                    $var[115] = "¿Ubicación última versión del código fuente => ".$rows['AppUbicUlti'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppObse7' and isset($changedAttributes['AppObse7']))
-                { 
-                    $var[116] = "Observaciones => ".$rows['AppObse7'];                   
+                {
+                    $var[116] = "Observaciones => ".$rows['AppObse7'];
                 }
 
                 //---------------------------------------------------------------//
 
                 if ($key == 'AppFuncApru' and isset($changedAttributes['AppFuncApru']))
-                { 
-                    $var[117] = "Funcionario que recibe a satisfacción => ".$rows['AppFuncApru'];                   
+                {
+                    $var[117] = "Funcionario que recibe a satisfacción => ".$rows['AppFuncApru'];
                 }
 
                 //---------------------------------------------------------------//
@@ -2637,49 +2639,49 @@ class Aplicaciones extends \yii\db\ActiveRecord
 
             }
 
-            if (!isset($var)) 
+            if (!isset($var))
             {
                 $result = 'No Change';
             }
             else
             {
-               $result = implode(",",$var); 
+               $result = implode(",",$var);
             }
 
                 //---------------------------------------------------------------//
 
-            $connection->createCommand()->insert('auditorias', 
+            $connection->createCommand()->insert('auditorias',
                                     // ['AudId'=> $AudId],
                                     [
                                         'UsuId_fk' => Yii::$app->user->identity->id,
                                         'AudMod' => $AudMod,
-                                        'AudAcci' => $AudAcci, 
+                                        'AudAcci' => $AudAcci,
                                         'AudDatoAnte' => $total,
-                                        'AudDatoDesp' => $result,                                   
+                                        'AudDatoDesp' => $result,
                                         'AudIp'=> $AudIp,
-                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                        'AudFechHora'=> $AudFechHora,
                                     ])
-                                    ->execute();         
-        }                     
+                                    ->execute();
+        }
         // if ($insert)
-        // {        
-            
+        // {
+
         //     $connection = Yii::$app->db;
         //     $AudAcci =  'create';
         //     $table = $this->getTableSchema();
         //     $pk = $table->primaryKey;
         //     $UsuId_fk = Yii::$app->user->identity->id;
-        //     $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+        //     $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]
         //     $AudIp = Yii::$app->getRequest()->getUserIP();
-        //     $AudFechHora = new \yii\db\Expression('NOW()');  
+        //     $AudFechHora = new \yii\db\Expression('NOW()');
 
         // //---------------------------------------------------------------------------//
 
 
-        //     $MaxId = (new \yii\db\Query()) 
+        //     $MaxId = (new \yii\db\Query())
         //     ->select($pk)
         //     ->from($AudMod)
-        //     ->orderBy($pk[0]." DESC")          
+        //     ->orderBy($pk[0]." DESC")
         //     ->createCommand()
         //     ->execute();
 
@@ -2689,27 +2691,27 @@ class Aplicaciones extends \yii\db\ActiveRecord
         //     ->select($pk)
         //     ->from($AudMod)
         //     ->where([$pk[0]=>$MaxId])
-        //     ->createCommand();    
-        //     $rows1 = $queryId->queryOne();            
+        //     ->createCommand();
+        //     $rows1 = $queryId->queryOne();
         //     $resultId = implode(",", $rows1);
 
 
-        //     //-----------------------------------------------//    
+        //     //-----------------------------------------------//
 
-        //     $connection->createCommand()->insert('auditorias', 
+        //     $connection->createCommand()->insert('auditorias',
         //                             // ['AudId'=> $AudId],
         //                             [
         //                                 'UsuId_fk' => Yii::$app->user->identity->id,
         //                                 'AudMod' => $AudMod,
-        //                                 'AudAcci' => $AudAcci, 
+        //                                 'AudAcci' => $AudAcci,
         //                                 'AudDatoAnte' => ' ',
-        //                                 'AudDatoDesp' => $resultId,                                   
+        //                                 'AudDatoDesp' => $resultId,
         //                                 'AudIp'=> $AudIp,
-        //                                 'AudFechHora'=> $AudFechHora,                                                                    
+        //                                 'AudFechHora'=> $AudFechHora,
         //                             ])
-        //                             ->execute();                
+        //                             ->execute();
         // }
-  
+
     }
   /**
   * @return \yii\db\ActiveQuery

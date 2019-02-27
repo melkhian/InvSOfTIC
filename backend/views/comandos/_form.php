@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'ComNomb')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ComNomb')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
 
     <?= $form->field($model, 'ComDesc')->textarea(['maxlength' => true]) ?>
 

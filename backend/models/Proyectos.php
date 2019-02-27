@@ -45,6 +45,7 @@ class Proyectos extends \yii\db\ActiveRecord
             [['ProNomb', 'ProDesc', 'ProObje', 'UsuId_fk', 'Tiposid_fk1', 'ProFechApro', 'ProDocu', 'ProFechInic', 'ProFechFina', 'TiposId_fk2', 'ProFinProy'], 'required'],
             [['UsuId_fk', 'Tiposid_fk1', 'TiposId_fk2'], 'integer'],
             [['ProFechApro', 'ProFechInic', 'ProFechFina'], 'safe'],
+            ['ProFechFina', 'compare', 'compareAttribute'=>'ProFechInic', 'operator'=>'>='],
             [['ProNomb'], 'string', 'max' => 50],
             [['ProDesc'], 'string', 'max' => 1000],
             [['ProObje', 'ProFinProy'], 'string', 'max' => 1000],

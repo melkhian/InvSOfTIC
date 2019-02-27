@@ -15,7 +15,7 @@ use kartik\date\DatePicker;
 <br>
 <h1 align="center">I. DATOS GENERALES</h1>
 <br><br>
-<?= $form->field($model, 'AppNomb')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'AppNomb')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
 
 <?= $form->field($model, 'AppDesc')->textInput(['maxlength' => true]) ?>
 

@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "requerimientos".
  *
  * @property int $ReqId Id
- * @property int $ProId_fk Proyecto
+ * @property int $AppId_fk Aplicación
  * @property string $ReqDesc Descripción
  * @property int $TiposId_fk1 Tipo de Requerimiento
  * @property int $UsuId_fk Funcionario que Aprueba
@@ -19,7 +19,7 @@ use Yii;
  * @property int $TiposId_fk4 Prioridad
  *
  * @property Estrequerimientos[] $estrequerimientos
- * @property Proyectos $proIdFk
+ * @property Aplicaciones $appIdFk
  * @property Tipos $tiposIdFk1
  * @property Tipos $tiposidFk2
  * @property Tipos $tiposIdFk3
@@ -28,14 +28,15 @@ use Yii;
  * @property Versdocrequerimientos[] $versdocrequerimientos
  */
 class Requerimientos extends \yii\db\ActiveRecord
-{    
+{
 
-    public function behaviors()
-    {
-        return [
-            // 'sammaye\audittrail\LoggableBehavior'
-        ];
-    }   
+    // public function behaviors()
+    // {
+    //     return [
+    //         'sammaye\audittrail\LoggableBehavior'
+    //     ];
+    // }
+
     /**
      * @inheritdoc
      */
@@ -50,11 +51,11 @@ class Requerimientos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ProId_fk', 'ReqDesc', 'TiposId_fk1', 'UsuId_fk', 'Tiposid_fk2', 'TiposId_fk3', 'ReqFechTomaRequ', 'ReqFechSist', 'TiposId_fk4'], 'required'],
-            [['ProId_fk', 'TiposId_fk1', 'UsuId_fk', 'Tiposid_fk2', 'TiposId_fk3', 'TiposId_fk4'], 'integer'],
+            [['AppId_fk', 'ReqDesc', 'TiposId_fk1', 'UsuId_fk', 'Tiposid_fk2', 'TiposId_fk3', 'ReqFechTomaRequ', 'ReqFechSist', 'TiposId_fk4'], 'required'],
+            [['AppId_fk', 'TiposId_fk1', 'UsuId_fk', 'Tiposid_fk2', 'TiposId_fk3', 'TiposId_fk4'], 'integer'],
             [['ReqFechTomaRequ', 'ReqFechSist'], 'safe'],
             [['ReqDesc'], 'string', 'max' => 50],
-            [['ProId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Proyectos::className(), 'targetAttribute' => ['ProId_fk' => 'ProId']],
+            [['AppId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Aplicaciones::className(), 'targetAttribute' => ['AppId_fk' => 'AppId']],
             [['TiposId_fk1'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['TiposId_fk1' => 'TiposId']],
             [['Tiposid_fk2'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['Tiposid_fk2' => 'TiposId']],
             [['TiposId_fk3'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['TiposId_fk3' => 'TiposId']],
@@ -70,7 +71,7 @@ class Requerimientos extends \yii\db\ActiveRecord
     {
         return [
             'ReqId' => 'Id',
-            'ProId_fk' => 'Proyecto',
+            'AppId_fk' => 'Aplicación',
             'ReqDesc' => 'Descripción',
             'TiposId_fk1' => 'Tipo de Requerimiento',
             'UsuId_fk' => 'Funcionario que Aprueba',
@@ -93,10 +94,10 @@ class Requerimientos extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProIdFk()
-    {
-        return $this->hasOne(Proyectos::className(), ['ProId' => 'ProId_fk']);
-    }
+     public function getAppIdFk()
+     {
+         return $this->hasOne(Aplicaciones::className(), ['AppId' => 'AppId_fk']);
+     }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -148,11 +149,11 @@ class Requerimientos extends \yii\db\ActiveRecord
 
     //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
 
-    public function ProId_fk()
+    public function AppId_fk()
     {
-        $data = Proyectos::findOne($this->ProId_fk);
+        $data = Aplicaciones::findOne($this->AppId_fk);
 
-        return $data['ProNomb'];
+        return $data['AppNomb'];
     }
 
     //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
@@ -181,24 +182,24 @@ class Requerimientos extends \yii\db\ActiveRecord
 
             $AudAcci =  'update';
             $table = $this->getTableSchema();
-            $pk = $table->primaryKey; //---------------------- [ADepID]      
-            // echo "<pre>";      
+            $pk = $table->primaryKey; //---------------------- [ADepID]
+            // echo "<pre>";
             // print_r($table);
             // echo "</pre>";
             // die();
             $idSelect = $_GET['id'];
             $UsuId_fk = Yii::$app->user->identity->id;
-            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]
             $AudIp = Yii::$app->getRequest()->getUserIP();
-            $AudFechHora = new \yii\db\Expression('NOW()');      
+            $AudFechHora = new \yii\db\Expression('NOW()');
             $connection = Yii::$app->db;
 
             // print_r($pk);
             // die();
-            $MaxId = (new \yii\db\Query()) 
+            $MaxId = (new \yii\db\Query())
             ->select($pk)
             ->from($AudMod)
-            ->orderBy($pk[0]." DESC")          
+            ->orderBy($pk[0]." DESC")
             ->createCommand()
             ->execute();
 
@@ -207,14 +208,14 @@ class Requerimientos extends \yii\db\ActiveRecord
             ->select('*')
             ->from($AudMod)
             ->where([$pk[0] => $idSelect])
-            ->createCommand();    
+            ->createCommand();
             $rows = $queryAll->queryOne();
             $resultAll = implode(",", $rows);
 
             $i=0;
 
             //---------------------------------------------------------------//
-            
+
             if(!isset($changedAttributes['ReqId']))
             {
                 $oldAttributes[$i] = "Id => ".$idSelect;
@@ -230,159 +231,159 @@ class Requerimientos extends \yii\db\ActiveRecord
 
             if(!isset($changedAttributes['ProId_fk']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['ProId_fk'] != $rows['ProId_fk']) 
+                if ($changedAttributes['ProId_fk'] != $rows['ProId_fk'])
                 {
                     $oldAttributes[$i] = "proyecto => ".$changedAttributes['ProId_fk'];
                     $i++;
-                }            
-            } 
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ReqDesc']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "Descripción => ".$changedAttributes['ReqDesc'];
-                $i++;                
-            }  
+                $i++;
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['TiposId_fk1']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['TiposId_fk1'] != $rows['TiposId_fk1']) 
+                if ($changedAttributes['TiposId_fk1'] != $rows['TiposId_fk1'])
                 {
                     $oldAttributes[$i] = "tipo => ".$changedAttributes['TiposId_fk1'];
-                    $i++;   
-                }                
-            }             
+                    $i++;
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['UsuId_fk']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['UsuId_fk'] != $rows['UsuId_fk']) 
+                if ($changedAttributes['UsuId_fk'] != $rows['UsuId_fk'])
                 {
                     $oldAttributes[$i] = "Funcionario => ".$changedAttributes['UsuId_fk'];
                     $i++;
-                }            
-            }   
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['TiposId_fk2']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "Aprueba => ".$changedAttributes['TiposId_fk2'];
                 $i++;
-            }             
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['TiposId_fk3']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['TiposId_fk3'] != $rows['TiposId_fk3']) 
+                if ($changedAttributes['TiposId_fk3'] != $rows['TiposId_fk3'])
                 {
                     $oldAttributes[$i] = "UsuApro => ".$changedAttributes['TiposId_fk3'];
                     $i++;
-                }            
-            }   
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ReqFechTomaRequ']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "Fecha => ".$changedAttributes['ReqFechTomaRequ'];
                 $i++;
-            }             
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ReqFechSist']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "fechasis => ".$changedAttributes['ReqFechSist'];
                 $i++;
-            }             
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['TiposId_fk4']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['TiposId_fk4'] != $rows['TiposId_fk4']) 
+                if ($changedAttributes['TiposId_fk4'] != $rows['TiposId_fk4'])
                 {
                     $oldAttributes[$i] = "Prioridad => ".$changedAttributes['TiposId_fk4'];
                     $i++;
                 }
-            }             
+            }
 
-            //---------------------------------------------------------------//            
+            //---------------------------------------------------------------//
 
-            //---------------------------------------------------------------//          
+            //---------------------------------------------------------------//
 
-            if (!isset($oldAttributes)) 
+            if (!isset($oldAttributes))
             {
                 $total = 'no change';
             }
             else
             {
-                $total = implode(",",$oldAttributes); 
+                $total = implode(",",$oldAttributes);
             }
 
             // ------------------------------------------------------------------//
             // print_r($rows['AppId_fk']);
 
-            foreach ($rows as $key => $value) 
+            foreach ($rows as $key => $value)
             {
-                if ($key == 'ReqId') 
+                if ($key == 'ReqId')
                 {
                     $var[0] = "Id => ".$rows['ReqId'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ProId_fk' and $value != ($changedAttributes['ProId_fk'])) 
+                if ($key == 'ProId_fk' and $value != ($changedAttributes['ProId_fk']))
                 {
                     $var[1] = "proyecto => ".$rows['ProId_fk'];
                 }
 
                 //---------------------------------------------------------------//
-                
 
-                if ($key == 'ReqDesc' and isset($changedAttributes['ReqDesc'])) 
+
+                if ($key == 'ReqDesc' and isset($changedAttributes['ReqDesc']))
                 {
                     $var[2] = "Descripción => ".$rows['ReqDesc'];
                 }
@@ -390,13 +391,13 @@ class Requerimientos extends \yii\db\ActiveRecord
                 //---------------------------------------------------------------//
 
                 if ($key == 'TiposId_fk1' and $value != ($changedAttributes['TiposId_fk1']))
-                {                    
+                {
                     $var[3] = "tipo => ".$rows['TiposId_fk1'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'usuIdFk' and isset($changedAttributes['usuIdFk'])) 
+                if ($key == 'usuIdFk' and isset($changedAttributes['usuIdFk']))
                 {
                     $var[4] = "Funcionario => ".$rows['usuIdFk'];
                 }
@@ -410,35 +411,35 @@ class Requerimientos extends \yii\db\ActiveRecord
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'TiposId_fk3' and $value != ($changedAttributes['TiposId_fk3'])) 
+                if ($key == 'TiposId_fk3' and $value != ($changedAttributes['TiposId_fk3']))
                 {
                     $var[6] = "UsuApro => ".$rows['TiposId_fk3'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ReqFechTomaRequ' and isset($changedAttributes['ReqFechTomaRequ'])) 
+                if ($key == 'ReqFechTomaRequ' and isset($changedAttributes['ReqFechTomaRequ']))
                 {
                     $var[7] = "fecha => ".$rows['ReqFechTomaRequ'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ReqFechSist' and isset($changedAttributes['ReqFechSist'])) 
+                if ($key == 'ReqFechSist' and isset($changedAttributes['ReqFechSist']))
                 {
                     $var[8] = "fechasis => ".$rows['ReqFechSist'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'TiposId_fk4' and $value != ($changedAttributes['TiposId_fk4'])) 
+                if ($key == 'TiposId_fk4' and $value != ($changedAttributes['TiposId_fk4']))
                 {
                     $var[9] = "Prioridad => ".$rows['TiposId_fk4'];
                 }
 
                 //---------------------------------------------------------------//
 
-                
+
 
             }
             // echo '<pre>';
@@ -446,49 +447,49 @@ class Requerimientos extends \yii\db\ActiveRecord
             // print_r($var);
             // echo '</pre>';
             // die();
-            if (!isset($var)) 
+            if (!isset($var))
             {
                 $result = 'No Change';
             }
             else
             {
-               $result = implode(",",$var); 
+               $result = implode(",",$var);
             }
 
                 //---------------------------------------------------------------//
 
-            $connection->createCommand()->insert('auditorias', 
+            $connection->createCommand()->insert('auditorias',
                                     // ['AudId'=> $AudId],
                                     [
                                         'UsuId_fk' => Yii::$app->user->identity->id,
                                         'AudMod' => $AudMod,
-                                        'AudAcci' => $AudAcci, 
+                                        'AudAcci' => $AudAcci,
                                         'AudDatoAnte' => $total,
-                                        'AudDatoDesp' => $result,                                   
+                                        'AudDatoDesp' => $result,
                                         'AudIp'=> $AudIp,
-                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                        'AudFechHora'=> $AudFechHora,
                                     ])
-                                    ->execute(); 
+                                    ->execute();
 
         }
         if ($insert)
-        {        
+        {
             $connection = Yii::$app->db;
             $AudAcci =  'create';
             $table = $this->getTableSchema();
             $pk = $table->primaryKey;
             $UsuId_fk = Yii::$app->user->identity->id;
-            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]
             $AudIp = Yii::$app->getRequest()->getUserIP();
-            $AudFechHora = new \yii\db\Expression('NOW()');  
+            $AudFechHora = new \yii\db\Expression('NOW()');
 
         //---------------------------------------------------------------------------//
 
 
-            $MaxId = (new \yii\db\Query()) 
+            $MaxId = (new \yii\db\Query())
             ->select($pk)
             ->from($AudMod)
-            ->orderBy($pk[0]." DESC")          
+            ->orderBy($pk[0]." DESC")
             ->createCommand()
             ->execute();
 
@@ -498,13 +499,13 @@ class Requerimientos extends \yii\db\ActiveRecord
             ->select($pk)
             ->from($AudMod)
             ->where([$pk[0] => $MaxId])
-            ->createCommand();    
-            $rows1 = $queryId->queryOne();            
+            ->createCommand();
+            $rows1 = $queryId->queryOne();
             // $resultId = implode(",", $rows1);
 
-            foreach ($rows1 as $key => $value) 
+            foreach ($rows1 as $key => $value)
             {
-                if ($key == $pk[0]) 
+                if ($key == $pk[0])
                 {
                     $var[0] = "Id => ".$rows1[$pk[0]];
                 }
@@ -512,21 +513,21 @@ class Requerimientos extends \yii\db\ActiveRecord
 
             $resultId = implode(",", $var);
 
-            //-----------------------------------------------//    
+            //-----------------------------------------------//
 
-            $connection->createCommand()->insert('auditorias', 
+            $connection->createCommand()->insert('auditorias',
                                     // ['AudId'=> $AudId],
                                     [
                                         'UsuId_fk' => Yii::$app->user->identity->id,
                                         'AudMod' => $AudMod,
-                                        'AudAcci' => $AudAcci, 
+                                        'AudAcci' => $AudAcci,
                                         'AudDatoAnte' => ' ',
-                                        'AudDatoDesp' => $resultId,                                   
+                                        'AudDatoDesp' => $resultId,
                                         'AudIp'=> $AudIp,
-                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                        'AudFechHora'=> $AudFechHora,
                                     ])
-                                    ->execute();                
-        }            
+                                    ->execute();
+        }
     }
     // public function behaviors()
     // {

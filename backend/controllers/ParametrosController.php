@@ -50,7 +50,7 @@ class ParametrosController extends Controller
         }else {
                 $this->redirect(['site/login']);
             }
-        }    
+        }
 
     /**
      * Displays a single Parametros model.
@@ -155,5 +155,35 @@ class ParametrosController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    // NOTE: Función para Inhabilitar/Habilitar el Aplicativo desde la página Index a través del ícono Deshabilitar
+        public function actionEnable($id)
+        {
+          if(SiteController::findCom(66)){
+          $query = (new \yii\db\Query())
+          ->select('TiposId_fk')
+          ->from('parametros')
+          ->where(['ParId' => $id]);
+          $command = $query->createCommand();
+          $rows = $command->queryScalar();
+
+          if ($rows == 149) {
+            $connection = Yii::$app->db;
+            $connection->createCommand("UPDATE parametros SET TiposId_fk=150 WHERE ParId=$id")
+            ->execute();
+          }
+          if ($rows == 150) {
+            $connection = Yii::$app->db;
+            $connection->createCommand("UPDATE parametros SET TiposId_fk=149 WHERE ParId=$id")
+            ->execute();
+          }
+          $searchModel = new ParametrosSearch();
+          $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+            return $this->render('index', [
+                // 'model' => $this->findModel($id),
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
     }
 }

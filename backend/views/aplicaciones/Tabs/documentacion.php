@@ -21,13 +21,16 @@ table {
 }
 
 td, th {
-  border: 1px solid #dddddd;
+  border: 1px solid #9c9a9a;
   text-align: left;
   padding: 8px;
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #cecdcd;
+}
+tr:nth-child(odd) {
+  background-color: #ffffff;
 }
 </style>
     <table>

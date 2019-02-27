@@ -262,8 +262,6 @@ use backend\controllers\SiteController;
                                     // $this->redirect(Yii::app()->homeUrl);
                                   }
                                   ?>
-                                </b> - Web Developer
-                                <small>Member since Nov. 2015</small>
                             </p>
                         </li>
                         <!-- Menu Body -->
@@ -280,9 +278,13 @@ use backend\controllers\SiteController;
                         </li> -->
                         <!-- Menu Footer-->
                         <li class="user-footer">
-                            <!-- <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
-                            </div> -->
+                          <div class="pull-left">
+                              <?= Html::a(
+                                  'Cambiar Contraseña',
+                                  ['/user/change_password'],
+                                  ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
+                              ) ?>
+                          </div>
                             <div class="pull-right">
                                 <?= Html::a(
                                     'Cerrar Sesión',

@@ -14,7 +14,7 @@ use backend\models\Tipos;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'ESopNit')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ESopNit')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
 
     <?= $form->field($model, 'ESopNomb')->textInput(['maxlength' => true]) ?>
 
@@ -38,7 +38,7 @@ use backend\models\Tipos;
 
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

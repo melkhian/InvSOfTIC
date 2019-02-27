@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use backend\models\Tipos;
 use backend\models\User;
-use backend\models\Proyectos;
+use backend\models\Aplicaciones;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Requerimientos */
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
         Obtengo el nombre de la llave foránea dentro del modelo para luego cambiar su valor a una descripción en la lista desplegable de Tipos
     -->
     <?php
-        $ProId_fk= Proyectos::findOne($model->ProId_fk);
+        $AppId_fk= Aplicaciones::findOne($model->AppId_fk);
         $TiposId_fk1= Tipos::findOne($model->TiposId_fk1);
         $Tiposid_fk2= Tipos::findOne($model->Tiposid_fk2);
         $TiposId_fk3= Tipos::findOne($model->TiposId_fk3);
@@ -48,8 +48,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'ReqId',
-            ['attribute' => 'ProId_fk',
-             'value'=> $ProId_fk['ProNomb'],
+            ['attribute' => 'AppId_fk',
+             'value'=> $AppId_fk['AppNomb'],
             ],
             'ReqDesc',
             ['attribute' => 'TiposId_fk1',

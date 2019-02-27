@@ -38,7 +38,9 @@ class Dependencias extends \yii\db\ActiveRecord
         return [
             [['DepNomb', 'DepEnca', 'TiposId_fk1', 'DepTele', 'DepDire', 'TiposId_fk2', 'DepCorr'], 'required'],
             [['TiposId_fk1', 'TiposId_fk2'], 'integer'],
-            [['DepNomb', 'DepEnca', 'DepDire', 'DepCorr'], 'string', 'max' => 50],
+            [['DepNomb', 'DepEnca', 'DepDire', 'DepCorr'], 'string', 'max' => 100],
+            ['DepCorr', 'email'],
+            [['DepCorr'], 'unique'],
             [['DepTele'], 'string', 'max' => 20],
             [['TiposId_fk1'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['TiposId_fk1' => 'TiposId']],
             [['TiposId_fk2'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['TiposId_fk2' => 'TiposId']],

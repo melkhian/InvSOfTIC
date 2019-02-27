@@ -25,7 +25,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
       'widgetContainer' => 'dynamicform_wrapper', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
       'widgetBody' => '.container-items2', // required: css class selector. Se agrega el número 1 para diferenciarlo de otros similares DENTRO DEL MISMO FORMULARIO (Debe de ser constante en todo el widget)
       'widgetItem' => '.item2', // required: css class. Se agrega el número 1 para diferenciarlo de otros similares DENTRO DEL MISMO FORMULARIO (Debe de ser constante en todo el widget)
-      'limit' => 4, // the maximum times, an element can be cloned (default 999)
+      'limit' => 999, // the maximum times, an element can be cloned (default 999)
       'min' => 1, // 0 or 1 (default 1)
       'insertButton' => '.add-item2', // css class. Se agrega el número 1 para diferenciarlo de otros similares DENTRO DEL MISMO FORMULARIO (Debe de ser constante en todo el widget)
       'deleteButton' => '.remove-item2', // css class. Se agrega el número 1 para diferenciarlo de otros similares DENTRO DEL MISMO FORMULARIO (Debe de ser constante en todo el widget)

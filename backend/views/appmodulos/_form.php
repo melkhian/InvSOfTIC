@@ -34,7 +34,9 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'AModObse')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+
+        <?= Html::submitButton('Crear', ['class' => 'btn btn-success']) ?>
+
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'TipoDesc')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'TipoDesc')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

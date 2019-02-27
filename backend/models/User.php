@@ -69,6 +69,7 @@ private $var;
      */
     public function rules()
     {
+      // NOTE: Se eliminan campos como Password_hash, auth_key, created_at, update_at de los REQUERIDOS, esto cuando se genera el modelo desde GII.
         return [
             [['usuiden', 'usuprimnomb', 'usuprimapel', 'usutelepers', 'username', 'usuteleofic', 'email', 'depid_fk', 'tiposid_fk1', 'tiposid_fk2', 'status'], 'required'],
             [['depid_fk', 'tiposid_fk1', 'tiposid_fk2', 'status', 'created_at', 'updated_at'], 'integer'],
@@ -114,49 +115,6 @@ private $var;
      * @return \yii\db\ActiveQuery
      */
 
-
-    public static function handleNewUser($event)
-
-    {
-      // echo "<pre>";
-      // print_r($event->identity->id);
-      // echo "</pre>";
-      // exit();
-      $id = $event->identity->id;
-      $session = Yii::$app->session;
-      $fecha_actual = strtotime(date("d-m-Y",time()));
-      // $data = new User;
-      $data = User::RUsuId($id);
-      // echo "<pre>";
-      // print_r($data);
-      // echo "</pre>";
-      // exit();
-      $fechaCad = strtotime($data);
-      // echo "<pre>";
-      // print_r($fechaCad);
-      // echo "<br>";
-      // print_r($fecha_actual);
-      // echo "</pre>";
-      // exit();
-        if ($fecha_actual > $fechaCad) {
-
-          //Agregar función Afterlogout
-          Yii::$app->user->logout();
-          $session = Yii::$app->session;
-          $session->destroy();
-          $session->open();
-
-          Yii::$app->session->setFlash('fail', "A LA FECHA SU USUARIO HA CADUCADO");
-          Yii::$app->request->bodyParams = [];
-          $_POST = array();
-          $_GET = array();
-          // unset(Yii::$app->request->cookies['advanced-backend']);
-          // return $this->goHome();
-          // unset($_POST['username']);
-
-        }
-
-    }
 
     public static function RUsuId($id)
     {
