@@ -114,7 +114,7 @@ class SiteController extends Controller
         ->createCommand();
         // echo $query->sql;
         // print_r($query->params);
-        $rows = $query->queryAll();
+        $rows = $query->queryOne();
           // $command = $query->createCommand();
           // $rows = $command->queryColumn();
           // foreach ($rows as $key => $value) {
@@ -123,7 +123,7 @@ class SiteController extends Controller
           //   // }
            // print_r($rows);
           return $rows;
-                
+
       }else {
         Yii::$app->user->logout();
       }

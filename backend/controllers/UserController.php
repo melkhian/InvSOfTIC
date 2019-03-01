@@ -198,15 +198,32 @@ class UserController extends Controller
       $command = $query->createCommand();
       $rows = $command->queryScalar();
 
+      $query = (new \yii\db\Query())
+      ->select('username')
+      ->from('user')
+      ->where(['id' => $id]);
+      $command = $query->createCommand();
+      $username = $command->queryScalar();
+
       if ($rows == 10) {
-        $connection = Yii::$app->db;
-        $connection->createCommand("UPDATE user SET status=6 WHERE id=$id")
-        ->execute();
+        $model = User::findOne($id);
+        $status = 6;
+        $model->status = $status;
+        $model->save();
+        Yii::$app->session->setFlash('success', 'Se ha Deshabilitado el Usuario ' . $username);
+        // $connection = Yii::$app->db;
+        // $connection->createCommand("UPDATE user SET status=6 WHERE id=$id")
+        // ->execute();
       }
       if ($rows == 6) {
-        $connection = Yii::$app->db;
-        $connection->createCommand("UPDATE user SET status=10 WHERE id=$id")
-        ->execute();
+        $model = User::findOne($id);
+        $status = 10;
+        $model->status = $status;
+        $model->save();
+        Yii::$app->session->setFlash('success', 'Se ha Habilitado el Usuario ' . $username);
+        // $connection = Yii::$app->db;
+        // $connection->createCommand("UPDATE user SET status=10 WHERE id=$id")
+        // ->execute();
       }
       $searchModel = new UserSearch();
       $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
