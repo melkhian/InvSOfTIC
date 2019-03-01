@@ -55,8 +55,8 @@ $this->params['breadcrumbs'][] = $this->title;
              'filter' => Html::activeDropDownList($searchModel, 'TiposId_fk', ArrayHelper::map(Tipos::find()
              ->where('tipoid_fk = 46')->all(),'TiposId','TiposDesc'),['class'=>'form-control','prompt' => 'Seleccione la respuesta']),
             ],
-            // 'TiposId_fk',
-            //'AModObse',
+            'TiposId_fk',
+            'AModObse',
 
             ['class' => 'yii\grid\ActionColumn',
              'template' => "$view $update"],
