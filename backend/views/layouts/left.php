@@ -73,7 +73,7 @@ use backend\controllers\SiteController;
                                  ['label' => 'Dependencias', 'icon' => 'bank', 'url' => ['dependencias/index']],
                                  ]]);
             if (SiteController::findvar(3)){
-              echo 'hola';
+              // echo 'hola';
             // if ($this->context->findVar(3)){
             $gda[] = ['label' => 'Aplicaciones', 'icon' => 'window-restore', 'url' => ['aplicaciones/index']];
             }

@@ -19,7 +19,7 @@ use backend\models\Tipos;
 <div class="row">
   <div class="col-sm-3">
     <?= $form->field($model, 'TiposId_fk23')
-    ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 40')->all(),'TiposValo','TiposDesc'))?>
+    ->checkboxList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 40')->all(),'TiposValo','TiposDesc'))?>
   </div>
   <div class="col-sm-6">
     <?= $form->field($model, 'AppVersDist')->textInput(['maxlength' => true]) ?>

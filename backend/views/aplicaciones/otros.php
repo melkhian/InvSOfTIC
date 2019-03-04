@@ -10,6 +10,7 @@ function Init(){
   var appotrocual14 = document.getElementById('aplicaciones-appotrocual14').value;
   var appotrocual16 = document.getElementById('aplicaciones-appotrocual16').value;
   var appotrocual18 = document.getElementById('aplicaciones-appotrocual18').value;
+  var appotrocual21 = document.getElementById('aplicaciones-appotrocual21').value;
   var appotrocual19 = document.querySelector('#aplicaciones-tiposid_fk19 > label:nth-child(1) > input[type="radio"]').checked;
   var appotrocual20 = document.querySelector('#aplicaciones-tiposid_fk20 > label:nth-child(1) > input[type="radio"]').checked;
   var appotrocual25 = document.querySelector('#aplicaciones-tiposid_fk25 > label:nth-child(3) > input[type="radio"]').checked;
@@ -20,6 +21,9 @@ function Init(){
   var tiposid_fk16 = document.querySelector('#aplicaciones-tiposid_fk15 > label:nth-child(1) > input[type="radio"]').checked;
   var tiposid_fk18 = document.querySelector('#aplicaciones-tiposid_fk17 > label:nth-child(1) > input[type="radio"]').checked;
   var tiposid_fk18 = document.querySelector('#aplicaciones-tiposid_fk17 > label:nth-child(1) > input[type="radio"]').checked;
+  var tiposid_fk5 = document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(1) > input[type="checkbox"]').checked;
+  var tiposid_fk5_1 = document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(2) > input[type="checkbox"]').checked;
+  var tiposid_fk5_2 = document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(3) > input[type="checkbox"]').checked;
 
   // alert(appotrocual27);
   // #w0-tab5 > div.form-group.field-aplicaciones-appotrocual8
@@ -47,6 +51,18 @@ function Init(){
   }
   if (appotrocual19 ==="") {
     document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.visibility = "hidden";
+  }
+  if (appotrocual21 ==="") {
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual21').style.visibility = "hidden";
+  }
+  if (!tiposid_fk5) {
+    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(1)').style.visibility = "hidden";
+  }
+  if (!tiposid_fk5_1) {
+    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(2)').style.visibility = "hidden";
+  }
+  if (!tiposid_fk5_2) {
+    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(3)').style.visibility = "hidden";
   }
   if (!tiposid_fk12) {
     document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-tiposid_fk12').style.visibility = "hidden";
@@ -153,6 +169,24 @@ function TiposId_fk($id,$tab,$tipo){
         }
       }
     }
+  }
+}
+
+function TipoPuesta(){
+  if (document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(1) > input[type="checkbox"]').checked) {
+    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(1)').style.visibility = "visible";
+  }else {
+    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(1)').style.visibility = "hidden";
+  }
+  if (document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(2) > input[type="checkbox"]').checked) {
+    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(2)').style.visibility = "visible";
+  }else {
+    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(2)').style.visibility = "hidden";
+  }
+  if (document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(3) > input[type="checkbox"]').checked) {
+    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(3)').style.visibility = "visible";
+  }else {
+    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(3)').style.visibility = "hidden";
   }
 }
 </script>

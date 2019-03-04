@@ -239,6 +239,7 @@ class AplicacionesController extends Controller
         $model->TiposId_fk16 = explode(',',$model->TiposId_fk16);
         $model->TiposId_fk18 = explode(',',$model->TiposId_fk18);
         $model->TiposId_fk21 = explode(',',$model->TiposId_fk21);
+        $model->TiposId_fk23 = explode(',',$model->TiposId_fk23);
         $model->TiposId_fk26 = explode(',',$model->TiposId_fk26);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

@@ -7,6 +7,9 @@ use yii\helpers\ArrayHelper;
 use backend\models\Tipos;
 use wbraganca\dynamicform\DynamicFormWidget;
 
+// NOTE: Dentro de los TABS hay checkbox, estos deben de configurarce en Aplicaciones (Modelo) y AplicacionesController, por medio de implode y explode. Esto es para
+// Guardarlos como arreglo en la BD
+
 /* @var $this yii\web\View */
 /* @var $model backend\models\Aplicaciones */
 /* @var $form yii\widgets\ActiveForm */
@@ -25,77 +28,77 @@ use wbraganca\dynamicform\DynamicFormWidget;
     <?= Tabs::widget([
             'items' => [
                 [
-                    'label' => 'I',
+                    'label' => 'Datos',
                     'content' => $this->render('Tabs/datos', ['model' => $model, 'form' => $form]),
                     'active' => true,
                 ],
                 [
-                    'label' => 'II',
+                    'label' => 'Población',
                     'content' => $this->render('Tabs/poblacion', ['model' => $model, 'form' => $form]),
                 ],
                 [
-                    'label' => 'III',
+                    'label' => 'Sop. Desarrollador',
                     'content' => $this->render('Tabs/soporte', ['model' => $model, 'form' => $form]),
                 ],
                 [
-                    'label' => 'IV',
+                    'label' => 'Sop. Interno',
                     'content' => $this->render('Tabs/soporteInterno', ['model' => $model, 'form' => $form]),
                 ],
                 [
-                    'label' => 'Acuerdo de Niveles de Servicio',
+                    'label' => 'Acuerdo',
                     'content' => $this->render('Tabs/acuerdos', ['model' => $model, 'form' => $form]),
                 ],
 
                 // NOTE: label 'VII' contiene un modelo extra, esto es para generar el modelo 1:N
                 [
-                    'label' => 'VII',
+                    'label' => 'Datos Aplicación',
                     'content' => $this->render('Tabs/datosApp', ['model' => $model, 'modelsAppmodulos' => $modelsAppmodulos, 'form' => $form]),
                 ],
                 [
-                    'label' => 'VIII',
+                    'label' => 'Req. Software',
                     'content' => $this->render('Tabs/reqSoftware', ['model' => $model, 'form' => $form]),
                 ],
                 [
-                    'label' => 'IX',
+                    'label' => 'Req. Hardware',
                     'content' => $this->render('Tabs/reqHardware', ['model' => $model, 'form' => $form]),
                 ],
                 [
-                    'label' => 'X',
+                    'label' => 'Archivos',
                     'content' => $this->render('Tabs/archConfiguracion', ['model' => $model, 'modelsApparchivos' => $modelsApparchivos, 'form' => $form]),
                 ],
                 [
-                    'label' => 'VIII',
+                    'label' => 'Parámetros',
                     'content' => $this->render('Tabs/paraConfiguracion', ['model' => $model, 'modelsAppparametros' => $modelsAppparametros, 'form' => $form]),
                 ],
                 [
-                    'label' => 'XI',
+                    'label' => 'Info. BD',
                     'content' => $this->render('Tabs/infoBase', ['model' => $model, 'form' => $form]),
                 ],
 
                 // NOTE: label 'XII' contiene un modelo extra, esto es para generar el modelo 1:N
                 [
-                    'label' => 'XII',
+                    'label' => 'Plugins',
                     'content' => $this->render('Tabs/appPlugins', ['model' => $model, 'modelsAppplugins' => $modelsAppplugins, 'form' => $form]),
                 ],
 
                 // NOTE: label 'XIII' contiene un modelo extra, esto es para generar el modelo 1:N
                 [
-                    'label' => 'XIII',
+                    'label' => 'Directorios',
                     'content' => $this->render('Tabs/appDirectorios', ['model' => $model, 'modelsAppdirectorios' => $modelsAppdirectorios, 'form' => $form]),
                 ],
 
                 // NOTE: label 'XIV' contiene un modelo extra, esto es para generar el modelo 1:N
                 [
-                    'label' => 'XIV',
+                    'label' => 'Usuarios',
                     'content' => $this->render('Tabs/appUsuarios', ['model' => $model, 'modelsAppusuarios' => $modelsAppusuarios, 'form' => $form]),
                 ],
 
                 [
-                    'label' => 'XV',
+                    'label' => 'Documentación',
                     'content' => $this->render('Tabs/documentacion', ['model' => $model, 'form' => $form]),
                 ],
                 [
-                    'label' => 'XVI',
+                    'label' => 'Aceptación',
                     'content' => $this->render('Tabs/funcAprueba', ['model' => $model, 'form' => $form]),
                 ],
             ]]);
