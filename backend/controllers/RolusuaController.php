@@ -222,14 +222,25 @@ class RolusuaController extends Controller
    {
      $data = Yii::$app->request->post("keys");
 
-
+     // $model = new RolusuaSearch;
      $searchModel = new UserSearch; //---> Data Modelo que aparece en el modal
      $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams()); //---> Campos de Busqueda del Modal
      $dataProvider->query->andWhere(['in','id',$data]);
      $dataProvider->pagination = ['pageSize' => 5]; //---> Paginacion del Modal
      return $this->renderPartial('_user_list', [
-       'dataProvider' => $dataProvider
+       // 'model' => $model,
+       'dataProvider' => $dataProvider,
      ]);
    }
+
+   public function actionRemove($id)
+    {
+       echo
+       "<script language='javascript'>
+       alert('mensaje');
+        // document.getElementById('grid_user_list').deleteRow($id);
+       </script>
+       ";              
+    }
 
 }

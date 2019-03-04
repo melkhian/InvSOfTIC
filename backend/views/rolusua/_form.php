@@ -29,6 +29,28 @@ use yii\data\ActiveDataProvider;
   </div>
   <?php } ?>
 
+  <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($model, 'RolId_fk')->dropDownList(ArrayHelper::map(Roles::find()->all(),'RolId','RolNomb'), ['prompt'=> 'Seleccione el Rol']) //--> Combobox ?>
+
+    <?= $form->field($model, 'RUsuCadu')->widget( DatePicker::className(),
+            ['name' => 'check_issue_date',
+            'value' => date('d-M-Y', strtotime('+2 days')),
+            'options' => ['placeholder' => 'Seleccione la fecha de Caducidad'],
+            'pluginOptions' => [
+            'format' => 'yyyy-mm-dd',
+            'todayHighlight' => true]]);
+     ?>
+
+     <div class="form-group">
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']);?>
+
+        <?= Html::submitButton('Eliminar', ['id'=>'delete', 'class' => 'btn btn-danger']);?>
+    </div>
+    <div id="user_list">     
+     </div>
+    <?php ActiveForm::end(); ?>
+
   <p>
   <?php
   Modal::begin([
@@ -75,10 +97,7 @@ use yii\data\ActiveDataProvider;
 ?>
     <?php Pjax::end() ?>
     <?php Modal::end(); ?>
-    
-    <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'RolId_fk')->dropDownList(ArrayHelper::map(Roles::find()->all(),'RolId','RolNomb'), ['prompt'=> 'Seleccione el Rol']) //--> Combobox ?>
 
   
 <!--
@@ -116,28 +135,37 @@ use yii\data\ActiveDataProvider;
           }
       });
       "
+
+
 //              ,
       // $this::POS_HEAD
     );
     ?>
 
+    <!-- Boton eliminar -->
+     
+    <?php
+      $this->registerJs("$(\"#delete\").click(function(){
+          var keys = $('#grid').yiiGridView('getSelectedRows');
+          //console.log($('#grid').yiiGridView(''));
+          if (keys == '') {
+              alert('Por favor seleccione uno o mas Rows!');
+          }
+          else 
+          {
+            alert(keys);   
+            // document.getElementById('grid_user_list').remove();            
+          }
+      });
+      "
+    );
+    ?>
+
     <!-- <?= $form->field($model, 'UsuId_fk')->dropDownList(ArrayHelper::map(User::find()->all(),'id','email'), ['prompt'=> 'Seleccione el Usuario'])?> -->
 
+    
+     
 
-    <?= $form->field($model, 'RUsuCadu')->widget( DatePicker::className(),
-          	['name' => 'check_issue_date',
-          	'value' => date('d-M-Y', strtotime('+2 days')),
-          	'options' => ['placeholder' => 'Seleccione la fecha de Caducidad'],
-          	'pluginOptions' => [
-          	'format' => 'yyyy-mm-dd',
-          	'todayHighlight' => true]]);
-     ?>
-     <div id="user_list">     
-     </div>
-
-    <div class="form-group">
-        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']);?>
-    </div>
-    <?php ActiveForm::end(); ?>
+    
 
 </div>

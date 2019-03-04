@@ -1,12 +1,16 @@
 <?php
 use yii\grid\GridView;
 ?>
+
 <?=   GridView::widget([      
      'dataProvider' => $dataProvider,
      'filterModel' => null,
      'id' => 'grid_user_list',
+
      'columns' => [
+        ['class' => 'yii\grid\CheckboxColumn'],
           [
+            // 'model' => $model,
             'label' => '',
             'attribute' => 'id',
             'format' => 'raw',
@@ -18,6 +22,7 @@ use yii\grid\GridView;
           'usuprimnomb',
           'usuprimapel',
           'email',
+          // 'RUsucadu',
           // ['class' => 'yii\grid\ActionColumn'],
          ],
        ]);      
