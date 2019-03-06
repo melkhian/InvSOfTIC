@@ -1,5 +1,6 @@
 <?php
 use yii\grid\GridView;
+use yii\widgets\ActiveForm;
 ?>
 
 <?=   GridView::widget([      
@@ -22,8 +23,16 @@ use yii\grid\GridView;
           'usuprimnomb',
           'usuprimapel',
           'email',
+          
           // 'RUsucadu',
-          // ['class' => 'yii\grid\ActionColumn'],
+          // ['class' => 'yii\grid\ActionColumn',
+           // 'template' => '{view} {myButton}',
+           // 'buttons' => [
+           //      'myButton' => function($url, $model, $key) {     // render your custom button
+           //          return Html::a('Crear Dependencia', ['create'], ['class' => 'btn-primary grid-button']);
+           //      }
+           //  ]
+          // ],          
          ],
        ]);      
 ?>

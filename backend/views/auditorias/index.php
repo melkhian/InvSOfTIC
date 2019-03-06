@@ -45,7 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         // 'format' => 'raw',
         'columns' => [            
-
+            ['class' => 'yii\grid\ActionColumn',
+             'template' => "$view $update"],
             'AudId',
             // 'UsuId_fk',
             ['attribute'=>'UsuId_fk',
@@ -68,8 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'AudIp',
             //'AudFechHora',
 
-            ['class' => 'yii\grid\ActionColumn',
-             'template' => "$view $update"],
+            
         ],
     ]); ?>
     <?php Pjax::end(); ?>

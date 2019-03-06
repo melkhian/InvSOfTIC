@@ -58,7 +58,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'DepCorr',
 
             ['class' => 'yii\grid\ActionColumn',
-             'template' => "$view $update"],
+             'template' => "$view $update",             
+         ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

@@ -142,24 +142,9 @@ use yii\data\ActiveDataProvider;
     );
     ?>
 
-    <!-- Boton eliminar -->
+    <!-- Boton eliminar -->    
      
-    <?php
-      $this->registerJs("$(\"#delete\").click(function(){
-          var keys = $('#grid').yiiGridView('getSelectedRows');
-          //console.log($('#grid').yiiGridView(''));
-          if (keys == '') {
-              alert('Por favor seleccione uno o mas Rows!');
-          }
-          else 
-          {
-            alert(keys);   
-            // document.getElementById('grid_user_list').remove();            
-          }
-      });
-      "
-    );
-    ?>
+   
 
     <!-- <?= $form->field($model, 'UsuId_fk')->dropDownList(ArrayHelper::map(User::find()->all(),'id','email'), ['prompt'=> 'Seleccione el Usuario'])?> -->
 
