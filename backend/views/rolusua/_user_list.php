@@ -19,7 +19,8 @@ use yii\widgets\ActiveForm;
               return '<input type="hidden" name="user_id[]" value="'.$model->id.'">';
             }
           ],
-          'id',
+          // 'id',
+          'username',
           'usuprimnomb',
           'usuprimapel',
           'email',
@@ -36,3 +37,13 @@ use yii\widgets\ActiveForm;
          ],
        ]);      
 ?>
+
+<script type="text/javascript">
+  // alert("AQUI".select);
+          var select = $('#grid_user_list').yiiGridView('getSelectedRows');
+          if (select == '') {
+            alert("hello");
+          }
+          alert("AQUI".select);
+
+</script>

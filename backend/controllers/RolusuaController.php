@@ -89,7 +89,7 @@ class RolusuaController extends Controller
       if(isset(Yii::$app->user->identity->id)){
         if(SiteController::findCom(42)){
         $model = new Rolusua();
-        $mensaje = '';
+        $mensaje = $mensaje = 'Proceso terminado con Exito';  ;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
           return $this->redirect(['view','id' => $model->RUsuId]);
@@ -102,11 +102,11 @@ class RolusuaController extends Controller
         // \Yii::$app->end();
         foreach ($var['user_id'] as $key => $value) {
           $validador = rolusua::find()->where("UsuId_fk = $value and RolId_fk =".$var['Rolusua']['RolId_fk'])->one();
-          if(empty($validador)){
+          if(empty($validador)){            
             $model = new Rolusua();
             $model->load(\Yii::$app->request->post());
             $model->UsuId_fk = $value;
-            $model->save();          
+            $model->save();                   
           }else{
             $mensaje = 'El Usuario ya tiene cargado ese Rol';
           }                  

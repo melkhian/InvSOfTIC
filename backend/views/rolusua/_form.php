@@ -23,11 +23,34 @@ use yii\data\ActiveDataProvider;
 ////////////////////////////////////////-> No se debe crear el modal dentro del activeform debido a que no funcionara correctamente el filtro del mismo.
 -->
 <div class="rolusua-form">
-  <?php if(isset($mensaje) && $mensaje != ''){ ?>
+  <?php if(isset($mensaje)){ 
+
+    if ($mensaje != '' and $mensaje == 'El Usuario ya tiene cargado ese Rol') {
+
+  ?>
+
   <div class="alert alert-danger">
-    <?= $mensaje ?>
+
+    <?= $mensaje; ?>
+
   </div>
-  <?php } ?>
+
+    <?php }elseif ($mensaje != '' and $mensaje == 'Proceso terminado con Éxito') { ?>
+    
+  <div class="alert alert-danger">
+
+    <?= $mensaje;  ?>
+
+  </div>
+
+    <?php } ?>
+
+  <?php 
+
+    }
+
+  ?>
+
 
   <?php $form = ActiveForm::begin(); ?>
 
@@ -144,7 +167,34 @@ use yii\data\ActiveDataProvider;
 
     <!-- Boton eliminar -->    
      
-   
+    <?php
+      $this->registerJs("$(\"#delete\").click(function(){
+          var select = $('#grid').yiiGridView('getSelectedRows');
+
+          if (select == '') {
+              alert('Por favor seleccione uno o mas Rows!');
+          }
+          else {
+              alert(select);
+
+           //  $.ajax({
+
+           //     url: '" . \Yii::$app->urlManager->createUrl('/rolusua/asociar-usuarios') . "',
+
+           //    type: 'POST',
+
+           //    data: {select:select},
+
+           //    success: function(data){
+           //      console.log(data);
+           //      $('#user_list').html(data);
+           //   }
+           // });
+          }
+      });
+      "
+    );
+    ?>
 
     <!-- <?= $form->field($model, 'UsuId_fk')->dropDownList(ArrayHelper::map(User::find()->all(),'id','email'), ['prompt'=> 'Seleccione el Usuario'])?> -->
 
