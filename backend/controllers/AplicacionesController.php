@@ -13,6 +13,7 @@ use backend\models\Appusuarios;
 use backend\models\Apparchivos;
 use backend\models\Appparametros;
 use backend\models\Appaceptacion;
+use backend\models\Appinteractua;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -105,6 +106,7 @@ class AplicacionesController extends Controller
         $modelsApparchivos = [new Apparchivos];
         $modelsAppparametros = [new Appparametros];
         $modelsAppaceptacion = [new Appaceptacion];
+        $modelsAppinteractua = [new Appinteractua];
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
@@ -130,6 +132,9 @@ class AplicacionesController extends Controller
 
           $modelsAppaceptacion = Model::createMultiple(Appaceptacion::classname());
           Model::loadMultiple($modelsAppaceptacion, Yii::$app->request->post());
+
+          $modelsAppinteractua = Model::createMultiple(Appinteractua::classname());
+          Model::loadMultiple($modelsAppinteractua, Yii::$app->request->post());
 
           // validate all models
           $valid = $model->validate();
@@ -190,6 +195,13 @@ class AplicacionesController extends Controller
                     break;
                   }
                 }
+                foreach ($modelsAppinteractua as $modelAppinteractua) {
+                  $modelAppinteractua->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppinteractua->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
               }
               if ($flag) {
                 $transaction->commit();
@@ -211,6 +223,7 @@ class AplicacionesController extends Controller
           'modelsApparchivos' => (empty($modelsApparchivos)) ? [new Apparchivos] : $modelsApparchivos,
           'modelsAppparametros' => (empty($modelsAppparametros)) ? [new Appparametros] : $modelsAppparametros,
           'modelsAppaceptacion' => (empty($modelsAppaceptacion)) ? [new Appaceptacion] : $modelsAppaceptacion,
+          'modelsAppinteractua' => (empty($modelsAppinteractua)) ? [new Appinteractua] : $modelsAppinteractua,
         ]);
       }
       else {
@@ -240,6 +253,7 @@ class AplicacionesController extends Controller
         $modelsApparchivos = $model->apparchivos;
         $modelsAppparametros = $model->appparametros;
         $modelsAppaceptacion = $model->appaceptacion;
+        $modelsAppinteractua = $model->appinteractua;
 
         //Se agrega para pasar de String a Array
         $model->TiposId_fk5 = explode(',',$model->TiposId_fk5);
@@ -293,6 +307,11 @@ class AplicacionesController extends Controller
           Model::loadMultiple($modelsAppaceptacion, Yii::$app->request->post());
           $deletedIDs6 = array_diff($oldIDs6, array_filter(ArrayHelper::map($modelsAppaceptacion, 'AAceId', 'AAceId')));
 
+          $oldIDs7 = ArrayHelper::map($modelsAppinteractua, 'AIntId', 'AIntId');
+          $modelsAppinteractua = Model::createMultiple(Appinteractua::classname(), $modelsAppinteractua);
+          Model::loadMultiple($modelsAppinteractua, Yii::$app->request->post());
+          $deletedIDs7 = array_diff($oldIDs7, array_filter(ArrayHelper::map($modelsAppinteractua, 'AIntId', 'AIntId')));
+
           // validate all models
           $valid = $model->validate();
           // $valid = Model::validateMultiple($modelsAppmodulos) && $valid;
@@ -322,6 +341,9 @@ class AplicacionesController extends Controller
                 }
                 if (! empty($deletedIDs6)) {
                   Appaceptacion::deleteAll(['AAceId' => $deletedIDs6]);
+                }
+                if (! empty($deletedIDs7)) {
+                  Appinteractua::deleteAll(['AIntId' => $deletedIDs7]);
                 }
 
                 foreach ($modelsAppmodulos as $modelAppmodulos) {
@@ -373,6 +395,13 @@ class AplicacionesController extends Controller
                     break;
                   }
                 }
+                foreach ($modelsAppinteractua as $modelAppinteractua) {
+                  $modelAppinteractua->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppinteractua->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
               }
               if ($flag) {
                 $transaction->commit();
@@ -393,6 +422,7 @@ class AplicacionesController extends Controller
           'modelsApparchivos' => (empty($modelsApparchivos)) ? [new Apparchivos] : $modelsApparchivos,
           'modelsAppparametros' => (empty($modelsAppparametros)) ? [new Appparametros] : $modelsAppparametros,
           'modelsAppaceptacion' => (empty($modelsAppaceptacion)) ? [new Appaceptacion] : $modelsAppaceptacion,
+          'modelsAppinteractua' => (empty($modelsAppinteractua)) ? [new Appinteractua] : $modelsAppinteractua,
         ]);
       }
       else {

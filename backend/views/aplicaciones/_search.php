@@ -132,8 +132,6 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'TiposId_fk19') ?>
 
-    <?php // echo $form->field($model, 'AppOtroCual19') ?>
-
     <?php // echo $form->field($model, 'TiposId_fk20') ?>
 
     <?php // echo $form->field($model, 'AppOtroCual20') ?>

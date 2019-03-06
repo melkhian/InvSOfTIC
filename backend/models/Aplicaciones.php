@@ -64,7 +64,6 @@ use Yii;
 * @property string $TiposId_fk18 ¿Cuál?
 * @property string $AppOtroCual18 Cuál
 * @property string $TiposId_fk19 ¿Interactúa con otra aplicación?
-* @property string $AppOtroCual19 Cuál
 * @property string $TiposId_fk20 ¿Se tiene código fuente?
 * @property string $AppOtroCual20 ¿Dónde está ubicado?
 * @property string $TiposId_fk56 Tipo de Licencia
@@ -169,7 +168,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
     {
         return [
             [['AppNomb', 'AppDesc', 'AppSigl', 'AppVers', 'ESopId1', 'AppUrl', 'TiposId_fk1', 'TiposId_fk2', 'AppNumeDocuAdqu', 'AppValoAdqu', 'AppFechAdqu', 'TiposId_fk3', 'AppNombProc', 'AppEnti', 'ESopId2', 'AppNombCont', 'AppCarg'], 'required'],
-            [['AppCorr', 'AppTeleOfic', 'AppTelePers', 'TiposId_fk4', 'AppNombFunc', 'AppCarg2', 'AppCorr2', 'AppTeleOfic2', 'AppTelePers2', 'AppAcueNiveServ', 'TiposId_fk5', 'AppFechPues', 'AppServPues', 'TiposId_fk6', 'TiposId_fk7'], 'required'],
+            [['AppCorr', 'AppTeleOfic', 'AppTelePers', 'TiposId_fk4', 'AppNombFunc', 'AppCarg2', 'AppCorr2', 'AppTeleOfic2', 'AppTelePers2', 'AppAcueNiveServ', 'TiposId_fk5', 'TiposId_fk6', 'TiposId_fk7'], 'required'],
             [['TiposId_fk8', 'AppServWebVers','TiposId_fk9', 'TiposId_fk10', 'TiposId_fk11', 'TiposId_fk13', 'TiposId_fk15'], 'required'],
             [['TiposId_fk17', 'TiposId_fk19', 'TiposId_fk20', 'AppNumeLice', 'TiposId_fk21', 'TiposId_fk22', 'TiposId_fk23', 'AppVersDist'], 'required'],
             [['TiposId_fk24', 'AppLengServ', 'AppVersApli', 'AppBibl', 'AppObse1', 'AppMane', 'AppVersBD', 'AppPuer1', 'AppObse2', 'AppTipoHard', 'AppProc', 'AppMemo', 'AppEspaDisc', 'AppObse3', 'AppObse4', 'AppNombServBd', 'AppUsua', 'AppNombBd'], 'required'],
@@ -179,7 +178,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
             [['ESopId1', 'ESopId2'], 'integer'],
             [['AppFechAdqu', 'AppFechPues', 'AppFechPues1', 'AppFechPues2', 'AppFechApro'], 'safe'],
             [['AppNomb', 'AppUrl', 'AppValoAdqu', 'AppNombProc', 'AppNombCont', 'AppCarg', 'AppCorr', 'TiposId_fk4', 'AppNombFunc', 'AppServPues', 'AppServPues1', 'AppServPues2', 'AppOtroCual9', 'AppOtroCual10', 'AppOtroCual12', 'AppOtroCual14', 'AppOtroCual18',
-            'AppOtroCual19', 'TiposId_fk56', 'AppNumeLice', 'AppOtroCual21','AppVersDist', 'AppLengServ', 'AppVersApli', 'AppBibl', 'AppMane', 'AppVersBD', 'AppPuer1', 'AppMemo', 'AppEspaDisc', 'AppNombServBd', 'AppNombBd', 'AppRuta', 'AppOtroCual25',
+             'TiposId_fk56', 'AppNumeLice', 'AppOtroCual21','AppVersDist', 'AppLengServ', 'AppVersApli', 'AppBibl', 'AppMane', 'AppVersBD', 'AppPuer1', 'AppMemo', 'AppEspaDisc', 'AppNombServBd', 'AppNombBd', 'AppRuta', 'AppOtroCual25',
             'AppPoliBack', 'AppOtroCual27', 'AppOtroCual28', 'AppDireRaiz', 'AppActa'], 'string', 'max' => 100],
             [['AppDesc', 'AppEnti', 'AppAcueNiveServ'], 'string', 'max' => 500],
             [['AppSigl', 'AppVers', 'AppNumeDocuAdqu', 'AppTeleOfic', 'AppTelePers', 'AppCarg2', 'AppCorr2', 'AppTeleOfic2', 'AppTelePers2', 'AppServWebVers', 'AppOtroCual8', 'AppOtroCual16', 'AppUsua', 'AppEspaActu', 'AppProy'], 'string', 'max' => 50],
@@ -226,8 +225,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
       'AppTelePers2' => 'Teléfono personal',
       'AppAcueNiveServ' => 'Acuerdos de niveles de servicio',
       'TiposId_fk5' => 'Tipo de Puesta ',
-      'AppFechPues' => 'Fecha de puesta',
-      'AppServPues' => 'Servidor de puesta',
+      'AppFechPues' => 'Fecha salida de desarrollo',
+      'AppServPues' => 'Servidor de desarrollo',
       'AppFechPues1' => 'Fecha salida de calidad',
       'AppServPues1' => 'Servidor de calidad',
       'AppFechPues2' => 'Fecha salida de producción',
@@ -254,7 +253,6 @@ class Aplicaciones extends \yii\db\ActiveRecord
       'TiposId_fk18' => '¿Cuál?',
       'AppOtroCual18' => 'Cuál',
       'TiposId_fk19' => '¿Interactúa con otra aplicación?',
-      'AppOtroCual19' => 'Cuál',
       'TiposId_fk20' => '¿Se tiene código fuente?',
       'AppOtroCual20' => '¿Dónde está ubicado?',
       'TiposId_fk56' => 'Tipo de Licencia',
@@ -407,6 +405,13 @@ class Aplicaciones extends \yii\db\ActiveRecord
   public function getAppaceptacion()
   {
     return $this->hasMany(Appaceptacion::className(), ['AppId_fk' => 'AppId']);
+  }
+  /**
+* @return \yii\db\ActiveQuery
+*/
+  public function getAppinteractua()
+  {
+    return $this->hasMany(Appinteractua::className(), ['AppId_fk' => 'AppId']);
   }
 
 

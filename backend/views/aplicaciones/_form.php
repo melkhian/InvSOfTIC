@@ -49,10 +49,10 @@ use wbraganca\dynamicform\DynamicFormWidget;
                     'content' => $this->render('Tabs/acuerdos', ['model' => $model, 'form' => $form]),
                 ],
 
-                // NOTE: label 'VII' contiene un modelo extra, esto es para generar el modelo 1:N
+                // NOTE: label 'VII' contiene modelos extra, esto es para generar los modelos 1:N
                 [
                     'label' => 'Datos Aplicación',
-                    'content' => $this->render('Tabs/datosApp', ['model' => $model, 'modelsAppmodulos' => $modelsAppmodulos, 'form' => $form]),
+                    'content' => $this->render('Tabs/datosApp', ['model' => $model, 'modelsAppmodulos' => $modelsAppmodulos, 'modelsAppinteractua' => $modelsAppinteractua, 'form' => $form]),
                 ],
                 [
                     'label' => 'Req. Software',

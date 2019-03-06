@@ -95,7 +95,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'TiposId_fk18',
             'AppOtroCual18',
             'TiposId_fk19',
-            'AppOtroCual19',
             'TiposId_fk20',
             'AppOtroCual20',
             'TiposId_fk56',
