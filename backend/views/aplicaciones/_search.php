@@ -280,7 +280,9 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'AppObse7') ?>
 
-    <?php // echo $form->field($model, 'AppFuncApru') ?>
+    <?php // echo $form->field($model, 'AppActa') ?>
+
+    <?php // echo $form->field($model, 'AppFechApro') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

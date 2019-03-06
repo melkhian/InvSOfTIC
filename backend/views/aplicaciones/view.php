@@ -169,7 +169,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'AppUbicDocu',
             'AppUbicUlti',
             'AppObse7',
-            'AppFuncApru',
+            'AppActa',
+            'AppFechApro',
         ],
     ]) ?>
 

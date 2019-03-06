@@ -97,9 +97,11 @@ use wbraganca\dynamicform\DynamicFormWidget;
                     'label' => 'Documentación',
                     'content' => $this->render('Tabs/documentacion', ['model' => $model, 'form' => $form]),
                 ],
+
+                // NOTE: label 'XVI' contiene un modelo extra, esto es para generar el modelo 1:N
                 [
                     'label' => 'Aceptación',
-                    'content' => $this->render('Tabs/funcAprueba', ['model' => $model, 'form' => $form]),
+                    'content' => $this->render('Tabs/funcAprueba', ['model' => $model, 'modelsAppaceptacion' => $modelsAppaceptacion, 'form' => $form]),
                 ],
             ]]);
      ?>

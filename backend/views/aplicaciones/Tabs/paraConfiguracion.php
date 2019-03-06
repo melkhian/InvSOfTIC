@@ -34,6 +34,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
           'AParServ',
           'AParPuer',
           'AParDirec',
+          'AParObse'
         ],
       ]); ?>
 
@@ -72,7 +73,8 @@ use wbraganca\dynamicform\DynamicFormWidget;
                 <div class="col-sm-6">
                   <?= $form->field($modelAppparametros, "[{$i}]AParDirec")->textInput(['maxlength' => true]) ?>
                 </div>
-              </div><!-- .row -->
+              </div>
+                <?= $form->field($modelAppparametros, "[{$i}]AParObse")->textArea(['maxlength' => true, 'rows' => 3]) ?>
             </div>
           </div>
         <?php endforeach; ?>

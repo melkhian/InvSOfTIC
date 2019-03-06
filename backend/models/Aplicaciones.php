@@ -138,7 +138,8 @@ use Yii;
 * @property string $AppUbicDocu Ubicación Documentación
 * @property string $AppUbicUlti Ubicación última versión del código fuente
 * @property string $AppObse7 Observaciones
-* @property string $AppFuncApru Funcionario que recibe a satisfacción
+* @property string $AppActa Archivo acta
+* @property string $AppFechApro Fecha de aceptación
 *
 * @property Empsoporte $eSopId1
 * @property Empsoporte $eSopId2
@@ -174,12 +175,12 @@ class Aplicaciones extends \yii\db\ActiveRecord
             [['TiposId_fk24', 'AppLengServ', 'AppVersApli', 'AppBibl', 'AppObse1', 'AppMane', 'AppVersBD', 'AppPuer1', 'AppObse2', 'AppTipoHard', 'AppProc', 'AppMemo', 'AppEspaDisc', 'AppObse3', 'AppObse4', 'AppNombServBd', 'AppUsua', 'AppNombBd'], 'required'],
             [['AppRuta', 'AppEspaActu', 'AppProy', 'TiposId_fk25', 'AppPoliBack', 'TiposId_fk26', 'TiposId_fk27', 'TiposId_fk28', 'AppCantLice', 'AppDireRaiz', 'AppObse5', 'AppObse6', 'TiposId_fk29'], 'required'],
             [['TiposId_fk30', 'TiposId_fk31', 'TiposId_fk32', 'TiposId_fk33', 'TiposId_fk34', 'TiposId_fk35', 'TiposId_fk36', 'TiposId_fk37', 'TiposId_fk38', 'TiposId_fk39', 'TiposId_fk40', 'TiposId_fk41', 'TiposId_fk42', 'TiposId_fk43', 'TiposId_fk44'], 'required'],
-            [['TiposId_fk45', 'TiposId_fk46', 'TiposId_fk47', 'TiposId_fk48', 'TiposId_fk49', 'TiposId_fk50', 'TiposId_fk51', 'TiposId_fk52', 'TiposId_fk53', 'TiposId_fk54', 'AppUbic', 'TiposId_fk55', 'AppUbicDocu', 'AppUbicUlti', 'AppObse7', 'AppFuncApru'], 'required'],
+            [['TiposId_fk45', 'TiposId_fk46', 'TiposId_fk47', 'TiposId_fk48', 'TiposId_fk49', 'TiposId_fk50', 'TiposId_fk51', 'TiposId_fk52', 'TiposId_fk53', 'TiposId_fk54', 'AppUbic', 'TiposId_fk55', 'AppUbicDocu', 'AppUbicUlti', 'AppObse7', 'AppActa'], 'required'],
             [['ESopId1', 'ESopId2'], 'integer'],
-            [['AppFechAdqu', 'AppFechPues', 'AppFechPues1', 'AppFechPues2'], 'safe'],
+            [['AppFechAdqu', 'AppFechPues', 'AppFechPues1', 'AppFechPues2', 'AppFechApro'], 'safe'],
             [['AppNomb', 'AppUrl', 'AppValoAdqu', 'AppNombProc', 'AppNombCont', 'AppCarg', 'AppCorr', 'TiposId_fk4', 'AppNombFunc', 'AppServPues', 'AppServPues1', 'AppServPues2', 'AppOtroCual9', 'AppOtroCual10', 'AppOtroCual12', 'AppOtroCual14', 'AppOtroCual18',
             'AppOtroCual19', 'TiposId_fk56', 'AppNumeLice', 'AppOtroCual21','AppVersDist', 'AppLengServ', 'AppVersApli', 'AppBibl', 'AppMane', 'AppVersBD', 'AppPuer1', 'AppMemo', 'AppEspaDisc', 'AppNombServBd', 'AppNombBd', 'AppRuta', 'AppOtroCual25',
-            'AppPoliBack', 'AppOtroCual27', 'AppOtroCual28', 'AppDireRaiz', 'AppFuncApru'], 'string', 'max' => 100],
+            'AppPoliBack', 'AppOtroCual27', 'AppOtroCual28', 'AppDireRaiz', 'AppActa'], 'string', 'max' => 100],
             [['AppDesc', 'AppEnti', 'AppAcueNiveServ'], 'string', 'max' => 500],
             [['AppSigl', 'AppVers', 'AppNumeDocuAdqu', 'AppTeleOfic', 'AppTelePers', 'AppCarg2', 'AppCorr2', 'AppTeleOfic2', 'AppTelePers2', 'AppServWebVers', 'AppOtroCual8', 'AppOtroCual16', 'AppUsua', 'AppEspaActu', 'AppProy'], 'string', 'max' => 50],
             [['TiposId_fk1', 'TiposId_fk2', 'TiposId_fk3', 'TiposId_fk5', 'TiposId_fk6', 'TiposId_fk7', 'TiposId_fk8', 'TiposId_fk9', 'TiposId_fk10', 'TiposId_fk11', 'TiposId_fk12', 'TiposId_fk13', 'TiposId_fk14', 'TiposId_fk15', 'TiposId_fk16', 'TiposId_fk17', 'TiposId_fk18', 'TiposId_fk19', 'TiposId_fk20', 'TiposId_fk21', 'TiposId_fk22', 'TiposId_fk23', 'TiposId_fk24', 'TiposId_fk25', 'TiposId_fk26', 'TiposId_fk27', 'TiposId_fk28', 'TiposId_fk29', 'TiposId_fk30', 'TiposId_fk31', 'TiposId_fk32', 'TiposId_fk33', 'TiposId_fk34', 'TiposId_fk35', 'TiposId_fk36', 'TiposId_fk37', 'TiposId_fk38', 'TiposId_fk39', 'TiposId_fk40', 'TiposId_fk41', 'TiposId_fk42', 'TiposId_fk43', 'TiposId_fk44', 'TiposId_fk45', 'TiposId_fk46', 'TiposId_fk47', 'TiposId_fk48', 'TiposId_fk49', 'TiposId_fk50', 'TiposId_fk51', 'TiposId_fk52', 'TiposId_fk53', 'TiposId_fk54', 'TiposId_fk55'], 'string', 'max' => 20],
@@ -322,12 +323,14 @@ class Aplicaciones extends \yii\db\ActiveRecord
       'TiposId_fk52' => 'Manual de Usuario Medio',
       'TiposId_fk53' => '¿Se entregó Medio digital con la información de la aplicación? ¿Se entregó?',
       'TiposId_fk54' => '¿Se entregó Medio digital con la información de la aplicación? ¿Se aprobó?',
-      'AppUbic' => 'Ubicación Disco C:',
+      'AppUbic' => 'Ubicación:',
       'TiposId_fk55' => 'Contenido del medio digital',
       'AppUbicDocu' => 'Ubicación Documentación',
       'AppUbicUlti' => 'Ubicación última versión del código fuente',
       'AppObse7' => 'Observaciones',
-      'AppFuncApru' => 'Funcionario que recibe a satisfacción',
+      'AppActa' => 'Archivo acta',
+      'AppFechApro' => 'Fecha de aceptación',
+
     ];
   }
 
@@ -397,6 +400,13 @@ class Aplicaciones extends \yii\db\ActiveRecord
   public function getApparchivos()
   {
     return $this->hasMany(Apparchivos::className(), ['AppId_fk' => 'AppId']);
+  }
+  /**
+* @return \yii\db\ActiveQuery
+*/
+  public function getAppaceptacion()
+  {
+    return $this->hasMany(Appaceptacion::className(), ['AppId_fk' => 'AppId']);
   }
 
 
