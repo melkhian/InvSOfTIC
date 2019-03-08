@@ -180,36 +180,6 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'AppObse4') ?>
 
-    <?php // echo $form->field($model, 'AppNombServBd') ?>
-
-    <?php // echo $form->field($model, 'AppUsua') ?>
-
-    <?php // echo $form->field($model, 'AppNombBd') ?>
-
-    <?php // echo $form->field($model, 'AppRuta') ?>
-
-    <?php // echo $form->field($model, 'AppEspaActu') ?>
-
-    <?php // echo $form->field($model, 'AppProy') ?>
-
-    <?php // echo $form->field($model, 'TiposId_fk25') ?>
-
-    <?php // echo $form->field($model, 'AppOtroCual25') ?>
-
-    <?php // echo $form->field($model, 'AppPoliBack') ?>
-
-    <?php // echo $form->field($model, 'TiposId_fk26') ?>
-
-    <?php // echo $form->field($model, 'TiposId_fk27') ?>
-
-    <?php // echo $form->field($model, 'AppOtroCual27') ?>
-
-    <?php // echo $form->field($model, 'TiposId_fk28') ?>
-
-    <?php // echo $form->field($model, 'AppOtroCual28') ?>
-
-    <?php // echo $form->field($model, 'AppCantLice') ?>
-
     <?php // echo $form->field($model, 'AppDireRaiz') ?>
 
     <?php // echo $form->field($model, 'AppObse5') ?>

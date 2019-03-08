@@ -70,9 +70,10 @@ use wbraganca\dynamicform\DynamicFormWidget;
                     'label' => 'Parámetros',
                     'content' => $this->render('Tabs/paraConfiguracion', ['model' => $model, 'modelsAppparametros' => $modelsAppparametros, 'form' => $form]),
                 ],
+                // NOTE: label 'XI' contiene un modelo extra, esto es para generar el modelo 1:N
                 [
                     'label' => 'Info. BD',
-                    'content' => $this->render('Tabs/infoBase', ['model' => $model, 'form' => $form]),
+                    'content' => $this->render('Tabs/infoBase', ['model' => $model, 'modelsAppinformacion' => $modelsAppinformacion, 'form' => $form]),
                 ],
 
                 // NOTE: label 'XII' contiene un modelo extra, esto es para generar el modelo 1:N

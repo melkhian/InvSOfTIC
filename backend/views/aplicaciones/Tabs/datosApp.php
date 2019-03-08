@@ -164,11 +164,13 @@ use wbraganca\dynamicform\DynamicFormWidget;
       ['onchange'=>'TiposId_fk($id=19,$tab=5,$tipo="radio");'
       ])?>
 
-      <?php // NOTE: Explicación de este DynamicFormWidget en views/aplicaciones/Tabs/datosApp.php, en el último widget ?>
+      <?php // NOTE: Explicación de este DynamicFormWidget en views/aplicaciones/Tabs/datosApp.php, en el último widget
+            //      DynamicFormWidget correspondiente a Aplicaciones Relacionadas
+            ?>
 
       <div class="row">
         <div class="panel panel-default">
-          <div class="panel-heading"><h4><i class="	glyphicon glyphicon-equalizer"></i> Aplicaciones Relacionadas</h4></div>
+          <div class="panel-heading"><h4><i class="	glyphicon glyphicon-equalizer"></i> APLICACIONES RELACIONADAS</h4></div>
           <div class="panel-body">
             <?php DynamicFormWidget::begin([
               'widgetContainer' => 'dynamicform_wrapper', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]

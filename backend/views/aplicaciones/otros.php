@@ -11,24 +11,23 @@ function Init(){
   var appotrocual16 = document.getElementById('aplicaciones-appotrocual16').value;
   var appotrocual18 = document.getElementById('aplicaciones-appotrocual18').value;
   var appotrocual21 = document.getElementById('aplicaciones-appotrocual21').value;
+
   var appotrocual19 = document.querySelector('#aplicaciones-tiposid_fk19 > label:nth-child(1) > input[type="radio"]').checked;
   var appotrocual20 = document.querySelector('#aplicaciones-tiposid_fk20 > label:nth-child(1) > input[type="radio"]').checked;
-  var appotrocual25 = document.querySelector('#aplicaciones-tiposid_fk25 > label:nth-child(3) > input[type="radio"]').checked;
-  var appotrocual27 = document.querySelector('#aplicaciones-tiposid_fk27 > label:nth-child(5) > input[type="radio"]').checked;
-  var appotrocual28 = document.querySelector('#aplicaciones-tiposid_fk28 > label:nth-child(3) > input[type="radio"]').checked;
   var tiposid_fk12 = document.querySelector('#aplicaciones-tiposid_fk11 > label:nth-child(1) > input[type="radio"]').checked;
   var tiposid_fk14 = document.querySelector('#aplicaciones-tiposid_fk13 > label:nth-child(1) > input[type="radio"]').checked;
   var tiposid_fk16 = document.querySelector('#aplicaciones-tiposid_fk15 > label:nth-child(1) > input[type="radio"]').checked;
   var tiposid_fk18 = document.querySelector('#aplicaciones-tiposid_fk17 > label:nth-child(1) > input[type="radio"]').checked;
-  var tiposid_fk18 = document.querySelector('#aplicaciones-tiposid_fk17 > label:nth-child(1) > input[type="radio"]').checked;
-  var tiposid_fk5 = document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(1) > input[type="checkbox"]').checked;
-  var tiposid_fk5_1 = document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(2) > input[type="checkbox"]').checked;
-  var tiposid_fk5_2 = document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(3) > input[type="checkbox"]').checked;
+  // var tiposid_fk5 = document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(1) > input[type="checkbox"]').checked;
+  // var tiposid_fk5_1 = document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(2) > input[type="checkbox"]').checked;
+  // var tiposid_fk5_2 = document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(3) > input[type="checkbox"]').checked;
 
+  // NOTE: Con esta función se carga los checkBox del DynamicFormWidget en views/aplicaciones/Tabs/datosApp.php
+  //       correspondiente a Aplicaciones Relacionadas
   Appinteractua();
 
-  // alert(appotrocual27);
-  // #w0-tab5 > div.form-group.field-aplicaciones-appotrocual8
+  // NOTE: Con esta función se carga los campos de AppFechPues y AppServPues (X3) en views/aplicaciones/Tabs/datosApp.php
+  TipoPuesta();
 
   if (appotrocual8 ==="") {
     document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual8').style.display = "none";
@@ -51,21 +50,21 @@ function Init(){
   if (appotrocual18 ==="") {
     document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual18').style.display = "none";
   }
-  if (appotrocual19 ==="") {
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.display = "none";
-  }
+  // if (appotrocual19 ==="") {
+  //   document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.display = "none";
+  // }
   if (appotrocual21 ==="") {
     document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual21').style.display = "none";
   }
-  if (!tiposid_fk5) {
-    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(1)').style.display = "none";
-  }
-  if (!tiposid_fk5_1) {
-    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(2)').style.display = "none";
-  }
-  if (!tiposid_fk5_2) {
-    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(3)').style.display = "none";
-  }
+  // if (!tiposid_fk5) {
+  //   document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(1)').style.display = "none";
+  // }
+  // if (!tiposid_fk5_1) {
+  //   document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(2)').style.display = "none";
+  // }
+  // if (!tiposid_fk5_2) {
+  //   document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(3)').style.display = "none";
+  // }
   if (!tiposid_fk12) {
     document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-tiposid_fk12').style.display = "none";
   }
@@ -78,24 +77,14 @@ function Init(){
   if (!tiposid_fk18) {
     document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-tiposid_fk18').style.display = "none";
   }
-  if (!appotrocual19) {
-    // alert(appotrocual19);
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.display = "none";
-  }
+  // if (!appotrocual19) {
+  //   // alert(appotrocual19);
+  //   document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.display = "none";
+  // }
   if (!appotrocual20) {
     // alert(appotrocual19);
     document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual20').style.display = "none";
   }
-  if (!appotrocual25) {
-    document.querySelector('#w0-tab10 > div.form-group.field-aplicaciones-appotrocual25').style.display = "none";
-  }
-  if (!appotrocual27) {
-    document.querySelector('#w0-tab10 > div.form-group.field-aplicaciones-appotrocual27').style.display = "none";
-  }
-  if (!appotrocual28) {
-    document.querySelector('#w0-tab10 > div.form-group.field-aplicaciones-appotrocual28').style.display = "none";
-  }
-
 }
 
 // Función para ocultar o mostrar los campos al selecionar una determinada respuesta en los campos tipo Radio o checkBoxList

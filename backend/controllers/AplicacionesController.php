@@ -14,6 +14,7 @@ use backend\models\Apparchivos;
 use backend\models\Appparametros;
 use backend\models\Appaceptacion;
 use backend\models\Appinteractua;
+use backend\models\Appinformacion;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -107,6 +108,7 @@ class AplicacionesController extends Controller
         $modelsAppparametros = [new Appparametros];
         $modelsAppaceptacion = [new Appaceptacion];
         $modelsAppinteractua = [new Appinteractua];
+        $modelsAppinformacion = [new Appinformacion];
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
@@ -135,6 +137,9 @@ class AplicacionesController extends Controller
 
           $modelsAppinteractua = Model::createMultiple(Appinteractua::classname());
           Model::loadMultiple($modelsAppinteractua, Yii::$app->request->post());
+
+          $modelsAppinformacion = Model::createMultiple(Appinformacion::classname());
+          Model::loadMultiple($modelsAppinformacion, Yii::$app->request->post());
 
           // validate all models
           $valid = $model->validate();
@@ -202,6 +207,13 @@ class AplicacionesController extends Controller
                     break;
                   }
                 }
+                foreach ($modelsAppinformacion as $modelAppinformacion) {
+                  $modelAppinformacion->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppinformacion->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
               }
               if ($flag) {
                 $transaction->commit();
@@ -224,6 +236,7 @@ class AplicacionesController extends Controller
           'modelsAppparametros' => (empty($modelsAppparametros)) ? [new Appparametros] : $modelsAppparametros,
           'modelsAppaceptacion' => (empty($modelsAppaceptacion)) ? [new Appaceptacion] : $modelsAppaceptacion,
           'modelsAppinteractua' => (empty($modelsAppinteractua)) ? [new Appinteractua] : $modelsAppinteractua,
+          'modelsAppinformacion' => (empty($modelsAppinformacion)) ? [new Appinformacion] : $modelsAppinformacion,
         ]);
       }
       else {
@@ -254,6 +267,7 @@ class AplicacionesController extends Controller
         $modelsAppparametros = $model->appparametros;
         $modelsAppaceptacion = $model->appaceptacion;
         $modelsAppinteractua = $model->appinteractua;
+        $modelsAppinformacion = $model->appinformacion;
 
         //Se agrega para pasar de String a Array
         $model->TiposId_fk5 = explode(',',$model->TiposId_fk5);
@@ -268,7 +282,27 @@ class AplicacionesController extends Controller
         $model->TiposId_fk18 = explode(',',$model->TiposId_fk18);
         $model->TiposId_fk21 = explode(',',$model->TiposId_fk21);
         $model->TiposId_fk23 = explode(',',$model->TiposId_fk23);
-        $model->TiposId_fk26 = explode(',',$model->TiposId_fk26);
+
+        $model->TiposId_fk31 = explode(',',$model->TiposId_fk31);
+        $model->TiposId_fk34 = explode(',',$model->TiposId_fk34);
+        $model->TiposId_fk37 = explode(',',$model->TiposId_fk37);
+        $model->TiposId_fk40 = explode(',',$model->TiposId_fk40);
+        $model->TiposId_fk43 = explode(',',$model->TiposId_fk43);
+        $model->TiposId_fk46 = explode(',',$model->TiposId_fk46);
+        $model->TiposId_fk49 = explode(',',$model->TiposId_fk49);
+        $model->TiposId_fk52 = explode(',',$model->TiposId_fk52);
+        $model->TiposId_fk55 = explode(',',$model->TiposId_fk55);
+
+        // NOTE: Ciclo para realizar explode de los checkBox presentes en views/aplicaciones/Tabs/infoBase.php. Difieren porque están dentro de un DynamicFormWidget
+
+        for ($i=0; $i < count($model->appinformacion); $i++) {
+          $modelsAppinformacion[$i]['TiposId_fk25'] = explode(',',$modelsAppinformacion[$i]['TiposId_fk25']);
+          $modelsAppinformacion[$i]['TiposId_fk26'] = explode(',',$modelsAppinformacion[$i]['TiposId_fk26']);
+          $modelsAppinformacion[$i]['TiposId_fk27'] = explode(',',$modelsAppinformacion[$i]['TiposId_fk27']);
+          $modelsAppinformacion[$i]['TiposId_fk28'] = explode(',',$modelsAppinformacion[$i]['TiposId_fk28']);
+        }
+
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
@@ -312,6 +346,11 @@ class AplicacionesController extends Controller
           Model::loadMultiple($modelsAppinteractua, Yii::$app->request->post());
           $deletedIDs7 = array_diff($oldIDs7, array_filter(ArrayHelper::map($modelsAppinteractua, 'AIntId', 'AIntId')));
 
+          $oldIDs8 = ArrayHelper::map($modelsAppinformacion, 'AInfId', 'AInfId');
+          $modelsAppinformacion = Model::createMultiple(Appinformacion::classname(), $modelsAppinformacion);
+          Model::loadMultiple($modelsAppinformacion, Yii::$app->request->post());
+          $deletedIDs8 = array_diff($oldIDs8, array_filter(ArrayHelper::map($modelsAppinformacion, 'AInfId', 'AInfId')));
+
           // validate all models
           $valid = $model->validate();
           // $valid = Model::validateMultiple($modelsAppmodulos) && $valid;
@@ -344,6 +383,9 @@ class AplicacionesController extends Controller
                 }
                 if (! empty($deletedIDs7)) {
                   Appinteractua::deleteAll(['AIntId' => $deletedIDs7]);
+                }
+                if (! empty($deletedIDs8)) {
+                  Appinformacion::deleteAll(['AInfId' => $deletedIDs8]);
                 }
 
                 foreach ($modelsAppmodulos as $modelAppmodulos) {
@@ -402,6 +444,19 @@ class AplicacionesController extends Controller
                     break;
                   }
                 }
+                foreach ($modelsAppinformacion as $modelAppinformacion) {
+                  $modelAppinformacion->AppId_fk = $model->AppId;
+
+                  // NOTE: Se realiza aquí el implode para los checkBox presentes en views/aplicaciones/Tabs/infoBase.php
+                  $modelAppinformacion->TiposId_fk25 = implode(',',(array)$modelAppinformacion->TiposId_fk25);
+                  $modelAppinformacion->TiposId_fk26 = implode(',',(array)$modelAppinformacion->TiposId_fk26);
+                  $modelAppinformacion->TiposId_fk27 = implode(',',(array)$modelAppinformacion->TiposId_fk27);
+                  $modelAppinformacion->TiposId_fk28 = implode(',',(array)$modelAppinformacion->TiposId_fk28);
+                  if (! ($flag = $modelAppinformacion->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
               }
               if ($flag) {
                 $transaction->commit();
@@ -423,6 +478,7 @@ class AplicacionesController extends Controller
           'modelsAppparametros' => (empty($modelsAppparametros)) ? [new Appparametros] : $modelsAppparametros,
           'modelsAppaceptacion' => (empty($modelsAppaceptacion)) ? [new Appaceptacion] : $modelsAppaceptacion,
           'modelsAppinteractua' => (empty($modelsAppinteractua)) ? [new Appinteractua] : $modelsAppinteractua,
+          'modelsAppinformacion' => (empty($modelsAppinformacion)) ? [new Appinformacion] : $modelsAppinformacion,
         ]);
       }
       else {
