@@ -298,13 +298,13 @@ class Rolusua extends \yii\db\ActiveRecord
             $rows1 = $queryId->queryOne();
             // $resultId = implode(",", $rows1);
 
-            foreach ($rows1 as $key => $value)
-            {
-                if ($key == $pk[0])
-                {
+            // foreach ($rows1 as $key => $value)
+            // {
+                // if ($key == $pk[0])
+                // {
                     $var[0] = "Id => ".$rows1[$pk[0]];
-                }
-            }
+                // }
+            // }
 
             $resultId = implode(",", $var);
 

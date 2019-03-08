@@ -89,7 +89,8 @@ class RolusuaController extends Controller
       if(isset(Yii::$app->user->identity->id)){
         if(SiteController::findCom(42)){
         $model = new Rolusua();
-        $mensaje = $mensaje = 'Proceso terminado con Exito';  ;
+        $mensaje = '';
+        $get = 0;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
           return $this->redirect(['view','id' => $model->RUsuId]);
@@ -98,19 +99,34 @@ class RolusuaController extends Controller
         $var = \Yii::$app->request->post();
         // print('<pre>');
         // print_r($var);
+        // print('</pre>');
+        // die();
         // // $var[2]
         // \Yii::$app->end();
-        foreach ($var['user_id'] as $key => $value) {
+        
+        foreach ($var['user_id'] as $key => $value) 
+        {          
           $validador = rolusua::find()->where("UsuId_fk = $value and RolId_fk =".$var['Rolusua']['RolId_fk'])->one();
-          if(empty($validador)){            
+          if(empty($validador))
+          {
+            $get = 1;   
             $model = new Rolusua();
             $model->load(\Yii::$app->request->post());
             $model->UsuId_fk = $value;
-            $model->save();                   
-          }else{
+            $model->RUsuCadu = ($var['fechaExpi'][$key] != '') ? $var['fechaExpi'][$key] : $model->RUsuCadu;
+            $model->save();                             
+          }else
+          {
             $mensaje = 'El Usuario ya tiene cargado ese Rol';
           }                  
-        }        
+        }           
+
+        // print_r($get);
+        // die(); 
+        if ($get == 1) 
+        {
+          $mensaje = 'Proceso Exitoso';
+        }
       }
         $searchModel = new UserSearch; //---> Data Modelo que aparece en el modal
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams()); //---> Campos de Busqueda del Modal
@@ -232,15 +248,5 @@ class RolusuaController extends Controller
        'dataProvider' => $dataProvider,
      ]);
    }
-
-   public function actionRemove($name = null)
-    {
-       echo      
-       "<script language='javascript'>
-       alert('mensaje');
-        document.getElementById('grid_user_list').remove($id);
-       </script>
-       ";              
-    }
 
 }
