@@ -43,9 +43,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            // ['class' => 'yii\grid\SerialColumn'],
 
-            'ESopId',
+            // 'ESopId',
             'ESopNit',
             'ESopNomb',
             'ESopDire',
@@ -57,6 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'TiposId_fk2',
 
             ['class' => 'yii\grid\ActionColumn',
+             'header'=>"Acciones",
              'template' => "$view $update"],
         ],
     ]); ?>

@@ -46,8 +46,9 @@ $this->params['breadcrumbs'][] = $this->title;
         // 'format' => 'raw',
         'columns' => [            
             ['class' => 'yii\grid\ActionColumn',
-             'template' => "$view $update"],
-            'AudId',
+             'header'=>"Acciones",
+             'template' => "$view $update {delete}"],
+            // 'AudId',
             // 'UsuId_fk',
             ['attribute'=>'UsuId_fk',
              'value'=> function($model){return $model->UsuId_fk();},

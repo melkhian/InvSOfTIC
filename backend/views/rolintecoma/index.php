@@ -44,9 +44,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            // ['class' => 'yii\grid\SerialColumn'],
 
-            'RIComId',
+            // 'RIComId',
             ['attribute'=>'RolId_fk',
              'value'=> function($model){return $model->RolId_fk();},
              'filter' => Html::activeDropDownList($searchModel, 'RolId_fk', ArrayHelper::map(Roles::find()->all(),'RolId','RolNomb'),['class'=>'form-control','prompt' => 'Seleccione el Rol']),
@@ -56,6 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
              'filter' => Html::activeDropDownList($searchModel, 'IComid_fk', ArrayHelper::map(Intecoma::find()->all(),'IcomId','IcomFunc'),['class'=>'form-control','prompt' => 'Seleccione la Funcionalidad']),
             ],
             ['class' => 'yii\grid\ActionColumn',
+             'header'=>"Acciones",
              'template' => "$view $update"],
         ],
     ]); ?>

@@ -47,9 +47,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            // ['class' => 'yii\grid\SerialColumn'],
 
-            'ADepId',
+            // 'ADepId',
             ['attribute'=>'DepId_fk',
              'value'=> function($model){return $model->DepId_fk();},
              'filter' => Html::activeDropDownList($searchModel, 'DepId_fk', ArrayHelper::map(Dependencias::find()->all(),'DepId','DepNomb'),['class'=>'form-control','prompt' => 'Seleccione la Dependencia']),
@@ -62,6 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'ADepFechSist',
 
             ['class' => 'yii\grid\ActionColumn',
+             'header'=>"Acciones",
              'template' => "$view $update"],
         ],
     ]); ?>

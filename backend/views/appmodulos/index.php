@@ -44,9 +44,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            // ['class' => 'yii\grid\SerialColumn'],
 
-            'AModId',
+            // 'AModId',
             'AppId_fk',
             'AModNomb',
             'AModDesc',
@@ -59,6 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'AModObse',
 
             ['class' => 'yii\grid\ActionColumn',
+             'header'=>"Acciones",
              'template' => "$view $update"],
         ],
     ]); ?>

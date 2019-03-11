@@ -613,7 +613,7 @@ private $var;
 
             $MaxId = (new \yii\db\Query()) 
             ->select($pk)
-            ->from($AudMod)
+            ->from('user')
             ->orderBy($pk[0]." DESC")          
             ->createCommand()
             ->execute();
@@ -622,7 +622,7 @@ private $var;
 
             $queryId = (new \yii\db\Query())
             ->select($pk)
-            ->from($AudMod)
+            ->from('user')
             ->where([$pk[0] => $MaxId])
             ->createCommand();    
             $rows1 = $queryId->queryOne();            

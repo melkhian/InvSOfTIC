@@ -44,8 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-            'DepId',
+            // ['class' => 'yii\grid\SerialColumn'],
+            // 'DepId',
             'DepNomb',
             'DepEnca',
             ['attribute'=>'TiposId_fk1',
@@ -58,6 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'DepCorr',
 
             ['class' => 'yii\grid\ActionColumn',
+            'header'=>"Acciones",
              'template' => "$view $update",             
          ],
         ],

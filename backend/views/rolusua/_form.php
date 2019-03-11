@@ -123,7 +123,8 @@ use yii\data\ActiveDataProvider;
             'value' => date('d-M-Y', strtotime('+2 days')),
             'options' => ['placeholder' => 'Seleccione la fecha de Caducidad'],
             'pluginOptions' => [
-            'format' => 'dd-mm-yyyy',
+            // 'format' => 'dd-mm-yyyy',
+            'format' => 'yyyy-mm-dd',
             'todayHighlight' => true]]);
      ?>
 

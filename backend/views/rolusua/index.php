@@ -58,6 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'RUsuCadu',
 
             ['class' => 'yii\grid\ActionColumn',
+             'header'=>"Acciones",
              'template' => "$view $update"],
         ],
     ]); ?>

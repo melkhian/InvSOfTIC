@@ -43,9 +43,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            // ['class' => 'yii\grid\SerialColumn'],
 
-            'ProId',
+            // 'ProId',
             'ProNomb',
             'ProDesc',
             'ProObje',
@@ -64,6 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'ProFinProy',
 
             ['class' => 'yii\grid\ActionColumn',
+             'header'=>"Acciones",
              'template' => "$view $update"],
         ],
     ]); ?>

@@ -14,7 +14,6 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
 $this->title = 'Usuarios';
 $this->params['breadcrumbs'][] = $this->title;
 // echo Html::a('Sign Up',['site/signup'], ['class' => 'btn btn-black', 'title' => 'Sign Up']);
@@ -22,9 +21,15 @@ $this->params['breadcrumbs'][] = $this->title;
 // $id = Yii::$app->user->identity->id;
 // echo Html::tag('p', Html::encode($id->id), ['class' => 'username']);
 ?>
+<!-- ------------------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------------------- -->
 
+
+<!-- ------------------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------------------- -->
 <div class="user-index">
-
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <p>
@@ -53,9 +58,9 @@ $this->params['breadcrumbs'][] = $this->title;
           $enable = '';
         }
         if (SiteController::findCom(67)) {
-          $reset = '{reset}';
+          $delete = '{delete}';
         } else {
-          $reset = '';
+          $delete = '';
         }
         ?>
 
@@ -65,8 +70,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-            'id',
+            // ['class' => 'yii\grid\SerialColumn'],
+            // 'id',
             'usuiden',
             'usuprimnomb',
             'ususegunomb',
@@ -106,7 +111,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             // NOTE: Custom entire project in ActionColumn: In vendor\yiisoft\yii2\grid\ActionColumn.php file
             ['class' => 'yii\grid\ActionColumn',
-             'template' => "$view $update $enable $reset"],
+             'header'=>"Acciones",
+             'template' => "$view $update $enable $delete"],
         ],
     ]);
 

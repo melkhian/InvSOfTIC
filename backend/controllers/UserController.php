@@ -8,6 +8,7 @@ use backend\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\bootstrap\Alert;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -85,7 +86,7 @@ class UserController extends Controller
     {
       if(isset(Yii::$app->user->identity->id)){
         if(SiteController::findCom(1)){
-        $model = new User();
+        $model = new User();        
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -139,17 +140,34 @@ class UserController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    // public function actionDelete($id)
-    // {
-    //     if(SiteController::findCom(4)){
-    //     $this->findModel($id)->delete();
-    //
-    //     return $this->redirect(['index']);
-    //     }
-    //     else {
-    //       $this->redirect(['site/error']);
-    //     }
-    // }
+    public function actionDelete($id)
+    {
+      // $User_id = $this->findModel($id);
+      $mensaje = '';
+      $query = (new \yii\db\Query())
+      ->select('*')
+      ->from('auditorias')
+      ->where(['usuid_fk' => $id]);
+      $command = $query->createCommand();
+      $rows = $command->queryScalar();
+      // echo "<pre>";
+      // print_r($rows);
+      // echo "</pre>";
+      // die();
+      if ($rows != '') 
+      {        
+        $mensaje = "El Usuario no puede ser eliminado";    
+        Yii::$app->session->setFlash('danger', $mensaje);    
+      }
+      else
+      {              
+        $mensaje = "Proceso Exitoso"; 
+        Yii::$app->session->setFlash('success', $mensaje);
+        $this->findModel($id)->delete();       
+      }
+      
+        return $this->redirect(['index']);        
+    }
 
     /**
      * Finds the User model based on its primary key value.
@@ -190,32 +208,47 @@ class UserController extends Controller
 
     public function actionEnable($id)
     {
-      if(SiteController::findCom(4)){
-      $query = (new \yii\db\Query())
-      ->select('status')
-      ->from('user')
-      ->where(['id' => $id]);
-      $command = $query->createCommand();
-      $rows = $command->queryScalar();
+      $IdUser = Yii::$app->user->identity->id;
 
-      if ($rows == 10) {
-        $connection = Yii::$app->db;
-        $connection->createCommand("UPDATE user SET status=6 WHERE id=$id")
-        ->execute();
-      }
-      if ($rows == 6) {
-        $connection = Yii::$app->db;
-        $connection->createCommand("UPDATE user SET status=10 WHERE id=$id")
-        ->execute();
-      }
-      $searchModel = new UserSearch();
-      $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        return $this->render('index', [
-            // 'model' => $this->findModel($id),
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
+      $query_rol = (new \yii\db\Query())
+      ->select('rolid_fk')
+      ->from('rolusua')
+      ->where(['id' => $id]);
+      $command_rol = $query->createCommand();
+      $rows_rol = $command->queryScalar();     
+
+
+      if(SiteController::findCom(4))
+      {
+        $query = (new \yii\db\Query())
+        ->select('status')
+        ->from('user')
+        ->where(['id' => $id]);
+        $command = $query->createCommand();
+        $rows = $command->queryScalar();
+        if ($rows_rol) {         
+        
+          if ($rows == 10) 
+          {
+            $connection = Yii::$app->db;
+            $connection->createCommand("UPDATE user SET status=6 WHERE id=$id")
+            ->execute();
+          }
+          if ($rows == 6) 
+          {
+            $connection = Yii::$app->db;
+            $connection->createCommand("UPDATE user SET status=10 WHERE id=$id")
+            ->execute();
+          }
+          $searchModel = new UserSearch();
+          $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+            return $this->render('index', [
+                // 'model' => $this->findModel($id),
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+          }
+        }
 }
   // NOTE: Función para restablecer la contraseña de Usuario a una por defecto definida dentro de los parámetros de la función.
   //       Se llama desde el index y se ha codificado en vendor/yii2/grid/ActionColumn.php
@@ -270,24 +303,5 @@ class UserController extends Controller
       'user' => $user,
     ]);
   }
+
 }
-    // public function findCom($com)
-    // {
-    //   $IdUser = Yii::$app->user->identity->id;
-    //   // $var = 'Usuarios';
-    //   $query = (new \yii\db\Query())
-    //   ->select('comId')
-    //   ->from('user')
-    //   ->innerJoin('rolusua','rolusua.usuid_fk = user.id')
-    //   ->innerJoin('roles','roles.rolid = rolusua.rolid_fk')
-    //   ->innerJoin('rolintecoma','rolintecoma.rolid_fk = roles.rolid')
-    //   ->innerJoin('intecoma','intecoma.icomid = rolintecoma.icomid_fk')
-    //   ->innerJoin('interfaces','interfaces.intid = intecoma.IntiId_fk')
-    //   ->innerJoin('comandos','comandos.comid = interfaces.intId')
-    //   ->where([
-    //     'id' => $IdUser,
-    //     'comid_fk' => $com]);
-    //     $command = $query->createCommand();
-    //     $rows = $command->queryScalar();
-    //     return $rows;
-    // }

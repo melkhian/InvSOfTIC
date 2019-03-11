@@ -103,7 +103,9 @@ class RolusuaController extends Controller
         // die();
         // // $var[2]
         // \Yii::$app->end();
-        
+        // print_r($var);
+        // print('</pre>');
+        // die();
         foreach ($var['user_id'] as $key => $value) 
         {          
           $validador = rolusua::find()->where("UsuId_fk = $value and RolId_fk =".$var['Rolusua']['RolId_fk'])->one();
@@ -113,7 +115,11 @@ class RolusuaController extends Controller
             $model = new Rolusua();
             $model->load(\Yii::$app->request->post());
             $model->UsuId_fk = $value;
-            $model->RUsuCadu = ($var['fechaExpi'][$key] != '') ? $var['fechaExpi'][$key] : $model->RUsuCadu;
+            // print('<pre>');
+            // print_r($var['Rolusua']['RUsuCadu']);
+            // print('</pre>');
+            // die();
+            $model->RUsuCadu = ($var['fechaExpi'][$key] != '') ? $var['fechaExpi'][$key] : $var['Rolusua']['RUsuCadu'];
             $model->save();                             
           }else
           {
