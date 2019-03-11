@@ -25,6 +25,9 @@ $this->params['breadcrumbs'][] = 'Update';
         'modelsAppaceptacion' => $modelsAppaceptacion,
         'modelsAppinteractua' => $modelsAppinteractua,
         'modelsAppinformacion' => $modelsAppinformacion,
+        'modelsAppaplicaciones' => $modelsAppaplicaciones,
+        'modelsAppbasedatos' => $modelsAppbasedatos,
+        'modelsApphardware' => $modelsApphardware,
     ]) ?>
 
 </div>

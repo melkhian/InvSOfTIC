@@ -15,6 +15,9 @@ use backend\models\Appparametros;
 use backend\models\Appaceptacion;
 use backend\models\Appinteractua;
 use backend\models\Appinformacion;
+use backend\models\Appaplicaciones;
+use backend\models\Appbasedatos;
+use backend\models\Apphardware;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -109,6 +112,9 @@ class AplicacionesController extends Controller
         $modelsAppaceptacion = [new Appaceptacion];
         $modelsAppinteractua = [new Appinteractua];
         $modelsAppinformacion = [new Appinformacion];
+        $modelsAppaplicaciones = [new Appaplicaciones];
+        $modelsAppbasedatos = [new Appbasedatos];
+        $modelsApphardware = [new Apphardware];
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
@@ -140,6 +146,15 @@ class AplicacionesController extends Controller
 
           $modelsAppinformacion = Model::createMultiple(Appinformacion::classname());
           Model::loadMultiple($modelsAppinformacion, Yii::$app->request->post());
+
+          $modelsAppaplicaciones = Model::createMultiple(Appaplicaciones::classname());
+          Model::loadMultiple($modelsAppaplicaciones, Yii::$app->request->post());
+
+          $modelsAppbasedatos = Model::createMultiple(Appbasedatos::classname());
+          Model::loadMultiple($modelsAppbasedatos, Yii::$app->request->post());
+
+          $modelsApphardware = Model::createMultiple(Apphardware::classname());
+          Model::loadMultiple($modelsApphardware, Yii::$app->request->post());
 
           // validate all models
           $valid = $model->validate();
@@ -214,6 +229,27 @@ class AplicacionesController extends Controller
                     break;
                   }
                 }
+                foreach ($modelsAppaplicaciones as $modelAppaplicaciones) {
+                  $modelAppaplicaciones->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppaplicaciones->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsAppbasedatos as $modelAppbasedatos) {
+                  $modelAppbasedatos->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppbasedatos->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsApphardware as $modelApphardware) {
+                  $modelApphardware->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelApphardware->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
               }
               if ($flag) {
                 $transaction->commit();
@@ -237,6 +273,9 @@ class AplicacionesController extends Controller
           'modelsAppaceptacion' => (empty($modelsAppaceptacion)) ? [new Appaceptacion] : $modelsAppaceptacion,
           'modelsAppinteractua' => (empty($modelsAppinteractua)) ? [new Appinteractua] : $modelsAppinteractua,
           'modelsAppinformacion' => (empty($modelsAppinformacion)) ? [new Appinformacion] : $modelsAppinformacion,
+          'modelsAppaplicaciones' => (empty($modelsAppaplicaciones)) ? [new Appaplicaciones] : $modelsAppaplicaciones,
+          'modelsAppbasedatos' => (empty($modelsAppbasedatos)) ? [new Appbasedatos] : $modelsAppbasedatos,
+          'modelsApphardware' => (empty($modelsApphardware)) ? [new Apphardware] : $modelsApphardware,
         ]);
       }
       else {
@@ -268,6 +307,9 @@ class AplicacionesController extends Controller
         $modelsAppaceptacion = $model->appaceptacion;
         $modelsAppinteractua = $model->appinteractua;
         $modelsAppinformacion = $model->appinformacion;
+        $modelsAppaplicaciones = $model->appaplicaciones;
+        $modelsAppbasedatos = $model->appbasedatos;
+        $modelsApphardware = $model->apphardware;
 
         //Se agrega para pasar de String a Array
         $model->TiposId_fk5 = explode(',',$model->TiposId_fk5);
@@ -302,9 +344,16 @@ class AplicacionesController extends Controller
           $modelsAppinformacion[$i]['TiposId_fk28'] = explode(',',$modelsAppinformacion[$i]['TiposId_fk28']);
         }
 
-
+        // echo "<pre>";
+        // print_r($model->save());
+        // echo "</pre>";
+        // die();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+          // echo "<pre>";
+          // print_r($model->save());
+          // echo "</pre>";
+          // die();
 
           $oldIDs = ArrayHelper::map($modelsAppmodulos, 'AModId', 'AModId');
           $modelsAppmodulos = Model::createMultiple(Appmodulos::classname(), $modelsAppmodulos);
@@ -351,6 +400,21 @@ class AplicacionesController extends Controller
           Model::loadMultiple($modelsAppinformacion, Yii::$app->request->post());
           $deletedIDs8 = array_diff($oldIDs8, array_filter(ArrayHelper::map($modelsAppinformacion, 'AInfId', 'AInfId')));
 
+          $oldIDs9 = ArrayHelper::map($modelsAppaplicaciones, 'AAplId', 'AAplId');
+          $modelsAppaplicaciones = Model::createMultiple(Appaplicaciones::classname(), $modelsAppaplicaciones);
+          Model::loadMultiple($modelsAppaplicaciones, Yii::$app->request->post());
+          $deletedIDs9 = array_diff($oldIDs9, array_filter(ArrayHelper::map($modelsAppaplicaciones, 'AAplId', 'AAplId')));
+
+          $oldIDs10 = ArrayHelper::map($modelsAppbasedatos, 'ABasId', 'ABasId');
+          $modelsAppbasedatos = Model::createMultiple(Appbasedatos::classname(), $modelsAppbasedatos);
+          Model::loadMultiple($modelsAppbasedatos, Yii::$app->request->post());
+          $deletedIDs10 = array_diff($oldIDs10, array_filter(ArrayHelper::map($modelsAppbasedatos, 'ABasId', 'ABasId')));
+
+          $oldIDs11 = ArrayHelper::map($modelsApphardware, 'AHarId', 'AHarId');
+          $modelsApphardware = Model::createMultiple(Apphardware::classname(), $modelsApphardware);
+          Model::loadMultiple($modelsApphardware, Yii::$app->request->post());
+          $deletedIDs11 = array_diff($oldIDs11, array_filter(ArrayHelper::map($modelsApphardware, 'AHarId', 'AHarId')));
+
           // validate all models
           $valid = $model->validate();
           // $valid = Model::validateMultiple($modelsAppmodulos) && $valid;
@@ -386,6 +450,15 @@ class AplicacionesController extends Controller
                 }
                 if (! empty($deletedIDs8)) {
                   Appinformacion::deleteAll(['AInfId' => $deletedIDs8]);
+                }
+                if (! empty($deletedIDs9)) {
+                  Appaplicaciones::deleteAll(['AAplId' => $deletedIDs9]);
+                }
+                if (! empty($deletedIDs10)) {
+                  Appbasedatos::deleteAll(['ABasId' => $deletedIDs10]);
+                }
+                if (! empty($deletedIDs11)) {
+                  Apphardware::deleteAll(['AHarId' => $deletedIDs11]);
                 }
 
                 foreach ($modelsAppmodulos as $modelAppmodulos) {
@@ -457,6 +530,27 @@ class AplicacionesController extends Controller
                     break;
                   }
                 }
+                foreach ($modelsAppaplicaciones as $modelAppaplicaciones) {
+                  $modelAppaplicaciones->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppaplicaciones->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsAppbasedatos as $modelAppbasedatos) {
+                  $modelAppbasedatos->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppbasedatos->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsApphardware as $modelApphardware) {
+                  $modelApphardware->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelApphardware->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
               }
               if ($flag) {
                 $transaction->commit();
@@ -479,6 +573,9 @@ class AplicacionesController extends Controller
           'modelsAppaceptacion' => (empty($modelsAppaceptacion)) ? [new Appaceptacion] : $modelsAppaceptacion,
           'modelsAppinteractua' => (empty($modelsAppinteractua)) ? [new Appinteractua] : $modelsAppinteractua,
           'modelsAppinformacion' => (empty($modelsAppinformacion)) ? [new Appinformacion] : $modelsAppinformacion,
+          'modelsAppaplicaciones' => (empty($modelsAppaplicaciones)) ? [new Appaplicaciones] : $modelsAppaplicaciones,
+          'modelsAppbasedatos' => (empty($modelsAppbasedatos)) ? [new Appbasedatos] : $modelsAppbasedatos,
+          'modelsApphardware' => (empty($modelsApphardware)) ? [new Apphardware] : $modelsApphardware,
         ]);
       }
       else {

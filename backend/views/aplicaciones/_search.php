@@ -152,31 +152,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'TiposId_fk24') ?>
 
-    <?php // echo $form->field($model, 'AppLengServ') ?>
-
-    <?php // echo $form->field($model, 'AppVersApli') ?>
-
-    <?php // echo $form->field($model, 'AppBibl') ?>
-
-    <?php // echo $form->field($model, 'AppObse1') ?>
-
-    <?php // echo $form->field($model, 'AppMane') ?>
-
-    <?php // echo $form->field($model, 'AppVersBD') ?>
-
-    <?php // echo $form->field($model, 'AppPuer1') ?>
-
-    <?php // echo $form->field($model, 'AppObse2') ?>
-
-    <?php // echo $form->field($model, 'AppTipoHard') ?>
-
-    <?php // echo $form->field($model, 'AppProc') ?>
-
-    <?php // echo $form->field($model, 'AppMemo') ?>
-
-    <?php // echo $form->field($model, 'AppEspaDisc') ?>
-
-    <?php // echo $form->field($model, 'AppObse3') ?>
+    <?php // echo $form->field($model, 'AppObse8') ?>
 
     <?php // echo $form->field($model, 'AppObse4') ?>
 

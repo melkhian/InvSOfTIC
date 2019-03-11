@@ -55,12 +55,13 @@ use wbraganca\dynamicform\DynamicFormWidget;
                     'content' => $this->render('Tabs/datosApp', ['model' => $model, 'modelsAppmodulos' => $modelsAppmodulos, 'modelsAppinteractua' => $modelsAppinteractua, 'form' => $form]),
                 ],
                 [
+                // NOTE: label 'VIII' contiene modelos extra, esto es para generar los modelos 1:N
                     'label' => 'Req. Software',
-                    'content' => $this->render('Tabs/reqSoftware', ['model' => $model, 'form' => $form]),
+                    'content' => $this->render('Tabs/reqSoftware', ['model' => $model,'modelsAppaplicaciones' => $modelsAppaplicaciones, 'modelsAppbasedatos' => $modelsAppbasedatos, 'form' => $form]),
                 ],
                 [
                     'label' => 'Req. Hardware',
-                    'content' => $this->render('Tabs/reqHardware', ['model' => $model, 'form' => $form]),
+                    'content' => $this->render('Tabs/reqHardware', ['model' => $model, 'modelsApphardware' => $modelsApphardware, 'form' => $form]),
                 ],
                 [
                     'label' => 'Archivos',
