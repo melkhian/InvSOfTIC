@@ -9,7 +9,10 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\bootstrap\Alert;
-
+use kartik\dialog\Dialog;
+use kartik\dialog\DialogAsset;
+use yii\helpers\Html;   
+use yii\bootstrap\Widget;
 /**
  * UserController implements the CRUD actions for User model.
  */
@@ -213,10 +216,11 @@ class UserController extends Controller
       $query_rol = (new \yii\db\Query())
       ->select('rolid_fk')
       ->from('rolusua')
-      ->where(['id' => $id]);
-      $command_rol = $query->createCommand();
-      $rows_rol = $command->queryScalar();     
-
+      ->where(['usuid_fk' => $id]);
+      $command_rol = $query_rol->createCommand();
+      $rows_rol = $command_rol->queryAll(); 
+      // $size = sizeof($rows_rol);
+      $conteo = 0;      
 
       if(SiteController::findCom(4))
       {
@@ -226,7 +230,19 @@ class UserController extends Controller
         ->where(['id' => $id]);
         $command = $query->createCommand();
         $rows = $command->queryScalar();
-        if ($rows_rol) {         
+
+        foreach ($rows_rol as $value) 
+        {
+          // echo "hola <br>";
+          // print_r($value['rolid_fk']);
+          if ($value['rolid_fk'] == 1) 
+          {
+            $conteo = 1;
+          }
+        }
+
+        if ($conteo != 1) 
+        {                                            
         
           if ($rows == 10) 
           {
@@ -247,44 +263,101 @@ class UserController extends Controller
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
             ]);
+        }
+        else
+        {           
+          $seleccion=1;
+          // Yii::$app->session->setFlash('danger', "Este Usuario tiene el Rol super admin!");
+          // Yii::$app->session->setFlash('modal-danger', "you message");          
+        echo \yii2mod\alert\Alert::widget([
+        'useSessionFlash' => false,
+        'options' => [
+        'timer' => null,
+        // 'type' => \yii2mod\alert\Alert::TYPE_INPUT,
+        // 'type' => confirm,
+        'title' => 'Desea Inhabilitar a este Super-User?',
+        // 'text' => "Write something interesting",
+        'confirmButtonText' => "Yes, do it!",
+        'closeOnConfirm' => false,
+        'showCancelButton' => true,
+        'animation' => "slide-from-top",
+        // 'inputPlaceholder' => "Write something"
+        ],
+        'callback' => new \yii\web\JsExpression(' function(value) {               
+                if(value === true)
+                {
+                  swal("Nice!", "Usuario Inhabilitado! ", "success");   
+                }                      
+        }')
+        ]);
+          
+          // -----------------------------------------
+          // ----------------AQUI---------------------
+          // -----------------------------------------
+          // print_r($_REQUEST);
+          if ($seleccion) 
+          {
+            // print_r("aqui1");
+            if ($rows == 10) 
+            {
+              $connection = Yii::$app->db;
+              $connection->createCommand("UPDATE user SET status=6 WHERE id=$id")
+              ->execute();
+            }
+            if ($rows == 6) 
+            {
+              $connection = Yii::$app->db;
+              $connection->createCommand("UPDATE user SET status=10 WHERE id=$id")
+              ->execute();
+            }
+            $searchModel = new UserSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+              return $this->render('index', [
+                  // 'model' => $this->findModel($id),
+                  'searchModel' => $searchModel,
+                  'dataProvider' => $dataProvider,
+              ]);
           }
         }
-}
+      }
+    }
+
   // NOTE: Función para restablecer la contraseña de Usuario a una por defecto definida dentro de los parámetros de la función.
   //       Se llama desde el index y se ha codificado en vendor/yii2/grid/ActionColumn.php
 
     public function actionReset($id)
     {
-        if(SiteController::findCom(67)){
-          // NOTE: query para traer el username del usuario
-        $query = (new \yii\db\Query())
-        ->select('username')
-        ->from('user')
-        ->where(['id' => $id]);
-        $command = $query->createCommand();
-        $rows = $command->queryScalar();
+        if(SiteController::findCom(67))
+        {
+            // NOTE: query para traer el username del usuario
+          $query = (new \yii\db\Query())
+          ->select('username')
+          ->from('user')
+          ->where(['id' => $id]);
+          $command = $query->createCommand();
+          $rows = $command->queryScalar();
 
-        // NOTE: Se genera un password por defecto y su respectivo HASH
-        $password ='123456';
-        $password_hash = Yii::$app->security->generatePasswordHash($password);
+          // NOTE: Se genera un password por defecto y su respectivo HASH
+          $password ='123456';
+          $password_hash = Yii::$app->security->generatePasswordHash($password);
 
-        // NOTE:
-        $model = User::findOne($id);
-        $model->password_hash = $password_hash;
-        $model->save();
-        // $connection = Yii::$app->db;
-        // $connection->createCommand("UPDATE user SET password_hash='$password_hash' WHERE id=$id")
-        // ->execute();
-        Yii::$app->session->setFlash('success', 'Se ha restablecido la contraseña del Usuario ' . $rows);
-        $searchModel = new UserSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-          return $this->render('index', [
-              // 'model' => $this->findModel($id),
-              'searchModel' => $searchModel,
-              'dataProvider' => $dataProvider,
-          ]);
+          // NOTE:
+          $model = User::findOne($id);
+          $model->password_hash = $password_hash;
+          $model->save();
+          // $connection = Yii::$app->db;
+          // $connection->createCommand("UPDATE user SET password_hash='$password_hash' WHERE id=$id")
+          // ->execute();
+          Yii::$app->session->setFlash('success', 'Se ha restablecido la contraseña del Usuario ' . $rows);
+          $searchModel = new UserSearch();
+          $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+            return $this->render('index', [
+                // 'model' => $this->findModel($id),
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
     }
-  }
 
   public function actionChange_password()
   {
@@ -292,7 +365,8 @@ class UserController extends Controller
     // var_dump($user->errors);
     $loadedPost = $user->load(Yii::$app->request->post());
 
-    if ($loadedPost && $user->validate()) {
+    if ($loadedPost && $user->validate()) 
+    {
       $user->password = $user->newPassword;
       $user->save(false);
       // $var_dump($user->errors);
@@ -303,5 +377,4 @@ class UserController extends Controller
       'user' => $user,
     ]);
   }
-
 }

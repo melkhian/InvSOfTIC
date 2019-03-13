@@ -403,4 +403,11 @@ class Dependencias extends \yii\db\ActiveRecord
 
             return $data['TiposDesc'];
         }
+
+           public function TiposId_fk2()
+        {
+            $data = Tipos::findOne($this->TiposId_fk2);
+
+            return $data['TiposDesc'];
+        }
 }
