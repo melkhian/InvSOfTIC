@@ -14,3 +14,5 @@ use backend\models\Tipos;
 <h1 align="center">II. POBLACIÓN OBJETIVO</h1>
 <br><br>
 <?= $form->field($model, 'AppEnti')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'file' )->fileInput() ?>

@@ -21,6 +21,7 @@ use Yii;
 * @property string $TiposId_fk3 Tipo Software
 * @property string $AppNombProc Nombre del Proceso
 * @property string $AppEnti Entidad o Dependencias Usuarias
+* @property string $AppEntiImag Imagen
 * @property int $ESopId2 Empresa Soporte
 * @property string $AppNombCont Nombre del contacto
 * @property string $AppCarg Cargo del contacto
@@ -135,6 +136,9 @@ class Aplicaciones extends \yii\db\ActiveRecord
   /**
   * @inheritdoc
   */
+  // NOTE: Variables para el proceso de carga de archivos por parte del usuario
+  public $file;
+
   public static function tableName()
   {
     return 'aplicaciones';
@@ -161,7 +165,8 @@ class Aplicaciones extends \yii\db\ActiveRecord
             [['AppDesc', 'AppEnti', 'AppAcueNiveServ'], 'string', 'max' => 500],
             [['AppSigl', 'AppVers', 'AppNumeDocuAdqu', 'AppTeleOfic', 'AppTelePers', 'AppCarg2', 'AppCorr2', 'AppTeleOfic2', 'AppTelePers2', 'AppServWebVers', 'AppOtroCual8', 'AppOtroCual16'], 'string', 'max' => 50],
             [['TiposId_fk1', 'TiposId_fk2', 'TiposId_fk3', 'TiposId_fk5', 'TiposId_fk6', 'TiposId_fk7', 'TiposId_fk8', 'TiposId_fk9', 'TiposId_fk10', 'TiposId_fk11', 'TiposId_fk12', 'TiposId_fk13', 'TiposId_fk14', 'TiposId_fk15', 'TiposId_fk16', 'TiposId_fk17', 'TiposId_fk18', 'TiposId_fk19', 'TiposId_fk20', 'TiposId_fk21', 'TiposId_fk22', 'TiposId_fk23', 'TiposId_fk24','TiposId_fk29', 'TiposId_fk30', 'TiposId_fk31', 'TiposId_fk32', 'TiposId_fk33', 'TiposId_fk34', 'TiposId_fk35', 'TiposId_fk36', 'TiposId_fk37', 'TiposId_fk38', 'TiposId_fk39', 'TiposId_fk40', 'TiposId_fk41', 'TiposId_fk42', 'TiposId_fk43', 'TiposId_fk44', 'TiposId_fk45', 'TiposId_fk46', 'TiposId_fk47', 'TiposId_fk48', 'TiposId_fk49', 'TiposId_fk50', 'TiposId_fk51', 'TiposId_fk52', 'TiposId_fk53', 'TiposId_fk54', 'TiposId_fk55'], 'string', 'max' => 20],
-            [['AppOtroCual20','AppObse3',  'AppObse4', 'AppObse5', 'AppObse6', 'AppUbic', 'AppUbicDocu', 'AppUbicUlti', 'AppObse7', 'AppObse8'], 'string', 'max' => 500],
+            [['AppOtroCual20','AppObse3',  'AppObse4', 'AppObse5', 'AppObse6', 'AppUbic', 'AppUbicDocu', 'AppUbicUlti', 'AppObse7', 'AppObse8', 'AppEntiImag'], 'string', 'max' => 500],
+            [['file'],'file'],
             [['ESopId1'], 'exist', 'skipOnError' => true, 'targetClass' => Empsoporte::className(), 'targetAttribute' => ['ESopId1' => 'ESopId']],
             [['ESopId2'], 'exist', 'skipOnError' => true, 'targetClass' => Empsoporte::className(), 'targetAttribute' => ['ESopId2' => 'ESopId']],
         ];
@@ -188,6 +193,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
       'TiposId_fk3' => 'Tipo Software',
       'AppNombProc' => 'Nombre del Proceso',
       'AppEnti' => 'Entidad o Dependencias Usuarias',
+      'AppEntiImag' => 'Entidad o Dependencias Usuarias (Imagen)',
       'ESopId2' => 'Empresa Soporte',
       'AppNombCont' => 'Nombre del contacto',
       'AppCarg' => 'Cargo del contacto',

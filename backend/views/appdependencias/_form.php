@@ -22,14 +22,7 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'ADepCantUsua')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'ADepFechSist')->widget( DatePicker::className(),
-            ['name' => 'check_issue_date',
-            'value' => date('d-M-Y', strtotime('+2 days')),
-            'options' => ['placeholder' => 'Seleccione la fecha de Sistema'],
-            'pluginOptions' => [
-            'format' => 'yyyy-mm-dd',
-            'todayHighlight' => true]]);
-     ?>
+    <?= $form->field($model, 'ADepFechSist')->hiddenInput(['maxlength' => true])->label(false); ?>
 
 
     <div class="form-group">

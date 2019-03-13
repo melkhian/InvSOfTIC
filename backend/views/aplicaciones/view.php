@@ -53,6 +53,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'TiposId_fk3',
             'AppNombProc',
             'AppEnti',
+            [
+            'attribute'=>'AppEntiImag',
+            // 'label'=>'File',
+            'format'=>'raw',
+            'value' => function ($model) {
+                        return Html::a($model->AppEntiImag, $model->AppEntiImag);
+                      },
+            ],
             'ESopId2',
             'AppNombCont',
             'AppCarg',

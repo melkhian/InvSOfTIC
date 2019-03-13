@@ -9,6 +9,7 @@ use backend\models\AppdependenciasSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\controllers\SiteController;
+use yii\db\Expression;
 /**
  * AppdependenciasController implements the CRUD actions for Appdependencias model.
  */
@@ -85,6 +86,11 @@ class AppdependenciasController extends Controller
       if(isset(Yii::$app->user->identity->id)){
         if(SiteController::findCom(15)){
         $model = new Appdependencias();
+
+        // NOTE: Para insertar de manera automática la fecha de creación del registro
+        $expression = new Expression('NOW()');
+        $now = (new \yii\db\Query)->select($expression)->scalar();  // SELECT NOW();
+        $model->ADepFechSist = $now;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->ADepId]);

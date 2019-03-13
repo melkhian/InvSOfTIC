@@ -22,6 +22,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use yii\web\UploadedFile;
 
 /**
 * AplicacionesController implements the CRUD actions for Aplicaciones model.
@@ -116,7 +117,23 @@ class AplicacionesController extends Controller
         $modelsAppbasedatos = [new Appbasedatos];
         $modelsApphardware = [new Apphardware];
 
+
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+          // NOTE: Inicio de código
+          // Código para insertar archivos por parte de usuario, quedan guardados en backend/web/uploads
+          // y su PATH registrados en la base de datos, donde $model->file = UploadedFile::getInstance($model,'file'); file es una variable definida en el modelo de Aplicaciones
+
+          // NOTE: Se obtiene la instancia de los objetos de UPLOAD
+          $random = $this->generateRandomString();
+          $model->file = UploadedFile::getInstance($model,'file');
+          $model->file->saveAs( 'uploads/'.$random. $model->file->baseName .'.'. $model->file->extension );
+          // NOTE: Guardar el path de la imagen en la DB
+          $model->AppEntiImag = 'uploads/'.$random.$model->file->baseName.'.'.$model->file->extension;
+
+          // NOTE: Fin Código
+
 
           // NOTE: Se cargan los modelos 1:N
 
@@ -350,10 +367,20 @@ class AplicacionesController extends Controller
         // die();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-          // echo "<pre>";
-          // print_r($model->save());
-          // echo "</pre>";
-          // die();
+
+          // NOTE: Inicio de código
+          // Código para insertar archivos por parte de usuario, quedan guardados en backend/web/uploads
+          // y su PATH registrados en la base de datos, donde $model->file = UploadedFile::getInstance($model,'file'); file es una variable definida en el modelo de Aplicaciones
+
+          // NOTE: Se obtiene la instancia de los objetos de UPLOAD
+          $random = $this->generateRandomString();
+          $model->file = UploadedFile::getInstance($model,'file');
+          $model->file->saveAs( 'uploads/'.$random. $model->file->baseName .'.'. $model->file->extension );
+          // NOTE: Guardar el path de la imagen en la DB
+          $model->AppEntiImag = 'uploads/'.$random.$model->file->baseName.'.'.$model->file->extension;
+
+          // NOTE: Fin Código
+
 
           $oldIDs = ArrayHelper::map($modelsAppmodulos, 'AModId', 'AModId');
           $modelsAppmodulos = Model::createMultiple(Appmodulos::classname(), $modelsAppmodulos);
@@ -624,4 +651,29 @@ class AplicacionesController extends Controller
 
     throw new NotFoundHttpException('The requested page does not exist.');
   }
+
+  public function actionUpload()
+{
+    $model = new UploadForm();
+
+    if (Yii::$app->request->isPost) {
+        $model->AppEntiImag = UploadedFile::getInstance($model, 'AppEntiImag');
+        if ($model->upload()) {
+            // file is uploaded successfully
+            return;
+        }
+    }
+
+    return $this->render('upload', ['model' => $model]);
+}
+
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
 }

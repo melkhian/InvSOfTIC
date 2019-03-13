@@ -47,14 +47,7 @@ use kartik\date\DatePicker;
             'todayHighlight' => true]]);
      ?>
 
-     <?= $form->field($model, 'CAlcFechSist')->widget( DatePicker::className(),
-             ['name' => 'check_issue_date',
-             'value' => date('d-M-Y', strtotime('+2 days')),
-             'options' => ['placeholder' => 'Seleccione la fecha de Sistema'],
-             'pluginOptions' => [
-             'format' => 'yyyy-mm-dd',
-             'todayHighlight' => true]]);
-      ?>
+      <?= $form->field($model, 'CAlcFechSist')->hiddenInput(['maxlength' => true])->label(false); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
