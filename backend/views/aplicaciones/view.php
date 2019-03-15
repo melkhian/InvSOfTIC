@@ -3,6 +3,7 @@
 use backend\controllers\SiteController;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Aplicaciones */
@@ -58,7 +59,15 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'label'=>'File',
             'format'=>'raw',
             'value' => function ($model) {
-                        return Html::a($model->AppEntiImag, $model->AppEntiImag);
+                        $str = explode(',',$model->AppEntiImag);
+                        $html = '';
+                        // print_r(sizeof($str));
+                        // die();
+                        for ($i=0; $i <sizeof($str) ; $i++) {
+                          $j = $i +1;
+                        $html .= Html::a('(Archivo descargable '. $j.')', $str[$i]) . ' ';
+                        }
+                        return $html;
                       },
             ],
             'ESopId2',

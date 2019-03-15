@@ -368,17 +368,24 @@ class AplicacionesController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
+          // NOTE: Se obtiene la instancia de los objetos de UPLOAD
+          $model->file = UploadedFile::getInstances($model,'file');
+          // print_r($model->file);
+          // die();
           // NOTE: Inicio de código
           // Código para insertar archivos por parte de usuario, quedan guardados en backend/web/uploads
           // y su PATH registrados en la base de datos, donde $model->file = UploadedFile::getInstance($model,'file'); file es una variable definida en el modelo de Aplicaciones
-
-          // NOTE: Se obtiene la instancia de los objetos de UPLOAD
-          $random = $this->generateRandomString();
-          $model->file = UploadedFile::getInstance($model,'file');
-          $model->file->saveAs( 'uploads/'.$random. $model->file->baseName .'.'. $model->file->extension );
-          // NOTE: Guardar el path de la imagen en la DB
-          $model->AppEntiImag = 'uploads/'.$random.$model->file->baseName.'.'.$model->file->extension;
-
+          if ($model->file) {
+            $i=0;
+            foreach ($model->file as $file) {
+              $random = $this->generateRandomString();
+              $file->saveAs('uploads/'.$random. $file->baseName .'.'. $file->extension);
+              // NOTE: Guardar el path de la imagen en la DB
+              $model->AppEntiImag = 'uploads/'.$random.$file->baseName.'.'.$file->extension;
+              $arry[$i] = $model->AppEntiImag;
+              $i++;
+            }
+          }
           // NOTE: Fin Código
 
 

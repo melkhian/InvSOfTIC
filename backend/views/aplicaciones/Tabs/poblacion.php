@@ -15,4 +15,4 @@ use backend\models\Tipos;
 <br><br>
 <?= $form->field($model, 'AppEnti')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'file' )->fileInput() ?>
+    <?= $form->field($model, 'file[]' )->fileInput(['multiple' => true]) ?>
