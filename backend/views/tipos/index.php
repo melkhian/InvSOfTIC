@@ -43,9 +43,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            // ['class' => 'yii\grid\SerialColumn'],
 
-            'TiposId',
+            // 'TiposId',
             ['attribute'=>'TipoId_fk',
              'value'=> function($model){return $model->TipoId_fk();},
              'filter' => Html::activeDropDownList($searchModel, 'TipoId_fk', ArrayHelper::map(Tipo::find()->orderBy("TipoDesc ASC")->all(),'TipoId','TipoDesc'),['class'=>'form-control','prompt' => 'Seleccione el Tipo']),
@@ -54,6 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'TiposValo',
 
             ['class' => 'yii\grid\ActionColumn',
+             'header'=>"Acciones",
              'template' => "$view $update"],
         ],
     ]); ?>

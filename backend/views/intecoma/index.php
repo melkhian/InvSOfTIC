@@ -45,9 +45,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            // ['class' => 'yii\grid\SerialColumn'],
 
-            'IcomId',
+            // 'IcomId',
             ['attribute'=>'IntiId_fk',
              'value'=> function($model){return $model->IntiId_fk();},
              'filter' => Html::activeDropDownList($searchModel, 'IntiId_fk', ArrayHelper::map(Interfaces::find()->all(),'IntId','IntNomb'),['class'=>'form-control','prompt' => 'Seleccione la Interfaz']),
@@ -60,6 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'IcomDesc',
 
             ['class' => 'yii\grid\ActionColumn',
+             'header'=>"Acciones",
              'template' => "$view $update"],
         ],
     ]); ?>

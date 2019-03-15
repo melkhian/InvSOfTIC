@@ -44,9 +44,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            // ['class' => 'yii\grid\SerialColumn'],
 
-            'EReqId',
+            // 'EReqId',
             ['attribute'=>'ReqId_fk',
              'value'=> function($model){return $model->ReqId_fk();},
              'filter' => Html::activeDropDownList($searchModel, 'ReqId_fk', ArrayHelper::map(Requerimientos::find()->all(),'ReqId','ReqDesc'),['class'=>'form-control','prompt' => 'Seleccione el Requerimiento']),
@@ -60,6 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'EReqFechSist',
 
             ['class' => 'yii\grid\ActionColumn',
+             'header'=>"Acciones",
              'template' => "$view $update"],
         ],
     ]); ?>

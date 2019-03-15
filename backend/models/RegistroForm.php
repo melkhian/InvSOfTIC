@@ -107,4 +107,7 @@ class RegistroForm extends Model
 
         return $user->save() ? $user : null;
     }
+
+
+    
 }

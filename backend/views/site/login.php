@@ -31,6 +31,8 @@ if(Yii::$app->session->hasFlash('fail')){
 
 ?>
 
+<!-- hola -->
+<!-- <img src="bloque28.png" /> -->
 <div class="login-box">
   <div class="login-logo">
     <b>INVSOFTIC</b>

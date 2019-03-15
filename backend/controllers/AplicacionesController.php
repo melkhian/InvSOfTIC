@@ -595,7 +595,6 @@ class AplicacionesController extends Controller
             }
           }
         }
-
         return $this->render('update', [
           'model' => $model,
           'modelsAppmodulos' => (empty($modelsAppmodulos)) ? [new Appmodulos] : $modelsAppmodulos,

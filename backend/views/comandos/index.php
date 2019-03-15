@@ -41,13 +41,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            // ['class' => 'yii\grid\SerialColumn'],
 
-            'ComId',
+            // 'ComId',
             'ComNomb',
             'ComDesc',
 
             ['class' => 'yii\grid\ActionColumn',
+             'header'=>"Acciones",
              'template' => "$view $update"],
         ],
     ]); ?>

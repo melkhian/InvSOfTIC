@@ -1,5 +1,7 @@
 <?php
 use yii\grid\GridView;
+
+use kartik\date\DatePicker;
 ?>
 <?=   GridView::widget([      
      'dataProvider' => $dataProvider,
@@ -13,12 +15,31 @@ use yii\grid\GridView;
             'value' => function($model){
               return '<input type="hidden" name="user_id[]" value="'.$model->id.'">';
             }
+            ],
+            'id',
+            'usuprimnomb',
+            'usuprimapel',
+            'email',    
+            // 'RUsucadu',
+            [
+              'attribute' => 'RUsucadu',
+              'label' => 'Fecha',
+              'format' => 'raw',            
+              'value' => function () 
+              {
+                  return '<input type="date" name="fechaExpi[]" class="form-control krajee-datepicker" value="">';
+              },
+            ],
+
+            [
+              'header' => 'Eliminar',
+              'class' => 'yii\grid\CheckboxColumn',
+            ],
           ],
-          'id',
-          'usuprimnomb',
-          'usuprimapel',
-          'email',
-          // ['class' => 'yii\grid\ActionColumn'],
-         ],
        ]);      
 ?>
+
+
+<!-- Segun oy estaba capturando el valor de esto
+ -->
+

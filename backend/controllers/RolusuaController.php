@@ -86,50 +86,64 @@ class RolusuaController extends Controller
      */
     public function actionCreate()
     {      
-      if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(42)){
-        $model = new Rolusua();
-        $mensaje = '';
+      if(isset(Yii::$app->user->identity->id))
+      {
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-          return $this->redirect(['view','id' => $model->RUsuId]);
+        if(SiteController::findCom(42))
+        {
+          $model = new Rolusua();
+          $mensaje = '';
+          $get = 0;
+
+          if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view','id' => $model->RUsuId]);
+          }
+          if (\Yii::$app->request->post()) 
+          {
+            $var = \Yii::$app->request->post();
+
+            foreach ($var['user_id'] as $key => $value) 
+            {          
+              $validador = rolusua::find()->where("UsuId_fk = $value and RolId_fk =".$var['Rolusua']['RolId_fk'])->one();
+              if(empty($validador))
+              {
+                $get = 1;   
+                $model = new Rolusua();
+                $model->load(\Yii::$app->request->post());
+                $model->UsuId_fk = $value;
+                $model->RUsuCadu = ($var['fechaExpi'][$key] != '') ? $var['fechaExpi'][$key] : $var['Rolusua']['RUsuCadu'];
+                $model->save();                             
+              }
+              else
+              {
+                $mensaje = 'El Usuario ya tiene cargado ese Rol';
+              }                  
+            }           
+            if ($get == 1) 
+            {
+              $mensaje = 'Proceso Exitoso';
+            }
+          }
+          $searchModel = new UserSearch; //---> Data Modelo que aparece en el modal
+          $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams()); //---> Campos de Busqueda del Modal
+          $dataProvider->pagination = ['pageSize' => 5]; //---> Paginacion del Modal
+          $model = new Rolusua();
+          return $this->render('create', [
+              'model' => $model,
+              'dataProvider' => $dataProvider,
+              'searchModel' => $searchModel,
+              'mensaje' => $mensaje,
+          ]);
         }
-      if (\Yii::$app->request->post()) {
-        $var = \Yii::$app->request->post();
-        // print('<pre>');
-        // print_r($var);
-        // // $var[2]
-        // \Yii::$app->end();
-        foreach ($var['user_id'] as $key => $value) {
-          $validador = rolusua::find()->where("UsuId_fk = $value and RolId_fk =".$var['Rolusua']['RolId_fk'])->one();
-          if(empty($validador)){
-            $model = new Rolusua();
-            $model->load(\Yii::$app->request->post());
-            $model->UsuId_fk = $value;
-            $model->save();          
-          }else{
-            $mensaje = 'El Usuario ya tiene cargado ese Rol';
-          }                  
-        }        
+        else 
+        {
+          $this->redirect(['site/error']);
+        }
+      }else 
+      {
+        $this->redirect(['site/login']);
       }
-        $searchModel = new UserSearch; //---> Data Modelo que aparece en el modal
-        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams()); //---> Campos de Busqueda del Modal
-        $dataProvider->pagination = ['pageSize' => 5]; //---> Paginacion del Modal
-        $model = new Rolusua();
-        return $this->render('create', [
-            'model' => $model,
-            'dataProvider' => $dataProvider,
-            'searchModel' => $searchModel,
-            'mensaje' => $mensaje,
-        ]);
-      }
-      else {
-        $this->redirect(['site/error']);
-      }
-    }else {
-      $this->redirect(['site/login']);
     }
-}
 
     /**
      * Updates an existing Rolusua model.
@@ -140,29 +154,35 @@ class RolusuaController extends Controller
      */
     public function actionUpdate($id)
     {
-      if(isset(Yii::$app->user->identity->id)){
-        if(SiteController::findCom(44)){
-        $model = $this->findModel($id);
+      if(isset(Yii::$app->user->identity->id))
+      {
+        if(SiteController::findCom(44))
+        {
+          $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->RUsuId]);
-        }
-        $searchModel = new UserSearch; //---> Data Modelo que aparece en el modal
-        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams()); //---> Campos de Busqueda del Modal
-        $dataProvider->pagination = ['pageSize' => 5];
-        return $this->render('update', [
+          if ($model->load(Yii::$app->request->post()) && $model->save()) 
+          {
+              return $this->redirect(['view', 'id' => $model->RUsuId]);
+          }
+          $searchModel = new UserSearch; //---> Data Modelo que aparece en el modal
+          $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams()); //---> Campos de Busqueda del Modal
+          $dataProvider->pagination = ['pageSize' => 5];
+          return $this->render('update', [
             'model' => $model,
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
-        ]);
+          ]);
+        }
+        else 
+        {
+          $this->redirect(['site/error']);
+        }
       }
-      else {
-        $this->redirect(['site/error']);
+      else 
+      {
+        $this->redirect(['site/login']);
       }
-    }else {
-      $this->redirect(['site/login']);
     }
-}
 
     /**
      * Deletes an existing Rolusua model.
@@ -173,14 +193,16 @@ class RolusuaController extends Controller
      */
     public function actionDelete($id)
     {
-        if(SiteController::findVar(1500)){
-        $this->findModel($id)->delete();
+        if(SiteController::findVar(1500))
+        {
+          $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
-      }
-      else {
-        $this->redirect(['site/error']);
-      }
+          return $this->redirect(['index']);
+        }
+        else 
+        {
+          $this->redirect(['site/error']);
+        }
     }
 
     /**
@@ -222,13 +244,14 @@ class RolusuaController extends Controller
    {
      $data = Yii::$app->request->post("keys");
 
-
+     $model = new RolusuaSearch;
      $searchModel = new UserSearch; //---> Data Modelo que aparece en el modal
      $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams()); //---> Campos de Busqueda del Modal
      $dataProvider->query->andWhere(['in','id',$data]);
      $dataProvider->pagination = ['pageSize' => 5]; //---> Paginacion del Modal
      return $this->renderPartial('_user_list', [
-       'dataProvider' => $dataProvider
+       'model' => $model,
+       'dataProvider' => $dataProvider,
      ]);
    }
 

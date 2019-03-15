@@ -49,9 +49,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            // ['class' => 'yii\grid\SerialColumn'],
 
-            'AppId',
+            // 'AppId',
             'AppNomb',
             'AppSigl',
             'AppVers',
@@ -177,6 +177,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             // NOTE: Se elimina de 'template' el $delete
             ['class' => 'yii\grid\ActionColumn',
+            'header'=>"Acciones",
              'template' => "$view $update"],
 
         ],

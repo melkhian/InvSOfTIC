@@ -43,9 +43,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            // ['class' => 'yii\grid\SerialColumn'],
 
-            'CAlcId',
+            // 'CAlcId',
             ['attribute'=>'ProId_fk',
              'value'=> function($model){return $model->ProId_fk();},
              'filter' => Html::activeDropDownList($searchModel, 'ProId_fk', ArrayHelper::map(Proyectos::find()->all(),'ProId','ProNomb'),['class'=>'form-control','prompt' => 'Seleccione el Proyecto']),
@@ -57,6 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'CAlcFechSist',
 
             ['class' => 'yii\grid\ActionColumn',
+             'header'=>"Acciones",
              'template' => "$view $update"],
         ],
     ]); ?>

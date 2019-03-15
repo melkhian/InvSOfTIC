@@ -14,7 +14,10 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => ['gridview' => [
+        'class' => 'kartik\grid\Module',
+        // other module settings
+    ]],
     'components' => [
     'view' => [
          'theme' => [
@@ -27,7 +30,7 @@ return [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
-            'class' => WebUser::class, // Tiempo de expiraciondesde la base de datos
+            'class' => WebUser::class, // Tiempo de expiracion desde la base de datos
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => false,
 

@@ -156,6 +156,7 @@ class ActionColumn extends Column
             'data-confirm' => Yii::t('yii', '¿Desea reestablecer la contraseña de este Usuario a "123456"?'),
             'data-method' => 'post',
         ]);
+        // $this->initDefaultButton('remove', 'minus-sign');
     }
 
     /**
@@ -185,6 +186,9 @@ class ActionColumn extends Column
                     case 'reset':
                         $title = Yii::t('yii', 'Reestablecer contraseña');
                         break;
+                    // case 'remove':
+                    //     $title = Yii::t('yii', 'Remover');
+                    //     break;
                     default:
                         $title = ucfirst($name);
                 }

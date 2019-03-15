@@ -8,7 +8,10 @@ $baseDir = dirname($vendorDir);
 return array(
     'yii\\image\\' => array($vendorDir . '/yurkinx/yii2-image'),
     'cebe\\gravatar\\' => array($vendorDir . '/cebe/yii2-gravatar'),
+    'Svg\\' => array($vendorDir . '/phenx/php-svg-lib/src'),
+    'Sabberworm\\CSS' => array($vendorDir . '/sabberworm/php-css-parser/lib'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
+    'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
     'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
     'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),
     'Diff' => array($vendorDir . '/phpspec/php-diff/lib'),

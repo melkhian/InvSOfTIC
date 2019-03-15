@@ -45,8 +45,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         // 'format' => 'raw',
         'columns' => [            
-
-            'AudId',
+            ['class' => 'yii\grid\ActionColumn',
+             'header'=>"Acciones",
+             'template' => "$view $update {delete}"],
+            // 'AudId',
             // 'UsuId_fk',
             ['attribute'=>'UsuId_fk',
              'value'=> function($model){return $model->UsuId_fk();},
@@ -68,8 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'AudIp',
             //'AudFechHora',
 
-            ['class' => 'yii\grid\ActionColumn',
-             'template' => "$view $update"],
+            
         ],
     ]); ?>
     <?php Pjax::end(); ?>

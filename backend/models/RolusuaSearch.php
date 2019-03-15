@@ -47,6 +47,7 @@ class RolusuaSearch extends Rolusua
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=> ['defaultOrder' => ['RolId_fk' => SORT_DESC]],
         ]);
 
         $this->load($params);
