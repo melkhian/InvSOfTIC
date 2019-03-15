@@ -53,9 +53,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
             // 'AppId',
             'AppNomb',
-            'AppDesc',
             'AppSigl',
             'AppVers',
+            // 'AppDesc',
             //'ESopId1',
             //'AppUrl',
             //'TiposId_fk1',
@@ -174,7 +174,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'AppUbicUlti',
             //'AppObse7',
             //'AppFuncApru',
-            
+
             // NOTE: Se elimina de 'template' el $delete
             ['class' => 'yii\grid\ActionColumn',
             'header'=>"Acciones",

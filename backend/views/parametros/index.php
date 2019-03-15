@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php
 
         if (SiteController::findCom(60)) {
-          echo Html::a('Create Parametros', ['create'], ['class' => 'btn btn-success']);
+          echo Html::a('Crear Parámetro', ['create'], ['class' => 'btn btn-success']);
           }
           else {
             // $this->redirect(['site/error']);

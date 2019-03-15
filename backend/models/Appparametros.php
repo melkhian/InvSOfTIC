@@ -12,6 +12,7 @@ use Yii;
  * @property string $AParServ Servidor
  * @property string $AParPuer Puerto
  * @property string $AParDirec Directorio
+ * @property string $AParObse Obervaciones
  * @property int $AppId_fk Aplicación
  *
  * @property Aplicaciones $appIdFk
@@ -32,11 +33,12 @@ class Appparametros extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['AParUrlFuen', 'AParServ', 'AParPuer', 'AParDirec'], 'required'],
+            [['AParUrlFuen', 'AParServ', 'AParPuer', 'AParDirec', 'AParObse'], 'required'],
             [['AppId_fk'], 'integer'],
             [['AParUrlFuen', 'AParServ'], 'string', 'max' => 100],
             [['AParPuer'], 'string', 'max' => 20],
             [['AParDirec'], 'string', 'max' => 50],
+            [['AParObse'], 'string', 'max' => 200],
             [['AppId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Aplicaciones::className(), 'targetAttribute' => ['AppId_fk' => 'AppId']],
         ];
     }
@@ -52,6 +54,7 @@ class Appparametros extends \yii\db\ActiveRecord
             'AParServ' => 'Servidor',
             'AParPuer' => 'Puerto',
             'AParDirec' => 'Directorio',
+            'AParObse' => 'Observaciones',
             'AppId_fk' => 'Aplicación',
         ];
     }

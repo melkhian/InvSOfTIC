@@ -51,9 +51,9 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'password_reset_token')->hiddenInput(['maxlength' => true])->label(false); ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?= $form->field($model, 'created_at')->hiddenInput(['maxlength' => true])->label(false); ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?= $form->field($model, 'updated_at')->hiddenInput(['maxlength' => true])->label(false); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

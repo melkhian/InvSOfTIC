@@ -289,6 +289,7 @@ class UserController extends Controller
                   swal("Nice!", "Usuario Inhabilitado! ", "success");   
                 }                      
         }')
+
         ]);
           
           // -----------------------------------------

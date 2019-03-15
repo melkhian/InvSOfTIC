@@ -18,9 +18,9 @@ use kartik\date\DatePicker;
     <?php $form = ActiveForm::begin(); ?>
 
     <?php $var2 = 'tipoid_fk = 19';
-    $var1 = 'ReqId =1'; ?>
+    $var1 = 'ReqId =3'; ?>
 
-    <?= $form->field($model, 'ReqId_fk')->dropDownList(ArrayHelper::map(Requerimientos::find()->where($var1)->all(),'ReqId','ReqDesc'), ['prompt'=> 'Seleccione el Requerimiento'])?>
+    <?= $form->field($model, 'ReqId_fk')->dropDownList(ArrayHelper::map(Requerimientos::find()->all(),'ReqId','ReqDesc'), ['prompt'=> 'Seleccione el Requerimiento'])?>
 
     <?= $form->field($model, 'TiposId_fk')->dropDownList(ArrayHelper::map(Tipos::find()->where($var2)->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Estado'])?>
 
@@ -35,14 +35,7 @@ use kartik\date\DatePicker;
             'todayHighlight' => true]]);
      ?>
 
-    <?= $form->field($model, 'EReqFechSist')->widget( DatePicker::className(),
-             ['name' => 'check_issue_date',
-             'value' => date('d-M-Y', strtotime('+2 days')),
-             'options' => ['placeholder' => 'Seleccione la fecha de Caducidad'],
-             'pluginOptions' => [
-             'format' => 'yyyy-mm-dd',
-             'todayHighlight' => true]]);
-    ?>
+     <?= $form->field($model, 'EReqFechSist')->hiddenInput(['maxlength' => true])->label(false); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

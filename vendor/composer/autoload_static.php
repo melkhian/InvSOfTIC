@@ -113,6 +113,9 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
             'kartik\\export\\' => 14,
             'kartik\\dynagrid\\' => 16,
             'kartik\\dialog\\' => 14,
+            'kartik\\plugins\\fileinput\\' => 25,
+            'kartik\\file\\' => 12,
+
             'kartik\\date\\' => 12,
             'kartik\\base\\' => 12,
         ),
@@ -139,6 +142,7 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
             'asinfotrack\\yii2\\toolbox\\' => 25,
             'asinfotrack\\yii2\\audittrail\\' => 28,
         ),
+
         'Z' => 
         array (
             'Zend\\Escaper\\' => 13,
@@ -168,6 +172,7 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
             'PhpOffice\\PhpSpreadsheet\\' => 25,
             'PhpOffice\\Common\\' => 17,
         ),
+
         'M' => 
         array (
             'Mpdf\\' => 5,
@@ -235,10 +240,11 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
+
         'yii2mod\\alert\\' => 
         array (
             0 => __DIR__ . '/..' . '/yii2mod/yii2-sweet-alert',
-        ),
+
         'wbraganca\\dynamicform\\' => 
         array (
             0 => __DIR__ . '/..' . '/wbraganca/yii2-dynamicform',
@@ -251,6 +257,7 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         array (
             0 => __DIR__ . '/..' . '/rmrevin/yii2-fontawesome',
         ),
+
         'phpnt\\exportFile\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpnt/yii2-export',
@@ -261,6 +268,7 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
+
         'kartik\\sortable\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-sortable/src',
@@ -292,6 +300,15 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         'kartik\\dialog\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-dialog/src',
+
+        'kartik\\plugins\\fileinput\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/bootstrap-fileinput',
+        ),
+        'kartik\\file\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-fileinput/src',
+
         ),
         'kartik\\date\\' => 
         array (
@@ -333,10 +350,12 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         array (
             0 => __DIR__ . '/..' . '/asinfotrack/yii2-audittrail',
         ),
+
         'Zend\\Escaper\\' => 
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-escaper/src',
         ),
+
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
@@ -377,6 +396,7 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         array (
             0 => __DIR__ . '/..' . '/symfony/browser-kit',
         ),
+
         'Psr\\SimpleCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
@@ -389,6 +409,7 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
+
         'PhpOffice\\PhpWord\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpword/src/PhpWord',
@@ -409,14 +430,17 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
         ),
+
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
+
         'FontLib\\' => 
         array (
             0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
         ),
+
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
@@ -425,10 +449,12 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator',
         ),
+
         'Dompdf\\' => 
         array (
             0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
         ),
+
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
@@ -441,6 +467,7 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         array (
             0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
         ),
+
         'Complex\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
@@ -475,6 +502,7 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
                 0 => __DIR__ . '/..' . '/cebe/yii2-gravatar',
             ),
         ),
+
         'S' => 
         array (
             'Svg\\' => 
@@ -488,6 +516,9 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         ),
         'P' => 
         array (
+        'P' => 
+        array (
+
             'Prophecy\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',

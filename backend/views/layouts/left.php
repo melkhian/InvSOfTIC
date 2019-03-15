@@ -15,7 +15,7 @@ use backend\controllers\SiteController;
             <div class="pull-left info">
                 <p>
                   <?php
-                    if(isset(Yii::$app->user->identity->id)){                      
+                    if(isset(Yii::$app->user->identity->id)){
                       echo Yii::$app->user->identity->username;
                     }else {
                       Yii::$app->user->logout();
@@ -56,6 +56,7 @@ use backend\controllers\SiteController;
         //                 'url' => '#',
         //                 'items' => null,
         //                   ]]]);
+
           $gda;
           if (SiteController::findvar(1))          
 
@@ -75,11 +76,14 @@ use backend\controllers\SiteController;
                                  ['label' => 'Dependencias', 'icon' => 'bank', 'url' => ['dependencias/index']],
                                  ]]);
             if (SiteController::findvar(3)){
+              // echo 'hola';
             // if ($this->context->findVar(3)){
             $gda[] = ['label' => 'Aplicaciones', 'icon' => 'window-restore', 'url' => ['aplicaciones/index']];
             }
             else {
-              
+
+              $gda = null;
+
             }
             if (SiteController::findvar(4)){
             // if ($this->context->findVar(4)){
@@ -106,8 +110,11 @@ use backend\controllers\SiteController;
                              'label' => 'Gestión de Aplicaciones',
                              'icon' => 'code',
                              'url' => '#',
-                             'items' => $gda,                             
+                             'items' => $gda,
                                ]]]);
+            }
+            else{
+              echo 'her';
             }
             // echo $gdaa;
                // if ($this->context->findVar(4))
@@ -283,6 +290,7 @@ use backend\controllers\SiteController;
                                          'url' => '#',
                                          'items' => $ryp,
                                            ]]]);
+
                         }       
 
                         $pds;                 
@@ -332,8 +340,8 @@ use backend\controllers\SiteController;
                          // if ($this->context->findVar(20)){
                            $pds[] = ['label' => 'Auditorias', 'icon' => 'cog', 'url' => ['auditorias/index']];                           
                          }
-                         else {
-                                                      
+                         else {                                                      
+
                          }
                          if (isset($pds)) {
                            echo dmstr\widgets\Menu::widget(
@@ -347,6 +355,8 @@ use backend\controllers\SiteController;
                                           'items' => $pds,
                                             ]]]);
                          }
+
+
                          // if ($this->context->findVar(16))
                          //     echo dmstr\widgets\Menu::widget(
                          //         [

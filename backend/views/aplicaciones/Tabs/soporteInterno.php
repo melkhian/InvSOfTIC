@@ -14,6 +14,14 @@ use backend\models\User;
 <br>
 <h1 align="center">IV. SOPORTE FUNCIONAL INTERNO</h1>
 <br><br>
-    <?= $form->field($model, 'TiposId_fk4')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'TiposId_fk4')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'UsuId_fk')->dropDownList(ArrayHelper::map(User::find()->all(),'id','username'), ['prompt'=> 'Seleccione el Usuario'])?>
+<?= $form->field($model, 'AppNombFunc')->textInput(['maxlength' => true]) ?>
+
+<?= $form->field($model, 'AppCarg2')->textInput(['maxlength' => true]) ?>
+
+<?= $form->field($model, 'AppCorr2')->textInput(['maxlength' => true]) ?>
+
+<?= $form->field($model, 'AppTeleOfic2')->textInput(['maxlength' => true]) ?>
+
+<?= $form->field($model, 'AppTelePers2')->textInput(['maxlength' => true]) ?>

@@ -60,7 +60,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'tiposid_fk2')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 2')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Tipo de Contrato'])?>
 
-                <?= $form->field($model, 'status')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 3')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Estado'])?>
+                <?= $form->field($model, 'status')->hiddenInput(['maxlength' => true, 'value' =>10])->label(false); ?>
+
+                
                 <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
 

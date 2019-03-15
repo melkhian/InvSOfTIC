@@ -70,9 +70,9 @@ class RegistroForm extends Model
           'tiposid_fk2'=>'Tipo de Contrato',
           'status'=>'Estado',
             // 'cedula_funcionario' => 'Cédula o Nit sin dígito de verificación',
-            // 'password' => 'Contraseña',
+          'password' => 'Contraseña',
             // 'id_rol' => 'Tipo de usuario',
-            // 'password_copy' => 'Confirmación de contraseña',
+          'password_copy' => 'Confirmación de contraseña',
         ];
     }
     /**
