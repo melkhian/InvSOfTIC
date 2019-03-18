@@ -410,10 +410,6 @@ class Response extends \yii\base\Response
      */
     protected function sendContent()
     {
-        if ($this->getStatusCode() === 204) {
-            return;
-        }
-
         if ($this->stream === null) {
             echo $this->content;
 

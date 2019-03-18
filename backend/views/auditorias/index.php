@@ -6,60 +6,12 @@ use yii\widgets\Pjax;
 use yii\helpers\ArrayHelper;
 use backend\models\User;
 use backend\models\Auditorias;
-use kartik\export\ExportMenu;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AuditoriasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Auditorias';
 $this->params['breadcrumbs'][] = $this->title;
-
-//-------------------------------------------------------------------------->
-//-------------------------------------------------------------------------->
-//-------------------------------------------------------------------------->
-
-$gridColumns = [
-    // 'DepId',
-    // 'CAlcId',
-    // 'AudId',
-    ['attribute'=>'UsuId_fk',
-             'value'=> function($model){return $model->UsuId_fk();},
-             'filter' => Html::activeDropDownList($searchModel, 'UsuId_fk', ArrayHelper::map(User::find()->all(), 'id', 'username'),['class'=>'form-control','prompt' => 'Seleccione el Cargo']),
-            ],  
-    'AudMod',
-    'AudAcci',
-    'AudDatoAnte',
-    'AudDatoDesp',
-    'AudIp',
-    'AudFechHora',          
-     ];
-
-echo ExportMenu::widget([
-    'dataProvider' => $dataProvider,
-    'columns' => $gridColumns,
-    'exportConfig' => [        
-        ExportMenu::FORMAT_EXCEL => false,
-        ExportMenu::FORMAT_EXCEL_X => false,
-        ExportMenu::FORMAT_PDF => [
-            'pdfConfig' => [
-                'methods' => [
-                    'SetTitle' => 'Grid Export - Krajee.com',
-                    'SetSubject' => 'Generating PDF files via yii2-export extension has never been easy',
-                    'SetHeader' => ['Krajee Library Export||Generated On: ' . date("r")],
-                    'SetFooter' => ['|Page {PAGENO}|'],
-                    'SetAuthor' => 'Kartik Visweswaran',
-                    'SetCreator' => 'Kartik Visweswaran',
-                    'SetKeywords' => 'Krajee, Yii2, Export, PDF, MPDF, Output, GridView, Grid, yii2-grid, yii2-mpdf, yii2-export',
-                ]
-            ]
-        ],
-    ],
-]);
-
-//-------------------------------------------------------------------------->
-//-------------------------------------------------------------------------->
-//-------------------------------------------------------------------------->
-
 ?>
 <div class="auditorias-index">
 

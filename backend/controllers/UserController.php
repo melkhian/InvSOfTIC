@@ -283,8 +283,7 @@ class UserController extends Controller
         'animation' => "slide-from-top",
         // 'inputPlaceholder' => "Write something"
         ],
-        'callback' => new \yii\web\JsExpression(' function(value) 
-        {               
+        'callback' => new \yii\web\JsExpression(' function(value) {               
                 if(value === true)
                 {
                   swal("Nice!", "Usuario Inhabilitado! ", "success");   
