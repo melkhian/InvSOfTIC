@@ -7,54 +7,12 @@ use backend\models\Dependencias;
 use backend\models\Aplicaciones;
 use yii\helpers\ArrayHelper;
 use backend\controllers\SiteController;
-use kartik\export\ExportMenu;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AppdependenciasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Aplicativos por Dependencias';
 $this->params['breadcrumbs'][] = $this->title;
-
-$gridColumns = [
-    // 'DepId',
-    'ADepId',
-    // 'DepId_fk',
-    ['attribute'=>'DepId_fk',
-             'value'=> function($model){return $model->DepId_fk();},
-             'filter' => Html::activeDropDownList($searchModel, 'DepId_fk', ArrayHelper::map(Dependencias::find()->all(), 'DepId', 'DepNomb'),['class'=>'form-control','prompt' => 'Seleccione el Cargo']),
-            ], 
-    // 'AppId_fk',
-    ['attribute'=>'AppId_fk',
-             'value'=> function($model){return $model->AppId_fk();},
-             'filter' => Html::activeDropDownList($searchModel, 'AppId_fk', ArrayHelper::map(Aplicaciones::find()->all(), 'AppId', 'AppNomb'),['class'=>'form-control','prompt' => 'Seleccione el Cargo']),
-            ], 
-    'ADepCantUsua',
-    'ADepFechSist',
-       
-     ];
-
-echo ExportMenu::widget([
-    'dataProvider' => $dataProvider,
-    'columns' => $gridColumns,
-    'exportConfig' => [        
-        ExportMenu::FORMAT_EXCEL => false,
-        ExportMenu::FORMAT_EXCEL_X => false,
-        ExportMenu::FORMAT_PDF => [
-            'pdfConfig' => [
-                'methods' => [
-                    'SetTitle' => 'Grid Export - Krajee.com',
-                    'SetSubject' => 'Generating PDF files via yii2-export extension has never been easy',
-                    'SetHeader' => ['Krajee Library Export||Generated On: ' . date("r")],
-                    'SetFooter' => ['|Page {PAGENO}|'],
-                    'SetAuthor' => 'Kartik Visweswaran',
-                    'SetCreator' => 'Kartik Visweswaran',
-                    'SetKeywords' => 'Krajee, Yii2, Export, PDF, MPDF, Output, GridView, Grid, yii2-grid, yii2-mpdf, yii2-export',
-                ]
-            ]
-        ],
-    ],
-]);
-
 ?>
 <div class="appdependencias-index">
 

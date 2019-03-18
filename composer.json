@@ -15,7 +15,7 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
-        "yiisoft/yii2": "2.0.16.1",
+        "yiisoft/yii2": "~2.0.6",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "dmstr/yii2-adminlte-asset": "^2.1",
@@ -31,7 +31,7 @@
         "yii2mod/yii2-sweet-alert": "*",
         "kartik-v/yii2-export": "dev-master",
         "kartik-v/yii2-grid": "dev-master"
-
+ 
 
         "kartik-v/yii2-widget-fileinput": "@dev"
 

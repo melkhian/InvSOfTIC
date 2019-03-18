@@ -165,27 +165,6 @@ class Requerimientos extends \yii\db\ActiveRecord
         return $data['TiposDesc'];
     }
 
-    public function Tiposid_fk2()
-    {
-        $data = Tipos::findOne($this->Tiposid_fk2);
-
-        return $data['TiposDesc'];
-    }
-
-    public function TiposId_fk3()
-    {
-        $data = Tipos::findOne($this->TiposId_fk3);
-
-        return $data['TiposDesc'];
-    }
-
-    public function TiposId_fk4()
-    {
-        $data = Tipos::findOne($this->TiposId_fk4);
-
-        return $data['TiposDesc'];
-    }
-
     //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
 
     public function UsuId_fk()

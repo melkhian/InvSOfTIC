@@ -102,20 +102,6 @@ class Empsoporte extends \yii\db\ActiveRecord
         return $this->hasOne(Tipos::className(), ['TiposId' => 'TiposId_fk2']);
     }
 
-        public function TiposId_fk1()
-        {
-            $data = Tipos::findOne($this->TiposId_fk1);
-
-            return $data['TiposDesc'];
-        }
-
-            public function TiposId_fk2()
-        {
-            $data = Tipos::findOne($this->TiposId_fk2);
-
-            return $data['TiposDesc'];
-        }
-
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
