@@ -126,6 +126,20 @@ class Proyectos extends \yii\db\ActiveRecord
         return $data['username'];
     }
 
+    public function Tiposid_fk1()
+        {
+            $data = Tipos::findOne($this->Tiposid_fk1);
+
+            return $data['TiposDesc'];
+        }
+
+    public function TiposId_fk2()
+        {
+            $data = Tipos::findOne($this->TiposId_fk2);
+
+            return $data['TiposDesc'];
+        }
+
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
@@ -134,20 +148,20 @@ class Proyectos extends \yii\db\ActiveRecord
 
             $AudAcci =  'update';
             $table = $this->getTableSchema();
-            $pk = $table->primaryKey; //---------------------- [ADepID]            
+            $pk = $table->primaryKey; //---------------------- [ADepID]
             $idSelect = $_GET['id'];
             $UsuId_fk = Yii::$app->user->identity->id;
-            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]
             $AudIp = Yii::$app->getRequest()->getUserIP();
-            $AudFechHora = new \yii\db\Expression('NOW()');      
+            $AudFechHora = new \yii\db\Expression('NOW()');
             $connection = Yii::$app->db;
 
             // print_r($pk);
             // die();
-            $MaxId = (new \yii\db\Query()) 
+            $MaxId = (new \yii\db\Query())
             ->select($pk)
             ->from($AudMod)
-            ->orderBy($pk[0]." DESC")          
+            ->orderBy($pk[0]." DESC")
             ->createCommand()
             ->execute();
 
@@ -156,14 +170,14 @@ class Proyectos extends \yii\db\ActiveRecord
             ->select('*')
             ->from($AudMod)
             ->where([$pk[0] => $idSelect])
-            ->createCommand();    
+            ->createCommand();
             $rows = $queryAll->queryOne();
             $resultAll = implode(",", $rows);
 
             $i=0;
 
             //---------------------------------------------------------------//
-            
+
             if(!isset($changedAttributes['ProId']))
             {
                 $oldAttributes[$i] = "Id => ".$idSelect;
@@ -179,189 +193,189 @@ class Proyectos extends \yii\db\ActiveRecord
 
             if(!isset($changedAttributes['ProNomb']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['ProNomb'] != $rows['ProNomb']) 
+                if ($changedAttributes['ProNomb'] != $rows['ProNomb'])
                 {
                     $oldAttributes[$i] = "nombre => ".$changedAttributes['ProNomb'];
                     $i++;
-                }            
-            } 
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ProDesc']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "Descripción => ".$changedAttributes['ProDesc'];
-                $i++;                
-            }  
+                $i++;
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ProObje']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['ProObje'] != $rows['ProObje']) 
+                if ($changedAttributes['ProObje'] != $rows['ProObje'])
                 {
                     $oldAttributes[$i] = "Objetivos => ".$changedAttributes['ProObje'];
-                    $i++;   
-                }                
-            }             
+                    $i++;
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['UsuId_fk']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['UsuId_fk'] != $rows['UsuId_fk']) 
+                if ($changedAttributes['UsuId_fk'] != $rows['UsuId_fk'])
                 {
                     $oldAttributes[$i] = "Funcionario => ".$changedAttributes['UsuId_fk'];
                     $i++;
-                }            
-            }   
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['tiposid_fk1']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "Aprueba => ".$changedAttributes['tiposid_fk1'];
                 $i++;
-            }             
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ProFechApro']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['ProFechApro'] != $rows['ProFechApro']) 
+                if ($changedAttributes['ProFechApro'] != $rows['ProFechApro'])
                 {
                     $oldAttributes[$i] = "Fecha => ".$changedAttributes['ProFechApro'];
                     $i++;
-                }            
-            }   
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ProDocu']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "ruta => ".$changedAttributes['ProDocu'];
                 $i++;
-            }             
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ProFechInic']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "fechaini => ".$changedAttributes['ProFechInic'];
                 $i++;
-            }             
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ProFechFina']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['ProFechFina'] != $rows['ProFechFina']) 
+                if ($changedAttributes['ProFechFina'] != $rows['ProFechFina'])
                 {
                     $oldAttributes[$i] = "fechafin => ".$changedAttributes['ProFechFina'];
                     $i++;
                 }
-            }             
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['TiposId_fk2']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['TiposId_fk2'] != $rows['TiposId_fk2']) 
+                if ($changedAttributes['TiposId_fk2'] != $rows['TiposId_fk2'])
                 {
                     $oldAttributes[$i] = "estado => ".$changedAttributes['TiposId_fk2'];
                     $i++;
                 }
-            }             
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ProFinProy']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['ProFinProy'] != $rows['ProFinProy']) 
+                if ($changedAttributes['ProFinProy'] != $rows['ProFinProy'])
                 {
                     $oldAttributes[$i] = "observacion => ".$changedAttributes['ProFinProy'];
                     $i++;
                 }
-            }             
+            }
 
-            //---------------------------------------------------------------//            
+            //---------------------------------------------------------------//
 
-            //---------------------------------------------------------------//          
+            //---------------------------------------------------------------//
 
-            if (!isset($oldAttributes)) 
+            if (!isset($oldAttributes))
             {
                 $total = 'no change';
             }
             else
             {
-                $total = implode(",",$oldAttributes); 
+                $total = implode(",",$oldAttributes);
             }
 
             // ------------------------------------------------------------------//
             // print_r($rows['AppId_fk']);
 
-            foreach ($rows as $key => $value) 
+            foreach ($rows as $key => $value)
             {
-                if ($key == 'ProId') 
+                if ($key == 'ProId')
                 {
                     $var[0] = "Id => ".$rows['ProId'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ProNomb' and isset($changedAttributes['ProNomb'])) 
+                if ($key == 'ProNomb' and isset($changedAttributes['ProNomb']))
                 {
                     $var[1] = "nombre => ".$rows['ProNomb'];
                 }
 
                 //---------------------------------------------------------------//
-                
 
-                if ($key == 'ProDesc' and isset($changedAttributes['ProDesc'])) 
+
+                if ($key == 'ProDesc' and isset($changedAttributes['ProDesc']))
                 {
                     $var[2] = "Descripción => ".$rows['ProDesc'];
                 }
@@ -369,13 +383,13 @@ class Proyectos extends \yii\db\ActiveRecord
                 //---------------------------------------------------------------//
 
                 if ($key == 'ProObje' and isset($changedAttributes['ProObje']))
-                {                    
+                {
                     $var[3] = "Objetivos => ".$rows['ProObje'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'UsuId_fk' and $value != ($changedAttributes['UsuId_fk'])) 
+                if ($key == 'UsuId_fk' and $value != ($changedAttributes['UsuId_fk']))
                 {
                     $var[4] = "Funcionario => ".$rows['UsuId_fk'];
                 }
@@ -389,49 +403,49 @@ class Proyectos extends \yii\db\ActiveRecord
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ProFechApro' and isset($changedAttributes['ProFechApro'])) 
+                if ($key == 'ProFechApro' and isset($changedAttributes['ProFechApro']))
                 {
                     $var[6] = "fecha => ".$rows['ProFechApro'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ProDocu' and isset($changedAttributes['ProDocu'])) 
+                if ($key == 'ProDocu' and isset($changedAttributes['ProDocu']))
                 {
                     $var[7] = "ruta => ".$rows['ProDocu'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ProFechInic' and isset($changedAttributes['ProFechInic'])) 
+                if ($key == 'ProFechInic' and isset($changedAttributes['ProFechInic']))
                 {
                     $var[8] = "fechaini => ".$rows['ProFechInic'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ProFechFina' and isset($changedAttributes['ProFechFina'])) 
+                if ($key == 'ProFechFina' and isset($changedAttributes['ProFechFina']))
                 {
                     $var[9] = "fechafin => ".$rows['ProFechFina'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'TiposId_fk2' and $value != ($changedAttributes['TiposId_fk2'])) 
+                if ($key == 'TiposId_fk2' and $value != ($changedAttributes['TiposId_fk2']))
                 {
                     $var[10] = "estado => ".$rows['TiposId_fk2'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ProFinProy' and isset($changedAttributes['ProFinProy'])) 
+                if ($key == 'ProFinProy' and isset($changedAttributes['ProFinProy']))
                 {
                     $var[11] = "observacion => ".$rows['ProFinProy'];
                 }
 
                 //---------------------------------------------------------------//
 
-                
+
 
             }
             // echo '<pre>';
@@ -439,49 +453,49 @@ class Proyectos extends \yii\db\ActiveRecord
             // print_r($var);
             // echo '</pre>';
             // die();
-            if (!isset($var)) 
+            if (!isset($var))
             {
                 $result = 'No Change';
             }
             else
             {
-               $result = implode(",",$var); 
+               $result = implode(",",$var);
             }
 
                 //---------------------------------------------------------------//
 
-            $connection->createCommand()->insert('auditorias', 
+            $connection->createCommand()->insert('auditorias',
                                     // ['AudId'=> $AudId],
                                     [
                                         'UsuId_fk' => Yii::$app->user->identity->id,
                                         'AudMod' => $AudMod,
-                                        'AudAcci' => $AudAcci, 
+                                        'AudAcci' => $AudAcci,
                                         'AudDatoAnte' => $total,
-                                        'AudDatoDesp' => $result,                                   
+                                        'AudDatoDesp' => $result,
                                         'AudIp'=> $AudIp,
-                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                        'AudFechHora'=> $AudFechHora,
                                     ])
-                                    ->execute(); 
+                                    ->execute();
 
         }
         if ($insert)
-        {        
+        {
             $connection = Yii::$app->db;
             $AudAcci =  'create';
             $table = $this->getTableSchema();
             $pk = $table->primaryKey;
             $UsuId_fk = Yii::$app->user->identity->id;
-            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]
             $AudIp = Yii::$app->getRequest()->getUserIP();
-            $AudFechHora = new \yii\db\Expression('NOW()');  
+            $AudFechHora = new \yii\db\Expression('NOW()');
 
         //---------------------------------------------------------------------------//
 
 
-            $MaxId = (new \yii\db\Query()) 
+            $MaxId = (new \yii\db\Query())
             ->select($pk)
             ->from($AudMod)
-            ->orderBy($pk[0]." DESC")          
+            ->orderBy($pk[0]." DESC")
             ->createCommand()
             ->execute();
 
@@ -491,13 +505,13 @@ class Proyectos extends \yii\db\ActiveRecord
             ->select($pk)
             ->from($AudMod)
             ->where([$pk[0] => $MaxId])
-            ->createCommand();    
-            $rows1 = $queryId->queryOne();            
+            ->createCommand();
+            $rows1 = $queryId->queryOne();
             // $resultId = implode(",", $rows1);
 
-            foreach ($rows1 as $key => $value) 
+            foreach ($rows1 as $key => $value)
             {
-                if ($key == $pk[0]) 
+                if ($key == $pk[0])
                 {
                     $var[0] = "Id => ".$rows1[$pk[0]];
                 }
@@ -505,20 +519,20 @@ class Proyectos extends \yii\db\ActiveRecord
 
             $resultId = implode(",", $var);
 
-            //-----------------------------------------------//    
+            //-----------------------------------------------//
 
-            $connection->createCommand()->insert('auditorias', 
+            $connection->createCommand()->insert('auditorias',
                                     // ['AudId'=> $AudId],
                                     [
                                         'UsuId_fk' => Yii::$app->user->identity->id,
                                         'AudMod' => $AudMod,
-                                        'AudAcci' => $AudAcci, 
+                                        'AudAcci' => $AudAcci,
                                         'AudDatoAnte' => ' ',
-                                        'AudDatoDesp' => $resultId,                                   
+                                        'AudDatoDesp' => $resultId,
                                         'AudIp'=> $AudIp,
-                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                        'AudFechHora'=> $AudFechHora,
                                     ])
-                                    ->execute();                
-        }            
+                                    ->execute();
+        }
     }
 }

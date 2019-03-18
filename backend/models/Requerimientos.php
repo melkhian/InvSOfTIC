@@ -159,20 +159,41 @@ class Requerimientos extends \yii\db\ActiveRecord
     //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
 
     public function TiposId_fk1()
-    {
-        $data = Tipos::findOne($this->TiposId_fk1);
+      {
+          $data = Tipos::findOne($this->TiposId_fk1);
 
-        return $data['TiposDesc'];
-    }
+          return $data['TiposDesc'];
+      }
 
-    //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+      public function Tiposid_fk2()
+      {
+          $data = Tipos::findOne($this->Tiposid_fk2);
 
-    public function UsuId_fk()
-    {
-        $data = User::findOne($this->UsuId_fk);
+          return $data['TiposDesc'];
+      }
 
-        return $data['username'];
-    }
+      public function TiposId_fk3()
+      {
+          $data = Tipos::findOne($this->TiposId_fk3);
+
+          return $data['TiposDesc'];
+      }
+
+      public function TiposId_fk4()
+      {
+          $data = Tipos::findOne($this->TiposId_fk4);
+
+          return $data['TiposDesc'];
+      }
+
+      //Cambió para mostrar en grilla los valores descriptivos de las llaves foráneas
+
+      public function UsuId_fk()
+      {
+          $data = User::findOne($this->UsuId_fk);
+
+          return $data['username'];
+      }
 
     public function afterSave($insert, $changedAttributes)
     {

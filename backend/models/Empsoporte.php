@@ -102,6 +102,20 @@ class Empsoporte extends \yii\db\ActiveRecord
         return $this->hasOne(Tipos::className(), ['TiposId' => 'TiposId_fk2']);
     }
 
+    public function TiposId_fk1()
+        {
+            $data = Tipos::findOne($this->TiposId_fk1);
+
+            return $data['TiposDesc'];
+        }
+
+            public function TiposId_fk2()
+        {
+            $data = Tipos::findOne($this->TiposId_fk2);
+
+            return $data['TiposDesc'];
+        }
+
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
@@ -110,20 +124,20 @@ class Empsoporte extends \yii\db\ActiveRecord
 
             $AudAcci =  'update';
             $table = $this->getTableSchema();
-            $pk = $table->primaryKey; //---------------------- [ADepID]            
+            $pk = $table->primaryKey; //---------------------- [ADepID]
             $idSelect = $_GET['id'];
             $UsuId_fk = Yii::$app->user->identity->id;
-            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]
             $AudIp = Yii::$app->getRequest()->getUserIP();
-            $AudFechHora = new \yii\db\Expression('NOW()');      
+            $AudFechHora = new \yii\db\Expression('NOW()');
             $connection = Yii::$app->db;
 
             // print_r($pk);
             // die();
-            $MaxId = (new \yii\db\Query()) 
+            $MaxId = (new \yii\db\Query())
             ->select($pk)
             ->from($AudMod)
-            ->orderBy($pk[0]." DESC")          
+            ->orderBy($pk[0]." DESC")
             ->createCommand()
             ->execute();
 
@@ -132,14 +146,14 @@ class Empsoporte extends \yii\db\ActiveRecord
             ->select('*')
             ->from($AudMod)
             ->where([$pk[0] => $idSelect])
-            ->createCommand();    
+            ->createCommand();
             $rows = $queryAll->queryOne();
             $resultAll = implode(",", $rows);
 
             $i=0;
 
             //---------------------------------------------------------------//
-            
+
             if(!isset($changedAttributes['ESopId']))
             {
                 $oldAttributes[$i] = "Id => ".$idSelect;
@@ -155,159 +169,159 @@ class Empsoporte extends \yii\db\ActiveRecord
 
             if(!isset($changedAttributes['ESopNit']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['ESopNit'] != $rows['ESopNit']) 
+                if ($changedAttributes['ESopNit'] != $rows['ESopNit'])
                 {
                     $oldAttributes[$i] = "nit => ".$changedAttributes['ESopNit'];
                     $i++;
-                }            
-            } 
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ESopNomb']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "nombre => ".$changedAttributes['ESopNomb'];
-                $i++;                
-            }  
+                $i++;
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ESopDire']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['ESopDire'] != $rows['ESopDire']) 
+                if ($changedAttributes['ESopDire'] != $rows['ESopDire'])
                 {
                     $oldAttributes[$i] = "direccion => ".$changedAttributes['ESopDire'];
-                    $i++;   
-                }                
-            }             
+                    $i++;
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ESopCont']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['ESopCont'] != $rows['ESopCont']) 
+                if ($changedAttributes['ESopCont'] != $rows['ESopCont'])
                 {
                     $oldAttributes[$i] = "contacto => ".$changedAttributes['ESopCont'];
                     $i++;
-                }            
-            }   
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['tiposid_fk1']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "cargo => ".$changedAttributes['tiposid_fk1'];
                 $i++;
-            }             
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ESopTelePers']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['ESopTelePers'] != $rows['ESopTelePers']) 
+                if ($changedAttributes['ESopTelePers'] != $rows['ESopTelePers'])
                 {
                     $oldAttributes[$i] = "Telefono => ".$changedAttributes['ESopTelePers'];
                     $i++;
-                }            
-            }   
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ESopTeleOfic']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "oficina => ".$changedAttributes['ESopTeleOfic'];
                 $i++;
-            }             
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ESopCorr']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "correo => ".$changedAttributes['ESopCorr'];
                 $i++;
-            }             
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['TiposId_fk2']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['TiposId_fk2'] != $rows['TiposId_fk2']) 
+                if ($changedAttributes['TiposId_fk2'] != $rows['TiposId_fk2'])
                 {
                     $oldAttributes[$i] = "tipo => ".$changedAttributes['TiposId_fk2'];
                     $i++;
                 }
-            }             
+            }
 
-            //---------------------------------------------------------------//            
+            //---------------------------------------------------------------//
 
-            //---------------------------------------------------------------//          
+            //---------------------------------------------------------------//
 
-            if (!isset($oldAttributes)) 
+            if (!isset($oldAttributes))
             {
                 $total = 'no change';
             }
             else
             {
-                $total = implode(",",$oldAttributes); 
+                $total = implode(",",$oldAttributes);
             }
 
             // ------------------------------------------------------------------//
             // print_r($rows['AppId_fk']);
 
-            foreach ($rows as $key => $value) 
+            foreach ($rows as $key => $value)
             {
-                if ($key == 'ESopId') 
+                if ($key == 'ESopId')
                 {
                     $var[0] = "Id => ".$rows['ESopId'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ESopNit' and isset($changedAttributes['ESopNit'])) 
+                if ($key == 'ESopNit' and isset($changedAttributes['ESopNit']))
                 {
                     $var[1] = "nit => ".$rows['ESopNit'];
                 }
 
                 //---------------------------------------------------------------//
-                
 
-                if ($key == 'ESopNomb' and isset($changedAttributes['ESopNomb'])) 
+
+                if ($key == 'ESopNomb' and isset($changedAttributes['ESopNomb']))
                 {
                     $var[2] = "nombre => ".$rows['ESopNomb'];
                 }
@@ -315,13 +329,13 @@ class Empsoporte extends \yii\db\ActiveRecord
                 //---------------------------------------------------------------//
 
                 if ($key == 'ESopDire' and isset($changedAttributes['ESopDire']))
-                {                    
+                {
                     $var[3] = "direccion => ".$rows['ESopDire'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ESopCont' and isset($changedAttributes['ESopCont'])) 
+                if ($key == 'ESopCont' and isset($changedAttributes['ESopCont']))
                 {
                     $var[4] = "contacto => ".$rows['ESopCont'];
                 }
@@ -335,35 +349,35 @@ class Empsoporte extends \yii\db\ActiveRecord
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ESopTelePers' and isset($changedAttributes['ESopTelePers'])) 
+                if ($key == 'ESopTelePers' and isset($changedAttributes['ESopTelePers']))
                 {
                     $var[6] = "celular => ".$rows['ESopTelePers'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ESopTeleOfic' and isset($changedAttributes['ESopTeleOfic'])) 
+                if ($key == 'ESopTeleOfic' and isset($changedAttributes['ESopTeleOfic']))
                 {
                     $var[7] = "telefono => ".$rows['ESopTeleOfic'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ESopCorr' and isset($changedAttributes['ESopCorr'])) 
+                if ($key == 'ESopCorr' and isset($changedAttributes['ESopCorr']))
                 {
                     $var[8] = "correo => ".$rows['ESopCorr'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'TiposId_fk2' and $value != ($changedAttributes['TiposId_fk2'])) 
+                if ($key == 'TiposId_fk2' and $value != ($changedAttributes['TiposId_fk2']))
                 {
                     $var[9] = "tipo => ".$rows['TiposId_fk2'];
                 }
 
                 //---------------------------------------------------------------//
 
-                
+
 
             }
             // echo '<pre>';
@@ -371,49 +385,49 @@ class Empsoporte extends \yii\db\ActiveRecord
             // print_r($var);
             // echo '</pre>';
             // die();
-            if (!isset($var)) 
+            if (!isset($var))
             {
                 $result = 'No Change';
             }
             else
             {
-               $result = implode(",",$var); 
+               $result = implode(",",$var);
             }
 
                 //---------------------------------------------------------------//
 
-            $connection->createCommand()->insert('auditorias', 
+            $connection->createCommand()->insert('auditorias',
                                     // ['AudId'=> $AudId],
                                     [
                                         'UsuId_fk' => Yii::$app->user->identity->id,
                                         'AudMod' => $AudMod,
-                                        'AudAcci' => $AudAcci, 
+                                        'AudAcci' => $AudAcci,
                                         'AudDatoAnte' => $total,
-                                        'AudDatoDesp' => $result,                                   
+                                        'AudDatoDesp' => $result,
                                         'AudIp'=> $AudIp,
-                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                        'AudFechHora'=> $AudFechHora,
                                     ])
-                                    ->execute(); 
+                                    ->execute();
 
         }
         if ($insert)
-        {        
+        {
             $connection = Yii::$app->db;
             $AudAcci =  'create';
             $table = $this->getTableSchema();
             $pk = $table->primaryKey;
             $UsuId_fk = Yii::$app->user->identity->id;
-            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]
             $AudIp = Yii::$app->getRequest()->getUserIP();
-            $AudFechHora = new \yii\db\Expression('NOW()');  
+            $AudFechHora = new \yii\db\Expression('NOW()');
 
         //---------------------------------------------------------------------------//
 
 
-            $MaxId = (new \yii\db\Query()) 
+            $MaxId = (new \yii\db\Query())
             ->select($pk)
             ->from($AudMod)
-            ->orderBy($pk[0]." DESC")          
+            ->orderBy($pk[0]." DESC")
             ->createCommand()
             ->execute();
 
@@ -423,13 +437,13 @@ class Empsoporte extends \yii\db\ActiveRecord
             ->select($pk)
             ->from($AudMod)
             ->where([$pk[0] => $MaxId])
-            ->createCommand();    
-            $rows1 = $queryId->queryOne();            
+            ->createCommand();
+            $rows1 = $queryId->queryOne();
             // $resultId = implode(",", $rows1);
 
-            foreach ($rows1 as $key => $value) 
+            foreach ($rows1 as $key => $value)
             {
-                if ($key == $pk[0]) 
+                if ($key == $pk[0])
                 {
                     $var[0] = "Id => ".$rows1[$pk[0]];
                 }
@@ -437,20 +451,20 @@ class Empsoporte extends \yii\db\ActiveRecord
 
             $resultId = implode(",", $var);
 
-            //-----------------------------------------------//    
+            //-----------------------------------------------//
 
-            $connection->createCommand()->insert('auditorias', 
+            $connection->createCommand()->insert('auditorias',
                                     // ['AudId'=> $AudId],
                                     [
                                         'UsuId_fk' => Yii::$app->user->identity->id,
                                         'AudMod' => $AudMod,
-                                        'AudAcci' => $AudAcci, 
+                                        'AudAcci' => $AudAcci,
                                         'AudDatoAnte' => ' ',
-                                        'AudDatoDesp' => $resultId,                                   
+                                        'AudDatoDesp' => $resultId,
                                         'AudIp'=> $AudIp,
-                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                        'AudFechHora'=> $AudFechHora,
                                     ])
-                                    ->execute();                
-        }            
+                                    ->execute();
+        }
     }
 }

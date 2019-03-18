@@ -41,7 +41,7 @@ $gridColumns = [
     'status',
     'auth_key',
     'password_hash',
-    'password_reset_token', 
+    'password_reset_token',
     'created_at',
     'updated_at'
      ];
@@ -49,6 +49,23 @@ $gridColumns = [
 echo ExportMenu::widget([
     'dataProvider' => $dataProvider,
     'columns' => $gridColumns,
+    'exportConfig' => [
+        ExportMenu::FORMAT_EXCEL => false,
+        ExportMenu::FORMAT_EXCEL_X => false,
+        ExportMenu::FORMAT_PDF => [
+            'pdfConfig' => [
+                'methods' => [
+                    'SetTitle' => 'Grid Export - Krajee.com',
+                    'SetSubject' => 'Generating PDF files via yii2-export extension has never been easy',
+                    'SetHeader' => ['Krajee Library Export||Generated On: ' . date("r")],
+                    'SetFooter' => ['|Page {PAGENO}|'],
+                    'SetAuthor' => 'Kartik Visweswaran',
+                    'SetCreator' => 'Kartik Visweswaran',
+                    'SetKeywords' => 'Krajee, Yii2, Export, PDF, MPDF, Output, GridView, Grid, yii2-grid, yii2-mpdf, yii2-export',
+                ]
+            ]
+        ],
+    ],
 ]);
 //<!-- ------------------------------------------------------------------------------- -->
 //<!-- ------------------------------------------------------------------------------- -->
@@ -56,14 +73,7 @@ echo ExportMenu::widget([
 
 
 ?>
-<!-- ------------------------------------------------------------------------------- -->
-<!-- ------------------------------------------------------------------------------- -->
-<!-- ------------------------------------------------------------------------------- -->
 
-
-<!-- ------------------------------------------------------------------------------- -->
-<!-- ------------------------------------------------------------------------------- -->
-<!-- ------------------------------------------------------------------------------- -->
 <div class="user-index">
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
