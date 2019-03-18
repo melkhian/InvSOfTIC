@@ -11,6 +11,7 @@ function Init(){
   var appotrocual16 = document.getElementById('aplicaciones-appotrocual16').value;
   var appotrocual18 = document.getElementById('aplicaciones-appotrocual18').value;
   var appotrocual21 = document.getElementById('aplicaciones-appotrocual21').value;
+  var appentiimag = document.querySelector('#aplicaciones-appentiimag').value;
 
   var appotrocual19 = document.querySelector('#aplicaciones-tiposid_fk19 > label:nth-child(1) > input[type="radio"]').checked;
   var appotrocual20 = document.querySelector('#aplicaciones-tiposid_fk20 > label:nth-child(1) > input[type="radio"]').checked;
@@ -84,6 +85,9 @@ function Init(){
   if (!appotrocual20) {
     // alert(appotrocual19);
     document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual20').style.display = "none";
+  }
+  if (appentiimag === '') {
+    document.querySelector('#w0-tab1 > div.form-group.field-aplicaciones-appentiimag').style.display = "none";
   }
 }
 

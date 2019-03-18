@@ -195,6 +195,17 @@ return array (
       '@yii2mod/alert' => $vendorDir . '/yii2mod/yii2-sweet-alert',
     ),
   ),
+
+  'kartik-v/yii2-mpdf' =>
+  array (
+    'name' => 'kartik-v/yii2-mpdf',
+    'version' => '1.0.5.0',
+    'alias' =>
+    array (
+      '@kartik/mpdf' => $vendorDir . '/kartik-v/yii2-mpdf/src',
+    ),
+  ),
+
   'kartik-v/yii2-widget-select2' =>
   array (
     'name' => 'kartik-v/yii2-widget-select2',
@@ -256,6 +267,9 @@ return array (
     'alias' =>
     array (
       '@kartik/grid' => $vendorDir . '/kartik-v/yii2-grid/src',
+
+    ),
+  ),
 
   'kartik-v/yii2-widget-fileinput' =>
   array (

@@ -326,15 +326,6 @@ class Aplicaciones extends \yii\db\ActiveRecord
             $rows = $queryAll->queryOne();
             $resultAll = implode(",", $rows);
 
-  /**
-  * @return \yii\db\ActiveQuery
-  */
-  public function getAppdependencias()
-  {
-    return $this->hasMany(Appdependencias::className(), ['AppId_fk' => 'AppId']);
-  }
-
-
 
             $i=0;       // variable iteradora
             //$changeAtributes son los datos que cambiaron
@@ -2893,7 +2884,7 @@ class Aplicaciones extends \yii\db\ActiveRecord
       $this->TiposId_fk55 = implode(',',(array)$this->TiposId_fk55);
     }
     if ($this->AppEntiImag) {
-      $this->AppEntiImag = implode(',',(array)$this->AppEntiImag);
+      $this->AppEntiImag = implode(',    ',(array)$this->AppEntiImag);
     }
 
     return parent::beforeValidate();

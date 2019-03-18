@@ -66,20 +66,20 @@ class Appmodulos extends \yii\db\ActiveRecord
 
             $AudAcci =  'update';
             $table = $this->getTableSchema();
-            $pk = $table->primaryKey; //---------------------- [ADepID]            
+            $pk = $table->primaryKey; //---------------------- [ADepID]
             $idSelect = $_GET['id'];
             $UsuId_fk = Yii::$app->user->identity->id;
-            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]
             $AudIp = Yii::$app->getRequest()->getUserIP();
-            $AudFechHora = new \yii\db\Expression('NOW()');      
+            $AudFechHora = new \yii\db\Expression('NOW()');
             $connection = Yii::$app->db;
 
             // print_r($pk);
             // die();
-            $MaxId = (new \yii\db\Query()) 
+            $MaxId = (new \yii\db\Query())
             ->select($pk)
             ->from($AudMod)
-            ->orderBy($pk[0]."DESC")          
+            ->orderBy($pk[0]."DESC")
             ->createCommand()
             ->execute();
 
@@ -88,14 +88,14 @@ class Appmodulos extends \yii\db\ActiveRecord
             ->select('*')
             ->from($AudMod)
             ->where([$pk[0] => $idSelect])
-            ->createCommand();    
+            ->createCommand();
             $rows = $queryAll->queryOne();
             $resultAll = implode(",", $rows);
 
             $i=0;
 
             //---------------------------------------------------------------//
-            
+
             if(!isset($changedAttributes['AModId']))
             {
                 $oldAttributes[$i] = "Id => ".$idSelect;
@@ -111,77 +111,77 @@ class Appmodulos extends \yii\db\ActiveRecord
 
             if(!isset($changedAttributes['AppId_fk']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['AppId_fk'] != $rows['AppId_fk']) 
+                if ($changedAttributes['AppId_fk'] != $rows['AppId_fk'])
                 {
                     $oldAttributes[$i] = "AppId => ".$changedAttributes['AppId_fk'];
                     $i++;
-                }            
-            } 
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['AModNomb']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "Nombre => ".$changedAttributes['AModNomb'];
-                $i++;                
-            }  
+                $i++;
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['AModDesc']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "Descripción => ".$changedAttributes['AModDesc'];
                 $i++;
-            }             
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['TiposId_fk']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['TiposId_fk'] != $rows['TiposId_fk']) 
+                if ($changedAttributes['TiposId_fk'] != $rows['TiposId_fk'])
                 {
                     $oldAttributes[$i] = "Esta Instalado? => ".$changedAttributes['TiposId_fk'];
                     $i++;
-                }            
-            }   
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['AModObse']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "Observaciones => ".$changedAttributes['AModObse'];
                 $i++;
-            }             
+            }
 
-            //---------------------------------------------------------------//          
+            //---------------------------------------------------------------//
 
-            if (!isset($oldAttributes)) 
+            if (!isset($oldAttributes))
             {
                 $total = 'no change';
             }
             else
             {
-                $total = implode(",",$oldAttributes); 
+                $total = implode(",",$oldAttributes);
             }
 
             // ------------------------------------------------------------------//
@@ -189,45 +189,45 @@ class Appmodulos extends \yii\db\ActiveRecord
             // echo '<br>';
             // print_r($changedAttributes['AppId_fk']);
             // die();
-            foreach ($rows as $key => $value) 
+            foreach ($rows as $key => $value)
             {
-                if ($key == 'AModId') 
+                if ($key == 'AModId')
                 {
                     $var[0] = "Id => ".$rows['AModId'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'AppId_fk' and $value != $changedAttributes['AppId_fk']) 
+                if ($key == 'AppId_fk' and $value != $changedAttributes['AppId_fk'])
                 {
                     $var[1] = "AppId => ".$rows['AppId_fk'];
                 }
 
                 //---------------------------------------------------------------//
-                
 
-                if ($key == 'AModNomb' and isset($changedAttributes['AModNomb'])) 
+
+                if ($key == 'AModNomb' and isset($changedAttributes['AModNomb']))
                 {
                     $var[2] = "Nombre => ".$rows['AModNomb'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'AModDesc' and isset($changedAttributes['AModDesc'])) 
+                if ($key == 'AModDesc' and isset($changedAttributes['AModDesc']))
                 {
                     $var[3] = "Descripción => ".$rows['AModDesc'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'TiposId_fk' and $value != $changedAttributes['TiposId_fk']) 
+                if ($key == 'TiposId_fk' and $value != $changedAttributes['TiposId_fk'])
                 {
                     $var[4] = "Esta instalado => ".$rows['TiposId_fk'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'AModObse' and isset($changedAttributes['AModObse'])) 
+                if ($key == 'AModObse' and isset($changedAttributes['AModObse']))
                 {
                     $var[5] = "Observaciones => ".$rows['AModObse'];
                 }
@@ -240,49 +240,49 @@ class Appmodulos extends \yii\db\ActiveRecord
             // print_r($var);
             // echo '</pre>';
             // die();
-            if (!isset($var)) 
+            if (!isset($var))
             {
                 $result = 'No Change';
             }
             else
             {
-               $result = implode(",",$var); 
+               $result = implode(",",$var);
             }
 
                 //---------------------------------------------------------------//
 
-            $connection->createCommand()->insert('auditorias', 
+            $connection->createCommand()->insert('auditorias',
                                     // ['AudId'=> $AudId],
                                     [
                                         'UsuId_fk' => Yii::$app->user->identity->id,
                                         'AudMod' => $AudMod,
-                                        'AudAcci' => $AudAcci, 
+                                        'AudAcci' => $AudAcci,
                                         'AudDatoAnte' => $total,
-                                        'AudDatoDesp' => $result,                                   
+                                        'AudDatoDesp' => $result,
                                         'AudIp'=> $AudIp,
-                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                        'AudFechHora'=> $AudFechHora,
                                     ])
-                                    ->execute(); 
+                                    ->execute();
 
         }
         if ($insert)
-        {        
+        {
             $connection = Yii::$app->db;
             $AudAcci =  'create';
             $table = $this->getTableSchema();
             $pk = $table->primaryKey;
             $UsuId_fk = Yii::$app->user->identity->id;
-            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]
             $AudIp = Yii::$app->getRequest()->getUserIP();
-            $AudFechHora = new \yii\db\Expression('NOW()');  
+            $AudFechHora = new \yii\db\Expression('NOW()');
 
         //---------------------------------------------------------------------------//
 
 
-            $MaxId = (new \yii\db\Query()) 
+            $MaxId = (new \yii\db\Query())
             ->select($pk)
-            ->from($AudMod)
-            ->orderBy($pk[0]." DESC")          
+            ->from('Appmodulos')
+            ->orderBy($pk[0]." DESC")
             ->createCommand()
             ->execute();
 
@@ -290,37 +290,37 @@ class Appmodulos extends \yii\db\ActiveRecord
 
             $queryId = (new \yii\db\Query())
             ->select($pk)
-            ->from($AudMod)
+            ->from('Appmodulos')
             ->where([$pk[0] => $MaxId])
-            ->createCommand();    
-            $rows1 = $queryId->queryOne();            
+            ->createCommand();
+            $rows1 = $queryId->queryOne();
             // $resultId = implode(",", $rows1);
 
-            foreach ($rows1 as $key => $value) 
-            {
-                if ($key == 'AModId') 
-                {
-                    $var[0] = "Id => ".$rows1['AModId'];
-                }
-            }
+            // foreach ($rows1 as $key => $value)
+            // {
+                // if ($rows1 == 'AModId')
+                // {
+                //     $var[0] = "Id => ".$rows1['AModId'];
+                // }
+            // }
 
-            $resultId = implode(",", $var);
+            // $resultId = implode(",", $var);
 
-            //-----------------------------------------------//    
+            //-----------------------------------------------//
 
-            $connection->createCommand()->insert('auditorias', 
+            $connection->createCommand()->insert('auditorias',
                                     // ['AudId'=> $AudId],
                                     [
                                         'UsuId_fk' => Yii::$app->user->identity->id,
                                         'AudMod' => $AudMod,
-                                        'AudAcci' => $AudAcci, 
+                                        'AudAcci' => $AudAcci,
                                         'AudDatoAnte' => ' ',
-                                        'AudDatoDesp' => $resultId,                                   
+                                        'AudDatoDesp' => '',
                                         'AudIp'=> $AudIp,
-                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                        'AudFechHora'=> $AudFechHora,
                                     ])
-                                    ->execute();                
-        }            
+                                    ->execute();
+        }
     }
 
     /**
