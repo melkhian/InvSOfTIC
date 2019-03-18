@@ -195,6 +195,7 @@ return array (
       '@yii2mod/alert' => $vendorDir . '/yii2mod/yii2-sweet-alert',
     ),
   ),
+
   'kartik-v/yii2-mpdf' =>
   array (
     'name' => 'kartik-v/yii2-mpdf',
@@ -204,6 +205,7 @@ return array (
       '@kartik/mpdf' => $vendorDir . '/kartik-v/yii2-mpdf/src',
     ),
   ),
+
   'kartik-v/yii2-widget-select2' =>
   array (
     'name' => 'kartik-v/yii2-widget-select2',
@@ -265,8 +267,10 @@ return array (
     'alias' =>
     array (
       '@kartik/grid' => $vendorDir . '/kartik-v/yii2-grid/src',
+
     ),
   ),
+
   'kartik-v/yii2-widget-fileinput' =>
   array (
     'name' => 'kartik-v/yii2-widget-fileinput',
@@ -277,4 +281,49 @@ return array (
 
     ),
   ),
-);
+  'yii2tech/spreadsheet' =>
+  array (
+    'name' => 'yii2tech/spreadsheet',
+    'version' => '1.0.3.0',
+    'alias' =>
+    array (
+      '@yii2tech/spreadsheet' => $vendorDir . '/yii2tech/spreadsheet/src',
+    ),
+  ),
+  'moonlandsoft/yii2-phpexcel' =>
+  array (
+    'name' => 'moonlandsoft/yii2-phpexcel',
+    'version' => '2.0.0.0',
+    'alias' =>
+    array (
+      '@moonland/phpexcel' => $vendorDir . '/moonlandsoft/yii2-phpexcel',
+    ),
+  ),
+  'amylian/yii2-amylian-phpunit' =>
+  array (
+    'name' => 'amylian/yii2-amylian-phpunit',
+    'version' => '0.1.11.0',
+    'alias' =>
+    array (
+      '@amylian/yii/phpunit' => $vendorDir . '/amylian/yii2-amylian-phpunit/src',
+    ),
+  ),
+  'kartik-v/yii2-mpdf' =>
+  array (
+    'name' => 'kartik-v/yii2-mpdf',
+    'version' => '9999999-dev',
+    'alias' =>
+    array (
+      '@kartik/mpdf' => $vendorDir . '/kartik-v/yii2-mpdf/src',
+    ),
+  ),
+  'codemix/yii2-excelexport' =>
+  array (
+    'name' => 'codemix/yii2-excelexport',
+    'version' => '2.7.2.0',
+    'alias' =>
+    array (
+      '@codemix/excelexport' => $vendorDir . '/codemix/yii2-excelexport/src',
+    ),
+  ),
+)));
