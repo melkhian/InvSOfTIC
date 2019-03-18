@@ -2,6 +2,7 @@
 use yii\widgets\Breadcrumbs;
 use dmstr\widgets\Alert;
 use backend\controllers\SiteController;
+use yii\helpers\Html;
 // $footer = SiteController::footer();
 ?>
 <div class="content-wrapper">
@@ -37,13 +38,12 @@ use backend\controllers\SiteController;
 </div>
 
 <footer class="main-footer">
-    <div class="pull-right hidden-xs">
+    <!-- <div class="pull-right hidden-xs">
         <b>Version</b> 2.0
-    </div>
+    </div> -->
+    <div> <?= Html::img(SiteController::footer(),["width"=>"100%","height"=>"150px","padding"=>"0px"]); ?>  </div>
     <!-- <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
     reserved. -->
-    <strong> <a href="https://www.valledelcauca.gov.co/">Gobernación VALLE DEL CAUCA</a> &copy; .</strong> All rights
-    reserved.
 </footer>
 
 <!-- Control Sidebar -->

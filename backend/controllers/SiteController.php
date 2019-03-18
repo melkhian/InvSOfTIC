@@ -173,7 +173,7 @@ class SiteController extends Controller
 
     public function footer(){
       $query = (new \yii\db\Query())
-      ->select('footer')
+      ->select('ParFoot')
       ->from('parametros');
       // ->where([
       //   'header' => $IdUser,
