@@ -74,7 +74,7 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
     );
 
     public static $prefixLengthsPsr4 = array (
-        'y' => 
+        'y' =>
         array (
             'yii\\swiftmailer\\' => 16,
             'yii\\httpclient\\' => 15,
@@ -84,26 +84,32 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
             'yii\\composer\\' => 13,
             'yii\\bootstrap\\' => 14,
             'yii\\' => 4,
+            'yii2tech\\spreadsheet\\' => 21,
             'yii2mod\\alert\\' => 14,
         ),
-        'w' => 
+        'w' =>
         array (
             'wbraganca\\dynamicform\\' => 22,
         ),
-        's' => 
+        's' =>
         array (
             'sammaye\\audittrail\\' => 19,
         ),
-        'r' => 
+        'r' =>
         array (
             'rmrevin\\yii\\fontawesome\\' => 24,
         ),
-        'p' => 
+        'p' =>
         array (
             'phpnt\\exportFile\\' => 17,
             'phpDocumentor\\Reflection\\' => 25,
         ),
-        'k' => 
+        'm' =>
+        array (
+            'moonland\\phpexcel\\' => 18,
+            'mikehaertl\\tmp\\' => 15,
+        ),
+        'k' =>
         array (
             'kartik\\sortable\\' => 16,
             'kartik\\select2\\' => 15,
@@ -113,41 +119,47 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
             'kartik\\export\\' => 14,
             'kartik\\dynagrid\\' => 16,
             'kartik\\dialog\\' => 14,
+            'kartik\\plugins\\fileinput\\' => 25,
+            'kartik\\file\\' => 12,
+
             'kartik\\date\\' => 12,
             'kartik\\base\\' => 12,
         ),
-        'h' => 
+        'h' =>
         array (
             'himiklab\\yii2\\recaptcha\\tests\\' => 30,
             'himiklab\\yii2\\recaptcha\\' => 24,
         ),
-        'd' => 
+        'd' =>
         array (
             'dosamigos\\chartjs\\' => 18,
             'dmstr\\' => 6,
         ),
-        'c' => 
+        'c' =>
         array (
+            'codemix\\excelexport\\' => 20,
             'cebe\\markdown\\' => 14,
         ),
-        'b' => 
+        'b' =>
         array (
             'bedezign\\yii2\\audit\\' => 20,
         ),
-        'a' => 
+        'a' =>
         array (
             'asinfotrack\\yii2\\toolbox\\' => 25,
             'asinfotrack\\yii2\\audittrail\\' => 28,
+            'amylian\\yii\\phpunit\\' => 20,
         ),
-        'Z' => 
+
+        'Z' =>
         array (
             'Zend\\Escaper\\' => 13,
         ),
-        'W' => 
+        'W' =>
         array (
             'Webmozart\\Assert\\' => 17,
         ),
-        'S' => 
+        'S' =>
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Yaml\\' => 23,
@@ -159,7 +171,7 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\BrowserKit\\' => 29,
         ),
-        'P' => 
+        'P' =>
         array (
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
@@ -168,31 +180,32 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
             'PhpOffice\\PhpSpreadsheet\\' => 25,
             'PhpOffice\\Common\\' => 17,
         ),
-        'M' => 
+
+        'M' =>
         array (
             'Mpdf\\' => 5,
             'Matrix\\' => 7,
         ),
-        'G' => 
+        'G' =>
         array (
             'GuzzleHttp\\Psr7\\' => 16,
         ),
-        'F' => 
+        'F' =>
         array (
             'FontLib\\' => 8,
             'Faker\\' => 6,
         ),
-        'E' => 
+        'E' =>
         array (
             'Egulias\\EmailValidator\\' => 23,
         ),
-        'D' => 
+        'D' =>
         array (
             'Dompdf\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
             'DeepCopy\\' => 9,
         ),
-        'C' => 
+        'C' =>
         array (
             'Composer\\Installers\\' => 20,
             'Complex\\' => 8,
@@ -203,326 +216,369 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
     );
 
     public static $prefixDirsPsr4 = array (
-        'yii\\swiftmailer\\' => 
+        'yii\\swiftmailer\\' =>
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer',
         ),
-        'yii\\httpclient\\' => 
+        'yii\\httpclient\\' =>
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-httpclient/src',
         ),
-        'yii\\gii\\' => 
+        'yii\\gii\\' =>
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-gii',
         ),
-        'yii\\faker\\' => 
+        'yii\\faker\\' =>
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-faker',
         ),
-        'yii\\debug\\' => 
+        'yii\\debug\\' =>
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-debug',
         ),
-        'yii\\composer\\' => 
+        'yii\\composer\\' =>
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-composer',
         ),
-        'yii\\bootstrap\\' => 
+        'yii\\bootstrap\\' =>
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-bootstrap/src',
         ),
-        'yii\\' => 
+        'yii\\' =>
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
-        'yii2mod\\alert\\' => 
+        'yii2tech\\spreadsheet\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/yii2tech/spreadsheet/src',
+        ),
+        'yii2mod\\alert\\' =>
         array (
             0 => __DIR__ . '/..' . '/yii2mod/yii2-sweet-alert',
-        ),
-        'wbraganca\\dynamicform\\' => 
+
+        'wbraganca\\dynamicform\\' =>
         array (
             0 => __DIR__ . '/..' . '/wbraganca/yii2-dynamicform',
         ),
-        'sammaye\\audittrail\\' => 
+        'sammaye\\audittrail\\' =>
         array (
             0 => __DIR__ . '/..' . '/sammaye/yii2-audittrail',
         ),
-        'rmrevin\\yii\\fontawesome\\' => 
+        'rmrevin\\yii\\fontawesome\\' =>
         array (
             0 => __DIR__ . '/..' . '/rmrevin/yii2-fontawesome',
         ),
-        'phpnt\\exportFile\\' => 
+
+        'phpnt\\exportFile\\' =>
         array (
             0 => __DIR__ . '/..' . '/phpnt/yii2-export',
         ),
-        'phpDocumentor\\Reflection\\' => 
+        'phpDocumentor\\Reflection\\' =>
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
-        'kartik\\sortable\\' => 
+        'moonland\\phpexcel\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/moonlandsoft/yii2-phpexcel',
+        ),
+        'mikehaertl\\tmp\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/mikehaertl/php-tmpfile/src',
+        ),
+        'kartik\\sortable\\' =>
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-sortable/src',
         ),
-        'kartik\\select2\\' => 
+        'kartik\\select2\\' =>
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-select2/src',
         ),
-        'kartik\\mpdf\\' => 
+        'kartik\\mpdf\\' =>
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-mpdf/src',
         ),
-        'kartik\\grid\\' => 
+        'kartik\\grid\\' =>
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-grid/src',
         ),
-        'kartik\\form\\' => 
+        'kartik\\form\\' =>
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-activeform/src',
         ),
-        'kartik\\export\\' => 
+        'kartik\\export\\' =>
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-export/src',
         ),
-        'kartik\\dynagrid\\' => 
+        'kartik\\dynagrid\\' =>
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-dynagrid/src',
         ),
-        'kartik\\dialog\\' => 
+        'kartik\\dialog\\' =>
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-dialog/src',
+
+        'kartik\\plugins\\fileinput\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/bootstrap-fileinput',
         ),
-        'kartik\\date\\' => 
+        'kartik\\file\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-fileinput/src',
+
+        ),
+        'kartik\\date\\' =>
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-datepicker/src',
         ),
-        'kartik\\base\\' => 
+        'kartik\\base\\' =>
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-krajee-base/src',
         ),
-        'himiklab\\yii2\\recaptcha\\tests\\' => 
+        'himiklab\\yii2\\recaptcha\\tests\\' =>
         array (
             0 => __DIR__ . '/..' . '/himiklab/yii2-recaptcha-widget/tests',
         ),
-        'himiklab\\yii2\\recaptcha\\' => 
+        'himiklab\\yii2\\recaptcha\\' =>
         array (
             0 => __DIR__ . '/..' . '/himiklab/yii2-recaptcha-widget/src',
         ),
-        'dosamigos\\chartjs\\' => 
+        'dosamigos\\chartjs\\' =>
         array (
             0 => __DIR__ . '/..' . '/2amigos/yii2-chartjs-widget/src',
         ),
-        'dmstr\\' => 
+        'dmstr\\' =>
         array (
             0 => __DIR__ . '/..' . '/dmstr/yii2-adminlte-asset',
         ),
-        'cebe\\markdown\\' => 
+        'codemix\\excelexport\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/codemix/yii2-excelexport/src',
+        ),
+        'cebe\\markdown\\' =>
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
         ),
-        'bedezign\\yii2\\audit\\' => 
+        'bedezign\\yii2\\audit\\' =>
         array (
             0 => __DIR__ . '/..' . '/bedezign/yii2-audit/src',
         ),
-        'asinfotrack\\yii2\\toolbox\\' => 
+        'asinfotrack\\yii2\\toolbox\\' =>
         array (
             0 => __DIR__ . '/..' . '/asinfotrack/yii2-toolbox',
         ),
-        'asinfotrack\\yii2\\audittrail\\' => 
+        'asinfotrack\\yii2\\audittrail\\' =>
         array (
             0 => __DIR__ . '/..' . '/asinfotrack/yii2-audittrail',
         ),
-        'Zend\\Escaper\\' => 
+        'amylian\\yii\\phpunit\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/amylian/yii2-amylian-phpunit/src',
+        ),
+        'Zend\\Escaper\\' =>
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-escaper/src',
         ),
-        'Webmozart\\Assert\\' => 
+
+        'Webmozart\\Assert\\' =>
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' => 
+        'Symfony\\Polyfill\\Mbstring\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'Symfony\\Component\\Yaml\\' => 
+        'Symfony\\Component\\Yaml\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
-        'Symfony\\Component\\Finder\\' => 
+        'Symfony\\Component\\Finder\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/finder',
         ),
-        'Symfony\\Component\\EventDispatcher\\' => 
+        'Symfony\\Component\\EventDispatcher\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
         ),
-        'Symfony\\Component\\DomCrawler\\' => 
+        'Symfony\\Component\\DomCrawler\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/dom-crawler',
         ),
-        'Symfony\\Component\\Debug\\' => 
+        'Symfony\\Component\\Debug\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/debug',
         ),
-        'Symfony\\Component\\CssSelector\\' => 
+        'Symfony\\Component\\CssSelector\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/css-selector',
         ),
-        'Symfony\\Component\\Console\\' => 
+        'Symfony\\Component\\Console\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
-        'Symfony\\Component\\BrowserKit\\' => 
+        'Symfony\\Component\\BrowserKit\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/browser-kit',
         ),
-        'Psr\\SimpleCache\\' => 
+
+        'Psr\\SimpleCache\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
-        'Psr\\Log\\' => 
+        'Psr\\Log\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
-        'Psr\\Http\\Message\\' => 
+        'Psr\\Http\\Message\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
-        'PhpOffice\\PhpWord\\' => 
+
+        'PhpOffice\\PhpWord\\' =>
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpword/src/PhpWord',
         ),
-        'PhpOffice\\PhpSpreadsheet\\' => 
+        'PhpOffice\\PhpSpreadsheet\\' =>
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
         ),
-        'PhpOffice\\Common\\' => 
+        'PhpOffice\\Common\\' =>
         array (
             0 => __DIR__ . '/..' . '/phpoffice/common/src/Common',
         ),
-        'Mpdf\\' => 
+        'Mpdf\\' =>
         array (
             0 => __DIR__ . '/..' . '/mpdf/mpdf/src',
         ),
-        'Matrix\\' => 
+        'Matrix\\' =>
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
         ),
-        'GuzzleHttp\\Psr7\\' => 
+
+        'GuzzleHttp\\Psr7\\' =>
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
-        'FontLib\\' => 
+
+        'FontLib\\' =>
         array (
             0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
         ),
-        'Faker\\' => 
+
+        'Faker\\' =>
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
-        'Egulias\\EmailValidator\\' => 
+        'Egulias\\EmailValidator\\' =>
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator',
         ),
-        'Dompdf\\' => 
+
+        'Dompdf\\' =>
         array (
             0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
         ),
-        'Doctrine\\Instantiator\\' => 
+
+        'Doctrine\\Instantiator\\' =>
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
-        'DeepCopy\\' => 
+        'DeepCopy\\' =>
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
-        'Composer\\Installers\\' => 
+        'Composer\\Installers\\' =>
         array (
             0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
         ),
-        'Complex\\' => 
+
+        'Complex\\' =>
         array (
             0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
         ),
-        'Codeception\\PHPUnit\\' => 
+        'Codeception\\PHPUnit\\' =>
         array (
             0 => __DIR__ . '/..' . '/codeception/phpunit-wrapper/src',
         ),
-        'Codeception\\Extension\\' => 
+        'Codeception\\Extension\\' =>
         array (
             0 => __DIR__ . '/..' . '/codeception/base/ext',
         ),
-        'Codeception\\' => 
+        'Codeception\\' =>
         array (
             0 => __DIR__ . '/..' . '/codeception/base/src/Codeception',
             1 => __DIR__ . '/..' . '/codeception/stub/src',
         ),
-    );
+    )));
 
     public static $prefixesPsr0 = array (
-        'y' => 
+        'y' =>
         array (
-            'yii\\image\\' => 
+            'yii\\image\\' =>
             array (
                 0 => __DIR__ . '/..' . '/yurkinx/yii2-image',
             ),
         ),
-        'c' => 
+        'c' =>
         array (
-            'cebe\\gravatar\\' => 
+            'cebe\\gravatar\\' =>
             array (
                 0 => __DIR__ . '/..' . '/cebe/yii2-gravatar',
             ),
         ),
-        'S' => 
+
+        'S' =>
         array (
-            'Svg\\' => 
+            'Svg\\' =>
             array (
                 0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src',
             ),
-            'Sabberworm\\CSS' => 
+            'Sabberworm\\CSS' =>
             array (
                 0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/lib',
             ),
         ),
-        'P' => 
+        'P' =>
         array (
-            'Prophecy\\' => 
+        'P' =>
+        array (
+
+            'Prophecy\\' =>
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
             ),
-            'PHPExcel' => 
+            'PHPExcel' =>
             array (
                 0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
             ),
         ),
-        'H' => 
+        'H' =>
         array (
-            'HTMLPurifier' => 
+            'HTMLPurifier' =>
             array (
                 0 => __DIR__ . '/..' . '/ezyang/htmlpurifier/library',
             ),
         ),
-        'D' => 
+        'D' =>
         array (
-            'Doctrine\\Common\\Lexer\\' => 
+            'Doctrine\\Common\\Lexer\\' =>
             array (
                 0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
             ),
-            'Diff' => 
+            'Diff' =>
             array (
                 0 => __DIR__ . '/..' . '/phpspec/php-diff/lib',
             ),
         ),
-        'B' => 
+        'B' =>
         array (
-            'Behat\\Gherkin' => 
+            'Behat\\Gherkin' =>
             array (
                 0 => __DIR__ . '/..' . '/behat/gherkin/src',
             ),
         ),
-    );
+    ));
 
     public static $classMap = array (
         'Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',

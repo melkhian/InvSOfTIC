@@ -81,7 +81,6 @@ class Rolintecoma extends \yii\db\ActiveRecord
         return $data['IcomFunc'];
     }
 
-
      public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);

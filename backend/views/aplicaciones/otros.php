@@ -10,74 +10,81 @@ function Init(){
   var appotrocual14 = document.getElementById('aplicaciones-appotrocual14').value;
   var appotrocual16 = document.getElementById('aplicaciones-appotrocual16').value;
   var appotrocual18 = document.getElementById('aplicaciones-appotrocual18').value;
+  var appotrocual21 = document.getElementById('aplicaciones-appotrocual21').value;
+
   var appotrocual19 = document.querySelector('#aplicaciones-tiposid_fk19 > label:nth-child(1) > input[type="radio"]').checked;
   var appotrocual20 = document.querySelector('#aplicaciones-tiposid_fk20 > label:nth-child(1) > input[type="radio"]').checked;
-  var appotrocual25 = document.querySelector('#aplicaciones-tiposid_fk25 > label:nth-child(3) > input[type="radio"]').checked;
-  var appotrocual27 = document.querySelector('#aplicaciones-tiposid_fk27 > label:nth-child(5) > input[type="radio"]').checked;
-  var appotrocual28 = document.querySelector('#aplicaciones-tiposid_fk28 > label:nth-child(3) > input[type="radio"]').checked;
   var tiposid_fk12 = document.querySelector('#aplicaciones-tiposid_fk11 > label:nth-child(1) > input[type="radio"]').checked;
   var tiposid_fk14 = document.querySelector('#aplicaciones-tiposid_fk13 > label:nth-child(1) > input[type="radio"]').checked;
   var tiposid_fk16 = document.querySelector('#aplicaciones-tiposid_fk15 > label:nth-child(1) > input[type="radio"]').checked;
   var tiposid_fk18 = document.querySelector('#aplicaciones-tiposid_fk17 > label:nth-child(1) > input[type="radio"]').checked;
-  var tiposid_fk18 = document.querySelector('#aplicaciones-tiposid_fk17 > label:nth-child(1) > input[type="radio"]').checked;
+  // var tiposid_fk5 = document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(1) > input[type="checkbox"]').checked;
+  // var tiposid_fk5_1 = document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(2) > input[type="checkbox"]').checked;
+  // var tiposid_fk5_2 = document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(3) > input[type="checkbox"]').checked;
 
-  // alert(appotrocual27);
-  // #w0-tab5 > div.form-group.field-aplicaciones-appotrocual8
+  // NOTE: Con esta función se carga los checkBox del DynamicFormWidget en views/aplicaciones/Tabs/datosApp.php
+  //       correspondiente a Aplicaciones Relacionadas
+  Appinteractua();
+
+  // NOTE: Con esta función se carga los campos de AppFechPues y AppServPues (X3) en views/aplicaciones/Tabs/datosApp.php
+  TipoPuesta();
 
   if (appotrocual8 ==="") {
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual8').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual8').style.display = "none";
   }
   if (appotrocual9 ==="") {
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual9').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual9').style.display = "none";
   }
   if (appotrocual10 ==="") {
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual10').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual10').style.display = "none";
   }
   if (appotrocual12 ==="") {
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual12').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual12').style.display = "none";
   }
   if (appotrocual14 ==="") {
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual14').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual14').style.display = "none";
   }
   if (appotrocual16 ==="") {
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual16').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual16').style.display = "none";
   }
   if (appotrocual18 ==="") {
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual18').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual18').style.display = "none";
   }
-  if (appotrocual19 ==="") {
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.visibility = "hidden";
+  // if (appotrocual19 ==="") {
+  //   document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.display = "none";
+  // }
+  if (appotrocual21 ==="") {
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual21').style.display = "none";
   }
+  // if (!tiposid_fk5) {
+  //   document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(1)').style.display = "none";
+  // }
+  // if (!tiposid_fk5_1) {
+  //   document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(2)').style.display = "none";
+  // }
+  // if (!tiposid_fk5_2) {
+  //   document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(3)').style.display = "none";
+  // }
   if (!tiposid_fk12) {
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-tiposid_fk12').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-tiposid_fk12').style.display = "none";
   }
   if (!tiposid_fk14) {
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-tiposid_fk14').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-tiposid_fk14').style.display = "none";
   }
   if (!tiposid_fk16) {
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-tiposid_fk16').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-tiposid_fk16').style.display = "none";
   }
   if (!tiposid_fk18) {
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-tiposid_fk18').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-tiposid_fk18').style.display = "none";
   }
-  if (!appotrocual19) {
-    // alert(appotrocual19);
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.visibility = "hidden";
-  }
+  // if (!appotrocual19) {
+  //   // alert(appotrocual19);
+  //   document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.display = "none";
+  // }
   if (!appotrocual20) {
     // alert(appotrocual19);
-    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual20').style.visibility = "hidden";
+    document.querySelector('#w0-tab5 > div.form-group.field-aplicaciones-appotrocual20').style.display = "none";
   }
-  if (!appotrocual25) {
-    document.querySelector('#w0-tab10 > div.form-group.field-aplicaciones-appotrocual25').style.visibility = "hidden";
-  }
-  if (!appotrocual27) {
-    document.querySelector('#w0-tab10 > div.form-group.field-aplicaciones-appotrocual27').style.visibility = "hidden";
-  }
-  if (!appotrocual28) {
-    document.querySelector('#w0-tab10 > div.form-group.field-aplicaciones-appotrocual28').style.visibility = "hidden";
-  }
-
 }
 
 // Función para ocultar o mostrar los campos al selecionar una determinada respuesta en los campos tipo Radio o checkBoxList
@@ -117,17 +124,17 @@ function TiposId_fk($id,$tab,$tipo){
           if ($id ==19 ||$id ==25 || $id==27 || $id==28 || $id==20) {
             // alert($id);
             // alert("Here");
-            document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.visibility = "visible";
+            document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.display = "block";
           }else {
             // alert($id);
             // alert("2nd Here");
             $id++;
-            document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-tiposid_fk'+$id+'').style.visibility = "visible";
+            document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-tiposid_fk'+$id+'').style.display = "block";
           }
         }else {
           // alert($id + " id Check Visible");
           //Código para desplegar el campo Cual luego de seleccionar Otro como opción en el checkbox o Si en el radio Button
-          document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.visibility = "visible";
+          document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.display = "block";
           document.getElementById('aplicaciones-appotrocual'+$id+'').type="";
           document.getElementById('aplicaciones-appotrocual'+$id+'').placeholder="Otro";
         }
@@ -138,19 +145,71 @@ function TiposId_fk($id,$tab,$tipo){
           //Se parchea porque hay un inconveninete con TiposId_fk19, TiposId_fk27, esto debido a mala nomenclatura de campos, se parchea con IF()
           //Autor Diego Realpe
           if ($id ==19 ||$id ==25 || $id==27 || $id==28 || $id==20) {
-            document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.visibility = "hidden";
+            document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.display = "none";
 
           }else {
             $id++;
-            document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-tiposid_fk'+$id+'').style.visibility = "hidden";
+            document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-tiposid_fk'+$id+'').style.display = "none";
           }
 
         }else {
           // alert($id + " id Check Hidden");
-          document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.visibility = "hidden";
+          document.querySelector('#w0-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.display = "none";
           // Opción para borrar el texto dentro de el campo Cual SI en el Checkbox se quita el chequeo en Otro
           // document.getElementById('aplicaciones-appotrocual'+$id+'').value="";
         }
+      }
+    }
+  }
+}
+
+// NOTE: Función para mostrar u ocultar los campos de AppFechPues y AppServPues (X3) de la vista views/aplicaciones/Tabs/datosApp.php
+function TipoPuesta(){
+  if (document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(1) > input[type="checkbox"]').checked) {
+    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(1)').style.display = "block";
+  }else {
+    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(1)').style.display = "none";
+  }
+  if (document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(2) > input[type="checkbox"]').checked) {
+    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(2)').style.display = "block";
+  }else {
+    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(2)').style.display = "none";
+  }
+  if (document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(3) > input[type="checkbox"]').checked) {
+    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(3)').style.display = "block";
+  }else {
+    document.querySelector('#w0-tab5 > div:nth-child(6) > div:nth-child(3)').style.display = "none";
+  }
+}
+
+// NOTE: Función para mostrar u ocultar el campo AIntOtroCual de la vista views/aplicaciones/Tabs/datosApp.php, este campo se encuentra dentro de DynamicFormWidget y la función se llama desde este.
+
+function Appinteractua(){
+
+  var parent = document.querySelector('#w0-tab5 > div:nth-child(29) > div > div.panel-body');
+  var label = parent.querySelectorAll('#w0-tab5 > div:nth-child(29) > div > div.panel-body > div > div > div');
+  var cantidad = label.length;
+  var value = document.querySelector('#appinteractua-0-appid_fk1').value;
+
+  if (cantidad ==1) {
+    if (value != 1) {
+      document.querySelector('#w0-tab5 > div:nth-child(29) > div > div.panel-body > div > div > div > div.panel-body > div > div.col-sm-4 > div').style.display = "none";
+    }else {
+      document.querySelector('#w0-tab5 > div:nth-child(29) > div > div.panel-body > div > div > div > div.panel-body > div > div.col-sm-4 > div').style.display = "block";
+    }
+  }else {
+    for (var i = 0; i < cantidad; i++) {
+
+      var valor = document.querySelector('#appinteractua-'+i+'-appid_fk1').value;
+      if (valor != 1) {
+        i++;
+        document.querySelector('#w0-tab5 > div:nth-child(29) > div > div.panel-body > div > div > div:nth-child('+i+') > div.panel-body > div > div.col-sm-4 > div').style.display = "none";
+        i--;
+
+      }else {
+        i++;
+        document.querySelector('#w0-tab5 > div:nth-child(29) > div > div.panel-body > div > div > div:nth-child('+i+') > div.panel-body > div > div.col-sm-4 > div').style.display = "block";
+        i--;
       }
     }
   }

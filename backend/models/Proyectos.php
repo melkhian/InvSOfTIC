@@ -126,6 +126,20 @@ class Proyectos extends \yii\db\ActiveRecord
         return $data['username'];
     }
 
+    public function Tiposid_fk1()
+        {
+            $data = Tipos::findOne($this->Tiposid_fk1);
+
+            return $data['TiposDesc'];
+        }
+
+    public function TiposId_fk2()
+        {
+            $data = Tipos::findOne($this->TiposId_fk2);
+
+            return $data['TiposDesc'];
+        }
+
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);

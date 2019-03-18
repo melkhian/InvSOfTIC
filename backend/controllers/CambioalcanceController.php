@@ -8,6 +8,7 @@ use backend\models\CambioalcanceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\db\Expression;
 
 /**
  * CambioalcanceController implements the CRUD actions for Cambioalcance model.
@@ -85,6 +86,11 @@ class CambioalcanceController extends Controller
       if(isset(Yii::$app->user->identity->id)){
         if(SiteController::findCom(24)){
         $model = new Cambioalcance();
+        
+        // NOTE: Para insertar de manera automática la fecha de creación del registro
+        $expression = new Expression('NOW()');
+        $now = (new \yii\db\Query)->select($expression)->scalar();  // SELECT NOW();
+        $model->CAlcFechSist = $now;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->CAlcId]);

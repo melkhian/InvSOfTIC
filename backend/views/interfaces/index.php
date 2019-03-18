@@ -3,12 +3,52 @@ use backend\controllers\SiteController;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use kartik\export\ExportMenu;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\InterfacesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Interfaces';
 $this->params['breadcrumbs'][] = $this->title;
+
+//-------------------------------------------------------------------------->
+//-------------------------------------------------------------------------->
+//-------------------------------------------------------------------------->
+
+$gridColumns = [
+    // 'DepId',
+    // 'CAlcId',
+    // 'IntId',
+    'IntNomb',
+    'IntDesc',
+     ];
+
+echo ExportMenu::widget([
+    'dataProvider' => $dataProvider,
+    'columns' => $gridColumns,
+    'exportConfig' => [        
+        ExportMenu::FORMAT_EXCEL => false,
+        ExportMenu::FORMAT_EXCEL_X => false,
+        ExportMenu::FORMAT_PDF => [
+            'pdfConfig' => [
+                'methods' => [
+                    'SetTitle' => 'Grid Export - Krajee.com',
+                    'SetSubject' => 'Generating PDF files via yii2-export extension has never been easy',
+                    'SetHeader' => ['Krajee Library Export||Generated On: ' . date("r")],
+                    'SetFooter' => ['|Page {PAGENO}|'],
+                    'SetAuthor' => 'Kartik Visweswaran',
+                    'SetCreator' => 'Kartik Visweswaran',
+                    'SetKeywords' => 'Krajee, Yii2, Export, PDF, MPDF, Output, GridView, Grid, yii2-grid, yii2-mpdf, yii2-export',
+                ]
+            ]
+        ],
+    ],
+]);
+
+//-------------------------------------------------------------------------->
+//-------------------------------------------------------------------------->
+//-------------------------------------------------------------------------->
+
 ?>
 <div class="interfaces-index">
 

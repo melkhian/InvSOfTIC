@@ -1,7 +1,10 @@
 <?php
+
 use backend\controllers\SiteController;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\ArrayHelper;
+
 /* @var $this yii\web\View */
 /* @var $model backend\models\Aplicaciones */
 
@@ -51,16 +54,46 @@ $this->params['breadcrumbs'][] = $this->title;
             'TiposId_fk3',
             'AppNombProc',
             'AppEnti',
+            [
+            'attribute'=>'AppEntiImag',
+            // 'label'=>'File',
+            'format'=>'raw',
+            'value' => function ($model) {
+                        $str = explode(',',$model->AppEntiImag);
+                        $html = '';
+                        // print_r(sizeof($str));
+                        // die();
+                        for ($i=0; $i <sizeof($str) ; $i++) {
+                          $j = $i +1;
+                        $html .= Html::a('(Archivo descargable '. $j.')', $str[$i]) . ' ';
+                        }
+                        return $html;
+                      },
+            ],
             'ESopId2',
+            'AppNombCont',
+            'AppCarg',
+            'AppCorr',
+            'AppTeleOfic',
+            'AppTelePers',
             'TiposId_fk4',
-            'UsuId_fk',
+            'AppNombFunc',
+            'AppCarg2',
+            'AppCorr2',
+            'AppTeleOfic2',
+            'AppTelePers2',
             'AppAcueNiveServ',
             'TiposId_fk5',
             'AppFechPues',
             'AppServPues',
+            'AppFechPues1',
+            'AppServPues1',
+            'AppFechPues2',
+            'AppServPues2',
             'TiposId_fk6',
             'TiposId_fk7',
             'TiposId_fk8',
+            'AppServWebVers',
             'AppOtroCual8',
             'TiposId_fk9',
             'AppOtroCual9',
@@ -79,54 +112,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'TiposId_fk18',
             'AppOtroCual18',
             'TiposId_fk19',
-            'AppOtroCual19',
             'TiposId_fk20',
-            // 'AppDondUbic',
-            'AppTipoLice',
+            'AppOtroCual20',
+            'TiposId_fk56',
             'AppNumeLice',
             'TiposId_fk21',
+            'AppOtroCual21',
             'TiposId_fk22',
             'TiposId_fk23',
             'AppVersDist',
             'TiposId_fk24',
-            'AppLengServ',
-            'AppVersApli',
-            'AppBibl',
-            'AppObse1',
-            'AppMane',
-            'AppVersBD',
-            'AppPuer1',
-            'AppObse2',
-            'AppTipoHard',
-            'AppProc',
-            'AppMemo',
-            'AppEspaDisc',
-            'AppObse3',
-            // 'AppDirec1',
-            // 'AppNombArch',
-            // 'AppVari',
-            // 'AppNombVari',
-            // 'AppDescPara',
             'AppObse4',
-            // 'AppUrlFuen',
-            // 'AppServ',
-            // 'AppPuer2',
-            // 'AppDirec2',
-            // 'AppNombServBd',
-            'AppUsua',
-            'AppNombBd',
-            'AppRuta',
-            'AppEspaActu',
-            'AppProy',
-            'TiposId_fk25',
-            'AppOtroCual25',
-            'AppPoliBack',
-            'TiposId_fk26',
-            'TiposId_fk27',
-            'AppOtroCual27',
-            'TiposId_fk28',
-            'AppOtroCual28',
-            'AppCantLice',
+            'AppDireRaiz',
+            'AppObse5',
+            'AppObse6',
             'TiposId_fk29',
             'TiposId_fk30',
             'TiposId_fk31',
@@ -158,7 +157,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'AppUbicDocu',
             'AppUbicUlti',
             'AppObse7',
-            'AppFuncApru',
+            'AppActa',
+            'AppFechApro',
         ],
     ]) ?>
 

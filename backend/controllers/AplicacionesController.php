@@ -12,10 +12,17 @@ use backend\models\Appdirectorios;
 use backend\models\Appusuarios;
 use backend\models\Apparchivos;
 use backend\models\Appparametros;
+use backend\models\Appaceptacion;
+use backend\models\Appinteractua;
+use backend\models\Appinformacion;
+use backend\models\Appaplicaciones;
+use backend\models\Appbasedatos;
+use backend\models\Apphardware;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use yii\web\UploadedFile;
 
 /**
 * AplicacionesController implements the CRUD actions for Aplicaciones model.
@@ -103,8 +110,30 @@ class AplicacionesController extends Controller
         $modelsAppusuarios = [new Appusuarios];
         $modelsApparchivos = [new Apparchivos];
         $modelsAppparametros = [new Appparametros];
+        $modelsAppaceptacion = [new Appaceptacion];
+        $modelsAppinteractua = [new Appinteractua];
+        $modelsAppinformacion = [new Appinformacion];
+        $modelsAppaplicaciones = [new Appaplicaciones];
+        $modelsAppbasedatos = [new Appbasedatos];
+        $modelsApphardware = [new Apphardware];
+
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+          // NOTE: Inicio de código
+          // Código para insertar archivos por parte de usuario, quedan guardados en backend/web/uploads
+          // y su PATH registrados en la base de datos, donde $model->file = UploadedFile::getInstance($model,'file'); file es una variable definida en el modelo de Aplicaciones
+
+          // NOTE: Se obtiene la instancia de los objetos de UPLOAD
+          $random = $this->generateRandomString();
+          $model->file = UploadedFile::getInstance($model,'file');
+          $model->file->saveAs( 'uploads/'.$random. $model->file->baseName .'.'. $model->file->extension );
+          // NOTE: Guardar el path de la imagen en la DB
+          $model->AppEntiImag = 'uploads/'.$random.$model->file->baseName.'.'.$model->file->extension;
+
+          // NOTE: Fin Código
+
 
           // NOTE: Se cargan los modelos 1:N
 
@@ -125,6 +154,24 @@ class AplicacionesController extends Controller
 
           $modelsAppparametros = Model::createMultiple(Appparametros::classname());
           Model::loadMultiple($modelsAppparametros, Yii::$app->request->post());
+
+          $modelsAppaceptacion = Model::createMultiple(Appaceptacion::classname());
+          Model::loadMultiple($modelsAppaceptacion, Yii::$app->request->post());
+
+          $modelsAppinteractua = Model::createMultiple(Appinteractua::classname());
+          Model::loadMultiple($modelsAppinteractua, Yii::$app->request->post());
+
+          $modelsAppinformacion = Model::createMultiple(Appinformacion::classname());
+          Model::loadMultiple($modelsAppinformacion, Yii::$app->request->post());
+
+          $modelsAppaplicaciones = Model::createMultiple(Appaplicaciones::classname());
+          Model::loadMultiple($modelsAppaplicaciones, Yii::$app->request->post());
+
+          $modelsAppbasedatos = Model::createMultiple(Appbasedatos::classname());
+          Model::loadMultiple($modelsAppbasedatos, Yii::$app->request->post());
+
+          $modelsApphardware = Model::createMultiple(Apphardware::classname());
+          Model::loadMultiple($modelsApphardware, Yii::$app->request->post());
 
           // validate all models
           $valid = $model->validate();
@@ -178,6 +225,48 @@ class AplicacionesController extends Controller
                     break;
                   }
                 }
+                foreach ($modelsAppaceptacion as $modelAppaceptacion) {
+                  $modelAppaceptacion->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppaceptacion->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsAppinteractua as $modelAppinteractua) {
+                  $modelAppinteractua->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppinteractua->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsAppinformacion as $modelAppinformacion) {
+                  $modelAppinformacion->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppinformacion->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsAppaplicaciones as $modelAppaplicaciones) {
+                  $modelAppaplicaciones->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppaplicaciones->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsAppbasedatos as $modelAppbasedatos) {
+                  $modelAppbasedatos->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppbasedatos->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsApphardware as $modelApphardware) {
+                  $modelApphardware->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelApphardware->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
               }
               if ($flag) {
                 $transaction->commit();
@@ -198,6 +287,12 @@ class AplicacionesController extends Controller
           'modelsAppusuarios' => (empty($modelsAppusuarios)) ? [new Appusuarios] : $modelsAppusuarios,
           'modelsApparchivos' => (empty($modelsApparchivos)) ? [new Apparchivos] : $modelsApparchivos,
           'modelsAppparametros' => (empty($modelsAppparametros)) ? [new Appparametros] : $modelsAppparametros,
+          'modelsAppaceptacion' => (empty($modelsAppaceptacion)) ? [new Appaceptacion] : $modelsAppaceptacion,
+          'modelsAppinteractua' => (empty($modelsAppinteractua)) ? [new Appinteractua] : $modelsAppinteractua,
+          'modelsAppinformacion' => (empty($modelsAppinformacion)) ? [new Appinformacion] : $modelsAppinformacion,
+          'modelsAppaplicaciones' => (empty($modelsAppaplicaciones)) ? [new Appaplicaciones] : $modelsAppaplicaciones,
+          'modelsAppbasedatos' => (empty($modelsAppbasedatos)) ? [new Appbasedatos] : $modelsAppbasedatos,
+          'modelsApphardware' => (empty($modelsApphardware)) ? [new Apphardware] : $modelsApphardware,
         ]);
       }
       else {
@@ -226,6 +321,12 @@ class AplicacionesController extends Controller
         $modelsAppusuarios = $model->appusuarios;
         $modelsApparchivos = $model->apparchivos;
         $modelsAppparametros = $model->appparametros;
+        $modelsAppaceptacion = $model->appaceptacion;
+        $modelsAppinteractua = $model->appinteractua;
+        $modelsAppinformacion = $model->appinformacion;
+        $modelsAppaplicaciones = $model->appaplicaciones;
+        $modelsAppbasedatos = $model->appbasedatos;
+        $modelsApphardware = $model->apphardware;
 
         //Se agrega para pasar de String a Array
         $model->TiposId_fk5 = explode(',',$model->TiposId_fk5);
@@ -239,9 +340,54 @@ class AplicacionesController extends Controller
         $model->TiposId_fk16 = explode(',',$model->TiposId_fk16);
         $model->TiposId_fk18 = explode(',',$model->TiposId_fk18);
         $model->TiposId_fk21 = explode(',',$model->TiposId_fk21);
-        $model->TiposId_fk26 = explode(',',$model->TiposId_fk26);
+        $model->TiposId_fk23 = explode(',',$model->TiposId_fk23);
+
+        $model->TiposId_fk31 = explode(',',$model->TiposId_fk31);
+        $model->TiposId_fk34 = explode(',',$model->TiposId_fk34);
+        $model->TiposId_fk37 = explode(',',$model->TiposId_fk37);
+        $model->TiposId_fk40 = explode(',',$model->TiposId_fk40);
+        $model->TiposId_fk43 = explode(',',$model->TiposId_fk43);
+        $model->TiposId_fk46 = explode(',',$model->TiposId_fk46);
+        $model->TiposId_fk49 = explode(',',$model->TiposId_fk49);
+        $model->TiposId_fk52 = explode(',',$model->TiposId_fk52);
+        $model->TiposId_fk55 = explode(',',$model->TiposId_fk55);
+
+        // NOTE: Ciclo para realizar explode de los checkBox presentes en views/aplicaciones/Tabs/infoBase.php. Difieren porque están dentro de un DynamicFormWidget
+
+        for ($i=0; $i < count($model->appinformacion); $i++) {
+          $modelsAppinformacion[$i]['TiposId_fk25'] = explode(',',$modelsAppinformacion[$i]['TiposId_fk25']);
+          $modelsAppinformacion[$i]['TiposId_fk26'] = explode(',',$modelsAppinformacion[$i]['TiposId_fk26']);
+          $modelsAppinformacion[$i]['TiposId_fk27'] = explode(',',$modelsAppinformacion[$i]['TiposId_fk27']);
+          $modelsAppinformacion[$i]['TiposId_fk28'] = explode(',',$modelsAppinformacion[$i]['TiposId_fk28']);
+        }
+
+        // echo "<pre>";
+        // print_r($model->save());
+        // echo "</pre>";
+        // die();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+          // NOTE: Se obtiene la instancia de los objetos de UPLOAD
+          $model->file = UploadedFile::getInstances($model,'file');
+          // print_r($model->file);
+          // die();
+          // NOTE: Inicio de código
+          // Código para insertar archivos por parte de usuario, quedan guardados en backend/web/uploads
+          // y su PATH registrados en la base de datos, donde $model->file = UploadedFile::getInstance($model,'file'); file es una variable definida en el modelo de Aplicaciones
+          if ($model->file) {
+            $i=0;
+            foreach ($model->file as $file) {
+              $random = $this->generateRandomString();
+              $file->saveAs('uploads/'.$random. $file->baseName .'.'. $file->extension);
+              // NOTE: Guardar el path de la imagen en la DB
+              $model->AppEntiImag = 'uploads/'.$random.$file->baseName.'.'.$file->extension;
+              $arry[$i] = $model->AppEntiImag;
+              $i++;
+            }
+          }
+          // NOTE: Fin Código
+
 
           $oldIDs = ArrayHelper::map($modelsAppmodulos, 'AModId', 'AModId');
           $modelsAppmodulos = Model::createMultiple(Appmodulos::classname(), $modelsAppmodulos);
@@ -273,6 +419,36 @@ class AplicacionesController extends Controller
           Model::loadMultiple($modelsAppparametros, Yii::$app->request->post());
           $deletedIDs5 = array_diff($oldIDs5, array_filter(ArrayHelper::map($modelsAppparametros, 'AParId', 'AParId')));
 
+          $oldIDs6 = ArrayHelper::map($modelsAppaceptacion, 'AAceId', 'AAceId');
+          $modelsAppaceptacion = Model::createMultiple(Appaceptacion::classname(), $modelsAppaceptacion);
+          Model::loadMultiple($modelsAppaceptacion, Yii::$app->request->post());
+          $deletedIDs6 = array_diff($oldIDs6, array_filter(ArrayHelper::map($modelsAppaceptacion, 'AAceId', 'AAceId')));
+
+          $oldIDs7 = ArrayHelper::map($modelsAppinteractua, 'AIntId', 'AIntId');
+          $modelsAppinteractua = Model::createMultiple(Appinteractua::classname(), $modelsAppinteractua);
+          Model::loadMultiple($modelsAppinteractua, Yii::$app->request->post());
+          $deletedIDs7 = array_diff($oldIDs7, array_filter(ArrayHelper::map($modelsAppinteractua, 'AIntId', 'AIntId')));
+
+          $oldIDs8 = ArrayHelper::map($modelsAppinformacion, 'AInfId', 'AInfId');
+          $modelsAppinformacion = Model::createMultiple(Appinformacion::classname(), $modelsAppinformacion);
+          Model::loadMultiple($modelsAppinformacion, Yii::$app->request->post());
+          $deletedIDs8 = array_diff($oldIDs8, array_filter(ArrayHelper::map($modelsAppinformacion, 'AInfId', 'AInfId')));
+
+          $oldIDs9 = ArrayHelper::map($modelsAppaplicaciones, 'AAplId', 'AAplId');
+          $modelsAppaplicaciones = Model::createMultiple(Appaplicaciones::classname(), $modelsAppaplicaciones);
+          Model::loadMultiple($modelsAppaplicaciones, Yii::$app->request->post());
+          $deletedIDs9 = array_diff($oldIDs9, array_filter(ArrayHelper::map($modelsAppaplicaciones, 'AAplId', 'AAplId')));
+
+          $oldIDs10 = ArrayHelper::map($modelsAppbasedatos, 'ABasId', 'ABasId');
+          $modelsAppbasedatos = Model::createMultiple(Appbasedatos::classname(), $modelsAppbasedatos);
+          Model::loadMultiple($modelsAppbasedatos, Yii::$app->request->post());
+          $deletedIDs10 = array_diff($oldIDs10, array_filter(ArrayHelper::map($modelsAppbasedatos, 'ABasId', 'ABasId')));
+
+          $oldIDs11 = ArrayHelper::map($modelsApphardware, 'AHarId', 'AHarId');
+          $modelsApphardware = Model::createMultiple(Apphardware::classname(), $modelsApphardware);
+          Model::loadMultiple($modelsApphardware, Yii::$app->request->post());
+          $deletedIDs11 = array_diff($oldIDs11, array_filter(ArrayHelper::map($modelsApphardware, 'AHarId', 'AHarId')));
+
           // validate all models
           $valid = $model->validate();
           // $valid = Model::validateMultiple($modelsAppmodulos) && $valid;
@@ -299,6 +475,24 @@ class AplicacionesController extends Controller
                 }
                 if (! empty($deletedIDs5)) {
                   Appparametros::deleteAll(['AParId' => $deletedIDs5]);
+                }
+                if (! empty($deletedIDs6)) {
+                  Appaceptacion::deleteAll(['AAceId' => $deletedIDs6]);
+                }
+                if (! empty($deletedIDs7)) {
+                  Appinteractua::deleteAll(['AIntId' => $deletedIDs7]);
+                }
+                if (! empty($deletedIDs8)) {
+                  Appinformacion::deleteAll(['AInfId' => $deletedIDs8]);
+                }
+                if (! empty($deletedIDs9)) {
+                  Appaplicaciones::deleteAll(['AAplId' => $deletedIDs9]);
+                }
+                if (! empty($deletedIDs10)) {
+                  Appbasedatos::deleteAll(['ABasId' => $deletedIDs10]);
+                }
+                if (! empty($deletedIDs11)) {
+                  Apphardware::deleteAll(['AHarId' => $deletedIDs11]);
                 }
 
                 foreach ($modelsAppmodulos as $modelAppmodulos) {
@@ -343,6 +537,54 @@ class AplicacionesController extends Controller
                     break;
                   }
                 }
+                foreach ($modelsAppaceptacion as $modelAppaceptacion) {
+                  $modelAppaceptacion->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppaceptacion->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsAppinteractua as $modelAppinteractua) {
+                  $modelAppinteractua->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppinteractua->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsAppinformacion as $modelAppinformacion) {
+                  $modelAppinformacion->AppId_fk = $model->AppId;
+
+                  // NOTE: Se realiza aquí el implode para los checkBox presentes en views/aplicaciones/Tabs/infoBase.php
+                  $modelAppinformacion->TiposId_fk25 = implode(',',(array)$modelAppinformacion->TiposId_fk25);
+                  $modelAppinformacion->TiposId_fk26 = implode(',',(array)$modelAppinformacion->TiposId_fk26);
+                  $modelAppinformacion->TiposId_fk27 = implode(',',(array)$modelAppinformacion->TiposId_fk27);
+                  $modelAppinformacion->TiposId_fk28 = implode(',',(array)$modelAppinformacion->TiposId_fk28);
+                  if (! ($flag = $modelAppinformacion->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsAppaplicaciones as $modelAppaplicaciones) {
+                  $modelAppaplicaciones->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppaplicaciones->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsAppbasedatos as $modelAppbasedatos) {
+                  $modelAppbasedatos->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelAppbasedatos->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
+                foreach ($modelsApphardware as $modelApphardware) {
+                  $modelApphardware->AppId_fk = $model->AppId;
+                  if (! ($flag = $modelApphardware->save(false))) {
+                    $transaction->rollBack();
+                    break;
+                  }
+                }
               }
               if ($flag) {
                 $transaction->commit();
@@ -361,6 +603,12 @@ class AplicacionesController extends Controller
           'modelsAppusuarios' => (empty($modelsAppusuarios)) ? [new Appusuarios] : $modelsAppusuarios,
           'modelsApparchivos' => (empty($modelsApparchivos)) ? [new Apparchivos] : $modelsApparchivos,
           'modelsAppparametros' => (empty($modelsAppparametros)) ? [new Appparametros] : $modelsAppparametros,
+          'modelsAppaceptacion' => (empty($modelsAppaceptacion)) ? [new Appaceptacion] : $modelsAppaceptacion,
+          'modelsAppinteractua' => (empty($modelsAppinteractua)) ? [new Appinteractua] : $modelsAppinteractua,
+          'modelsAppinformacion' => (empty($modelsAppinformacion)) ? [new Appinformacion] : $modelsAppinformacion,
+          'modelsAppaplicaciones' => (empty($modelsAppaplicaciones)) ? [new Appaplicaciones] : $modelsAppaplicaciones,
+          'modelsAppbasedatos' => (empty($modelsAppbasedatos)) ? [new Appbasedatos] : $modelsAppbasedatos,
+          'modelsApphardware' => (empty($modelsApphardware)) ? [new Apphardware] : $modelsApphardware,
         ]);
       }
       else {
@@ -409,4 +657,29 @@ class AplicacionesController extends Controller
 
     throw new NotFoundHttpException('The requested page does not exist.');
   }
+
+  public function actionUpload()
+{
+    $model = new UploadForm();
+
+    if (Yii::$app->request->isPost) {
+        $model->AppEntiImag = UploadedFile::getInstance($model, 'AppEntiImag');
+        if ($model->upload()) {
+            // file is uploaded successfully
+            return;
+        }
+    }
+
+    return $this->render('upload', ['model' => $model]);
+}
+
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
 }

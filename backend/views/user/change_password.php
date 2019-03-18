@@ -3,6 +3,10 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 // use kartik\alert\Alert;
+$this->title = 'Actualizar contraseña de Usuario';
+// $this->params['breadcrumbs'][] = ['label' => 'Inicio', 'url' => ['site/index']];
+// $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Actualizar contraseña de Usuario';
  ?>
  <div class="user-change_password">
 

@@ -36,7 +36,7 @@ class Cambioalcance extends \yii\db\ActiveRecord
             [['ProId_fk', 'CAlcDesc', 'CAlcFechApro', 'CAlcFechInic', 'CAlcFechFina', 'CAlcFechSist'], 'required'],
             [['ProId_fk'], 'integer'],
             [['CAlcFechApro', 'CAlcFechInic', 'CAlcFechFina', 'CAlcFechSist'], 'safe'],
-            ['CAlcFechInic', 'compare', 'compareAttribute'=>'CAlcFechFina', 'operator'=>'<='],
+            ['CAlcFechFina', 'compare', 'compareAttribute'=>'CAlcFechInic', 'operator'=>'>='],
             [['CAlcDesc'], 'string', 'max' => 500],
             [['ProId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Proyectos::className(), 'targetAttribute' => ['ProId_fk' => 'ProId']],
         ];

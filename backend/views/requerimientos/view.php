@@ -65,10 +65,10 @@ $this->params['breadcrumbs'][] = $this->title;
              'value'=> $TiposId_fk3['TiposDesc'],
             ],
             'ReqFechTomaRequ',
-            'ReqFechSist',
             ['attribute' => 'TiposId_fk4',
              'value'=> $TiposId_fk4['TiposDesc'],
             ],
+            'ReqFechSist',
         ],
     ]) ?>
 

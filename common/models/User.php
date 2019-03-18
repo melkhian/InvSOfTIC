@@ -64,7 +64,7 @@ class User extends ActiveRecord implements IdentityInterface
   }
   public function attributeLabels(){
     return[
-      'currentPassword' => 'Contraseña Actual',
+      'currentPassword' => 'Contraseña actual',
       'newPassword' =>'Nueva contraseña',
       'newPasswordConfirm' => 'Confirmar nueva contraseña',
     ];
