@@ -543,6 +543,8 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         array (
         'P' =>
         array (
+        'P' =>
+        array (
 
             'Prophecy\\' =>
             array (
