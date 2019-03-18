@@ -4,13 +4,65 @@ use backend\controllers\SiteController;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use kartik\export\ExportMenu;
+use backend\models\Tipos;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AplicacionesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Aplicaciones';
 $this->params['breadcrumbs'][] = $this->title;
+
+//<!-- ------------------------------------------------------------------------------- -->
+//<!-- ------------------------------------------------------------------------------- -->
+
+
+$gridColumns = [
+    // 'DepId',
+    'AppNomb',
+    'AppVers',
+    'AppDesc',
+    'AppSigl',
+    // ['attribute'=>'TiposId_fk1',
+    //          'value'=> function($model){return $model->TiposId_fk1();},
+    //          'filter' => Html::activeDropDownList($searchModel, 'TiposId_fk1', ArrayHelper::map(Tipos::find()->where('tipoid_fk = 1')->asArray()->all(), 'TiposId', 'TiposDesc'),['class'=>'form-control','prompt' => 'Seleccione el Cargo']),
+    //         ],
+    // 'DepTele',
+    // 'DepDire',
+    // ['attribute'=>'TiposId_fk2',
+    //          'value'=> function($model){return $model->TiposId_fk2();},
+    //          'filter' => Html::activeDropDownList($searchModel, 'TiposId_fk2', ArrayHelper::map(Tipos::find()->where('tipoid_fk = 4')->asArray()->all(), 'TiposId', 'TiposDesc'),['class'=>'form-control','prompt' => 'Seleccione el Cargo']),
+    //         ],
+    // // 'TiposId_fk2',
+    // 'DepCorr',
+     ];
+
+echo ExportMenu::widget([
+    'dataProvider' => $dataProvider,
+    'columns' => $gridColumns,
+    'exportConfig' => [
+        ExportMenu::FORMAT_EXCEL => false,
+        ExportMenu::FORMAT_EXCEL_X => false,
+        ExportMenu::FORMAT_PDF => [
+            'pdfConfig' => [
+                'methods' => [
+                    'SetTitle' => 'Grid Export - Krajee.com',
+                    'SetSubject' => 'Generating PDF files via yii2-export extension has never been easy',
+                    'SetHeader' => ['Krajee Library Export||Generated On: ' . date("r")],
+                    'SetFooter' => ['|Page {PAGENO}|'],
+                    'SetAuthor' => 'Kartik Visweswaran',
+                    'SetCreator' => 'Kartik Visweswaran',
+                    'SetKeywords' => 'Krajee, Yii2, Export, PDF, MPDF, Output, GridView, Grid, yii2-grid, yii2-mpdf, yii2-export',
+                ]
+            ]
+        ],
+    ],
+    'filename' => 'export-list-'.$this->title.'-' . date('Y-m-d_H-i-s'),
+]);
+//<!-- ------------------------------------------------------------------------------- -->
+//<!-- ------------------------------------------------------------------------------- -->
 ?>
+
 <div class="aplicaciones-index">
 
     <h1><?= Html::encode($this->title) ?></h1>

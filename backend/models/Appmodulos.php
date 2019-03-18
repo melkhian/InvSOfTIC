@@ -345,4 +345,11 @@ class Appmodulos extends \yii\db\ActiveRecord
 
         return $data['TiposDesc'];
     }
+
+    public function AppId_fk()
+    {
+    $data = Aplicaciones::findOne($this->AppId_fk);
+
+    return $data['AppNomb'];
+    }
 }
