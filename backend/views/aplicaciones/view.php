@@ -13,6 +13,9 @@ use wbraganca\dynamicform\DynamicFormWidget;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Aplicaciones */
 /* @var $form yii\widgets\ActiveForm */
+$this->title = $model->AppNomb;
+$this->params['breadcrumbs'][] = ['label' => 'Aplicaciones', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <!-- INICIO INCLUDE para mostrar u ocultar los campos dependientes cuando se selecciona Otro en las opciones de los checkBoxList -->
 <?php include 'otros.php';?>
@@ -21,9 +24,11 @@ use wbraganca\dynamicform\DynamicFormWidget;
 
 <div class="aplicaciones-form">
 
+  <h1><?= Html::encode($this->title) ?></h1>
+
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form', 'options' => ['enctype' => 'multipart/form-data']]); ?>
     <div class="form-group">
-        
+
     </div>
     <?= Tabs::widget([
             'items' => [

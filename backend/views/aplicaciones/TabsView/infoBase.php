@@ -68,26 +68,26 @@ use wbraganca\dynamicform\DynamicFormWidget;
               ?>
               <div class="row">
                 <div class="col-sm-6">
-                  <?= $form->field($modelAppinformacion, "[{$i}]AInfNombServBd")->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($modelAppinformacion, "[{$i}]AInfNombServBd")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
                 <div class="col-sm-6">
-                  <?= $form->field($modelAppinformacion, "[{$i}]AInfUsua")->textInput(['maxlength' => true]) ?>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-6">
-                  <?= $form->field($modelAppinformacion, "[{$i}]AInfNombBd")->textInput(['maxlength' => true]) ?>
-                </div>
-                <div class="col-sm-6">
-                  <?= $form->field($modelAppinformacion, "[{$i}]AInfRuta")->textInput(['maxlength' => true, 'rows' => '3']) ?>
+                  <?= $form->field($modelAppinformacion, "[{$i}]AInfUsua")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-6">
-                  <?= $form->field($modelAppinformacion, "[{$i}]AInfEspaActu")->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($modelAppinformacion, "[{$i}]AInfNombBd")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
                 <div class="col-sm-6">
-                  <?= $form->field($modelAppinformacion, "[{$i}]AInfProy")->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($modelAppinformacion, "[{$i}]AInfRuta")->textInput(['maxlength' => true, 'rows' => '3', 'disabled' => true]) ?>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <?= $form->field($modelAppinformacion, "[{$i}]AInfEspaActu")->textInput(['maxlength' => true, 'disabled' => true]) ?>
+                </div>
+                <div class="col-sm-6">
+                  <?= $form->field($modelAppinformacion, "[{$i}]AInfProy")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
               </div>
               <div class="row">
@@ -98,12 +98,12 @@ use wbraganca\dynamicform\DynamicFormWidget;
                   ])?>
                 </div>
                 <div class="col-sm-6">
-                  <?= $form->field($modelAppinformacion, "[{$i}]AInfOtroCual25")->textInput(['maxlength' => true, 'rows' => '3']) ?>
+                  <?= $form->field($modelAppinformacion, "[{$i}]AInfOtroCual25")->textInput(['maxlength' => true, 'rows' => '3', 'disabled' => true]) ?>
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-12">
-                  <?= $form->field($modelAppinformacion, "[{$i}]AInfPoliBack")->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($modelAppinformacion, "[{$i}]AInfPoliBack")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
               </div>
               <div class="row">
@@ -120,7 +120,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
                   ])?>
                 </div>
                 <div class="col-sm-6">
-                  <?= $form->field($modelAppinformacion, "[{$i}]AInfOtroCual27")->textInput(['maxlength' => true, 'rows' => '3']) ?>
+                  <?= $form->field($modelAppinformacion, "[{$i}]AInfOtroCual27")->textInput(['maxlength' => true, 'rows' => '3', 'disabled' => true]) ?>
                 </div>
               </div>
               <div class="row">
@@ -131,10 +131,10 @@ use wbraganca\dynamicform\DynamicFormWidget;
                   ])?>
                 </div>
                 <div class="col-sm-6">
-                  <?= $form->field($modelAppinformacion, "[{$i}]AInfOtroCual28")->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($modelAppinformacion, "[{$i}]AInfOtroCual28")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
                 <div class="col-sm-12">
-                  <?= $form->field($modelAppinformacion, "[{$i}]AInfCantLice")->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($modelAppinformacion, "[{$i}]AInfCantLice")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
               </div>
             </div>

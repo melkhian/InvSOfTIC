@@ -15,16 +15,9 @@ use wbraganca\dynamicform\DynamicFormWidget;
 <br>
 <h1 align="center">XVI. ACEPTACIÓN</h1>
 <br><br>
-    <?= $form->field($model, 'AppActa')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'AppActa')->textInput(['maxlength' => true, 'disabled' => true]) ?>
 
-    <?= $form->field($model, 'AppFechApro')->widget( DatePicker::className(),
-    ['name' => 'check_issue_date',
-    'value' => date('d-M-Y', strtotime('+2 days')),
-    'options' => ['placeholder' => 'Seleccione la fecha de Aceptación'],
-    'pluginOptions' => [
-      'format' => 'yyyy-mm-dd',
-      'todayHighlight' => true]]);
-    ?>
+    <?= $form->field($model, 'AppFechApro')->textInput(['maxlength' => true, 'disabled' => true]) ?>
 
     <div class="row">
       <div class="panel panel-default">
@@ -68,13 +61,13 @@ use wbraganca\dynamicform\DynamicFormWidget;
                   ?>
                   <div class="row">
                     <div class="col-sm-4">
-                      <?= $form->field($modelAppaceptacion, "[{$i}]AAceNomb")->textInput(['maxlength' => true]) ?>
+                      <?= $form->field($modelAppaceptacion, "[{$i}]AAceNomb")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                     </div>
                     <div class="col-sm-4">
-                      <?= $form->field($modelAppaceptacion, "[{$i}]AAceCarg")->textInput(['maxlength' => true]) ?>
+                      <?= $form->field($modelAppaceptacion, "[{$i}]AAceCarg")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                     </div>
                     <div class="col-sm-4">
-                      <?= $form->field($modelAppaceptacion, "[{$i}]AAceArea")->textInput(['maxlength' => true]) ?>
+                      <?= $form->field($modelAppaceptacion, "[{$i}]AAceArea")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                     </div>
                   </div>
                 </div>

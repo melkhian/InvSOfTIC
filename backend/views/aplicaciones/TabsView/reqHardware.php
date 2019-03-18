@@ -14,7 +14,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
 <h1 align="center">IX. REQUERIMIENTOS DE HARDWARE PARA EL SERVIDOR</h1>
 <br><br>
 
-<?= $form->field($model, 'AppObse3')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'AppObse3')->textArea(['maxlength' => true, 'disabled' => true, 'rows'=>4]) ?>
 
 <div class="row">
   <div class="panel panel-default">
@@ -58,18 +58,18 @@ use wbraganca\dynamicform\DynamicFormWidget;
               ?>
               <div class="row">
                 <div class="col-sm-8">
-                  <?= $form->field($modelApphardware, "[{$i}]AHarTipoHard")->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($modelApphardware, "[{$i}]AHarTipoHard")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
                 <div class="col-sm-4">
-                  <?= $form->field($modelApphardware, "[{$i}]AHarProc")->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($modelApphardware, "[{$i}]AHarProc")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-8">
-                  <?= $form->field($modelApphardware, "[{$i}]AHarMemo")->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($modelApphardware, "[{$i}]AHarMemo")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
                 <div class="col-sm-4">
-                  <?= $form->field($modelApphardware, "[{$i}]AHarEspaDisc")->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($modelApphardware, "[{$i}]AHarEspaDisc")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
               </div>
             </div><!-- .row -->

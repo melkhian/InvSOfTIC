@@ -23,7 +23,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
     ->checkboxList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 40')->all(),'TiposValo','TiposDesc'))?>
   </div>
   <div class="col-sm-6">
-    <?= $form->field($model, 'AppVersDist')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'AppVersDist')->textInput(['maxlength' => true,'disabled' => true]) ?>
   </div>
   <div class="col-sm-3">
     <?= $form->field($model, 'TiposId_fk24')
@@ -78,18 +78,18 @@ use wbraganca\dynamicform\DynamicFormWidget;
                 ?>
                 <div class="row">
                   <div class="col-sm-8">
-                    <?= $form->field($modelAppaplicaciones, "[{$i}]AAplLengServ")->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($modelAppaplicaciones, "[{$i}]AAplLengServ")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                   </div>
                   <div class="col-sm-4">
-                    <?= $form->field($modelAppaplicaciones, "[{$i}]AAplVersApli")->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($modelAppaplicaciones, "[{$i}]AAplVersApli")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-8">
-                    <?= $form->field($modelAppaplicaciones, "[{$i}]AAplBibl")->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($modelAppaplicaciones, "[{$i}]AAplBibl")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                   </div>
                   <div class="col-sm-4">
-                    <?= $form->field($modelAppaplicaciones, "[{$i}]AAplObse1")->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($modelAppaplicaciones, "[{$i}]AAplObse1")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                   </div>
                 </div>
               </div><!-- .row -->
@@ -148,18 +148,18 @@ use wbraganca\dynamicform\DynamicFormWidget;
                 ?>
                 <div class="row">
                   <div class="col-sm-8">
-                    <?= $form->field($modelAppbasedatos, "[{$i}]ABasMane")->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($modelAppbasedatos, "[{$i}]ABasMane")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                   </div>
                   <div class="col-sm-4">
-                    <?= $form->field($modelAppbasedatos, "[{$i}]ABasVersBD")->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($modelAppbasedatos, "[{$i}]ABasVersBD")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-8">
-                    <?= $form->field($modelAppbasedatos, "[{$i}]ABasPuer1")->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($modelAppbasedatos, "[{$i}]ABasPuer1")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                   </div>
                   <div class="col-sm-4">
-                    <?= $form->field($modelAppbasedatos, "[{$i}]ABasObse2")->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($modelAppbasedatos, "[{$i}]ABasObse2")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                   </div>
                 </div>
               </div><!-- .row -->

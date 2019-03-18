@@ -14,7 +14,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
 <h1 align="center">IX. REQUERIMIENTOS DE HARDWARE PARA EL SERVIDOR</h1>
 <br><br>
 
-<?= $form->field($model, 'AppObse3')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'AppObse3')->textArea(['maxlength' => true, 'rows' =>3]) ?>
 
 <div class="row">
   <div class="panel panel-default">

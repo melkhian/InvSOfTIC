@@ -127,8 +127,8 @@ tr:nth-child(odd) {
     <?= $form->field($model, 'TiposId_fk55')
     ->checkBoxList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 49')->all(),'TiposValo','TiposDesc'))?>
 
-    <?= $form->field($model, 'AppUbicDocu')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'AppUbicDocu')->textInput(['maxlength' => true, 'disabled' => true]) ?>
 
-    <?= $form->field($model, 'AppUbicUlti')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'AppUbicUlti')->textInput(['maxlength' => true, 'disabled' => true]) ?>
 
-    <?= $form->field($model, 'AppObse7')->textarea(['maxlength' => true, 'rows' => '3']) ?>
+    <?= $form->field($model, 'AppObse7')->textarea(['maxlength' => true, 'rows' => '3', 'disabled' => true]) ?>

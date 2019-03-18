@@ -15,7 +15,7 @@ use kartik\date\DatePicker;
 <br>
 <h1 align="center">I. DATOS GENERALES</h1>
 <br><br>
-<?= $form->field($model, 'AppNomb')->textInput(['maxlength' => true, 'disabled' => true, 'disabled' => true, 'autofocus' => true]) ?>
+<?= $form->field($model, 'AppNomb')->textInput(['maxlength' => true, 'disabled' => true, 'autofocus' => true]) ?>
 
 <?= $form->field($model, 'AppDesc')->textArea(['maxlength' => true, 'disabled' => true, 'rows'=>4]) ?>
 
@@ -23,7 +23,7 @@ use kartik\date\DatePicker;
 
 <?= $form->field($model, 'AppVers')->textInput(['maxlength' => true, 'disabled' => true]) ?>
 
-<?= $form->field($model, 'ESopId1')->dropDownList(ArrayHelper::map(Empsoporte::find()->all(),'ESopId','ESopNomb'), ['prompt'=> 'Seleccione la Empresa de Soporte'])?>
+<?= $form->field($model, 'ESopId1')->dropDownList(ArrayHelper::map(Empsoporte::find()->all(),'ESopId','ESopNomb'), ['prompt'=> 'Seleccione la Empresa de Soporte'], ['disabled' => true])?>
 
 <?= $form->field($model, 'AppUrl')->textInput(['maxlength' => true, 'disabled' => true]) ?>
 

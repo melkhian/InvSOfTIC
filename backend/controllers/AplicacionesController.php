@@ -144,7 +144,7 @@ class AplicacionesController extends Controller
             foreach ($model->file as $file) {
               $random = $this->generateRandomString();
               $archivo = 'pob_objetivo/'.$random.'_'.$file->baseName.'.'.$file->extension;
-              $file->saveAs($archivo);
+              $file->saveAs($archivo, false);
               // NOTE: Guardar el path de la imagen en la DB
               $model->AppEntiImag = $archivo;
               $arry[$i] = $model->AppEntiImag;
@@ -428,7 +428,7 @@ class AplicacionesController extends Controller
             foreach ($model->file as $file) {
               $random = $this->generateRandomString();
               $archivo = 'pob_objetivo/'.$random.'_'.$file->baseName.'.'.$file->extension;
-              $file->saveAs($archivo);
+              $file->saveAs($archivo, false);
               // NOTE: Guardar el path de la imagen en la DB
               $model->AppEntiImag = $archivo;
               $arry[$i] = $model->AppEntiImag;
@@ -684,7 +684,7 @@ class AplicacionesController extends Controller
             foreach ($model->file as $file) {
               $random = $this->generateRandomString();
               $archivo = 'pob_objetivo/'.$random.'_'.$file->baseName.'.'.$file->extension;
-              $file->saveAs($archivo);
+              $file->saveAs($archivo, false);
               // NOTE: Guardar el path de la imagen en la DB
               $model->AppEntiImag = $archivo;
               $arry[$i] = $model->AppEntiImag;

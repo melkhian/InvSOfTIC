@@ -60,21 +60,21 @@ use wbraganca\dynamicform\DynamicFormWidget;
               ?>
               <div class="row">
                 <div class="col-sm-6">
-                  <?= $form->field($modelAppparametros, "[{$i}]AParUrlFuen")->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($modelAppparametros, "[{$i}]AParUrlFuen")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
                 <div class="col-sm-6">
-                  <?= $form->field($modelAppparametros, "[{$i}]AParServ")->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($modelAppparametros, "[{$i}]AParServ")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
               </div><!-- .row -->
               <div class="row">
                 <div class="col-sm-6">
-                  <?= $form->field($modelAppparametros, "[{$i}]AParPuer")->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($modelAppparametros, "[{$i}]AParPuer")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
                 <div class="col-sm-6">
-                  <?= $form->field($modelAppparametros, "[{$i}]AParDirec")->textInput(['maxlength' => true]) ?>
+                  <?= $form->field($modelAppparametros, "[{$i}]AParDirec")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
               </div>
-                <?= $form->field($modelAppparametros, "[{$i}]AParObse")->textArea(['maxlength' => true, 'rows' => 3]) ?>
+                <?= $form->field($modelAppparametros, "[{$i}]AParObse")->textArea(['maxlength' => true, 'rows' => 3, 'disabled' => true]) ?>
             </div>
           </div>
         <?php endforeach; ?>

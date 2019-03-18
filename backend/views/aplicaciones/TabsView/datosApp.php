@@ -37,14 +37,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
 
   <div class="col-sm-4">
     <div class="col-sm-6">
-      <?= $form->field($model, 'AppFechPues')->widget( DatePicker::className(),
-      ['name' => 'check_issue_date',
-      'value' => date('d-M-Y', strtotime('+2 days')),
-      'options' => ['placeholder' => 'Seleccione la fecha de Adquisición'],
-      'pluginOptions' => [
-        'format' => 'yyyy-mm-dd',
-        'todayHighlight' => true]]);
-        ?>
+      <?= $form->field($model, 'AppFechPues')->textInput(['maxlength' => true, 'disabled' => true]) ?>
       </div>
       <div class="col-sm-6">
         <?= $form->field($model, 'AppServPues')->textInput(['maxlength' => true, 'disabled' => true]) ?>
@@ -52,33 +45,19 @@ use wbraganca\dynamicform\DynamicFormWidget;
     </div>
     <div class="col-sm-4">
       <div class="col-sm-6">
-        <?= $form->field($model, 'AppFechPues1')->widget( DatePicker::className(),
-        ['name' => 'check_issue_date',
-        'value' => date('d-M-Y', strtotime('+2 days')),
-        'options' => ['placeholder' => 'Seleccione la fecha de Adquisición'],
-        'pluginOptions' => [
-          'format' => 'yyyy-mm-dd',
-          'todayHighlight' => true]]);
-          ?>
-        </div>
+        <?= $form->field($model, 'AppFechPues1')->textInput(['maxlength' => true, 'disabled' => true]) ?>
+      </div>
         <div class="col-sm-6">
           <?= $form->field($model, 'AppServPues1')->textInput(['maxlength' => true, 'disabled' => true]) ?>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="col-sm-6">
-          <?= $form->field($model, 'AppFechPues2')->widget( DatePicker::className(),
-          ['name' => 'check_issue_date',
-          'value' => date('d-M-Y', strtotime('+2 days')),
-          'options' => ['placeholder' => 'Seleccione la fecha de Adquisición'],
-          'pluginOptions' => [
-            'format' => 'yyyy-mm-dd',
-            'todayHighlight' => true]]);
-            ?>
-          </div>
-          <div class="col-sm-6">
-            <?= $form->field($model, 'AppServPues2')->textInput(['maxlength' => true, 'disabled' => true]) ?>
-          </div>
+          <?= $form->field($model, 'AppFechPues2')->textInput(['maxlength' => true, 'disabled' => true]) ?>
+        </div>
+        <div class="col-sm-6">
+          <?= $form->field($model, 'AppServPues2')->textInput(['maxlength' => true, 'disabled' => true]) ?>
+        </div>
         </div>
       </div>
 
