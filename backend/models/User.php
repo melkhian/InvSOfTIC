@@ -221,6 +221,13 @@ private $var;
         return $data['TiposDesc'];
     }
 
+    public function tiposid_fk2()
+    {
+        $data = Tipos::findOne($this->tiposid_fk2);
+
+        return $data['TiposDesc'];
+    }
+
     public function status()
     {
         $data = Tipos::findOne($this->status);

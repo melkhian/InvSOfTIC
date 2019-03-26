@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
 use backend\controllers\SiteController;
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -7,15 +8,20 @@ use backend\controllers\SiteController;
 ?>
 
 <header class="main-header">
+    <!-- <img class="logo-lg" src="img/logoGober.png" alt="Logo Gobernación" width="100%"  /> -->
+    <?php $img_mini = Html::img('imagenesHeader/escudovalle.png',['height'=>'35px','width'=>'45px']);  ?>
+    <?php $img_lg = Html::img('imagenesHeader/logoGober.png',['height'=>'45px','width'=>'195px']);  ?>
 
-    <?= Html::a('<span class="logo-mini">APP</span><span class="logo-lg">' . Yii::$app->name . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
+    <?= Html::a('<span class="logo-mini">'.$img_mini.'</span><span class="logo-lg">' . $img_lg . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
 
     <nav class="navbar navbar-static-top" role="navigation">
 
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
-
+        <img>
+          
+        </img>
         <div class="navbar-custom-menu">
 
             <ul class="nav navbar-nav">
