@@ -129,6 +129,11 @@ echo ExportMenu::widget([
           $enable = '';
         }
         if (SiteController::findCom(67)) {
+          $reset = '{reset}';
+        } else {
+          $reset = '';
+        }
+        if (SiteController::findCom(68)) {
           $delete = '{delete}';
         } else {
           $delete = '';

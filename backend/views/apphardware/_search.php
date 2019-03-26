@@ -28,6 +28,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'AHarEspaDisc') ?>
 
+    <?php // echo $form->field($model, 'AHarObse') ?>
+
     <?php // echo $form->field($model, 'AppId_fk') ?>
 
     <div class="form-group">

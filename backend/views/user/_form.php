@@ -10,6 +10,7 @@ use yii\helpers\ArrayHelper;
 /* @var $model backend\models\User */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<?php // NOTE: Esta forma es para el Update, la acción de crear un nuevo usuario se realiza mediante RegistroForm, y se redirecciona desde el index de User. ?>
 
 <div class="user-form">
 

@@ -160,9 +160,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
       <?= $form->field($model, 'AppOtroCual18')->textInput(['maxlength' => true]) ?>
 
       <?= $form->field($model, 'TiposId_fk19')
-      ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 46')->all(),'TiposValo','TiposDesc'),
-      ['onchange'=>'TiposId_fk($id=19,$tab=5,$tipo="radio");'
-      ])?>
+      ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 46')->all(),'TiposValo','TiposDesc'))?>
 
       <?php // NOTE: Explicación de este DynamicFormWidget en views/aplicaciones/Tabs/datosApp.php, en el último widget
             //      DynamicFormWidget correspondiente a Aplicaciones Relacionadas
