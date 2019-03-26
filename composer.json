@@ -30,8 +30,8 @@
         "kartik-v/yii2-dialog": "*",
         "yii2mod/yii2-sweet-alert": "*",
         "kartik-v/yii2-export": "dev-master",
-        "kartik-v/yii2-grid": "dev-master"
- 
+        "kartik-v/yii2-grid": "dev-master",
+
 
         "kartik-v/yii2-widget-fileinput": "@dev"
 

@@ -78,6 +78,7 @@ private $var;
             [['username', 'email'], 'string', 'max' => 255],
             [['username'], 'unique'],
             [['email'], 'unique'],
+            ['email', 'email'],
             [['usuiden'], 'unique'],
 
         ];
@@ -235,20 +236,20 @@ private $var;
 
             $AudAcci =  'update';
             $table = $this->getTableSchema();
-            $pk = $table->primaryKey; //---------------------- [ADepID]            
+            $pk = $table->primaryKey; //---------------------- [ADepID]
             $idSelect = $_GET['id'];
             $UsuId_fk = Yii::$app->user->identity->id;
-            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]
             $AudIp = Yii::$app->getRequest()->getUserIP();
-            $AudFechHora = new \yii\db\Expression('NOW()');      
+            $AudFechHora = new \yii\db\Expression('NOW()');
             $connection = Yii::$app->db;
 
             // print_r($pk);
             // die();
-            $MaxId = (new \yii\db\Query()) 
+            $MaxId = (new \yii\db\Query())
             ->select($pk)
             ->from($AudMod)
-            ->orderBy($pk[0]." DESC")          
+            ->orderBy($pk[0]." DESC")
             ->createCommand()
             ->execute();
 
@@ -257,14 +258,14 @@ private $var;
             ->select('*')
             ->from($AudMod)
             ->where([$pk[0] => $idSelect])
-            ->createCommand();    
+            ->createCommand();
             $rows = $queryAll->queryOne();
             $resultAll = implode(",", $rows);
 
             $i=0;
 
             //---------------------------------------------------------------//
-            
+
             if(!isset($changedAttributes['id']))
             {
                 $oldAttributes[$i] = "Id => ".$idSelect;
@@ -280,208 +281,208 @@ private $var;
 
             if(!isset($changedAttributes['usuiden']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['usuiden'] != $rows['usuiden']) 
+                if ($changedAttributes['usuiden'] != $rows['usuiden'])
                 {
                     $oldAttributes[$i] = "Identificación => ".$changedAttributes['usuiden'];
                     $i++;
-                }            
-            } 
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['usuprimnomb']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "1nombre => ".$changedAttributes['usuprimnomb'];
-                $i++;                
-            }  
+                $i++;
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ususegunomb']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['ususegunomb'] != $rows['ususegunomb']) 
+                if ($changedAttributes['ususegunomb'] != $rows['ususegunomb'])
                 {
                     $oldAttributes[$i] = "2nombre => ".$changedAttributes['ususegunomb'];
-                    $i++;   
-                }                
-            }             
+                    $i++;
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['usuprimapel']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['usuprimapel'] != $rows['usuprimapel']) 
+                if ($changedAttributes['usuprimapel'] != $rows['usuprimapel'])
                 {
                     $oldAttributes[$i] = "1apel => ".$changedAttributes['usuprimapel'];
                     $i++;
-                }            
-            }   
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ususeguapel']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "2apel => ".$changedAttributes['ususeguapel'];
                 $i++;
-            }             
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['usutelepers']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['usutelepers'] != $rows['usutelepers']) 
+                if ($changedAttributes['usutelepers'] != $rows['usutelepers'])
                 {
                     $oldAttributes[$i] = "Telefono => ".$changedAttributes['usutelepers'];
                     $i++;
-                }            
-            }   
+                }
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['username']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "usuario => ".$changedAttributes['username'];
                 $i++;
-            }             
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['usuteleofic']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "telofi => ".$changedAttributes['usuteleofic'];
                 $i++;
-            }             
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['email']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "email => ".$changedAttributes['email'];
                 $i++;
-            }             
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['depid_fk']))
             {
-                
+
             }
             else
             {
-              if ($changedAttributes['depid_fk'] != $rows['depid_fk']) 
+              if ($changedAttributes['depid_fk'] != $rows['depid_fk'])
                 {
                   $oldAttributes[$i] = "dependencia => ".$changedAttributes['depid_fk'];
                   $i++;
                 }
-            }             
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['TiposId_fk1s']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "Cargo => ".$changedAttributes['TiposId_fk1s'];
                 $i++;
-            }             
+            }
 
-            //---------------------------------------------------------------// 
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['TiposId_fk2']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "tipoCargo => ".$changedAttributes['TiposId_fk2'];
                 $i++;
-            }             
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['status']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['status'] != $rows['status']) 
+                if ($changedAttributes['status'] != $rows['status'])
                 {
                   $oldAttributes[$i] = "Estado => ".$changedAttributes['status'];
                   $i++;
                 }
-            }             
+            }
 
-            //---------------------------------------------------------------//          
+            //---------------------------------------------------------------//
 
-            if (!isset($oldAttributes)) 
+            if (!isset($oldAttributes))
             {
                 $total = 'no change';
             }
             else
             {
-                $total = implode(",",$oldAttributes); 
+                $total = implode(",",$oldAttributes);
             }
 
             // ------------------------------------------------------------------//
             // print_r($rows['AppId_fk']);
 
-            foreach ($rows as $key => $value) 
+            foreach ($rows as $key => $value)
             {
-                if ($key == 'id') 
+                if ($key == 'id')
                 {
                     $var[0] = "Id => ".$rows['id'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'usuiden' and isset($changedAttributes['usuiden'])) 
+                if ($key == 'usuiden' and isset($changedAttributes['usuiden']))
                 {
                     $var[1] = "Nombre => ".$rows['usuiden'];
                 }
 
                 //---------------------------------------------------------------//
-                
 
-                if ($key == 'usuprimnomb' and isset($changedAttributes['usuprimnomb'])) 
+
+                if ($key == 'usuprimnomb' and isset($changedAttributes['usuprimnomb']))
                 {
                     $var[2] = "1nombre => ".$rows['usuprimnomb'];
                 }
@@ -489,82 +490,82 @@ private $var;
                 //---------------------------------------------------------------//
 
                 if ($key == 'ususegunomb' and isset($changedAttributes['ususegunomb']))
-                {                    
+                {
                     $var[3] = "2nombre => ".$rows['ususegunomb'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'usuprimapel' and isset($changedAttributes['usuprimapel'])) 
+                if ($key == 'usuprimapel' and isset($changedAttributes['usuprimapel']))
                 {
                     $var[4] = "1apel => ".$rows['usuprimapel'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ususeguapel' and isset($changedAttributes['ususeguapel'])) 
+                if ($key == 'ususeguapel' and isset($changedAttributes['ususeguapel']))
                 {
                     $var[5] = "2apel => ".$rows['ususeguapel'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'usutelepers' and isset($changedAttributes['usutelepers'])) 
+                if ($key == 'usutelepers' and isset($changedAttributes['usutelepers']))
                 {
                     $var[6] = "celular => ".$rows['usutelepers'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'username' and isset($changedAttributes['username'])) 
+                if ($key == 'username' and isset($changedAttributes['username']))
                 {
                     $var[7] = "usuario => ".$rows['username'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'usuteleofic' and isset($changedAttributes['usuteleofic'])) 
+                if ($key == 'usuteleofic' and isset($changedAttributes['usuteleofic']))
                 {
                     $var[8] = "telefono => ".$rows['usuteleofic'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'email' and isset($changedAttributes['email'])) 
+                if ($key == 'email' and isset($changedAttributes['email']))
                 {
                     $var[9] = "email => ".$rows['email'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'depid_fk' and $value != $changedAttributes['depid_fk'])
-                {                    
+                if ($key == 'depid_fk')
+                {
                     $var[10] = "dependencia => ".$rows['depid_fk'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'tiposid_fk1' and $value != $changedAttributes['tiposid_fk1'])
-                {                    
+                if ($key == 'tiposid_fk1')
+                {
                     $var[11] = "cargo => ".$rows['tiposid_fk1'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'TiposId_fk2' and $value != $changedAttributes['TiposId_fk2'])
-                {                    
+                if ($key == 'TiposId_fk2')
+                {
                     $var[12] = "tipo => ".$rows['TiposId_fk2'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'status' and $value != $changedAttributes['status'])
-                {                    
+                if ($key == 'status')
+                {
                     $var[13] = "estado => ".$rows['status'];
                 }
 
                 //---------------------------------------------------------------//
-                
+
 
             }
             // echo '<pre>';
@@ -572,49 +573,49 @@ private $var;
             // print_r($var);
             // echo '</pre>';
             // die();
-            if (!isset($var)) 
+            if (!isset($var))
             {
                 $result = 'No Change';
             }
             else
             {
-               $result = implode(",",$var); 
+               $result = implode(",",$var);
             }
 
                 //---------------------------------------------------------------//
 
-            $connection->createCommand()->insert('auditorias', 
+            $connection->createCommand()->insert('auditorias',
                                     // ['AudId'=> $AudId],
                                     [
                                         'UsuId_fk' => Yii::$app->user->identity->id,
                                         'AudMod' => $AudMod,
-                                        'AudAcci' => $AudAcci, 
+                                        'AudAcci' => $AudAcci,
                                         'AudDatoAnte' => $total,
-                                        'AudDatoDesp' => $result,                                   
+                                        'AudDatoDesp' => $result,
                                         'AudIp'=> $AudIp,
-                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                        'AudFechHora'=> $AudFechHora,
                                     ])
-                                    ->execute(); 
+                                    ->execute();
 
         }
         if ($insert)
-        {        
+        {
             $connection = Yii::$app->db;
             $AudAcci =  'create';
             $table = $this->getTableSchema();
             $pk = $table->primaryKey;
             $UsuId_fk = Yii::$app->user->identity->id;
-            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]
             $AudIp = Yii::$app->getRequest()->getUserIP();
-            $AudFechHora = new \yii\db\Expression('NOW()');  
+            $AudFechHora = new \yii\db\Expression('NOW()');
 
         //---------------------------------------------------------------------------//
 
 
-            $MaxId = (new \yii\db\Query()) 
+            $MaxId = (new \yii\db\Query())
             ->select($pk)
             ->from('user')
-            ->orderBy($pk[0]." DESC")          
+            ->orderBy($pk[0]." DESC")
             ->createCommand()
             ->execute();
 
@@ -624,13 +625,13 @@ private $var;
             ->select($pk)
             ->from('user')
             ->where([$pk[0] => $MaxId])
-            ->createCommand();    
-            $rows1 = $queryId->queryOne();            
+            ->createCommand();
+            $rows1 = $queryId->queryOne();
             // $resultId = implode(",", $rows1);
 
-            foreach ($rows1 as $key => $value) 
+            foreach ($rows1 as $key => $value)
             {
-                if ($key == $pk[0]) 
+                if ($key == $pk[0])
                 {
                     $var[0] = "Id => ".$rows1[$pk[0]];
                 }
@@ -638,21 +639,21 @@ private $var;
 
             $resultId = implode(",", $var);
 
-            //-----------------------------------------------//    
+            //-----------------------------------------------//
 
-            $connection->createCommand()->insert('auditorias', 
+            $connection->createCommand()->insert('auditorias',
                                     // ['AudId'=> $AudId],
                                     [
                                         'UsuId_fk' => Yii::$app->user->identity->id,
                                         'AudMod' => $AudMod,
-                                        'AudAcci' => $AudAcci, 
+                                        'AudAcci' => $AudAcci,
                                         'AudDatoAnte' => ' ',
-                                        'AudDatoDesp' => $resultId,                                   
+                                        'AudDatoDesp' => $resultId,
                                         'AudIp'=> $AudIp,
-                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                        'AudFechHora'=> $AudFechHora,
                                     ])
-                                    ->execute();                
-        }            
+                                    ->execute();
+        }
     }
 
 }

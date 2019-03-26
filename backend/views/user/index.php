@@ -103,6 +103,11 @@ echo ExportMenu::widget([
           $enable = '';
         }
         if (SiteController::findCom(67)) {
+          $reset = '{reset}';
+        } else {
+          $reset = '';
+        }
+        if (SiteController::findCom(68)) {
           $delete = '{delete}';
         } else {
           $delete = '';
@@ -158,7 +163,7 @@ echo ExportMenu::widget([
             // NOTE: Custom entire project in ActionColumn: In vendor\yiisoft\yii2\grid\ActionColumn.php file
             ['class' => 'yii\grid\ActionColumn',
              'header'=>"Acciones",
-             'template' => "$view $update $enable $delete"],
+             'template' => "$view $update $enable $reset $delete"],
         ],
     ]);
 

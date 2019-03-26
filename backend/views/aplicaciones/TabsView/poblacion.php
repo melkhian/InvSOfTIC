@@ -31,7 +31,7 @@ use yii\widgets\DetailView;
                       // die();
                       for ($i=0; $i <sizeof($str) ; $i++) {
                         $j = $i +1;
-                      $html .= Html::a('(Archivo descargable '. $j.')', $str[$i]) . ' ';
+                      $html .= Html::a('(Archivo '. $j.')', $str[$i],['target'=>'_blank']) . ' ';
                       }
                       return $html;
                     },

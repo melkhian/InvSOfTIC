@@ -6,6 +6,7 @@ use yii\bootstrap\Tabs;
 use yii\helpers\ArrayHelper;
 use backend\models\Tipos;
 use wbraganca\dynamicform\DynamicFormWidget;
+use backend\controllers\SiteController;
 
 // NOTE: Dentro de los TABS hay checkbox, estos deben de configurarce en Aplicaciones (Modelo) y AplicacionesController, por medio de implode y explode. Esto es para
 // Guardarlos como arreglo en la BD
@@ -25,6 +26,21 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="aplicaciones-form">
 
   <h1><?= Html::encode($this->title) ?></h1>
+
+  <p>
+      <?php
+      if (SiteController::findCom(10)) {
+      echo Html::a('Actualizar', ['update', 'id' => $model->AppId], ['class' => 'btn btn-primary']);
+    }
+      ?>
+      <!-- <?= Html::a('Delete', ['delete', 'id' => $model->AppId], [
+          'class' => 'btn btn-danger',
+          'data' => [
+              'confirm' => 'Are you sure you want to delete this item?',
+              'method' => 'post',
+          ],
+      ]) ?> -->
+  </p>
 
     <?php $form = ActiveForm::begin(['id' => 'dynamic-form', 'options' => ['enctype' => 'multipart/form-data']]); ?>
     <div class="form-group">
