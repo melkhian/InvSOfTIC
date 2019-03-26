@@ -77,19 +77,21 @@ use wbraganca\dynamicform\DynamicFormWidget;
                 }
                 ?>
                 <div class="row">
-                  <div class="col-sm-8">
+                  <div class="col-sm-6">
                     <?= $form->field($modelAppaplicaciones, "[{$i}]AAplLengServ")->textInput(['maxlength' => true]) ?>
                   </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <?= $form->field($modelAppaplicaciones, "[{$i}]AAplVersApli")->textInput(['maxlength' => true]) ?>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-8">
-                    <?= $form->field($modelAppaplicaciones, "[{$i}]AAplBibl")->textInput(['maxlength' => true]) ?>
+                  <div class="col-sm-12">
+                    <?= $form->field($modelAppaplicaciones, "[{$i}]AAplBibl")->textArea(['maxlength' => true, 'rows'=>3]) ?>
                   </div>
-                  <div class="col-sm-4">
-                    <?= $form->field($modelAppaplicaciones, "[{$i}]AAplObse1")->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <?= $form->field($modelAppaplicaciones, "[{$i}]AAplObse1")->textArea(['maxlength' => true, 'rows'=>3]) ?>
                   </div>
                 </div>
               </div><!-- .row -->
@@ -147,19 +149,19 @@ use wbraganca\dynamicform\DynamicFormWidget;
                 }
                 ?>
                 <div class="row">
-                  <div class="col-sm-8">
+                  <div class="col-sm-4">
                     <?= $form->field($modelAppbasedatos, "[{$i}]ABasMane")->textInput(['maxlength' => true]) ?>
                   </div>
                   <div class="col-sm-4">
                     <?= $form->field($modelAppbasedatos, "[{$i}]ABasVersBD")->textInput(['maxlength' => true]) ?>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-8">
+                  <div class="col-sm-4">
                     <?= $form->field($modelAppbasedatos, "[{$i}]ABasPuer1")->textInput(['maxlength' => true]) ?>
                   </div>
-                  <div class="col-sm-4">
-                    <?= $form->field($modelAppbasedatos, "[{$i}]ABasObse2")->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <?= $form->field($modelAppbasedatos, "[{$i}]ABasObse2")->textArea(['maxlength' => true, 'rows'=>3]) ?>
                   </div>
                 </div>
               </div><!-- .row -->

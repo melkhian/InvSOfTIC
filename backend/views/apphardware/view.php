@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'AHarProc',
             'AHarMemo',
             'AHarEspaDisc',
+            'AHarObse',
             'AppId_fk',
         ],
     ]) ?>

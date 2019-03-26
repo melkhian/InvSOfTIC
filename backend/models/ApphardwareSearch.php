@@ -19,7 +19,7 @@ class ApphardwareSearch extends Apphardware
     {
         return [
             [['AHarId', 'AppId_fk'], 'integer'],
-            [['AHarTipoHard', 'AHarProc', 'AHarMemo', 'AHarEspaDisc'], 'safe'],
+            [['AHarTipoHard', 'AHarProc', 'AHarMemo', 'AHarEspaDisc', 'AHarObse'], 'safe'],
         ];
     }
 
@@ -66,7 +66,8 @@ class ApphardwareSearch extends Apphardware
         $query->andFilterWhere(['like', 'AHarTipoHard', $this->AHarTipoHard])
             ->andFilterWhere(['like', 'AHarProc', $this->AHarProc])
             ->andFilterWhere(['like', 'AHarMemo', $this->AHarMemo])
-            ->andFilterWhere(['like', 'AHarEspaDisc', $this->AHarEspaDisc]);
+            ->andFilterWhere(['like', 'AHarEspaDisc', $this->AHarEspaDisc])
+            ->andFilterWhere(['like', 'AHarObse', $this->AHarObse]);
 
         return $dataProvider;
     }

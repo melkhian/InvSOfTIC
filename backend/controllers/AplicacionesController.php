@@ -115,6 +115,7 @@ class AplicacionesController extends Controller
         $model->TiposId_fk49 = explode(',',$model->TiposId_fk49);
         $model->TiposId_fk52 = explode(',',$model->TiposId_fk52);
         $model->TiposId_fk55 = explode(',',$model->TiposId_fk55);
+        $model->TiposId_fk56 = explode(',',$model->TiposId_fk56);
 
         // NOTE: Ciclo para realizar explode de los checkBox presentes en views/aplicaciones/Tabs/infoBase.php. Difieren porque están dentro de un DynamicFormWidget
 

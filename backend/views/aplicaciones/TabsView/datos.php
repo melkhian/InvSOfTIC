@@ -23,7 +23,7 @@ use kartik\date\DatePicker;
 
 <?= $form->field($model, 'AppVers')->textInput(['maxlength' => true, 'disabled' => true]) ?>
 
-<?= $form->field($model, 'ESopId1')->dropDownList(ArrayHelper::map(Empsoporte::find()->all(),'ESopId','ESopNomb'), ['prompt'=> 'Seleccione la Empresa de Soporte'], ['disabled' => true])?>
+<?= $form->field($model, 'ESopId1')->dropDownList(ArrayHelper::map(Empsoporte::find()->all(),'ESopId','ESopNomb'), ['prompt'=> 'Seleccione la Empresa de Soporte'], ['disabled' => 'disabled'])?>
 
 <?= $form->field($model, 'AppUrl')->textInput(['maxlength' => true, 'disabled' => true]) ?>
 
@@ -35,14 +35,7 @@ use kartik\date\DatePicker;
 
 <?= $form->field($model, 'AppValoAdqu')->textInput(['maxlength' => true, 'disabled' => true, 'placeholder' => "Pesos o Dólares"]) ?>
 
-<?= $form->field($model, 'AppFechAdqu')->widget( DatePicker::className(),
-        ['name' => 'check_issue_date',
-        'value' => date('d-M-Y', strtotime('+2 days')),
-        'options' => ['placeholder' => 'Seleccione la fecha de Adquisición'],
-        'pluginOptions' => [
-        'format' => 'yyyy-mm-dd',
-        'todayHighlight' => true]]);
- ?>
+<?= $form->field($model, 'AppFechAdqu')->textInput(['maxlength' => true, 'disabled' => true]) ?>
 
 <?= $form->field($model, 'TiposId_fk3')->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 22')->all(),'TiposValo','TiposDesc'))?>
 

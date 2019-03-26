@@ -78,6 +78,7 @@ private $var;
             [['username', 'email'], 'string', 'max' => 255],
             [['username'], 'unique'],
             [['email'], 'unique'],
+            ['email', 'email'],
             [['usuiden'], 'unique'],
 
         ];
@@ -544,28 +545,28 @@ private $var;
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'depid_fk' and $value != $changedAttributes['depid_fk'])
+                if ($key == 'depid_fk')
                 {
                     $var[10] = "dependencia => ".$rows['depid_fk'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'tiposid_fk1' and $value != $changedAttributes['tiposid_fk1'])
+                if ($key == 'tiposid_fk1')
                 {
                     $var[11] = "cargo => ".$rows['tiposid_fk1'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'TiposId_fk2' and $value != $changedAttributes['TiposId_fk2'])
+                if ($key == 'TiposId_fk2')
                 {
                     $var[12] = "tipo => ".$rows['TiposId_fk2'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'status' and $value != $changedAttributes['status'])
+                if ($key == 'status')
                 {
                     $var[13] = "estado => ".$rows['status'];
                 }

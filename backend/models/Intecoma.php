@@ -36,7 +36,7 @@ class Intecoma extends \yii\db\ActiveRecord
             [['IntiId_fk', 'ComId_fk', 'IcomFunc'], 'required'],
             [['IntiId_fk', 'ComId_fk'], 'integer'],
             [['IcomFunc'], 'string', 'max' => 50],
-            [['IcomDesc'], 'string', 'max' => 100],
+            [['IcomDesc'], 'string', 'max' => 500],
             [['IntiId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Interfaces::className(), 'targetAttribute' => ['IntiId_fk' => 'IntId']],
             [['ComId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Comandos::className(), 'targetAttribute' => ['ComId_fk' => 'ComId']],
         ];
@@ -181,7 +181,7 @@ class Intecoma extends \yii\db\ActiveRecord
                 }
             }
 
-            //---------------------------------------------------------------//        
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['IcomFunc']))
             {
@@ -196,7 +196,7 @@ class Intecoma extends \yii\db\ActiveRecord
                 }
             }
 
-            //---------------------------------------------------------------//  
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['IcomDesc']))
             {
@@ -211,7 +211,7 @@ class Intecoma extends \yii\db\ActiveRecord
                 }
             }
 
-            //---------------------------------------------------------------//      
+            //---------------------------------------------------------------//
 
             //---------------------------------------------------------------//
 
@@ -267,7 +267,7 @@ class Intecoma extends \yii\db\ActiveRecord
                 }
 
                 //---------------------------------------------------------------//
-                
+
                 //--------------------------------------------------------------
 
             }

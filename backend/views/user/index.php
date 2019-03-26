@@ -128,6 +128,11 @@ echo ExportMenu::widget([
           $enable = '';
         }
         if (SiteController::findCom(67)) {
+          $reset = '{reset}';
+        } else {
+          $reset = '';
+        }
+        if (SiteController::findCom(68)) {
           $delete = '{delete}';
         } else {
           $delete = '';
@@ -143,49 +148,49 @@ echo ExportMenu::widget([
         // [
             // ['class' => 'yii\grid\SerialColumn'],
             // 'id',
-        //     'usuiden',
-        //     'usuprimnomb',
-        //     'ususegunomb',
-        //     'usuprimapel',
-        //     //'ususeguapel',
-        //     //'usutelepers',
-        //     'username',
-        //     //'usuteleofic',
-        //     // 'email:email',
-        //     'email',
-        //     ['attribute'=>'depid_fk',
-        //      'value'=> function($model){return $model->depid_fk();},
-        //      'filter' => Html::activeDropDownList($searchModel, 'depid_fk',
-        //      ArrayHelper::map(Dependencias::find()->all(),'DepId','DepNomb'),
-        //      ['class'=>'form-control','prompt' => 'Seleccione la Dependencia']),
-        //     ],
-        //     // 'depid_fk',
-        //     ['attribute'=>'tiposid_fk1',
-        //      'value'=> function($model){return $model->tiposid_fk1();},
-        //      'filter' => Html::activeDropDownList($searchModel, 'tiposid_fk1',
-        //      ArrayHelper::map(Tipos::find()->where('tipoid_fk = 1')->all(),'TiposId','TiposDesc'),
-        //      ['class'=>'form-control','prompt' => 'Seleccione el Cargo']),
-        //     ],
-        //     // 'tiposid_fk1',
-        //     ['attribute'=>'status',
-        //      'value'=> function($model){return $model->status();},
-        //      'filter' => Html::activeDropDownList($searchModel, 'status',
-        //      ArrayHelper::map(Tipos::find()->where('tipoid_fk = 3')->all(),'TiposId','TiposDesc'),
-        //      ['class'=>'form-control','prompt' => 'Seleccione el Estado']),
-        //     ],
-        //     //'tiposid_fk2',
-        //     // 'status',
-        //     //'auth_key',
-        //     //'password_hash',
-        //     //'password_reset_token',
-        //     //'created_at',
-        //     //'updated_at',
-        //
-        //     // NOTE: Custom entire project in ActionColumn: In vendor\yiisoft\yii2\grid\ActionColumn.php file
-        //     ['class' => 'yii\grid\ActionColumn',
-        //      'header'=>"Acciones",
-        //      'template' => "$view $update $enable $delete"],
-        // ],
+            'usuiden',
+            'usuprimnomb',
+            'ususegunomb',
+            'usuprimapel',
+            //'ususeguapel',
+            //'usutelepers',
+            'username',
+            //'usuteleofic',
+            // 'email:email',
+            'email',
+            ['attribute'=>'depid_fk',
+             'value'=> function($model){return $model->depid_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'depid_fk',
+             ArrayHelper::map(Dependencias::find()->all(),'DepId','DepNomb'),
+             ['class'=>'form-control','prompt' => 'Seleccione la Dependencia']),
+            ],
+            // 'depid_fk',
+            ['attribute'=>'tiposid_fk1',
+             'value'=> function($model){return $model->tiposid_fk1();},
+             'filter' => Html::activeDropDownList($searchModel, 'tiposid_fk1',
+             ArrayHelper::map(Tipos::find()->where('tipoid_fk = 1')->all(),'TiposId','TiposDesc'),
+             ['class'=>'form-control','prompt' => 'Seleccione el Cargo']),
+            ],
+            // 'tiposid_fk1',
+            ['attribute'=>'status',
+             'value'=> function($model){return $model->status();},
+             'filter' => Html::activeDropDownList($searchModel, 'status',
+             ArrayHelper::map(Tipos::find()->where('tipoid_fk = 3')->all(),'TiposId','TiposDesc'),
+             ['class'=>'form-control','prompt' => 'Seleccione el Estado']),
+            ],
+            //'tiposid_fk2',
+            // 'status',
+            //'auth_key',
+            //'password_hash',
+            //'password_reset_token',
+            //'created_at',
+            //'updated_at',
+
+            // NOTE: Custom entire project in ActionColumn: In vendor\yiisoft\yii2\grid\ActionColumn.php file
+            ['class' => 'yii\grid\ActionColumn',
+             'header'=>"Acciones",
+             'template' => "$view $update $enable $reset $delete"],
+        ],
     ]);
 
     ?>

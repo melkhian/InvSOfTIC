@@ -20,6 +20,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'AHarEspaDisc')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'AHarObse')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'AppId_fk')->textInput() ?>
 
     <div class="form-group">

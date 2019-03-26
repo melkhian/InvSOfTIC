@@ -57,19 +57,24 @@ use wbraganca\dynamicform\DynamicFormWidget;
               }
               ?>
               <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                   <?= $form->field($modelApphardware, "[{$i}]AHarTipoHard")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                   <?= $form->field($modelApphardware, "[{$i}]AHarProc")->textInput(['maxlength' => true, 'disabled' => true]) ?>
                 </div>
               </div>
               <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                   <?= $form->field($modelApphardware, "[{$i}]AHarMemo")->textInput(['maxlength' => true, 'disabled' => true]) ?>
-                </div>
-                <div class="col-sm-4">
-                  <?= $form->field($modelApphardware, "[{$i}]AHarEspaDisc")->textInput(['maxlength' => true, 'disabled' => true]) ?>
+              </div>
+              <div class="col-sm-6">
+                <?= $form->field($modelApphardware, "[{$i}]AHarEspaDisc")->textInput(['maxlength' => true, 'disabled' => true]) ?>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <?= $form->field($modelApphardware, "[{$i}]AHarObse")->textArea(['maxlength' => true, 'disabled' => true ,'rows'=>3]) ?>
                 </div>
               </div>
             </div><!-- .row -->
