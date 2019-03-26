@@ -23,7 +23,18 @@ $this->params['breadcrumbs'][] = $this->title;
 // Codigo para exportar contenido de la tabla
 //<!-- ------------------------------------------------------------------------------- -->
 //<!-- ------------------------------------------------------------------------------- -->
-
+$var = [
+        'pdfConfig' => [
+            'methods' => [
+                'SetTitle' => '  Listado: '.$titulo,
+                'SetSubject' => 'Generating PDF files via yii2-export extension has never been easy',
+                // 'SetHeader' => [Html::img('imagenesHeader/bloque28.png')."||Generated On: " . date("r")],
+                // 'SetHeader' => [Html::img('imagenesHeader/bloque28.png',['height'=>'10px']).'||Generado: ' . date("l")],
+                'SetHeader' => [Html::img('imagenesHeader/bloque28.png',['height'=>'20px']).'  Listado: '.$titulo.' - Generado por: '. Yii::$app->user->identity->username. '||Generado: ' . date('Y-m-d H:i')],
+                'SetFooter' => ['|Page {PAGENO}|'],
+            ]
+        ]
+    ];
 $gridColumns = [
     // ['class' => 'kartik\grid\SerialColumn'],
     // 'id',
@@ -76,20 +87,9 @@ echo ExportMenu::widget([
     'columns' => $gridColumns,
     'filename' => "export_".$titulo.'-' . date('Y-m-d_H-i'),
     'exportConfig' => [
-        // ExportMenu::FORMAT_EXCEL => false,
-        // ExportMenu::FORMAT_EXCEL_X => false,
-        ExportMenu::FORMAT_PDF => [
-            'pdfConfig' => [
-                'methods' => [
-                    'SetTitle' => '  Listado: '.$titulo,
-                    'SetSubject' => 'Generating PDF files via yii2-export extension has never been easy',
-                    // 'SetHeader' => [Html::img('imagenesHeader/bloque28.png')."||Generated On: " . date("r")],
-                    // 'SetHeader' => [Html::img('imagenesHeader/bloque28.png',['height'=>'10px']).'||Generado: ' . date("l")],
-                    'SetHeader' => [Html::img('imagenesHeader/bloque28.png',['height'=>'20px']).'  Listado: '.$titulo.' - Generado por: '. Yii::$app->user->identity->username. '||Generado: ' . date('Y-m-d H:i')],
-                    'SetFooter' => ['|Page {PAGENO}|'],
-                ]
-            ]
-        ],
+        ExportMenu::FORMAT_EXCEL => false,
+        ExportMenu::FORMAT_EXCEL_X => false,
+        ExportMenu::FORMAT_PDF => $var,
     ],
 ]);
 //<!-- ------------------------------------------------------------------------------- -->

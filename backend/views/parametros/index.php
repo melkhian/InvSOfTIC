@@ -16,11 +16,24 @@ $this->params['breadcrumbs'][] = $this->title;
 //-------------------------------------------------------------------------->
 //-------------------------------------------------------------------------->
 //-------------------------------------------------------------------------->
-
+$var = [
+    'pdfConfig' => [
+        'methods' => [
+            'SetTitle' => 'Grid Export - Krajee.com',
+            'SetSubject' => 'Generating PDF files via yii2-export extension has never been easy',
+            'SetHeader' => ['Krajee Library Export||Generated On: ' . date("r")],
+            'SetFooter' => ['|Page {PAGENO}|'],
+            'SetAuthor' => 'Kartik Visweswaran',
+            'SetCreator' => 'Kartik Visweswaran',
+            'SetKeywords' => 'Krajee, Yii2, Export, PDF, MPDF, Output, GridView, Grid, yii2-grid, yii2-mpdf, yii2-export',
+        ]
+    ]
+];
 $gridColumns = [
     // 'DepId',
     // 'CAlcId',
     // 'ParId',
+    'ParContenido',
     'ParHead',
     'ParFoot',
     'ParMult',
@@ -40,19 +53,8 @@ echo ExportMenu::widget([
     'exportConfig' => [
         ExportMenu::FORMAT_EXCEL => false,
         ExportMenu::FORMAT_EXCEL_X => false,
-        ExportMenu::FORMAT_PDF => [
-            'pdfConfig' => [
-                'methods' => [
-                    'SetTitle' => 'Grid Export - Krajee.com',
-                    'SetSubject' => 'Generating PDF files via yii2-export extension has never been easy',
-                    'SetHeader' => ['Krajee Library Export||Generated On: ' . date("r")],
-                    'SetFooter' => ['|Page {PAGENO}|'],
-                    'SetAuthor' => 'Kartik Visweswaran',
-                    'SetCreator' => 'Kartik Visweswaran',
-                    'SetKeywords' => 'Krajee, Yii2, Export, PDF, MPDF, Output, GridView, Grid, yii2-grid, yii2-mpdf, yii2-export',
-                ]
-            ]
-        ],
+        ExportMenu::FORMAT_PDF => $var,
+        ExportMenu::FORMAT_HTML => $var,
     ],
     'filename' => 'export-list-'.$this->title.'-' . date('Y-m-d_H-i-s'),
 ]);
@@ -101,6 +103,7 @@ echo ExportMenu::widget([
             // ['class' => 'yii\grid\SerialColumn'],
 
             // 'ParId',
+            'ParContenido',
             'ParHead',
             'ParFoot',
             'ParMult',

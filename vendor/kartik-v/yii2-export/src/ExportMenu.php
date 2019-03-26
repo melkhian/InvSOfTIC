@@ -4,7 +4,7 @@
  * @package   yii2-export
  * @author    Kartik Visweswaran <kartikv2@gmail.com>
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2015 - 2018
- * @version   1.4.0
+ * @version   1.3.9
  */
 
 namespace kartik\export;
@@ -757,6 +757,9 @@ class ExportMenu extends GridView
         if ($this->timeout >= 0) {
             set_time_limit($this->timeout);
         }
+        if ($this->stream) {
+            $this->clearOutputBuffers();
+        }
         $config = ArrayHelper::getValue($this->exportConfig, $this->_exportType, []);
         if (empty($config['writer'])) {
             throw new InvalidConfigException(
@@ -798,13 +801,10 @@ class ExportMenu extends GridView
         }
         $filename = iconv("UTF-8", "ISO-8859-1//TRANSLIT", $this->filename);
         $file = self::slash($this->folder) . $filename . '.' . $config['extension'];
-        if ($this->stream) {
-            $this->clearOutputBuffers();
-        }
         $writer->save($file);
         if ($this->stream) {
-            $this->setHttpHeaders();
             $this->clearOutputBuffers();
+            $this->setHttpHeaders();
             readfile($file);
             $this->cleanup($file, $config);
             exit();

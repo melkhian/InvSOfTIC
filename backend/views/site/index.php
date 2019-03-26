@@ -32,7 +32,13 @@ $this->title ='INVSOFTIC';
         <h1>INVSOFTIC!</h1>
 
         <!-- <p class="lead">You have successfully created your Yii-powered application.</p> -->
-        <?= Html::img('imagenesContenido/conten.png', ['height'=>'320px', 'class'=>'thing']);?>
+        <?php
+        $bd = SiteController::contenido();
+        $img = Html::img('imagenesContenido/'.$bd, ['height'=>'320px']);
+        $url = $url = "https://www.valledelcauca.gov.co/";
+        ?>
+
+        <?= Html::a('<span class="logo-lg">' . $img . '</span>', $url, ['title' => 'Gobernación del Valle','class' => 'logo']); ?>
         <!-- <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p> -->
     </div>
 

@@ -14,13 +14,17 @@ use yii\helpers\Url;
       <h1>
         <center>
           <?php
-          $img = Html::img('imagenesHeader/bloque28.png',['height'=>'35px','width'=>'45px']);
+          $bd = SiteController::header();
+          // echo $bd;
+          $img = Html::img('imagenesHeader/'.$bd,['height'=>'50px']);
+          $url = "https://www.valledelcauca.gov.co/";
           if ($this->title !== null) {
             // echo \yii\helpers\Html::encode($this->title);
             echo Html::img('imagenesHeader/escudocolombiano.png', ['height'=>'50px']);
             // echo Html::a( Url::to('https://google.com/', true),Html::img('imagenesHeader/bloque28.png', ['height'=>'50px']));
             // echo Html::a('<span class="logo-mini">'.$img . '</span>', Url::toRoute(['www.google.com.co']), ['class' => 'logo']);
-            echo Html::img('imagenesHeader/bloque28.png', ['height'=>'50px']);
+            // $echo Html::img('imagenesHeader/bloque28.png', ['height'=>'50px']);
+            echo Html::a('<span class="logo-lg">' . $img . '</span>', $url, ['title' => 'Gobernación del Valle','class' => 'logo']);
           } else {
             echo \yii\helpers\Inflector::camel2words(
               \yii\helpers\Inflector::id2camel($this->context->module->id)
