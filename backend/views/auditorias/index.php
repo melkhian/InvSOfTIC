@@ -7,6 +7,7 @@ use yii\helpers\ArrayHelper;
 use backend\models\User;
 use backend\models\Auditorias;
 use kartik\export\ExportMenu;
+use kartik\daterange\DateRangePicker;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AuditoriasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -91,6 +92,9 @@ echo ExportMenu::widget([
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'options' => [
+            'class' => 'table-responsive',
+        ],
         // 'format' => 'raw',
         'columns' => [
             ['class' => 'yii\grid\ActionColumn',
@@ -116,7 +120,23 @@ echo ExportMenu::widget([
             //  'filter' => Html::activeDropDownList($searchModel, 'AudMod', ArrayHelper::map(Auditorias::find()->all(),'AudMod','AudMod'),['class'=>'form-control','prompt' => 'Seleccione el Tipo']),
             // ],
             //'AudIp',
-            //'AudFechHora',
+            [
+            'attribute' => 'AudFechHora',
+            'value' => 'AudFechHora',
+            'format'=>'raw',
+            'options' => ['style' => 'width: 25%;'],
+            'filter' => DateRangePicker::widget([
+                'model' => $searchModel,
+                'attribute' => 'AudFechHora',
+                'useWithAddon'=>false,
+                'convertFormat'=>true,
+                'pluginOptions'=>[
+                    'locale'=>['format'=>'Y-m-d h:i:A']
+                ],
+            ])
+        ],
+            // 'AudFechHora',
+
 
 
         ],

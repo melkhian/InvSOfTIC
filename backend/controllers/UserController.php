@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 use yii\bootstrap\Alert;
 use kartik\dialog\Dialog;
 use kartik\dialog\DialogAsset;
-use yii\helpers\Html;   
+use yii\helpers\Html;
 use yii\bootstrap\Widget;
 /**
  * UserController implements the CRUD actions for User model.
@@ -89,7 +89,7 @@ class UserController extends Controller
     {
       if(isset(Yii::$app->user->identity->id)){
         if(SiteController::findCom(1)){
-        $model = new User();        
+        $model = new User();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -157,19 +157,19 @@ class UserController extends Controller
       // print_r($rows);
       // echo "</pre>";
       // die();
-      if ($rows != '') 
-      {        
-        $mensaje = "El Usuario no puede ser eliminado";    
-        Yii::$app->session->setFlash('danger', $mensaje);    
+      if ($rows != '')
+      {
+        $mensaje = "El Usuario no puede ser eliminado";
+        Yii::$app->session->setFlash('danger', $mensaje);
       }
       else
-      {              
-        $mensaje = "Proceso Exitoso"; 
+      {
+        $mensaje = "Proceso Exitoso";
         Yii::$app->session->setFlash('success', $mensaje);
-        $this->findModel($id)->delete();       
+        $this->findModel($id)->delete();
       }
-      
-        return $this->redirect(['index']);        
+
+        return $this->redirect(['index']);
     }
 
     /**
@@ -218,9 +218,9 @@ class UserController extends Controller
       ->from('rolusua')
       ->where(['usuid_fk' => $id]);
       $command_rol = $query_rol->createCommand();
-      $rows_rol = $command_rol->queryAll(); 
+      $rows_rol = $command_rol->queryAll();
       // $size = sizeof($rows_rol);
-      $conteo = 0;      
+      $conteo = 0;
 
       if(SiteController::findCom(4))
       {
@@ -231,26 +231,26 @@ class UserController extends Controller
         $command = $query->createCommand();
         $rows = $command->queryScalar();
 
-        foreach ($rows_rol as $value) 
+        foreach ($rows_rol as $value)
         {
           // echo "hola <br>";
           // print_r($value['rolid_fk']);
-          if ($value['rolid_fk'] == 1) 
+          if ($value['rolid_fk'] == 1)
           {
             $conteo = 1;
           }
         }
 
-        if ($conteo != 1) 
-        {                                            
-        
-          if ($rows == 10) 
+        if ($conteo != 1)
+        {
+
+          if ($rows == 10)
           {
             $connection = Yii::$app->db;
             $connection->createCommand("UPDATE user SET status=6 WHERE id=$id")
             ->execute();
           }
-          if ($rows == 6) 
+          if ($rows == 6)
           {
             $connection = Yii::$app->db;
             $connection->createCommand("UPDATE user SET status=10 WHERE id=$id")
@@ -264,64 +264,44 @@ class UserController extends Controller
                 'dataProvider' => $dataProvider,
             ]);
         }
-        else
-        {           
-          $seleccion=1;
-          // Yii::$app->session->setFlash('danger', "Este Usuario tiene el Rol super admin!");
-          // Yii::$app->session->setFlash('modal-danger', "you message");          
-        echo \yii2mod\alert\Alert::widget([
-        'useSessionFlash' => false,
-        'options' => [
-        'timer' => null,
-        // 'type' => \yii2mod\alert\Alert::TYPE_INPUT,
-        // 'type' => confirm,
-        'title' => 'Desea Inhabilitar a este Super-User?',
-        // 'text' => "Write something interesting",
-        'confirmButtonText' => "Yes, do it!",
-        'closeOnConfirm' => false,
-        'showCancelButton' => true,
-        'animation' => "slide-from-top",
-        // 'inputPlaceholder' => "Write something"
-        ],
-        'callback' => new \yii\web\JsExpression(' function(value) {               
-                if(value === true)
-                {
-                  swal("Nice!", "Usuario Inhabilitado! ", "success");   
-                }                      
-        }')
+        // else
+        // {
+        //   // echo 'aquiiii';
+        //   $seleccion=1;
+        //   // Yii::$app->session->setFlash('danger', "Este Usuario tiene el Rol super admin!");
+        //   // Yii::$app->session->setFlash('modal-danger', "you message");
+        
 
-        ]);
-          
           // -----------------------------------------
           // ----------------AQUI---------------------
           // -----------------------------------------
           // print_r($_REQUEST);
-          if ($seleccion) 
-          {
-            // print_r("aqui1");
-            if ($rows == 10) 
-            {
-              $connection = Yii::$app->db;
-              $connection->createCommand("UPDATE user SET status=6 WHERE id=$id")
-              ->execute();
-            }
-            if ($rows == 6) 
-            {
-              $connection = Yii::$app->db;
-              $connection->createCommand("UPDATE user SET status=10 WHERE id=$id")
-              ->execute();
-            }
-            $searchModel = new UserSearch();
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-              return $this->render('index', [
-                  // 'model' => $this->findModel($id),
-                  'searchModel' => $searchModel,
-                  'dataProvider' => $dataProvider,
-              ]);
-          }
+          // if ($seleccion)
+          // {
+          //   // print_r("aqui1");
+          //   if ($rows == 10)
+          //   {
+          //     $connection = Yii::$app->db;
+          //     $connection->createCommand("UPDATE user SET status=6 WHERE id=$id")
+          //     ->execute();
+          //   }
+          //   if ($rows == 6)
+          //   {
+          //     $connection = Yii::$app->db;
+          //     $connection->createCommand("UPDATE user SET status=10 WHERE id=$id")
+          //     ->execute();
+          //   }
+          //   $searchModel = new UserSearch();
+          //   $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+          //     return $this->render('index', [
+          //         // 'model' => $this->findModel($id),
+          //         'searchModel' => $searchModel,
+          //         'dataProvider' => $dataProvider,
+          //     ]);
+          // }
         }
       }
-    }
+
 
   // NOTE: Función para restablecer la contraseña de Usuario a una por defecto definida dentro de los parámetros de la función.
   //       Se llama desde el index y se ha codificado en vendor/yii2/grid/ActionColumn.php
@@ -366,7 +346,7 @@ class UserController extends Controller
     // var_dump($user->errors);
     $loadedPost = $user->load(Yii::$app->request->post());
 
-    if ($loadedPost && $user->validate()) 
+    if ($loadedPost && $user->validate())
     {
       $user->password = $user->newPassword;
       $user->save(false);

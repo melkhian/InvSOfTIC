@@ -12,11 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'ParContenido')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'ParHead')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'ParFoot')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'header')->fileInput() ?>
+
+    <?= $form->field($model, 'content')->fileInput() ?>
+
+    <?= $form->field($model, 'footer')->fileInput() ?>
 
     <?= $form->field($model, 'ParMult')->textInput() ?>
 

@@ -79,7 +79,7 @@ class Appmodulos extends \yii\db\ActiveRecord
             $MaxId = (new \yii\db\Query())
             ->select($pk)
             ->from($AudMod)
-            ->orderBy($pk[0]."DESC")
+            ->orderBy($pk[0]." DESC")
             ->createCommand()
             ->execute();
 

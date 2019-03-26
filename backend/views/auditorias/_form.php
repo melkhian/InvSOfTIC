@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use kartik\daterange\DateRangePicker;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Auditorias */
 /* @var $form yii\widgets\ActiveForm */
@@ -23,6 +23,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'AudIp')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'AudFechHora')->textInput() ?>
+
 
     <div class="form-group">
         <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>

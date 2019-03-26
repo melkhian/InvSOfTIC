@@ -112,6 +112,7 @@ echo ExportMenu::widget([
         else {
           // code...
         }
+        // $xx = '{xx}';
         if (SiteController::findCom(2)) {
           $view = '{view}';
         } else {
@@ -140,6 +141,9 @@ echo ExportMenu::widget([
 
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'options' => [
+            'class' => 'table-responsive',
+        ],
         'columns' =>
         [
             // ['class' => 'yii\grid\SerialColumn'],
@@ -185,9 +189,19 @@ echo ExportMenu::widget([
         //     // NOTE: Custom entire project in ActionColumn: In vendor\yiisoft\yii2\grid\ActionColumn.php file
             ['class' => 'yii\grid\ActionColumn',
              'header'=>"Acciones",
-             'template' => "$view $update $enable $delete"],
-        ],
-    ]);
+             'template' => "$view $update $enable $delete",
+             'buttons' => [
+                'enable' => function($url,$model,$key)
+                {
+                  return Html::a('<i class="fa fa-fw fa-adjust"></i>',['user/index'],['title' => 'Sign Up','onclick'=>"confirm('hello');"]);
+                }
+                ],
+              ],
+             ],
+        ]);
+
+
+
 
     ?>
     <?php Pjax::end(); ?>

@@ -119,6 +119,7 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
             'kartik\\editable\\' => 16,
             'kartik\\dynagrid\\' => 16,
             'kartik\\dialog\\' => 14,
+            'kartik\\daterange\\' => 17,
             'kartik\\date\\' => 12,
             'kartik\\base\\' => 12,
         ),
@@ -322,6 +323,10 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         'kartik\\dialog\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-dialog/src',
+        ),
+        'kartik\\daterange\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-date-range/src',
         ),
         'kartik\\date\\' => 
         array (
