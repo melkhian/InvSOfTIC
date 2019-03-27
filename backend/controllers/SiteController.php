@@ -210,6 +210,4 @@ class SiteController extends Controller
         $rows = $command->queryScalar();
         return $rows;
     }
-
-
 }

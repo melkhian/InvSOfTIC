@@ -85,7 +85,7 @@ class RolusuaController extends Controller
      * @return mixed
      */
     public function actionCreate()
-    {      
+    {
       if(isset(Yii::$app->user->identity->id))
       {
 
@@ -98,28 +98,28 @@ class RolusuaController extends Controller
           if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view','id' => $model->RUsuId]);
           }
-          if (\Yii::$app->request->post()) 
+          if (\Yii::$app->request->post())
           {
             $var = \Yii::$app->request->post();
 
-            foreach ($var['user_id'] as $key => $value) 
-            {          
+            foreach ($var['user_id'] as $key => $value)
+            {
               $validador = rolusua::find()->where("UsuId_fk = $value and RolId_fk =".$var['Rolusua']['RolId_fk'])->one();
               if(empty($validador))
               {
-                $get = 1;   
+                $get = 1;
                 $model = new Rolusua();
                 $model->load(\Yii::$app->request->post());
                 $model->UsuId_fk = $value;
                 $model->RUsuCadu = ($var['fechaExpi'][$key] != '') ? $var['fechaExpi'][$key] : $var['Rolusua']['RUsuCadu'];
-                $model->save();                             
+                $model->save();
               }
               else
               {
                 $mensaje = 'El Usuario ya tiene cargado ese Rol';
-              }                  
-            }           
-            if ($get == 1) 
+              }
+            }
+            if ($get == 1)
             {
               $mensaje = 'Proceso Exitoso';
             }
@@ -135,11 +135,11 @@ class RolusuaController extends Controller
               'mensaje' => $mensaje,
           ]);
         }
-        else 
+        else
         {
           $this->redirect(['site/error']);
         }
-      }else 
+      }else
       {
         $this->redirect(['site/login']);
       }
@@ -158,10 +158,12 @@ class RolusuaController extends Controller
       {
         if(SiteController::findCom(44))
         {
+          $mensaje = '';
           $model = $this->findModel($id);
 
-          if ($model->load(Yii::$app->request->post()) && $model->save()) 
+          if ($model->load(Yii::$app->request->post()) && $model->save())
           {
+              $mensaje = 'Proceso Exitoso';
               return $this->redirect(['view', 'id' => $model->RUsuId]);
           }
           $searchModel = new UserSearch; //---> Data Modelo que aparece en el modal
@@ -171,14 +173,15 @@ class RolusuaController extends Controller
             'model' => $model,
             'dataProvider' => $dataProvider,
             'searchModel' => $searchModel,
+            'mensaje' => $mensaje,
           ]);
         }
-        else 
+        else
         {
           $this->redirect(['site/error']);
         }
       }
-      else 
+      else
       {
         $this->redirect(['site/login']);
       }
@@ -199,7 +202,7 @@ class RolusuaController extends Controller
 
           return $this->redirect(['index']);
         }
-        else 
+        else
         {
           $this->redirect(['site/error']);
         }
@@ -253,6 +256,22 @@ class RolusuaController extends Controller
        'model' => $model,
        'dataProvider' => $dataProvider,
      ]);
+   }
+
+   public function actionRolsu()
+   {
+     // print_r($_POST);
+     // die();
+     $userId = Yii::$app->request->post("key");
+
+     $query = (new \yii\db\Query())
+     ->select('rolid_fk')
+     ->from('rolusua')
+     ->where([
+       'usuid_fk' => $userId , 'rolid_fk' => 1]);
+       $command = $query->createCommand();
+       $rows = $command->queryScalar();
+       return $rows;
    }
 
 }

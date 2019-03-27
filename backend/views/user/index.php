@@ -82,16 +82,16 @@ $gridColumns = [
     // 'updated_at'
      ];
 
-echo ExportMenu::widget([
-    'dataProvider' => $dataProvider,
-    'columns' => $gridColumns,
-    'filename' => "export_".$titulo.'-' . date('Y-m-d_H-i'),
-    'exportConfig' => [
-        ExportMenu::FORMAT_EXCEL => false,
-        ExportMenu::FORMAT_EXCEL_X => false,
-        ExportMenu::FORMAT_PDF => $var,
-    ],
-]);
+    echo ExportMenu::widget([
+      'dataProvider' => $dataProvider,
+      'columns' => $gridColumns,
+      'filename' => "export_".$titulo.'-' . date('Y-m-d_H-i'),
+      'exportConfig' => [
+          ExportMenu::FORMAT_EXCEL => false,
+          ExportMenu::FORMAT_EXCEL_X => false,
+            ExportMenu::FORMAT_PDF => $var,
+      ],
+    ]);
 //<!-- ------------------------------------------------------------------------------- -->
 //<!-- ------------------------------------------------------------------------------- -->
 //<!-- ------------------------------------------------------------------------------- -->
@@ -194,20 +194,79 @@ echo ExportMenu::widget([
         //     // NOTE: Custom entire project in ActionColumn: In vendor\yiisoft\yii2\grid\ActionColumn.php file
             ['class' => 'yii\grid\ActionColumn',
              'header'=>"Acciones",
-             'template' => "$view $update $enable $delete",
+             'template' => "$view $update $delete $enable",
              'buttons' => [
                 'enable' => function($url,$model,$key)
                 {
-                  return Html::a('<i class="fa fa-fw fa-adjust"></i>',['user/index'],['title' => 'Sign Up','onclick'=>"confirm('hello');"]);
+                  // echo '<pre>';
+                  // echo 'url';
+                  // print_r($url);
+                  // echo 'model';
+                  // print_r($model);
+                  // echo 'key';
+                  // print_r($key);
+                  // echo '</pre>';
+                  // // die();
+                  return Html::a('<i class="fa fa-fw fa-adjust"></i>',['user/index'],['title' => 'Habilitar/Inhabilitar','onclick'=>"confirmar(".$key.")"]);
                 }
-                ],
               ],
-             ],
+            ],
+          ],
         ]);
+        ?>
+        <script type="text/javascript">
+        function confirmar(key) {
+          // var key = $key;
+          // var r = 'hola';
+          // alert(key);
+          $.ajax({
+
+           url: '<?= \Yii::$app->urlManager->createUrl('/rolusua/rolsu') ?>',
+           type: 'POST',
+           data: {key:key},
+           success: function (data)
+           {
+              console.log(data);
+              // confirm('hello');
+              if (data == 1)
+              {
+                var r = confirm("Esta Seguro de Habilitar/Inhabilitar este SuperUser?");
+                if (r == true)
+                {
+                  window.location.href = '<?= \Yii::$app->urlManager->createUrl('/user/enable') ?>'+'&id='+key;
+                  alert("Usuario Habilitado/Inhabilitado");
+                }
+
+              }
+              else
+              {
+                window.location.href = '<?= \Yii::$app->urlManager->createUrl('/user/enable') ?>'+'&id='+key;
+              }
+              // alert(data);
+           }
+
+      });
 
 
 
+          // var r = confirm("Press the button");
+          // if (r == true) {
+          //     alert("You are right");
+          // } else {
+          //   alert("You are wrong");
+          // }
 
+        }
+        // function confirm() {
+          // confirm("Desea Continuar");
+          // var person = prompt("Esta Seguro de Inhabilitar este SuperUser (y)/(n)", "");
+          // if (person != null) {
+          // document.getElementById("demo").innerHTML =
+          // "Hello " + person + "! How are you today?";
+          // }
+          // }
+        </script>
+
+    <?php Pjax::end();
     ?>
-    <?php Pjax::end(); ?>
 </div>

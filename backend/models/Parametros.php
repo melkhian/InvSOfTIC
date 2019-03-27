@@ -54,7 +54,7 @@ class Parametros extends \yii\db\ActiveRecord
     {
         return [
           'ParId' => 'Id',
-          'ParContenido' => 'Par Contenido',
+          'ParContenido' => 'Imagen del Contenido',
            'ParHead' => 'Imagen del Header',
            'ParFoot' => 'Imagen del Footer',
            'ParMult' => 'Número de multisesiones permitidas',
@@ -71,9 +71,9 @@ class Parametros extends \yii\db\ActiveRecord
             // 'TiposId_fk' => 'Tipos Id Fk',
             // 'ParNemo' => 'Par Nemo',
             // 'ParTiemExpi' => 'Par Tiem Expi',
-            'header' => 'Imagen del Header',
-            'content' => 'Imagen del Contenido',
-            'footer' => 'Imagen del Footer',
+            'header' => '',
+            'content' => '',
+            'footer' => '',
         ];
     }
 

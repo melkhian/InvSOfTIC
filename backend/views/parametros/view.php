@@ -15,17 +15,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?php 
+        <?php
         if (SiteController::findCom(62))
         echo Html::a('Actualizar', ['update', 'id' => $model->ParId], ['class' => 'btn btn-primary']) ?>
-        <?php 
+        <?php
         // Html::a('Delete', ['delete', 'id' => $model->ParId], [
         //     'class' => 'btn btn-danger',
         //     'data' => [
         //         'confirm' => 'Are you sure you want to delete this item?',
         //         'method' => 'post',
         //     ],
-        // ]) 
+        // ])
         ?>
     </p>
 
@@ -34,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'ParId',
             'ParHead',
+            'ParContenido',
             'ParFoot',
             'ParMult',
             'ParFall',

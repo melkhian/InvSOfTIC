@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use kartik\widgets\FileInput;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Parametros */
 /* @var $form yii\widgets\ActiveForm */
@@ -12,11 +12,15 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-
+    <?= $form->field($model, 'ParHead')->textInput(['disabled' => true]) ?>
 
     <?= $form->field($model, 'header')->fileInput() ?>
 
+    <?= $form->field($model, 'ParContenido')->textInput(['disabled' => true]) ?>
+
     <?= $form->field($model, 'content')->fileInput() ?>
+
+    <?= $form->field($model, 'ParFoot')->textInput(['disabled' => true]) ?>
 
     <?= $form->field($model, 'footer')->fileInput() ?>
 
@@ -31,7 +35,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'ParTiemExpi')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

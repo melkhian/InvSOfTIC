@@ -115,6 +115,7 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
             'kartik\\mpdf\\' => 12,
             'kartik\\grid\\' => 12,
             'kartik\\form\\' => 12,
+            'kartik\\file\\' => 12,
             'kartik\\export\\' => 14,
             'kartik\\editable\\' => 16,
             'kartik\\dynagrid\\' => 16,
@@ -307,6 +308,10 @@ class ComposerStaticInit4a9e9aa82df636ec67f249119ba237ec
         'kartik\\form\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-activeform/src',
+        ),
+        'kartik\\file\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-fileinput/src',
         ),
         'kartik\\export\\' => 
         array (

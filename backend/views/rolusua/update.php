@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = 'Actualizar';
         'model' => $model,
         'dataProvider' => $dataProvider,
         'searchModel' => $searchModel,
-
+        'mensaje' => $mensaje,
     ]) ?>
 
 </div>

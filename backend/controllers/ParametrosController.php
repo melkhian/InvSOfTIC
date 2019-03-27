@@ -133,8 +133,51 @@ class ParametrosController extends Controller
             if(SiteController::findCom(62)){
                 $model = $this->findModel($id);
 
-                if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                // $model = $this->findModel($id);
+                // $model->save();
+                // echo '<pre>'; print_r($model->header);echo '</pre>';die();
+                if ($model->load(Yii::$app->request->post()))
+                {
+                  $imageheader = 'HeaderImage'.date('Y-m-d');
+                  $imageContent = 'ContentImage'.date('Y-m-d');
+                  $imageFooter = 'FooterImage'.date('Y-m-d');
+                  //------------------------------------------------------------
+                  $model->header = UploadedFile::getInstance($model,'header');
+                  if ($model->header)
+                  {
+                    $model->header->saveAs('imagenesHeader/'.$imageheader.'.'.$model->header->extension);
+                    $model->ParHead = 'imagenesHeader/'.$imageheader.'.'.$model->header->extension;
+                  }
+                  //------------------------------------------------------------
+                  $model->content = UploadedFile::getInstance($model,'content');
+                  if ($model->content)
+                  {
+                    $model->content->saveAs('imagenesContenido/'.$imageContent.'.'.$model->content->extension);
+                    $model->ParContenido = 'imagenesContenido/'.$imageContent.'.'.$model->content->extension;
+                  }
+                  //------------------------------------------------------------
+                  $model->footer = UploadedFile::getInstance($model,'footer');
+                  if ($model->footer)
+                  {
+                    $model->footer->saveAs('imagenesFooter/'.$imageFooter.'.'.$model->footer->extension);
+                    $model->ParFoot = 'imagenesFooter/'.$imageFooter.'.'.$model->footer->extension;
+                  }
+                  //------------------------------------------------------------
+
+                    $model->save();
                     return $this->redirect(['view', 'id' => $model->ParId]);
+
+
+                }
+                else
+                {
+                  // $model->header = $model->ParHead;
+                  // $model->content = $model->ParContenido;
+                  // $model->footer = $model->ParFoot;
+                $header =  $model->header;
+                  $model->content;
+                  $model->footer;
+                  // echo '<pre>'; print_r($model);echo '</pre>';die();
                 }
 
                 return $this->render('update', [

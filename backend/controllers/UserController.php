@@ -230,7 +230,8 @@ class UserController extends Controller
         ->where(['id' => $id]);
         $command = $query->createCommand();
         $rows = $command->queryScalar();
-
+        // print_r($rows_rol);
+        // die();
         foreach ($rows_rol as $value)
         {
           // echo "hola <br>";
@@ -241,7 +242,7 @@ class UserController extends Controller
           }
         }
 
-        if ($conteo != 1)
+        if ($conteo == 1)
         {
 
           if ($rows == 10)
@@ -249,6 +250,7 @@ class UserController extends Controller
             $connection = Yii::$app->db;
             $connection->createCommand("UPDATE user SET status=6 WHERE id=$id")
             ->execute();
+
           }
           if ($rows == 6)
           {
@@ -256,6 +258,31 @@ class UserController extends Controller
             $connection->createCommand("UPDATE user SET status=10 WHERE id=$id")
             ->execute();
           }
+
+          $searchModel = new UserSearch();
+          $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+            return $this->render('index', [
+                // 'model' => $this->findModel($id),
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+        else
+        {
+          if ($rows == 10)
+          {
+            $connection = Yii::$app->db;
+            $connection->createCommand("UPDATE user SET status=6 WHERE id=$id")
+            ->execute();
+
+          }
+          if ($rows == 6)
+          {
+            $connection = Yii::$app->db;
+            $connection->createCommand("UPDATE user SET status=10 WHERE id=$id")
+            ->execute();
+          }
+
           $searchModel = new UserSearch();
           $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
             return $this->render('index', [
@@ -270,7 +297,7 @@ class UserController extends Controller
         //   $seleccion=1;
         //   // Yii::$app->session->setFlash('danger', "Este Usuario tiene el Rol super admin!");
         //   // Yii::$app->session->setFlash('modal-danger', "you message");
-        
+
 
           // -----------------------------------------
           // ----------------AQUI---------------------
