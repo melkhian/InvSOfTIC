@@ -17,15 +17,15 @@ use kartik\date\DatePicker;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'AppId_fk')->dropDownList(ArrayHelper::map(Aplicaciones::find()->all(),'AppId','AppNomb'), ['prompt'=> 'Seleccione la Aplicación'])?>
+    <?= $form->field($model, 'AppId_fk')->dropDownList(ArrayHelper::map(Aplicaciones::find()->orderBy("AppNomb ASC")->all(),'AppId','AppNomb'), ['prompt'=> 'Seleccione la Aplicación'])?>
 
-    <?= $form->field($model, 'ReqDesc')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ReqDesc')->textArea(['maxlength' => true, 'rows'=>3]) ?>
 
     <?= $form->field($model, 'TiposId_fk1')
     ->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 13')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Tipo de Requerimiento'])?>
 
     <?= $form->field($model, 'UsuId_fk')
-    ->dropDownList(ArrayHelper::map(User::find()->all(),'id','username'), ['prompt'=> 'Seleccione el Usuario'])?>
+    ->dropDownList(ArrayHelper::map(User::find()->orderBy("username ASC")->all(),'id','username'), ['prompt'=> 'Seleccione el Usuario'])?>
 
     <?= $form->field($model, 'Tiposid_fk2')
     ->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 14')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione la Respuesta'])?>

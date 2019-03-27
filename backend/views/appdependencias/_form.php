@@ -16,9 +16,9 @@ use kartik\date\DatePicker;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'DepId_fk')->dropDownList(ArrayHelper::map(Dependencias::find()->all(),'DepId','DepNomb'), ['prompt'=> 'Seleccione la Dependencia'])?>
+    <?= $form->field($model, 'DepId_fk')->dropDownList(ArrayHelper::map(Dependencias::find()->orderBy("DepNomb ASC")->all(),'DepId','DepNomb'), ['prompt'=> 'Seleccione la Dependencia'])?>
 
-    <?= $form->field($model, 'AppId_fk')->dropDownList(ArrayHelper::map(Aplicaciones::find()->all(),'AppId','AppNomb'), ['prompt'=> 'Seleccione la Aplicación'])?>
+    <?= $form->field($model, 'AppId_fk')->dropDownList(ArrayHelper::map(Aplicaciones::find()->orderBy("AppNomb ASC")->all(),'AppId','AppNomb'), ['prompt'=> 'Seleccione la Aplicación'])?>
 
     <?= $form->field($model, 'ADepCantUsua')->textInput(['maxlength' => true]) ?>
 

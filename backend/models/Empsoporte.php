@@ -64,7 +64,7 @@ class Empsoporte extends \yii\db\ActiveRecord
             'ESopCont' => 'Persona Contacto',
             'TiposId_fk1' => 'Cargo de la persona contacto',
             'ESopTelePers' => 'Teléfono Contacto',
-            'ESopTeleOfic' => 'Número de teléfono oficina del contacto',
+            'ESopTeleOfic' => 'Teléfono oficina del contacto',
             'ESopCorr' => 'Correo Contacto',
             'TiposId_fk2' => 'Tipo de Empresa',
         ];

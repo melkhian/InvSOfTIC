@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\Appdependencias */
 
 $this->title = 'Crear Aplicativo por Dependencia';
-$this->params['breadcrumbs'][] = ['label' => 'Aplicativos por Dependencia', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Aplicativo por Dependencia', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="appdependencias-create">

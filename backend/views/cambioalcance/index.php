@@ -11,7 +11,7 @@ use backend\models\Tipos;
 /* @var $searchModel backend\models\CambioalcanceSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cambios de Alcances';
+$this->title = 'Cambio de Alcance';
 $this->params['breadcrumbs'][] = $this->title;
 
 //-------------------------------------------------------------------------->
@@ -103,7 +103,7 @@ echo ExportMenu::widget([
             'CAlcDesc',
             'CAlcFechApro',
             'CAlcFechInic',
-            //'CAlcFechFina',
+            'CAlcFechFina',
             //'CAlcFechSist',
 
             ['class' => 'yii\grid\ActionColumn',

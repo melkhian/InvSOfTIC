@@ -8,7 +8,7 @@ use backend\models\Proyectos;
 /* @var $model backend\models\Cambioalcance */
 
 $this->title = $model->CAlcId;
-$this->params['breadcrumbs'][] = ['label' => 'Cambios de Alcance', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Cambio de Alcance', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cambioalcance-view">

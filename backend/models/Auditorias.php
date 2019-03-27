@@ -38,8 +38,8 @@ class Auditorias extends \yii\db\ActiveRecord
             [['UsuId_fk'], 'integer'],
             [['AudFechHora'], 'safe'],
             [['AudMod'], 'string', 'max' => 200],
-            [['AudAcci', 'AudDatoAnte', 'AudIp'], 'string', 'max' => 100],
-            [['AudDatoDesp'], 'string', 'max' => 5000],
+            [['AudAcci', 'AudIp'], 'string', 'max' => 100],
+            [['AudDatoDesp', 'AudDatoAnte'], 'string', 'max' => 5000],
             [['UsuId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['UsuId_fk' => 'id']],
         ];
     }
@@ -166,7 +166,7 @@ class Auditorias extends \yii\db\ActiveRecord
                 }
             }
 
-            //---------------------------------------------------------------//        
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['AudAcci']))
             {
@@ -181,7 +181,7 @@ class Auditorias extends \yii\db\ActiveRecord
                 }
             }
 
-            //---------------------------------------------------------------//  
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['AudDatoAnte']))
             {
@@ -196,7 +196,7 @@ class Auditorias extends \yii\db\ActiveRecord
                 }
             }
 
-            //---------------------------------------------------------------//      
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['AudDatoDesp']))
             {
@@ -211,7 +211,7 @@ class Auditorias extends \yii\db\ActiveRecord
                 }
             }
 
-            //---------------------------------------------------------------//        
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['AudIp']))
             {
@@ -226,7 +226,7 @@ class Auditorias extends \yii\db\ActiveRecord
                 }
             }
 
-            //---------------------------------------------------------------//  
+            //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['AudFechHora']))
             {
@@ -315,7 +315,7 @@ class Auditorias extends \yii\db\ActiveRecord
                 {
                     $var[7] = "Fecha => ".$rows['AudFechHora'];
                 }
-                
+
                 //--------------------------------------------------------------
 
             }

@@ -7,7 +7,8 @@ use Yii;
 /**
  * This is the model class for table "proyectos".
  *
- * @property int $ProId
+ * @property int $ProId Id
+ * @property int $AppId_fk Aplicación
  * @property string $ProNomb Nombre
  * @property string $ProDesc Descripción
  * @property string $ProObje Objetivos
@@ -42,8 +43,8 @@ class Proyectos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ProNomb', 'ProDesc', 'ProObje', 'UsuId_fk', 'Tiposid_fk1', 'ProFechApro', 'ProDocu', 'ProFechInic', 'ProFechFina', 'TiposId_fk2', 'ProFinProy'], 'required'],
-            [['UsuId_fk', 'Tiposid_fk1', 'TiposId_fk2'], 'integer'],
+            [['ProNomb', 'ProDesc', 'ProObje', 'UsuId_fk', 'Tiposid_fk1', 'ProFechApro', 'ProDocu', 'ProFechInic', 'ProFechFina', 'TiposId_fk2', 'ProFinProy', 'AppId_fk'], 'required'],
+            [['AppId_fk','UsuId_fk', 'Tiposid_fk1', 'TiposId_fk2'], 'integer'],
             [['ProFechApro', 'ProFechInic', 'ProFechFina'], 'safe'],
             ['ProFechFina', 'compare', 'compareAttribute'=>'ProFechInic', 'operator'=>'>='],
             [['ProNomb'], 'string', 'max' => 50],
@@ -63,6 +64,7 @@ class Proyectos extends \yii\db\ActiveRecord
     {
         return [
             'ProId' => 'Id',
+            'AppId_fk' => 'Aplicación',
             'ProNomb' => 'Nombre',
             'ProDesc' => 'Descripción',
             'ProObje' => 'Objetivos',
@@ -125,6 +127,13 @@ class Proyectos extends \yii\db\ActiveRecord
 
         return $data['username'];
     }
+
+    public function AppId_fk()
+        {
+            $data = Aplicaciones::findOne($this->AppId_fk);
+
+            return $data['AppNomb'];
+        }
 
     public function Tiposid_fk1()
         {

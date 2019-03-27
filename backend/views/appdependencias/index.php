@@ -12,7 +12,7 @@ use backend\controllers\SiteController;
 /* @var $searchModel backend\models\AppdependenciasSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Aplicativos por Dependencias';
+$this->title = 'Aplicativo por Dependencia';
 $this->params['breadcrumbs'][] = $this->title;
 
 $gridColumns = [

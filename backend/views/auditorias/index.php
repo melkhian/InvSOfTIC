@@ -116,7 +116,7 @@ echo ExportMenu::widget([
             //  'filter' => Html::activeDropDownList($searchModel, 'AudMod', ArrayHelper::map(Auditorias::find()->all(),'AudMod','AudMod'),['class'=>'form-control','prompt' => 'Seleccione el Tipo']),
             // ],
             //'AudIp',
-            //'AudFechHora',
+            'AudFechHora',
 
 
         ],
