@@ -1518,11 +1518,6 @@
         ]
     },
     {
-
-        "name": "kartik-v/yii2-dialog",
-        "version": "v1.0.5",
-        "version_normalized": "1.0.5.0",
-
         "name": "kartik-v/bootstrap-fileinput",
         "version": "v4.5.2",
         "version_normalized": "4.5.2.0",
@@ -1578,10 +1573,60 @@
         ]
     },
     {
-        "name": "kartik-v/yii2-krajee-base",
-        "version": "v2.0.4",
-        "version_normalized": "2.0.4.0",
-
+        "name": "kartik-v/bootstrap-popover-x",
+        "version": "v1.4.7",
+        "version_normalized": "1.4.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kartik-v/bootstrap-popover-x.git",
+            "reference": "d4fc84a0776250f47840eb1594950a1702d8424d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kartik-v/bootstrap-popover-x/zipball/d4fc84a0776250f47840eb1594950a1702d8424d",
+            "reference": "d4fc84a0776250f47840eb1594950a1702d8424d",
+            "shasum": ""
+        },
+        "time": "2018-09-14T05:15:26+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "kartik\\plugins\\popover\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Kartik Visweswaran",
+                "email": "kartikv2@gmail.com",
+                "homepage": "http://www.krajee.com/"
+            }
+        ],
+        "description": "Bootstrap Popover Extended - Popover with modal behavior, styling enhancements and more.",
+        "homepage": "https://github.com/kartik-v/bootstrap-popover-x",
+        "keywords": [
+            "bootstrap",
+            "extended",
+            "jquery",
+            "modal",
+            "modal-popover",
+            "popover",
+            "popover-x"
+        ]
+    },
+    {
+        "name": "kartik-v/yii2-dialog",
+        "version": "v1.0.5",
+        "version_normalized": "1.0.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kartik-v/yii2-dialog.git",
@@ -1694,38 +1739,35 @@
         ]
     },
     {
-        "name": "kartik-v/yii2-export",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "name": "kartik-v/yii2-widget-fileinput",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "name": "kartik-v/yii2-editable",
+        "version": "v1.7.8",
+        "version_normalized": "1.7.8.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/kartik-v/yii2-widget-fileinput.git",
-            "reference": "41820a1f2c50e1f9349a8a9a90c36027f57dfaf8"
+            "url": "https://github.com/kartik-v/yii2-editable.git",
+            "reference": "dd80cff630d583e980641420fcf7044ee2df33de"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/yii2-widget-fileinput/zipball/41820a1f2c50e1f9349a8a9a90c36027f57dfaf8",
-            "reference": "41820a1f2c50e1f9349a8a9a90c36027f57dfaf8",
+            "url": "https://api.github.com/repos/kartik-v/yii2-editable/zipball/dd80cff630d583e980641420fcf7044ee2df33de",
+            "reference": "dd80cff630d583e980641420fcf7044ee2df33de",
             "shasum": ""
         },
         "require": {
-            "kartik-v/bootstrap-fileinput": "~4.4",
-            "kartik-v/yii2-krajee-base": ">=1.9"
+            "kartik-v/yii2-popover-x": "~1.3",
+            "kartik-v/yii2-widget-activeform": ">=1.5.7"
         },
-        "time": "2018-11-05T12:33:27+00:00",
+        "time": "2018-10-03T07:02:33+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.0.x-dev"
+                "dev-master": "1.7.x-dev"
             }
         },
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "kartik\\file\\": "src"
+                "kartik\\editable\\": "src"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -1739,34 +1781,31 @@
                 "homepage": "http://www.krajee.com/"
             }
         ],
-        "description": "An enhanced FileInput widget for Bootstrap 3.x & 4.x with file preview, multiple selection, and more features (sub repo split from yii2-widgets)",
-        "homepage": "https://github.com/kartik-v/yii2-widget-fileinput",
+        "description": "An enhanced editable widget for Yii 2.0 that allows easy editing of displayed data with numerous configuration possibilities.",
+        "homepage": "https://github.com/kartik-v/yii2-editable",
         "keywords": [
-            "extension",
-            "file",
-            "form",
+            "bootstrap",
+            "editable",
             "input",
             "jquery",
-            "plugin",
-            "upload",
-            "widget",
-            "yii2"
+            "popover",
+            "popover-x",
+            "widget"
         ]
     },
     {
-        "name": "myclabs/deep-copy",
-        "version": "1.7.0",
-        "version_normalized": "1.7.0.0",
-
+        "name": "kartik-v/yii2-export",
+        "version": "v1.3.9",
+        "version_normalized": "1.3.9.0",
         "source": {
             "type": "git",
             "url": "https://github.com/kartik-v/yii2-export.git",
-            "reference": "beb09aace52bb0c7d2b36a7a71ed560bae8b1a7f"
+            "reference": "2499dacf71e356a725ce733dbcd62d1f2740dd04"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/yii2-export/zipball/beb09aace52bb0c7d2b36a7a71ed560bae8b1a7f",
-            "reference": "beb09aace52bb0c7d2b36a7a71ed560bae8b1a7f",
+            "url": "https://api.github.com/repos/kartik-v/yii2-export/zipball/2499dacf71e356a725ce733dbcd62d1f2740dd04",
+            "reference": "2499dacf71e356a725ce733dbcd62d1f2740dd04",
             "shasum": ""
         },
         "require": {
@@ -1774,7 +1813,7 @@
             "kartik-v/yii2-mpdf": ">=1.0",
             "phpoffice/phpspreadsheet": ">=1.0"
         },
-        "time": "2019-01-23T07:54:38+00:00",
+        "time": "2018-12-19T11:02:44+00:00",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {
@@ -1976,6 +2015,56 @@
             "pdf",
             "utf8",
             "yii2"
+        ]
+    },
+    {
+        "name": "kartik-v/yii2-popover-x",
+        "version": "v1.3.0",
+        "version_normalized": "1.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kartik-v/yii2-popover-x.git",
+            "reference": "b1c458338a315d047b74356532563722ce9e29c6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kartik-v/yii2-popover-x/zipball/b1c458338a315d047b74356532563722ce9e29c6",
+            "reference": "b1c458338a315d047b74356532563722ce9e29c6",
+            "shasum": ""
+        },
+        "require": {
+            "kartik-v/bootstrap-popover-x": "*",
+            "kartik-v/yii2-krajee-base": "*"
+        },
+        "time": "2014-11-25T09:26:09+00:00",
+        "type": "yii2-extension",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "kartik\\popover\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD 3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Kartik Visweswaran",
+                "email": "kartikv2@gmail.com",
+                "homepage": "http://www.krajee.com/"
+            }
+        ],
+        "description": "An extended bootstrap 3.0 popover widget which combines both the bootstrap popover and modal features and includes various new styling enhancements.",
+        "homepage": "https://github.com/kartik-v/yii2-popover-x",
+        "keywords": [
+            "bootstrap",
+            "extended",
+            "jquery",
+            "modal",
+            "modal-popover",
+            "popover",
+            "popover-x"
         ]
     },
     {
@@ -4779,6 +4868,48 @@
         ]
     },
     {
+        "name": "sunmoon/yii2-phpspreadsheet",
+        "version": "1.2.0",
+        "version_normalized": "1.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/arieslee/yii2-phpspreadsheet.git",
+            "reference": "51fc4d0183eb81e654b3360ac18e631fc4b89c09"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/arieslee/yii2-phpspreadsheet/zipball/51fc4d0183eb81e654b3360ac18e631fc4b89c09",
+            "reference": "51fc4d0183eb81e654b3360ac18e631fc4b89c09",
+            "shasum": ""
+        },
+        "require": {
+            "phpoffice/phpspreadsheet": "*",
+            "yiisoft/yii2": "^2.0.15"
+        },
+        "time": "2019-02-18T03:02:43+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "sunmoon\\phpspreadsheet\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Sunmoon",
+                "email": "forphp@qq.com",
+                "homepage": "https://blog.iw3c.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Yii2处理Excel文件， 修改自moonlandsoft/yii2-phpexcel。",
+        "homepage": "https://github.com/arieslee/yii2-phpspreadsheet"
+    },
+    {
         "name": "swiftmailer/swiftmailer",
         "version": "v6.0.2",
         "version_normalized": "6.0.2.0",
@@ -5560,6 +5691,59 @@
             "yii2",
             "yii2 alert",
             "yii2 sweet alert"
+        ]
+    },
+    {
+        "name": "yii2tech/spreadsheet",
+        "version": "1.0.3",
+        "version_normalized": "1.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/yii2tech/spreadsheet.git",
+            "reference": "2f2e40c6624e79c509de45723cd126a7dc91b03f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/yii2tech/spreadsheet/zipball/2f2e40c6624e79c509de45723cd126a7dc91b03f",
+            "reference": "2f2e40c6624e79c509de45723cd126a7dc91b03f",
+            "shasum": ""
+        },
+        "require": {
+            "phpoffice/phpspreadsheet": "~1.1",
+            "yiisoft/yii2": "~2.0.13"
+        },
+        "time": "2019-01-24T15:33:09+00:00",
+        "type": "yii2-extension",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "yii2tech\\spreadsheet\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Paul Klimov",
+                "email": "klimov.paul@gmail.com"
+            }
+        ],
+        "description": "Yii2 extension for export to a spreadsheet, e.g. Excel, LibreOffice etc.",
+        "keywords": [
+            "LibreOffice",
+            "excel",
+            "export",
+            "spreadsheet",
+            "xls",
+            "xlsx",
+            "yii2"
         ]
     },
     {

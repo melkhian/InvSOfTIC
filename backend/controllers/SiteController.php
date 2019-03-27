@@ -161,11 +161,17 @@ class SiteController extends Controller
 
     public function header(){
       $query = (new \yii\db\Query())
-      ->select('header')
+      ->select('ParHead')
       ->from('parametros');
-      // ->where([
-      //   'header' => $IdUser,
-      //   'IntId' => $var]);
+        $command = $query->createCommand();
+        $rows = $command->queryScalar();
+        return $rows;
+    }
+
+    public function contenido(){
+      $query = (new \yii\db\Query())
+      ->select('ParContenido')
+      ->from('parametros');
         $command = $query->createCommand();
         $rows = $command->queryScalar();
         return $rows;

@@ -19,7 +19,7 @@ class ParametrosSearch extends Parametros
     {
         return [
             [['ParId', 'ParMult', 'ParFall', 'TiposId_fk', 'ParTiemExpi'], 'integer'],
-            [['ParHead', 'ParFoot', 'ParNemo'], 'safe'],
+            [['ParContenido', 'ParHead', 'ParFoot', 'ParNemo'], 'safe'],
         ];
     }
 
@@ -66,7 +66,8 @@ class ParametrosSearch extends Parametros
             'ParTiemExpi' => $this->ParTiemExpi,
         ]);
 
-        $query->andFilterWhere(['like', 'ParHead', $this->ParHead])
+        $query->andFilterWhere(['like', 'ParContenido', $this->ParContenido])
+            ->andFilterWhere(['like', 'ParHead', $this->ParHead])
             ->andFilterWhere(['like', 'ParFoot', $this->ParFoot])
             ->andFilterWhere(['like', 'ParNemo', $this->ParNemo]);
 

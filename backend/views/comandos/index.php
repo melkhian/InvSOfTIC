@@ -14,7 +14,19 @@ $this->params['breadcrumbs'][] = $this->title;
 //-------------------------------------------------------------------------->
 //-------------------------------------------------------------------------->
 //-------------------------------------------------------------------------->
-
+$titulo = $this->title;
+$var = [
+        'pdfConfig' => [
+            'methods' => [
+                'SetTitle' => '  Listado: '.$titulo,
+                'SetSubject' => 'Generating PDF files via yii2-export extension has never been easy',
+                // 'SetHeader' => [Html::img('imagenesHeader/bloque28.png')."||Generated On: " . date("r")],
+                // 'SetHeader' => [Html::img('imagenesHeader/bloque28.png',['height'=>'10px']).'||Generado: ' . date("l")],
+                'SetHeader' => [Html::img('imagenesHeader/bloque28.png',['height'=>'15px']).'  Listado: '.$titulo.' / '. Yii::$app->user->identity->username. '||Generado: ' . date('Y-m-d H:i')],
+                'SetFooter' => ['|Page {PAGENO}|'],
+            ]
+        ]
+    ];
 $gridColumns = [
     // 'DepId',
     // 'CAlcId',
@@ -30,19 +42,7 @@ echo ExportMenu::widget([
         // GridView::HTML => ['label' => 'Export as HTML', 'filename' => 'File_Name -'.date('d-M-Y')],
         ExportMenu::FORMAT_EXCEL => false,
         ExportMenu::FORMAT_EXCEL_X => false,
-        ExportMenu::FORMAT_PDF => [
-            'pdfConfig' => [
-                'methods' => [
-                    'SetTitle' => 'Grid Export - Krajee.com',
-                    'SetSubject' => 'Generating PDF files via yii2-export extension has never been easy',
-                    'SetHeader' => ['Gobernación del valle||Generado el: ' . date("r")],
-                    'SetFooter' => ['|Page {PAGENO}|'],
-                    'SetAuthor' => 'Kartik Visweswaran',
-                    'SetCreator' => 'Kartik Visweswaran',
-                    'SetKeywords' => 'Krajee, Yii2, Export, PDF, MPDF, Output, GridView, Grid, yii2-grid, yii2-mpdf, yii2-export',
-                ]
-            ]
-        ],
+        ExportMenu::FORMAT_PDF => $var,
     ],
     'filename' => 'export-list-'.$this->title . date('Y-m-d_H-i-s'),
 ]);

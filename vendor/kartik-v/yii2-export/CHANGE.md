@@ -1,17 +1,10 @@
 Change Log: `yii2-export`
 =========================
 
-## version 1.4.0
-
-**Date:** _under development_
-
-- (enh #292): Clean output buffers before readfile dump to browser.
-
 ## version 1.3.9
 
 **Date:** 19-Dec-2018
 
-- (enh #292): Clean output buffers before readfile dump to browser.
 - (enh #288): Correct export column selection when `asDropdown` is `false`.
 - (enh #276): Ability to configure explicit cell formats (header, footer, content, before, after).
    Explicit cell formats must be one of the `PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_` constants.

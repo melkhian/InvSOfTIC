@@ -12,7 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'ParHead')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
+    <?= $form->field($model, 'ParContenido')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'ParHead')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'ParFoot')->textInput(['maxlength' => true]) ?>
 
