@@ -6,7 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use backend\models\Auditorias;
-
+use kartik\daterange\DateRangeBehavior;
 /**
  * AuditoriasSearch represents the model behind the search form of `backend\models\Auditorias`.
  */
@@ -22,6 +22,8 @@ class AuditoriasSearch extends Auditorias
             [['AudMod', 'AudAcci', 'AudDatoAnte', 'AudDatoDesp', 'AudIp', 'AudFechHora'], 'safe'],
         ];
     }
+
+    public $rango_fecha,$fecha_desde ,$fecha_hasta;
 
     /**
      * @inheritdoc
@@ -63,13 +65,22 @@ class AuditoriasSearch extends Auditorias
             'UsuId_fk' => $this->UsuId_fk,
             'AudFechHora' => $this->AudFechHora,
         ]);
-
+        if (isset($this->rango_fecha) && !empty($this->rango_fecha))
+        {
+            $lista = explode(' - ', $this->rango_fecha);
+            if(count($lista) == 2)
+            {
+              $this->fecha_desde = $lista[0];
+              $this->fecha_hasta = $lista[1];
+            }
+        }
         $query->andFilterWhere(['like', 'AudMod', $this->AudMod])
             ->andFilterWhere(['like', 'AudAcci', $this->AudAcci])
             ->andFilterWhere(['like', 'AudDatoAnte', $this->AudDatoAnte])
             ->andFilterWhere(['like', 'AudDatoDesp', $this->AudDatoDesp])
-            ->andFilterWhere(['like', 'AudIp', $this->AudIp]);
-
+            ->andFilterWhere(['like', 'AudIp', $this->AudIp])
+            ->andFilterWhere(['>=', 'AudFechHora', $this->fecha_desde])
+            ->andFilterWhere(['<=', 'AudFechHora', $this->fecha_hasta]);
         return $dataProvider;
     }
 }

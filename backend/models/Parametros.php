@@ -21,6 +21,9 @@ use Yii;
  */
 class Parametros extends \yii\db\ActiveRecord
 {
+  public $header;
+  public $content;
+  public $footer;
     /**
      * @inheritdoc
      */
@@ -37,7 +40,8 @@ class Parametros extends \yii\db\ActiveRecord
         return [
             [['ParContenido', 'ParHead', 'ParFoot', 'ParMult', 'ParFall', 'TiposId_fk', 'ParNemo', 'ParTiemExpi'], 'required'],
             [['ParMult', 'ParFall', 'TiposId_fk', 'ParTiemExpi'], 'integer'],
-            [['ParContenido', 'ParHead', 'ParFoot'], 'string', 'max' => 200],
+            [['header','content','footer'],'file'],
+            [['ParContenido','ParHead', 'ParFoot'], 'string', 'max' => 200],
             [['ParNemo'], 'string', 'max' => 50],
             [['TiposId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Tipos::className(), 'targetAttribute' => ['TiposId_fk' => 'TiposId']],
         ];
@@ -50,7 +54,7 @@ class Parametros extends \yii\db\ActiveRecord
     {
         return [
           'ParId' => 'Id',
-          'ParContenido' => 'Par Contenido',
+          'ParContenido' => 'Imagen del Contenido',
            'ParHead' => 'Imagen del Header',
            'ParFoot' => 'Imagen del Footer',
            'ParMult' => 'Número de multisesiones permitidas',
@@ -67,6 +71,9 @@ class Parametros extends \yii\db\ActiveRecord
             // 'TiposId_fk' => 'Tipos Id Fk',
             // 'ParNemo' => 'Par Nemo',
             // 'ParTiemExpi' => 'Par Tiem Expi',
+            'header' => '',
+            'content' => '',
+            'footer' => '',
         ];
     }
 
@@ -388,13 +395,15 @@ class Parametros extends \yii\db\ActiveRecord
 
        //---------------------------------------------------------------------------//
 
-
            $MaxId = (new \yii\db\Query())
            ->select($pk)
            ->from($AudMod)
            ->orderBy($pk[0]." DESC")
            ->createCommand()
            ->execute();
+
+           // print_r($MaxId);
+           // die();
 
            //---------------------------------------------//
 
@@ -403,18 +412,30 @@ class Parametros extends \yii\db\ActiveRecord
            ->from($AudMod)
            ->where([$pk[0] => $MaxId])
            ->createCommand();
-           $rows1 = $queryId->queryOne();
+           $rows1 = $queryId->queryScalar();
+           // echo 'este';
+           // print_r($rows1);
+           // print_r($MaxId);
+           //
+
            // $resultId = implode(",", $rows1);
 
-           foreach ($rows1 as $key => $value)
-           {
-               if ($key == $pk[0])
+           // foreach ($rows1 as $key => $value)
+           // {
+           // print_r($rows1);
+          // print_r($rows1);
+          //
+          //  die();
+               if ($rows1 == $MaxId)
                {
-                   $var[0] = "Id => ".$rows1[$pk[0]];
+                   $var[0] = "Id => ".$rows1;
                }
-           }
-
+           // }
+           // print_r($rows1);
+           // die();
            $resultId = implode(",", $var);
+          //  print_r($resultId);
+          // die();
 
            //-----------------------------------------------//
 

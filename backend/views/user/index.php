@@ -82,16 +82,16 @@ $gridColumns = [
     // 'updated_at'
      ];
 
-echo ExportMenu::widget([
-    'dataProvider' => $dataProvider,
-    'columns' => $gridColumns,
-    'filename' => "export_".$titulo.'-' . date('Y-m-d_H-i'),
-    'exportConfig' => [
-        ExportMenu::FORMAT_EXCEL => false,
-        ExportMenu::FORMAT_EXCEL_X => false,
-        ExportMenu::FORMAT_PDF => $var,
-    ],
-]);
+    echo ExportMenu::widget([
+      'dataProvider' => $dataProvider,
+      'columns' => $gridColumns,
+      'filename' => "export_".$titulo.'-' . date('Y-m-d_H-i'),
+      'exportConfig' => [
+          ExportMenu::FORMAT_EXCEL => false,
+          ExportMenu::FORMAT_EXCEL_X => false,
+            ExportMenu::FORMAT_PDF => $var,
+      ],
+    ]);
 //<!-- ------------------------------------------------------------------------------- -->
 //<!-- ------------------------------------------------------------------------------- -->
 //<!-- ------------------------------------------------------------------------------- -->
@@ -112,6 +112,7 @@ echo ExportMenu::widget([
         else {
           // code...
         }
+        // $xx = '{xx}';
         if (SiteController::findCom(2)) {
           $view = '{view}';
         } else {
@@ -142,42 +143,48 @@ echo ExportMenu::widget([
     </p>
 
     <?= GridView::widget([
+
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'columns' => $gridColumns,
-        // [
+        'options' => [
+            'class' => 'table-responsive',
+        ],
+        'columns' =>
+        [
             // ['class' => 'yii\grid\SerialColumn'],
             // 'id',
-        //     'usuiden',
-        //     'usuprimnomb',
-        //     'ususegunomb',
-        //     'usuprimapel',
-        //     //'ususeguapel',
-        //     //'usutelepers',
-        //     'username',
-        //     //'usuteleofic',
-        //     // 'email:email',
-        //     'email',
-        //     ['attribute'=>'depid_fk',
-        //      'value'=> function($model){return $model->depid_fk();},
-        //      'filter' => Html::activeDropDownList($searchModel, 'depid_fk',
-        //      ArrayHelper::map(Dependencias::find()->all(),'DepId','DepNomb'),
-        //      ['class'=>'form-control','prompt' => 'Seleccione la Dependencia']),
-        //     ],
-        //     // 'depid_fk',
-        //     ['attribute'=>'tiposid_fk1',
-        //      'value'=> function($model){return $model->tiposid_fk1();},
-        //      'filter' => Html::activeDropDownList($searchModel, 'tiposid_fk1',
-        //      ArrayHelper::map(Tipos::find()->where('tipoid_fk = 1')->all(),'TiposId','TiposDesc'),
-        //      ['class'=>'form-control','prompt' => 'Seleccione el Cargo']),
-        //     ],
-        //     // 'tiposid_fk1',
-        //     ['attribute'=>'status',
-        //      'value'=> function($model){return $model->status();},
-        //      'filter' => Html::activeDropDownList($searchModel, 'status',
-        //      ArrayHelper::map(Tipos::find()->where('tipoid_fk = 3')->all(),'TiposId','TiposDesc'),
-        //      ['class'=>'form-control','prompt' => 'Seleccione el Estado']),
-        //     ],
+
+            'usuiden',
+            'usuprimnomb',
+            'ususegunomb',
+            'usuprimapel',
+            //'ususeguapel',
+            //'usutelepers',
+            'username',
+            //'usuteleofic',
+            // 'email:email',
+            'email',
+            ['attribute'=>'depid_fk',
+             'value'=> function($model){return $model->depid_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'depid_fk',
+             ArrayHelper::map(Dependencias::find()->all(),'DepId','DepNomb'),
+             ['class'=>'form-control','prompt' => 'Seleccione la Dependencia']),
+            ],
+            // 'depid_fk',
+            ['attribute'=>'tiposid_fk1',
+             'value'=> function($model){return $model->tiposid_fk1();},
+             'filter' => Html::activeDropDownList($searchModel, 'tiposid_fk1',
+             ArrayHelper::map(Tipos::find()->where('tipoid_fk = 1')->all(),'TiposId','TiposDesc'),
+             ['class'=>'form-control','prompt' => 'Seleccione el Cargo']),
+            ],
+            // 'tiposid_fk1',
+            ['attribute'=>'status',
+             'value'=> function($model){return $model->status();},
+             'filter' => Html::activeDropDownList($searchModel, 'status',
+             ArrayHelper::map(Tipos::find()->where('tipoid_fk = 3')->all(),'TiposId','TiposDesc'),
+             ['class'=>'form-control','prompt' => 'Seleccione el Estado']),
+            ],
+
         //     //'tiposid_fk2',
         //     // 'status',
         //     //'auth_key',
@@ -187,12 +194,83 @@ echo ExportMenu::widget([
         //     //'updated_at',
         //
         //     // NOTE: Custom entire project in ActionColumn: In vendor\yiisoft\yii2\grid\ActionColumn.php file
-        //     ['class' => 'yii\grid\ActionColumn',
-        //      'header'=>"Acciones",
-        //      'template' => "$view $update $enable $reset $delete"],
-        // ],
-    ]);
 
+            ['class' => 'yii\grid\ActionColumn',
+             'header'=>"Acciones",
+             'template' => "$view $update $delete $enable",
+             'buttons' => [
+                'enable' => function($url,$model,$key)
+                {
+                  // echo '<pre>';
+                  // echo 'url';
+                  // print_r($url);
+                  // echo 'model';
+                  // print_r($model);
+                  // echo 'key';
+                  // print_r($key);
+                  // echo '</pre>';
+                  // // die();
+                  return Html::a('<i class="fa fa-fw fa-adjust"></i>',['user/index'],['title' => 'Habilitar/Inhabilitar','onclick'=>"confirmar(".$key.")"]);
+                }
+              ],
+            ],
+          ],
+        ]);
+        ?>
+        <script type="text/javascript">
+        function confirmar(key) {
+          // var key = $key;
+          // var r = 'hola';
+          // alert(key);
+          $.ajax({
+
+           url: '<?= \Yii::$app->urlManager->createUrl('/rolusua/rolsu') ?>',
+           type: 'POST',
+           data: {key:key},
+           success: function (data)
+           {
+              console.log(data);
+              // confirm('hello');
+              if (data == 1)
+              {
+                var r = confirm("Esta Seguro de Habilitar/Inhabilitar este SuperUser?");
+                if (r == true)
+                {
+                  window.location.href = '<?= \Yii::$app->urlManager->createUrl('/user/enable') ?>'+'&id='+key;
+                  alert("Usuario Habilitado/Inhabilitado");
+                }
+
+              }
+              else
+              {
+                window.location.href = '<?= \Yii::$app->urlManager->createUrl('/user/enable') ?>'+'&id='+key;
+              }
+              // alert(data);
+           }
+
+      });
+
+
+
+          // var r = confirm("Press the button");
+          // if (r == true) {
+          //     alert("You are right");
+          // } else {
+          //   alert("You are wrong");
+          // }
+
+        }
+        // function confirm() {
+          // confirm("Desea Continuar");
+          // var person = prompt("Esta Seguro de Inhabilitar este SuperUser (y)/(n)", "");
+          // if (person != null) {
+          // document.getElementById("demo").innerHTML =
+          // "Hello " + person + "! How are you today?";
+          // }
+          // }
+        </script>
+
+
+    <?php Pjax::end();
     ?>
-    <?php Pjax::end(); ?>
 </div>

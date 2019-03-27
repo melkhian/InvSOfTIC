@@ -99,6 +99,9 @@ echo ExportMenu::widget([
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'options' => [
+            'class' => 'table-responsive',
+        ],
         'columns' => [
             // ['class' => 'yii\grid\SerialColumn'],
 
@@ -106,8 +109,8 @@ echo ExportMenu::widget([
             'ParContenido',
             'ParHead',
             'ParFoot',
-            'ParMult',
-            'ParFall',
+            // 'ParMult',
+            // 'ParFall',
             // NOTE: $model->TiposId_fk() esta función se encuentra en el modelo de Parámetros
             ['attribute'=>'TiposId_fk',
             'headerOptions' => ['style' => 'color:#337ab7'],
@@ -125,8 +128,8 @@ echo ExportMenu::widget([
             ],
 
 
-            'ParNemo',
-            'ParTiemExpi',
+            // 'ParNemo',
+            // 'ParTiemExpi',
 
             ['class' => 'yii\grid\ActionColumn',
              'header'=>"Acciones",

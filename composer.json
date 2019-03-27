@@ -30,10 +30,10 @@
         "yii2mod/yii2-sweet-alert": "*",
         "kartik-v/yii2-editable": "*",
         "kartik-v/yii2-export": "*",
-        "kartik-v/yii2-mpdf": "*",        
-        "kartik-v/yii2-grid": "@dev"
-        "kartik-v/yii2-export": "dev-master",
-        "kartik-v/yii2-grid": "dev-master",
+        "kartik-v/yii2-mpdf": "*",
+        "kartik-v/yii2-grid": "@dev",
+        "kartik-v/yii2-date-range": "dev-master"
+
 
 
 

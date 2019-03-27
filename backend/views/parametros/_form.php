@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use kartik\widgets\FileInput;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Parametros */
 /* @var $form yii\widgets\ActiveForm */
@@ -12,11 +12,17 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'ParContenido')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ParHead')->textInput(['disabled' => true]) ?>
 
-    <?= $form->field($model, 'ParHead')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'header')->fileInput() ?>
 
-    <?= $form->field($model, 'ParFoot')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'ParContenido')->textInput(['disabled' => true]) ?>
+
+    <?= $form->field($model, 'content')->fileInput() ?>
+
+    <?= $form->field($model, 'ParFoot')->textInput(['disabled' => true]) ?>
+
+    <?= $form->field($model, 'footer')->fileInput() ?>
 
     <?= $form->field($model, 'ParMult')->textInput() ?>
 

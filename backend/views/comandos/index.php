@@ -82,7 +82,10 @@ echo ExportMenu::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'options' => [
-          'class' => 'table-responsive',
+
+         'class' => 'table-responsive',
+
+
         ],
         'columns' => [
             // ['class' => 'yii\grid\SerialColumn'],

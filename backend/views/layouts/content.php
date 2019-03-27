@@ -16,7 +16,7 @@ use yii\helpers\Url;
           <?php
           $bd = SiteController::header();
           // echo $bd;
-          $img = Html::img('imagenesHeader/'.$bd,['height'=>'50px']);
+          $img = Html::img($bd,['height'=>'50px']);
           $url = "https://www.valledelcauca.gov.co/";
           if ($this->title !== null) {
             // echo \yii\helpers\Html::encode($this->title);

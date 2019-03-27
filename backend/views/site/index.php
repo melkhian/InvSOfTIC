@@ -34,7 +34,7 @@ $this->title ='INVSOFTIC';
         <!-- <p class="lead">You have successfully created your Yii-powered application.</p> -->
         <?php
         $bd = SiteController::contenido();
-        $img = Html::img('imagenesContenido/'.$bd, ['height'=>'320px']);
+        $img = Html::img($bd, ['height'=>'320px']);
         $url = $url = "https://www.valledelcauca.gov.co/";
         ?>
 
