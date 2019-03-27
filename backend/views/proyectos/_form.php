@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use backend\models\User;
 use backend\models\Tipos;
+use backend\models\Aplicaciones;
 use yii\helpers\ArrayHelper;
 use kartik\date\DatePicker;
 
@@ -15,6 +16,8 @@ use kartik\date\DatePicker;
 <div class="proyectos-form">
 
     <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($model, 'AppId_fk')->dropDownList(ArrayHelper::map(Aplicaciones::find()->all(),'AppId','AppNomb'), ['prompt'=> 'Seleccione la Aplicación'])?>
 
     <?= $form->field($model, 'ProNomb')->textInput(['maxlength' => true, 'autofocus' => true]) ?>
 

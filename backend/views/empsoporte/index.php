@@ -10,7 +10,7 @@ use backend\models\Tipos;
 /* @var $searchModel backend\models\EmpsoporteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Empresas de Soporte';
+$this->title = 'Empresa de Soporte';
 $this->params['breadcrumbs'][] = $this->title;
 
 //-------------------------------------------------------------------------->

@@ -153,6 +153,7 @@ $gridColumns = [
         [
             // ['class' => 'yii\grid\SerialColumn'],
             // 'id',
+
             'usuiden',
             'usuprimnomb',
             'ususegunomb',
@@ -183,6 +184,7 @@ $gridColumns = [
              ArrayHelper::map(Tipos::find()->where('tipoid_fk = 3')->all(),'TiposId','TiposDesc'),
              ['class'=>'form-control','prompt' => 'Seleccione el Estado']),
             ],
+
         //     //'tiposid_fk2',
         //     // 'status',
         //     //'auth_key',
@@ -192,6 +194,7 @@ $gridColumns = [
         //     //'updated_at',
         //
         //     // NOTE: Custom entire project in ActionColumn: In vendor\yiisoft\yii2\grid\ActionColumn.php file
+
             ['class' => 'yii\grid\ActionColumn',
              'header'=>"Acciones",
              'template' => "$view $update $delete $enable",
@@ -266,6 +269,7 @@ $gridColumns = [
           // }
           // }
         </script>
+
 
     <?php Pjax::end();
     ?>

@@ -7,6 +7,7 @@ use backend\models\User;
 use kartik\export\ExportMenu;
 use yii\helpers\ArrayHelper;
 use backend\models\Tipos;
+use backend\models\Aplicaciones;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\ProyectosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -33,6 +34,11 @@ $var = [
 $gridColumns = [
     // 'DepId',
     // 'Proid',
+    ['attribute'=>'AppId_fk',
+     'value'=> function($model){return $model->AppId_fk();},
+     'filter' => Html::activeDropDownList($searchModel, 'AppId_fk',
+     ArrayHelper::map(Aplicaciones::find()->all(),'AppId','AppNomb'),['class'=>'form-control','prompt' => 'Seleccione la Aplicación']),
+    ],
     'ProNomb',
     'ProDesc',
     'ProObje',
@@ -112,6 +118,11 @@ echo ExportMenu::widget([
             // ['class' => 'yii\grid\SerialColumn'],
 
             // 'ProId',
+            ['attribute'=>'AppId_fk',
+             'value'=> function($model){return $model->AppId_fk();},
+             'filter' => Html::activeDropDownList($searchModel, 'AppId_fk',
+             ArrayHelper::map(Aplicaciones::find()->orderBy("AppNomb ASC")->all(),'AppId','AppNomb'),['class'=>'form-control','prompt' => 'Seleccione la Aplicación']),
+            ],
             'ProNomb',
             'ProDesc',
             'ProObje',
@@ -119,7 +130,7 @@ echo ExportMenu::widget([
             ['attribute'=>'UsuId_fk',
              'value'=> function($model){return $model->UsuId_fk();},
              'filter' => Html::activeDropDownList($searchModel, 'UsuId_fk',
-             ArrayHelper::map(User::find()->all(),'id','username'),['class'=>'form-control','prompt' => 'Seleccione el Usuario']),
+             ArrayHelper::map(User::find()->orderBy("username ASC")->all(),'id','username'),['class'=>'form-control','prompt' => 'Seleccione el Usuario']),
             ],
             //'Tiposid_fk1',
             //'ProFechApro',

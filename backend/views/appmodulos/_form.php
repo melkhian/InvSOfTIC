@@ -35,7 +35,7 @@ use yii\helpers\ArrayHelper;
 
     <div class="form-group">
 
-        <?= Html::submitButton('Crear', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
 
     </div>
 

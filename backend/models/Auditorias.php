@@ -41,10 +41,12 @@ class Auditorias extends \yii\db\ActiveRecord
             [['UsuId_fk'], 'integer'],
             [['AudFechHora'], 'safe'],
             [['AudMod'], 'string', 'max' => 200],
+
             [['AudAcci', 'AudDatoAnte', 'AudDatoDesp'], 'string', 'max' => 5000],
             [['AudIp'], 'string', 'max' => 1000],
             // [['AudAcci', 'AudDatoAnte', 'AudIp'], 'string', 'max' => 100],
             // [['AudDatoDesp'], 'string', 'max' => 5000],
+
             [['UsuId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['UsuId_fk' => 'id']],
         ];
     }

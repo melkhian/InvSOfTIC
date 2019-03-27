@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\Cambioalcance */
 
 $this->title = 'Actualizar Cambio de Alcance';
-$this->params['breadcrumbs'][] = ['label' => 'Cambios de Alcance', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Cambio de Alcance', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->CAlcId, 'url' => ['view', 'id' => $model->CAlcId]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>

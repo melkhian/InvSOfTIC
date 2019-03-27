@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\Rolintecoma */
 
 $this->title = 'Actualizar Rol por Funcionalidad';
-$this->params['breadcrumbs'][] = ['label' => 'Rolintecomas', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Rol por Funcionalidad', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->RIComId, 'url' => ['view', 'id' => $model->RIComId]];
 $this->params['breadcrumbs'][] = 'Actualizar';
 ?>

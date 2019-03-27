@@ -20,13 +20,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'ProId') ?>
 
+    <?= $form->field($model, 'AppId_fk') ?>
+
     <?= $form->field($model, 'ProNomb') ?>
 
     <?= $form->field($model, 'ProDesc') ?>
 
     <?= $form->field($model, 'ProObje') ?>
 
-    <?= $form->field($model, 'UsuId_fk') ?>
+    <?php // echo $form->field($model, 'UsuId_fk') ?>
 
     <?php // echo $form->field($model, 'Tiposid_fk1') ?>
 

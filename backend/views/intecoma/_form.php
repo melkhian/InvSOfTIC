@@ -15,9 +15,9 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'IntiId_fk')->dropDownList(ArrayHelper::map(Interfaces::find()->all(),'IntId','IntNomb'), ['prompt'=> 'Seleccione la Interfaz'])?>
+    <?= $form->field($model, 'IntiId_fk')->dropDownList(ArrayHelper::map(Interfaces::find()->orderBy("IntNomb ASC")->all(),'IntId','IntNomb'), ['prompt'=> 'Seleccione la Interfaz'])?>
 
-    <?= $form->field($model, 'ComId_fk')->dropDownList(ArrayHelper::map(Comandos::find()->all(),'ComId','ComNomb'), ['prompt'=> 'Seleccione el Comando'])?>
+    <?= $form->field($model, 'ComId_fk')->dropDownList(ArrayHelper::map(Comandos::find()->orderBy("ComNomb ASC")->all(),'ComId','ComNomb'), ['prompt'=> 'Seleccione el Comando'])?>
 
     <?= $form->field($model, 'IcomFunc')->textInput(['maxlength' => true]) ?>
 

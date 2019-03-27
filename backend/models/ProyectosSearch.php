@@ -18,7 +18,7 @@ class ProyectosSearch extends Proyectos
     public function rules()
     {
         return [
-            [['ProId', 'UsuId_fk', 'Tiposid_fk1', 'TiposId_fk2'], 'integer'],
+            [['ProId', 'AppId_fk', 'UsuId_fk', 'Tiposid_fk1', 'TiposId_fk2'], 'integer'],
             [['ProNomb', 'ProDesc', 'ProObje', 'ProFechApro', 'ProDocu', 'ProFechInic', 'ProFechFina', 'ProFinProy'], 'safe'],
         ];
     }
@@ -60,6 +60,7 @@ class ProyectosSearch extends Proyectos
         // grid filtering conditions
         $query->andFilterWhere([
             'ProId' => $this->ProId,
+            'AppId_fk' => $this->AppId_fk,
             'UsuId_fk' => $this->UsuId_fk,
             'Tiposid_fk1' => $this->Tiposid_fk1,
             'ProFechApro' => $this->ProFechApro,

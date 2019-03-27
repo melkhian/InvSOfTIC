@@ -54,15 +54,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'usuteleofic')->textInput(['maxlength' => true]) ?>
 
-                <?= $form->field($model, 'depid_fk')->dropDownList(ArrayHelper::map(Dependencias::find()->all(),'DepId','DepNomb'), ['prompt'=> 'Seleccione la Dependencia'])?>
+                <?= $form->field($model, 'depid_fk')->dropDownList(ArrayHelper::map(Dependencias::find()->orderBy("DepNomb ASC")->all(),'DepId','DepNomb'), ['prompt'=> 'Seleccione la Dependencia'])?>
 
-                <?= $form->field($model, 'tiposid_fk1')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 1')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Cargo'])?>
+                <?= $form->field($model, 'tiposid_fk1')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 1')->orderBy("TiposDesc ASC")->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Cargo'])?>
 
-                <?= $form->field($model, 'tiposid_fk2')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 2')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Tipo de Contrato'])?>
+                <?= $form->field($model, 'tiposid_fk2')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 2')->orderBy("TiposDesc ASC")->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Tipo de Contrato'])?>
 
                 <?= $form->field($model, 'status')->hiddenInput(['maxlength' => true, 'value' =>10])->label(false); ?>
 
-                
+
                 <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
 
@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                   <?= $form->field($model, 'password_copy')->passwordInput() ?>
                 <div class="form-group">
                     <?= Html::submitButton('Registrar', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
-                    <?= Html::resetButton('Reset', ['class' => 'btn btn-primary']) ?>
+                    <?= Html::resetButton('Reestablecer', ['class' => 'btn btn-primary']) ?>
 
                     <!--?= Html::a( 'Restroceder', Yii::$app->request->referrer, ['class' => 'btn btn-primary']) ?>-->
                 </div>

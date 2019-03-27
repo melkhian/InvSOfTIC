@@ -3,6 +3,7 @@ use backend\controllers\SiteController;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use backend\models\Tipos;
+use backend\models\Aplicaciones;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Appmodulos */
@@ -17,10 +18,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
 
-        <?php 
+        <?php
         if (SiteController::findCom(14)) {
             echo Html::a('Actualizar', ['update', 'id' => $model->AModId], ['class' => 'btn btn-primary']);
-        // Html::a('Actualizar', ['update', 'id' => $model->AModId], ['class' => 'btn btn-primary']) 
+        // Html::a('Actualizar', ['update', 'id' => $model->AModId], ['class' => 'btn btn-primary'])
         }
         ?>
         <!-- <?= Html::a('Delete', ['delete', 'id' => $model->AModId], [
@@ -37,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
     -->
     <?php
         $TiposId_fk= Tipos::findOne($model->TiposId_fk);
+        $AppId_fk= Aplicaciones::findOne($model->AppId_fk);
     ?>
     <!-- FIN -->
 
@@ -44,7 +46,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'AModId',
-            'AppId_fk',
+            // 'AppId_fk',
+            ['attribute' => 'AppId_fk',
+             'value'=> $AppId_fk['AppNomb'],
+            ],
             'AModNomb',
             'AModDesc',
             ['attribute' => 'TiposId_fk',

@@ -103,7 +103,7 @@ echo ExportMenu::widget([
             ],
             ['attribute'=>'UsuId_fk',
              'value'=> function($model){return $model->UsuId_fk();},
-             'filter' => Html::activeDropDownList($searchModel, 'UsuId_fk', ArrayHelper::map(User::find()->all(),'id','username'),['class'=>'form-control','prompt' => 'Seleccione el Usuario']),
+             'filter' => Html::activeDropDownList($searchModel, 'UsuId_fk', ArrayHelper::map(User::find()->orderBy("username ASC")->all(),'id','username'),['class'=>'form-control','prompt' => 'Seleccione el Usuario']),
             ],
             'RUsuCadu',
 

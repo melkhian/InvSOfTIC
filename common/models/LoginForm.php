@@ -40,7 +40,7 @@ class LoginForm extends Model
       // ['RUsuCadu','exist','targetClass'=> Rolusua::class, 'targetAttribute' => ['RUsuCadu' => 'RUsuCadu']],
       // ['RUsuCadu', 'validateRolusua'],
 
-      // [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'secret' => '6LeFaIUUAAAAAJCMIw8Y_zrv28SVitGpW6F-AWpw', 'uncheckedMessage' => 'Please confirm that you are not a bot.']
+      [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'secret' => '6LeFaIUUAAAAAJCMIw8Y_zrv28SVitGpW6F-AWpw', 'uncheckedMessage' => 'Please confirm that you are not a bot.']
     ];
   }
 

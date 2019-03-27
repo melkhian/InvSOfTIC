@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $model backend\models\Appmodulos */
 
 $this->title = 'Actualizar Módulo por Aplicación: ' . $model->AModNomb;
-$this->params['breadcrumbs'][] = ['label' => 'Appmodulos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Módulo por Aplicación', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->AModId, 'url' => ['view', 'id' => $model->AModId]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Actualizar';
 ?>
 <div class="appmodulos-update">
 

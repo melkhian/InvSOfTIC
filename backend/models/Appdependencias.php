@@ -33,7 +33,8 @@ class Appdependencias extends \yii\db\ActiveRecord
     {
         return [
             [['DepId_fk', 'AppId_fk', 'ADepCantUsua'], 'required'],
-            [['DepId_fk', 'AppId_fk', 'ADepCantUsua'], 'integer'],
+            [['DepId_fk', 'AppId_fk'], 'integer'],
+            [['ADepCantUsua'], 'string', 'max' => 10],
             [['ADepFechSist'], 'safe'],
             [['DepId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Dependencias::className(), 'targetAttribute' => ['DepId_fk' => 'DepId']],
             [['AppId_fk'], 'exist', 'skipOnError' => true, 'targetClass' => Aplicaciones::className(), 'targetAttribute' => ['AppId_fk' => 'AppId']],
@@ -53,7 +54,7 @@ class Appdependencias extends \yii\db\ActiveRecord
             'ADepFechSist' => 'Fecha del Sistema',
         ];
     }
-    
+
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
@@ -62,19 +63,19 @@ class Appdependencias extends \yii\db\ActiveRecord
 
             $AudAcci =  'update';
             $table = $this->getTableSchema();
-            $pk = $table->primaryKey; //---------------------- [ADepID]            
+            $pk = $table->primaryKey; //---------------------- [ADepID]
             $idSelect = $_GET['id'];
             $UsuId_fk = Yii::$app->user->identity->id;
-            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]
             $AudIp = Yii::$app->getRequest()->getUserIP();
-            $AudFechHora = new \yii\db\Expression('NOW()');      
+            $AudFechHora = new \yii\db\Expression('NOW()');
             $connection = Yii::$app->db;
 
 
-            $MaxId = (new \yii\db\Query()) 
+            $MaxId = (new \yii\db\Query())
             ->select($pk)
             ->from($AudMod)
-            ->orderBy($pk[0]." DESC")          
+            ->orderBy($pk[0]." DESC")
             ->createCommand()
             ->execute();
 
@@ -83,7 +84,7 @@ class Appdependencias extends \yii\db\ActiveRecord
             ->select('*')
             ->from($AudMod)
             ->where(['ADepId' => $idSelect])
-            ->createCommand();    
+            ->createCommand();
             $rows = $queryAll->queryOne();
             $resultAll = implode(",", $rows);
 
@@ -91,7 +92,7 @@ class Appdependencias extends \yii\db\ActiveRecord
             $i=0;
 
             //---------------------------------------------------------------//
-            
+
             if(!isset($changedAttributes['ADepId']))
             {
                 $oldAttributes[$i] = "Id => ".$idSelect;
@@ -107,16 +108,16 @@ class Appdependencias extends \yii\db\ActiveRecord
 
             if(!isset($changedAttributes['DepId_fk']))
             {
-                
+
             }
             else
             {
-                if ($changedAttributes['DepId_fk'] != $rows['DepId_fk']) 
+                if ($changedAttributes['DepId_fk'] != $rows['DepId_fk'])
                 {
                     $oldAttributes[$i] = "DepId => ".$changedAttributes['DepId_fk'];
                     $i++;
-                }            
-            } 
+                }
+            }
 
             //---------------------------------------------------------------//
 
@@ -126,80 +127,80 @@ class Appdependencias extends \yii\db\ActiveRecord
             }
             else
             {
-                if ($changedAttributes['AppId_fk'] != $rows['AppId_fk']) 
+                if ($changedAttributes['AppId_fk'] != $rows['AppId_fk'])
                 {
                     $oldAttributes[$i] = "AppId => ".$changedAttributes['AppId_fk'];
                     $i++;
                 }
-            } 
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ADepCantUsua']))
             {
-                
+
             }
             else
             {
                 $oldAttributes[$i] = "CantUsua => ".$changedAttributes['ADepCantUsua'];
                 $i++;
-            }             
+            }
 
             //---------------------------------------------------------------//
 
             if(!isset($changedAttributes['ADepFechSist']))
             {
-                
+
             }
             else
             {
-                $oldAttributes[$i] = "FechSist => ".$changedAttributes['ADepFechSist'];                
-            }  
+                $oldAttributes[$i] = "FechSist => ".$changedAttributes['ADepFechSist'];
+            }
 
-            //---------------------------------------------------------------//          
+            //---------------------------------------------------------------//
 
-            if (!isset($oldAttributes)) 
+            if (!isset($oldAttributes))
             {
                 $total = 'no change';
             }
             else
             {
-                $total = implode(",",$oldAttributes); 
+                $total = implode(",",$oldAttributes);
             }
 
             // ------------------------------------------------------------------//
 
-            foreach ($rows as $key => $value) 
+            foreach ($rows as $key => $value)
             {
-                if ($key == 'ADepId') 
+                if ($key == 'ADepId')
                 {
                     $var[0] = "Id => ".$rows['ADepId'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'DepId_fk' and $value != $changedAttributes['DepId_fk']) 
+                if ($key == 'DepId_fk' and $value != $changedAttributes['DepId_fk'])
                 {
                     $var[1] = "DepId => ".$rows['DepId_fk'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'AppId_fk' and $value != $changedAttributes['AppId_fk']) 
+                if ($key == 'AppId_fk' and $value != $changedAttributes['AppId_fk'])
                 {
                     $var[2] = "AppId => ".$rows['AppId_fk'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ADepCantUsua' and isset($changedAttributes['ADepCantUsua'])) 
+                if ($key == 'ADepCantUsua' and isset($changedAttributes['ADepCantUsua']))
                 {
                     $var[3] = "CantUsua => ".$rows['ADepCantUsua'];
                 }
 
                 //---------------------------------------------------------------//
 
-                if ($key == 'ADepFechSist' and isset($changedAttributes['ADepFechSist'])) 
+                if ($key == 'ADepFechSist' and isset($changedAttributes['ADepFechSist']))
                 {
                     $var[4] = "FechSist => ".$rows['ADepFechSist'];
                 }
@@ -208,49 +209,49 @@ class Appdependencias extends \yii\db\ActiveRecord
 
             }
 
-            if (!isset($var)) 
+            if (!isset($var))
             {
                 $result = 'No Change';
             }
             else
             {
-               $result = implode(",",$var); 
+               $result = implode(",",$var);
             }
 
                 //---------------------------------------------------------------//
 
-            $connection->createCommand()->insert('auditorias', 
+            $connection->createCommand()->insert('auditorias',
                                     // ['AudId'=> $AudId],
                                     [
                                         'UsuId_fk' => Yii::$app->user->identity->id,
                                         'AudMod' => $AudMod,
-                                        'AudAcci' => $AudAcci, 
+                                        'AudAcci' => $AudAcci,
                                         'AudDatoAnte' => $total,
-                                        'AudDatoDesp' => $result,                                   
+                                        'AudDatoDesp' => $result,
                                         'AudIp'=> $AudIp,
-                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                        'AudFechHora'=> $AudFechHora,
                                     ])
-                                    ->execute(); 
+                                    ->execute();
 
         }
         if ($insert)
-        {        
+        {
             $connection = Yii::$app->db;
             $AudAcci =  'create';
             $table = $this->getTableSchema();
             $pk = $table->primaryKey;
             $UsuId_fk = Yii::$app->user->identity->id;
-            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]        
+            $AudMod = Yii::$app->controller->id; //------------------ [appdependencias]
             $AudIp = Yii::$app->getRequest()->getUserIP();
-            $AudFechHora = new \yii\db\Expression('NOW()');  
+            $AudFechHora = new \yii\db\Expression('NOW()');
 
         //---------------------------------------------------------------------------//
 
 
-            $MaxId = (new \yii\db\Query()) 
+            $MaxId = (new \yii\db\Query())
             ->select($pk)
             ->from($AudMod)
-            ->orderBy($pk[0]." DESC")          
+            ->orderBy($pk[0]." DESC")
             ->createCommand()
             ->execute();
 
@@ -260,13 +261,13 @@ class Appdependencias extends \yii\db\ActiveRecord
             ->select('ADepId')
             ->from($AudMod)
             ->where([$pk[0] => $MaxId])
-            ->createCommand();    
-            $rows1 = $queryId->queryOne();            
+            ->createCommand();
+            $rows1 = $queryId->queryOne();
             // $resultId = implode(",", $rows1);
 
-            foreach ($rows1 as $key => $value) 
+            foreach ($rows1 as $key => $value)
             {
-                if ($key == 'ADepId') 
+                if ($key == 'ADepId')
                 {
                     $var[0] = "Id => ".$rows1['ADepId'];
                 }
@@ -274,21 +275,21 @@ class Appdependencias extends \yii\db\ActiveRecord
 
             $resultId = implode(",", $var);
 
-            //-----------------------------------------------//    
+            //-----------------------------------------------//
 
-            $connection->createCommand()->insert('auditorias', 
+            $connection->createCommand()->insert('auditorias',
                                     // ['AudId'=> $AudId],
                                     [
                                         'UsuId_fk' => Yii::$app->user->identity->id,
                                         'AudMod' => $AudMod,
-                                        'AudAcci' => $AudAcci, 
+                                        'AudAcci' => $AudAcci,
                                         'AudDatoAnte' => ' ',
-                                        'AudDatoDesp' => $resultId,                                   
+                                        'AudDatoDesp' => $resultId,
                                         'AudIp'=> $AudIp,
-                                        'AudFechHora'=> $AudFechHora,                                                                    
+                                        'AudFechHora'=> $AudFechHora,
                                     ])
-                                    ->execute();                
-        }            
+                                    ->execute();
+        }
     }
     /**
      * @return \yii\db\ActiveQuery
