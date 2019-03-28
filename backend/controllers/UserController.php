@@ -224,6 +224,7 @@ class UserController extends Controller
 
       if(SiteController::findCom(4))
       {
+        $mensaje = '';
         $query = (new \yii\db\Query())
         ->select('status')
         ->from('user')
@@ -258,13 +259,14 @@ class UserController extends Controller
             $connection->createCommand("UPDATE user SET status=10 WHERE id=$id")
             ->execute();
           }
-
+          $mensaje = "Proceso Exitoso";
           $searchModel = new UserSearch();
           $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
             return $this->render('index', [
                 // 'model' => $this->findModel($id),
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
+                'mensaje' => $mensaje,
             ]);
         }
         else
@@ -282,13 +284,14 @@ class UserController extends Controller
             $connection->createCommand("UPDATE user SET status=10 WHERE id=$id")
             ->execute();
           }
-
+          $mensaje = "Proceso Exitoso";
           $searchModel = new UserSearch();
           $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
             return $this->render('index', [
                 // 'model' => $this->findModel($id),
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
+                'mensaje' => $mensaje,
             ]);
         }
         // else

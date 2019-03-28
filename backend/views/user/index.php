@@ -13,8 +13,21 @@ use yii\widgets\DetailView;
 use kartik\mpdf\Pdf;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
+?>
 
+<div class="user-index">
+    <?php
 
+      if(isset($mensaje) && $mensaje != '' and $mensaje == 'Proceso Exitoso')
+      {   
+    ?>
+    <div class="alert alert-success">
+    <?php
+        echo $mensaje;
+      }
+    ?>
+    </div>
+<?php
 $this->title = 'Usuarios';
 $titulo = $this->title;
 $this->params['breadcrumbs'][] = $this->title;
@@ -243,7 +256,11 @@ $gridColumns = [
               }
               else
               {
-                window.location.href = '<?= \Yii::$app->urlManager->createUrl('/user/enable') ?>'+'&id='+key;
+                var r = confirm("Esta Seguro de Habilitar/Inhabilitar este Usuario?");
+                if (r == true)
+                {
+                   window.location.href = '<?= \Yii::$app->urlManager->createUrl('/user/enable') ?>'+'&id='+key;   
+                }                
               }
               // alert(data);
            }
@@ -269,7 +286,7 @@ $gridColumns = [
           // }
           // }
         </script>
-
+    <?php $mensaje = ''; ?>
 
     <?php Pjax::end();
     ?>
