@@ -159,7 +159,7 @@ class SiteController extends Controller
 
     }
 
-    public function header(){
+    public static function header(){
       $query = (new \yii\db\Query())
       ->select('ParHead')
       ->from('parametros');
@@ -168,7 +168,7 @@ class SiteController extends Controller
         return $rows;
     }
 
-    public function contenido(){
+    public static function contenido(){
       $query = (new \yii\db\Query())
       ->select('ParContenido')
       ->from('parametros');
@@ -177,7 +177,7 @@ class SiteController extends Controller
         return $rows;
     }
 
-    public function footer(){
+    public static function footer(){
       $query = (new \yii\db\Query())
       ->select('ParFoot')
       ->from('parametros');
