@@ -94,7 +94,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
                 <div class="col-sm-6">
                   <?= $form->field($modelAppinformacion,"[{$i}]TiposId_fk25")
                   ->checkBoxList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 42')->all(),'TiposValo','TiposDesc'),
-                  ['onchange'=>'Appbasedatos($id = 25, $child= 5);'])?>
+                  ['onchange'=>'Appbasedatos($id = 25, $child= 4);'])?>
                 </div>
                 <div class="col-sm-6">
                   <?= $form->field($modelAppinformacion, "[{$i}]AInfOtroCual25")->textInput(['maxlength' => true, 'rows' => '3']) ?>
@@ -115,7 +115,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
                 <div class="col-sm-6">
                   <?= $form->field($modelAppinformacion, "[{$i}]TiposId_fk27")
                   ->checkBoxList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 44')->all(),'TiposValo','TiposDesc'),
-                  ['onchange'=>'Appbasedatos($id = 27, $child= 8);'])?>
+                  ['onchange'=>'Appbasedatos($id = 27, $child= 7);'])?>
                 </div>
                 <div class="col-sm-6">
                   <?= $form->field($modelAppinformacion, "[{$i}]AInfOtroCual27")->textInput(['maxlength' => true, 'rows' => '3']) ?>
@@ -125,7 +125,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
                 <div class="col-sm-6">
                   <?= $form->field($modelAppinformacion, "[{$i}]TiposId_fk28")
                   ->checkBoxList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 45')->all(),'TiposValo','TiposDesc'),
-                  ['onchange'=>'Appbasedatos($id = 28, $child= 9);'])?>
+                  ['onchange'=>'Appbasedatos($id = 28, $child= 8);'])?>
                 </div>
                 <div class="col-sm-6">
                   <?= $form->field($modelAppinformacion, "[{$i}]AInfOtroCual28")->textInput(['maxlength' => true]) ?>

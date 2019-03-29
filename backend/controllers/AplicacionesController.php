@@ -414,13 +414,13 @@ class AplicacionesController extends Controller
         $modelsApphardware = [new Apphardware];
 
 
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        // print_r($model->save());
+        // die();
+        if ($model->load(Yii::$app->request->post())) {
 
           // NOTE: Se obtiene la instancia de los objetos de UPLOAD
           $model->file = UploadedFile::getInstances($model,'file');
-          // print_r($model->file);
-          // die();
+
           // NOTE: Inicio de código
           // Código para insertar archivos por parte de usuario, quedan guardados en backend/web/pob_objetivo
           // y su PATH registrados en la base de datos, donde $model->file = UploadedFile::getInstance($model,'file'); file es una variable definida en el modelo de Aplicaciones
@@ -546,6 +546,12 @@ class AplicacionesController extends Controller
                 }
                 foreach ($modelsAppinformacion as $modelAppinformacion) {
                   $modelAppinformacion->AppId_fk = $model->AppId;
+
+                  // NOTE: Se realiza aquí el implode para los checkBox presentes en views/aplicaciones/Tabs/infoBase.php
+                  $modelAppinformacion->TiposId_fk25 = implode(',',(array)$modelAppinformacion->TiposId_fk25);
+                  $modelAppinformacion->TiposId_fk26 = implode(',',(array)$modelAppinformacion->TiposId_fk26);
+                  $modelAppinformacion->TiposId_fk27 = implode(',',(array)$modelAppinformacion->TiposId_fk27);
+                  $modelAppinformacion->TiposId_fk28 = implode(',',(array)$modelAppinformacion->TiposId_fk28);
                   if (! ($flag = $modelAppinformacion->save(false))) {
                     $transaction->rollBack();
                     break;

@@ -30,6 +30,12 @@ use wbraganca\dynamicform\DynamicFormWidget;
     ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 41')->all(),'TiposValo','TiposDesc'))?>
   </div>
 </div>
+<div class="row">
+  <div class="col-sm-12">
+    <?= $form->field($model, 'AppObse8')->textArea(['maxlength' => true, 'rows'=>3]) ?>
+  </div>
+
+</div>
 <br><br>
 <br>
   <?php // NOTE: Explicación de este DynamicFormWidget en views/aplicaciones/Tabs/datosApp.php, en el último widget

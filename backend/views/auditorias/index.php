@@ -70,12 +70,12 @@ echo ExportMenu::widget([
 
     <p>
         <?php
-        if (SiteController::findCom(63)){
-        echo Html::a('Crear Auditorias', ['create'], ['class' => 'btn btn-success']);
-        }
-        else {
-          // $this->redirect(['site/error']);
-        }
+        // if (SiteController::findCom(63)){
+        // echo Html::a('Crear Auditorias', ['create'], ['class' => 'btn btn-success']);
+        // }
+        // else {
+        //   // $this->redirect(['site/error']);
+        // }
         if (SiteController::findCom(64)) {
           $view = '{view}';
         } else {
@@ -99,7 +99,7 @@ echo ExportMenu::widget([
         'columns' => [
             ['class' => 'yii\grid\ActionColumn',
              'header'=>"Acciones",
-             'template' => "$view $update {delete}"],
+             'template' => "$view"],
             // 'AudId',
             // 'UsuId_fk',
             ['attribute'=>'UsuId_fk',

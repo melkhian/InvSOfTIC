@@ -12,7 +12,6 @@ function Init(){
   var appotrocual18 = document.getElementById('aplicaciones-appotrocual18').value;
   var appotrocual21 = document.getElementById('aplicaciones-appotrocual21').value;
   var appentiimag = document.querySelector('#aplicaciones-appentiimag').value;
-  // alert(appentiimag);
 
   var appotrocual19 = document.querySelector('#aplicaciones-tiposid_fk19 > label:nth-child(1) > input[type="radio"]').checked;
   var appotrocual20 = document.querySelector('#aplicaciones-tiposid_fk20 > label:nth-child(1) > input[type="radio"]').checked;
@@ -20,9 +19,7 @@ function Init(){
   var tiposid_fk14 = document.querySelector('#aplicaciones-tiposid_fk13 > label:nth-child(1) > input[type="radio"]').checked;
   var tiposid_fk16 = document.querySelector('#aplicaciones-tiposid_fk15 > label:nth-child(1) > input[type="radio"]').checked;
   var tiposid_fk18 = document.querySelector('#aplicaciones-tiposid_fk17 > label:nth-child(1) > input[type="radio"]').checked;
-  // var tiposid_fk5 = document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(1) > input[type="checkbox"]').checked;
-  // var tiposid_fk5_1 = document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(2) > input[type="checkbox"]').checked;
-  // var tiposid_fk5_2 = document.querySelector('#aplicaciones-tiposid_fk5 > label:nth-child(3) > input[type="checkbox"]').checked;
+
 
   // NOTE: Con esta función se carga los checkBox del DynamicFormWidget en views/aplicaciones/Tabs/datosApp.php
   //       correspondiente a Aplicaciones Relacionadas
@@ -52,21 +49,9 @@ function Init(){
   if (appotrocual18 ==="") {
     document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-appotrocual18').style.display = "none";
   }
-  // if (appotrocual19 ==="") {
-  //   document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.display = "none";
-  // }
   if (appotrocual21 ==="") {
     document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-appotrocual21').style.display = "none";
   }
-  // if (!tiposid_fk5) {
-  //   document.querySelector('#w1-tab5 > div:nth-child(6) > div:nth-child(1)').style.display = "none";
-  // }
-  // if (!tiposid_fk5_1) {
-  //   document.querySelector('#w1-tab5 > div:nth-child(6) > div:nth-child(2)').style.display = "none";
-  // }
-  // if (!tiposid_fk5_2) {
-  //   document.querySelector('#w1-tab5 > div:nth-child(6) > div:nth-child(3)').style.display = "none";
-  // }
   if (!tiposid_fk12) {
     document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-tiposid_fk12').style.display = "none";
   }
@@ -79,12 +64,8 @@ function Init(){
   if (!tiposid_fk18) {
     document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-tiposid_fk18').style.display = "none";
   }
-  // if (!appotrocual19) {
-  //   // alert(appotrocual19);
-  //   document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-appotrocual19').style.display = "none";
-  // }
+
   if (!appotrocual20) {
-    // alert(appotrocual19);
     document.querySelector('#w1-tab5 > div.form-group.field-aplicaciones-appotrocual20').style.display = "none";
   }
   if (appentiimag === '') {
@@ -103,79 +84,62 @@ function TiposId_fk($id,$tab,$tipo){
   // Selector Padre para contar el número de Items seleccionables en el campo TiposId_fk,
   // donde #aplicaciones-tiposid_fk es el ID PADRE
 
-  // NOTE: Se diferencia los ID 25, 27 y 28 por que pertenecen al modelo 1:N entre Aplicaciones y Appbasedatos y estos son para ocultar/mostra campos Otrocual
-  if ($id == 25 || $id == 27 || $id == 28) {
+  var parent = document.querySelector('#aplicaciones-tiposid_fk'+$id+'');
+  // var label selecciona los elementos tipo label
+  var label = parent.querySelectorAll('label');
+  // var cantidad cuenta la cantidad de elementos tipo label
+  var cantidad = label.length;
+  //Ciclo FOR para recorrer cada uno de los elementos seleccionables dentro del checkBoxList de TiposId_fk
+
+  for (var i = 1; i <= cantidad; i++) {
+
+    var TiposId_fk = document.querySelector("#aplicaciones-tiposid_fk"+$id+" > label:nth-child("+i+") > input[type='"+$tipo+"']");
+
+    arry= TiposId_fk.value;
+
+    // Si el valor dentro de un objeto tipo checkbox o radio es igual a "Otro" entonces ingresa. Por eso en la DB se maneja
+    // Tipo de Tipos, donde Tipos es Si o No y el valor de Si = Otro
+    if (arry === "Otro") {
+      var flag = TiposId_fk.checked;
 
 
+      if (flag) {
+        if ($tipo==="radio") {
+          // alert($id + " id Radio Visible");
+          //Se parchea porque hay un inconveninete con TiposId_fk19, TiposId_fk27, esto debido a mala nomenclatura de campos, se parchea con IF()
+          //Autor Diego Realpe
+          if ($id ==19 || $id==20) {
 
-  }else {
-    var parent = document.querySelector('#aplicaciones-tiposid_fk'+$id+'');
-    // var label selecciona los elementos tipo label
-    var label = parent.querySelectorAll('label');
-    // var cantidad cuenta la cantidad de elementos tipo label
-    var cantidad = label.length;
-    //Ciclo FOR para recorrer cada uno de los elementos seleccionables dentro del checkBoxList de TiposId_fk
-
-    for (var i = 1; i <= cantidad; i++) {
-      // alert("HERE");
-      // var arry ='';
-      var TiposId_fk = document.querySelector("#aplicaciones-tiposid_fk"+$id+" > label:nth-child("+i+") > input[type='"+$tipo+"']");
-      // alert(TiposId_fk);
-      arry= TiposId_fk.value;
-
-      // Si el valor dentro de un objeto tipo checkbox o radio es igual a "Otro" entonces ingresa. Por eso en la DB se maneja
-      // Tipo de Tipos, donde Tipos es Si o No y el valor de Si = Otro
-      if (arry === "Otro") {
-        var flag = TiposId_fk.checked;
-
-
-        if (flag) {
-          if ($tipo==="radio") {
-            // alert($id + " id Radio Visible");
-            //Se parchea porque hay un inconveninete con TiposId_fk19, TiposId_fk27, esto debido a mala nomenclatura de campos, se parchea con IF()
-            //Autor Diego Realpe
-            if ($id ==19 || $id==20) {
-              // alert($id);
-              // alert("Here");
-              document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.display = "block";
-            }else {
-              // alert($id);
-              // alert("2nd Here");
-              $id++;
-              document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-tiposid_fk'+$id+'').style.display = "block";
-            }
-          }else {
-            // alert($id + " id Check Visible");
-            //Código para desplegar el campo Cual luego de seleccionar Otro como opción en el checkbox o Si en el radio Button
             document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.display = "block";
-            document.getElementById('aplicaciones-appotrocual'+$id+'').type="";
-            document.getElementById('aplicaciones-appotrocual'+$id+'').placeholder="Otro";
-          }
-        } else {
-          if ($tipo==="radio") {
-            // alert($id + " id Radio Hidden");
-            //Código para ocultar el campo Cual luego de seleccionar diferente a Otro como opción en el checkbox o Si en el radio Button
-            //Se parchea porque hay un inconveninete con TiposId_fk19, TiposId_fk27, esto debido a mala nomenclatura de campos, se parchea con IF()
-            //Autor Diego Realpe
-            if ($id ==19 || $id==20) {
-              document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.display = "none";
-
-            }else {
-              $id++;
-              document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-tiposid_fk'+$id+'').style.display = "none";
-            }
-
           }else {
-            // alert($id + " id Check Hidden");
-            document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.display = "none";
-            // Opción para borrar el texto dentro de el campo Cual SI en el Checkbox se quita el chequeo en Otro
-            // document.getElementById('aplicaciones-appotrocual'+$id+'').value="";
+            $id++;
+            document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-tiposid_fk'+$id+'').style.display = "block";
           }
+        }else {
+          //Código para desplegar el campo Cual luego de seleccionar Otro como opción en el checkbox o Si en el radio Button
+          document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.display = "block";
+          document.getElementById('aplicaciones-appotrocual'+$id+'').type="";
+          document.getElementById('aplicaciones-appotrocual'+$id+'').placeholder="Otro";
+        }
+      } else {
+        if ($tipo==="radio") {
+          //Código para ocultar el campo Cual luego de seleccionar diferente a Otro como opción en el checkbox o Si en el radio Button
+          //Se parchea porque hay un inconveninete con TiposId_fk19, TiposId_fk27, esto debido a mala nomenclatura de campos, se parchea con IF()
+          //Autor Diego Realpe
+          if ($id ==19 || $id==20) {
+            document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.display = "none";
+          }else {
+            $id++;
+            document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-tiposid_fk'+$id+'').style.display = "none";
+          }
+        }else {
+          document.querySelector('#w1-tab'+$tab+' > div.form-group.field-aplicaciones-appotrocual'+$id+'').style.display = "none";
+          // Opción para borrar el texto dentro de el campo Cual SI en el Checkbox se quita el chequeo en Otro
+          // document.getElementById('aplicaciones-appotrocual'+$id+'').value="";
         }
       }
     }
   }
-
 }
 
 // NOTE: Función para mostrar u ocultar los campos de AppFechPues y AppServPues (X3) de la vista views/aplicaciones/Tabs/datosApp.php
@@ -268,8 +232,9 @@ function Appbasedatos($id, $child){
           // #w1-tab10 > div > div > div.panel-body > div > div > div:nth-child(2) > div.panel-body > div:nth-child(5) > div:nth-child(2) > div
           // #w1-tab10 > div > div > div.panel-body > div > div > div:nth-child(2) > div.panel-body > div:nth-child(8) > div:nth-child(2) > div
           // #w1-tab10 > div > div > div.panel-body > div > div > div:nth-child(2) > div.panel-body > div:nth-child(9) > div:nth-child(2) > div
+
+
           document.querySelector('#w1-tab10 > div > div > div.panel-body > div > div > div > div.panel-body > div:nth-child('+$child+') > div:nth-child(2) > div').style.display = "block";
-          // alert(cantidad);
         }else {
           document.querySelector('#w1-tab10 > div > div > div.panel-body > div > div > div > div.panel-body > div:nth-child('+$child+') > div:nth-child(2) > div').style.display = "none";
         }

@@ -635,6 +635,9 @@ private $var;
             ->createCommand();
             $rows1 = $queryId->queryOne();
             // $resultId = implode(",", $rows1);
+            // print_r($rows1);
+            // echo "</pre>";
+            // die();
 
             foreach ($rows1 as $key => $value)
             {
