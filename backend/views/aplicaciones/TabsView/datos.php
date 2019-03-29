@@ -23,7 +23,7 @@ use kartik\date\DatePicker;
 
 <?= $form->field($model, 'AppVers')->textInput(['maxlength' => true, 'disabled' => true]) ?>
 
-<?= $form->field($model, 'ESopId1')->dropDownList(ArrayHelper::map(Empsoporte::find()->all(),'ESopId','ESopNomb'), ['prompt'=> 'Seleccione la Empresa de Soporte'], ['disabled' => 'disabled'])?>
+<?= $form->field($model, 'ESopId1')->dropDownList(ArrayHelper::map(Empsoporte::find()->all(),'ESopId','ESopNomb'), ['disabled' => 'disabled'])?>
 
 <?= $form->field($model, 'AppUrl')->textInput(['maxlength' => true, 'disabled' => true]) ?>
 

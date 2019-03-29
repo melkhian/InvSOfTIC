@@ -109,7 +109,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
 
                     <div class="row">
                       <div class="col-sm-6">
-                        <?= $form->field($modelEstrequerimientos, "[{$i}]TiposId_fk")->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 19')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Estado'])?>
+                        <?= $form->field($modelEstrequerimientos, "[{$i}]TiposId_fk")->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 19')->all(),'TiposId','TiposDesc'), ['disabled' => 'disabled'])?>
                       </div>
                       <div class="col-sm-6">
                         <?= $form->field($modelEstrequerimientos, "[{$i}]EReqFech")->textInput(['maxlength' => true, 'disabled' => true]) ?>

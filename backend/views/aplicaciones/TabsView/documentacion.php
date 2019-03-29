@@ -119,7 +119,7 @@ tr:nth-child(odd) {
             ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 46')->all(),'TiposValo','TiposDesc'))->label(false)?></td>
         <td> <?= $form->field($model, 'TiposId_fk54')
             ->radioList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 46')->all(),'TiposValo','TiposDesc'))->label(false)?></td>
-        <td> <?= $form->field($model, 'AppUbic')->textInput(['maxlength' => true]) ?></td>
+        <td> <?= $form->field($model, 'AppUbic')->textInput(['maxlength' => true, 'disabled' => true]) ?></td>
       </tr>
     </table>
     <br>

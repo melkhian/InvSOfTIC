@@ -14,7 +14,7 @@ use backend\models\Empsoporte;
 <br>
 <h1 align="center">III. SOPORTE DEL DESARROLLADOR</h1>
 <br><br>
-<?= $form->field($model, 'ESopId2')->dropDownList(ArrayHelper::map(Empsoporte::find()->all(),'ESopId','ESopNomb'), ['prompt'=> 'Seleccione la Empresa de Soporte'])?>
+<?= $form->field($model, 'ESopId2')->dropDownList(ArrayHelper::map(Empsoporte::find()->all(),'ESopId','ESopNomb'), ['disabled' => 'disabled'])?>
 
 <?= $form->field($model, 'AppNombCont')->textInput(['maxlength' => true, 'disabled' => true]) ?>
 

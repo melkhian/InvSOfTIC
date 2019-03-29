@@ -188,8 +188,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
                     <div class="row">
                       <div class="col-sm-8">
                         <?= $form->field($modelAppinteractua, "[{$i}]AppId_fk1")
-                        ->dropDownList(ArrayHelper::map(Aplicaciones::find()->all(),'AppId','AppNomb'),
-                        ['onchange'=>'Appinteractua();'])?>
+                        ->dropDownList(ArrayHelper::map(Aplicaciones::find()->all(),'AppId','AppNomb'), ['disabled' => 'disabled'])?>
                       </div>
                       <div class="col-sm-4">
                         <?= $form->field($modelAppinteractua, "[{$i}]AIntOtroCual")->textInput(['maxlength' => true, 'disabled' => true]) ?>
@@ -335,7 +334,7 @@ use wbraganca\dynamicform\DynamicFormWidget;
                       <div class="col-sm-4">
                         <?= $form->field($modelAppmodulos, "[{$i}]TiposId_fk")
                         ->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 46')->all(),'TiposId','TiposDesc'),
-                        ['prompt'=> 'Seleccione la respuesta'])?>
+                        ['disabled' => 'disabled'])?>
                       </div>
                     </div>
                     <div class="row">

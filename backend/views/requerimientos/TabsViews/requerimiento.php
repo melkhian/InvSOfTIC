@@ -17,24 +17,24 @@ use wbraganca\dynamicform\DynamicFormWidget;
 ?>
 <br>
 
-<?= $form->field($model, 'AppId_fk')->dropDownList(ArrayHelper::map(Aplicaciones::find()->orderBy("AppNomb ASC")->all(),'AppId','AppNomb'), ['prompt'=> 'Seleccione la Aplicación'])?>
+<?= $form->field($model, 'AppId_fk')->dropDownList(ArrayHelper::map(Aplicaciones::find()->orderBy("AppNomb ASC")->all(),'AppId','AppNomb'), ['disabled' => 'disabled'])?>
 
 <?= $form->field($model, 'ReqDesc')->textArea(['maxlength' => true, 'rows'=>3, 'disabled' => true]) ?>
 
 <?= $form->field($model, 'TiposId_fk1')
-->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 13')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Tipo de Requerimiento'])?>
+->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 13')->all(),'TiposId','TiposDesc'), ['disabled' => 'disabled'])?>
 
 <?= $form->field($model, 'UsuId_fk')
-->dropDownList(ArrayHelper::map(User::find()->orderBy("username ASC")->all(),'id','username'), ['prompt'=> 'Seleccione el Usuario'])?>
+->dropDownList(ArrayHelper::map(User::find()->orderBy("username ASC")->all(),'id','username'), ['disabled' => 'disabled'])?>
 
 <?= $form->field($model, 'Tiposid_fk2')
-->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 14')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione la Respuesta'])?>
+->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 14')->all(),'TiposId','TiposDesc'), ['disabled' => 'disabled'])?>
 
 <?= $form->field($model, 'TiposId_fk3')
-->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 15')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione la Respuesta'])?>
+->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 15')->all(),'TiposId','TiposDesc'), ['disabled' => 'disabled'])?>
 
 <?= $form->field($model, 'ReqFechTomaRequ')->textInput(['maxlength' => true, 'disabled' => true]) ?>
 
  <?= $form->field($model, 'ReqFechSist')->hiddenInput(['maxlength' => true])->label(false); ?>
 
-<?= $form->field($model, 'TiposId_fk4')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 16')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione la Prioridad del Requerimiento'])?>
+<?= $form->field($model, 'TiposId_fk4')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 16')->all(),'TiposId','TiposDesc'), ['disabled' => 'disabled'])?>
