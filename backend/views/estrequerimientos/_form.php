@@ -17,12 +17,9 @@ use kartik\date\DatePicker;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php $var2 = 'tipoid_fk = 19';
-    $var1 = 'ReqId =3'; ?>
-
     <?= $form->field($model, 'ReqId_fk')->dropDownList(ArrayHelper::map(Requerimientos::find()->all(),'ReqId','ReqDesc'), ['prompt'=> 'Seleccione el Requerimiento'])?>
 
-    <?= $form->field($model, 'TiposId_fk')->dropDownList(ArrayHelper::map(Tipos::find()->where($var2)->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Estado'])?>
+    <?= $form->field($model, 'TiposId_fk')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 19')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Estado'])?>
 
     <?= $form->field($model, 'EReqEsta')->textarea(['maxlength' => true]) ?>
 

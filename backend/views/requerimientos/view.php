@@ -5,6 +5,10 @@ use yii\widgets\DetailView;
 use backend\models\Tipos;
 use backend\models\User;
 use backend\models\Aplicaciones;
+use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use kartik\date\DatePicker;
+use yii\bootstrap\Tabs;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Requerimientos */
@@ -34,42 +38,32 @@ $this->params['breadcrumbs'][] = $this->title;
     <!-- INICIO
         Obtengo el nombre de la llave foránea dentro del modelo para luego cambiar su valor a una descripción en la lista desplegable de Tipos
     -->
-    <?php
-        $AppId_fk= Aplicaciones::findOne($model->AppId_fk);
-        $TiposId_fk1= Tipos::findOne($model->TiposId_fk1);
-        $Tiposid_fk2= Tipos::findOne($model->Tiposid_fk2);
-        $TiposId_fk3= Tipos::findOne($model->TiposId_fk3);
-        $TiposId_fk4= Tipos::findOne($model->TiposId_fk4);
-        $UsuId_fk= User::findOne($model->UsuId_fk);
-    ?>
-    <!-- FIN -->
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'ReqId',
-            ['attribute' => 'AppId_fk',
-             'value'=> $AppId_fk['AppNomb'],
-            ],
-            'ReqDesc',
-            ['attribute' => 'TiposId_fk1',
-             'value'=> $TiposId_fk1['TiposDesc'],
-            ],
-            ['attribute' => 'UsuId_fk',
-             'value'=> $UsuId_fk['username'],
-            ],
-            ['attribute' => 'Tiposid_fk2',
-             'value'=> $Tiposid_fk2['TiposDesc'],
-            ],
-            ['attribute' => 'TiposId_fk3',
-             'value'=> $TiposId_fk3['TiposDesc'],
-            ],
-            'ReqFechTomaRequ',
-            ['attribute' => 'TiposId_fk4',
-             'value'=> $TiposId_fk4['TiposDesc'],
-            ],
-            'ReqFechSist',
-        ],
-    ]) ?>
+        <?php $form = ActiveForm::begin(['id' => 'dynamic-form']); ?>
+
+        <?= Tabs::widget([
+                'items' => [
+                    [
+
+                        'label' => 'Requerimiento',
+                        'content' => $this->render('TabsViews/requerimiento', ['model' => $model, 'form' => $form]),
+                    ],
+                    [
+
+                        'label' => 'Versión',
+                        'content' => $this->render('TabsViews/version', ['model' => $model,'modelsVersdocrequerimientos' => $modelsVersdocrequerimientos, 'form' => $form]),
+                    ],
+                    [
+
+                        'label' => 'Estado',
+                        'content' => $this->render('TabsViews/estado', ['model' => $model,'modelsEstrequerimientos' => $modelsEstrequerimientos, 'form' => $form]),
+                    ],
+
+                ]]);
+         ?>
+
+
+        <?php ActiveForm::end(); ?>
+
 
 </div>
