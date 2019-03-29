@@ -348,7 +348,7 @@ use backend\controllers\SiteController;
                          }
                          if (SiteController::findvar(20)){
                          // if ($this->context->findVar(20)){
-                           $pds[] = ['label' => 'Parametros', 'icon' => 'cog', 'url' => ['parametros/index']];
+                           $pds[] = ['label' => 'Parámetros', 'icon' => 'cog', 'url' => ['parametros/index']];
                          }
                          else {
 

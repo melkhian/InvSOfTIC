@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\widgets\FileInput;
+use backend\models\Tipos;
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Parametros */
 /* @var $form yii\widgets\ActiveForm */
@@ -28,7 +30,7 @@ use kartik\widgets\FileInput;
 
     <?= $form->field($model, 'ParFall')->textInput() ?>
 
-    <?= $form->field($model, 'TiposId_fk')->textInput() ?>
+    <?= $form->field($model, 'TiposId_fk')->dropDownList(ArrayHelper::map(Tipos::find()->where('tipoid_fk = 51')->all(),'TiposId','TiposDesc'), ['prompt'=> 'Seleccione el Tipo'])?>
 
     <?= $form->field($model, 'ParNemo')->textInput(['maxlength' => true]) ?>
 
